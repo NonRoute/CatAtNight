@@ -2,19 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PassThroughPlatform : MonoBehaviour
+public class PassThroughPlatform : Platform
 {
-    private Collider2D col;
     private bool isPlayerOnPlatform;
-
-    void Start()
-    {
-        col = GetComponent<Collider2D>();
-    }
 
     private void Update()
     {
-        if(isPlayerOnPlatform && Input.GetAxis("Vertical") < 0)
+        if(isPlayerOnPlatform && Input.GetAxis("Vertical") < 0 && Input.GetKeyDown(KeyCode.Space))
         {
             col.enabled = false;
             StartCoroutine(EnableCollider());
@@ -23,14 +17,13 @@ public class PassThroughPlatform : MonoBehaviour
 
     private IEnumerator EnableCollider()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         col.enabled = true;
     }
 
     private void SetPlayerOnPlatform(Collision2D other, bool onPlatform)
     {
-        Player player = other.gameObject.GetComponent<Player>();
-        if (player != null)
+        if (other.gameObject.TryGetComponent<Player>(out var player))
         {
             isPlayerOnPlatform = onPlatform;
         }
