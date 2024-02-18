@@ -152,8 +152,8 @@ Transform:
   m_GameObject: {fileID: 9283639}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: 10.85, y: 10.99, z: 0}
-  m_LocalScale: {x: 5.93, y: 0.5, z: 1}
+  m_LocalPosition: {x: 10.8, y: 10.947, z: 0}
+  m_LocalScale: {x: 5.93, y: 0.13, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1092643882}
@@ -185,7 +185,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -531,8 +531,8 @@ Transform:
   m_GameObject: {fileID: 59642016}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: 10.85, y: 15.06, z: 0}
-  m_LocalScale: {x: 5.93, y: 0.5, z: 1}
+  m_LocalPosition: {x: 10.94, y: 14.97, z: 0}
+  m_LocalScale: {x: 5.93, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1092643882}
@@ -564,7 +564,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -857,7 +857,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -1227,7 +1227,7 @@ Transform:
   m_GameObject: {fileID: 238308185}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.02, y: 13.77, z: 0}
+  m_LocalPosition: {x: -14.02, y: 14.03, z: 0}
   m_LocalScale: {x: 0.52, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1260,7 +1260,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -1456,7 +1456,7 @@ Transform:
   m_GameObject: {fileID: 278995105}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.51, y: 6.51, z: 0}
+  m_LocalPosition: {x: -8.51, y: 6.424, z: 0}
   m_LocalScale: {x: 8, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1489,7 +1489,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -1652,7 +1652,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -1947,7 +1947,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -2110,7 +2110,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -2405,7 +2405,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -2535,7 +2535,7 @@ Transform:
   m_GameObject: {fileID: 614621473}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.25, y: 13.77, z: 0}
+  m_LocalPosition: {x: -11.25, y: 13.98, z: 0}
   m_LocalScale: {x: 0.52, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2568,7 +2568,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -2960,8 +2960,8 @@ Transform:
   m_GameObject: {fileID: 816601398}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.07, y: 8.1, z: 0}
-  m_LocalScale: {x: 2.36, y: 0.5, z: 1}
+  m_LocalPosition: {x: -1.21, y: 8.14, z: 0}
+  m_LocalScale: {x: 0.79, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1092643882}
@@ -2993,7 +2993,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -3123,8 +3123,8 @@ Transform:
   m_GameObject: {fileID: 831140602}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.2896165, w: 0.9571428}
-  m_LocalPosition: {x: -0.37, y: 4.33, z: 0}
-  m_LocalScale: {x: 2.36, y: 0.5, z: 1}
+  m_LocalPosition: {x: -0.561, y: 4.433, z: 0}
+  m_LocalScale: {x: 1.9, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1092643882}
@@ -3156,7 +3156,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -3286,8 +3286,8 @@ Transform:
   m_GameObject: {fileID: 839914510}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.73, y: 9.76, z: 0}
-  m_LocalScale: {x: 2.36, y: 0.5, z: 1}
+  m_LocalPosition: {x: -2.31, y: 9.76, z: 0}
+  m_LocalScale: {x: 1.44, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1092643882}
@@ -3319,7 +3319,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -3482,7 +3482,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -3612,7 +3612,7 @@ Transform:
   m_GameObject: {fileID: 847231759}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.61, y: 15.54, z: 0}
+  m_LocalPosition: {x: -12.61, y: 15.67, z: 0}
   m_LocalScale: {x: 2.18, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3645,7 +3645,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -4207,8 +4207,8 @@ Transform:
   m_GameObject: {fileID: 1180753986}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.2896165, w: 0.9571428}
-  m_LocalPosition: {x: -0.48, y: 5.96, z: 0}
-  m_LocalScale: {x: 2.36, y: 0.5, z: 1}
+  m_LocalPosition: {x: -0.84, y: 5.908, z: 0}
+  m_LocalScale: {x: 1.19, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1092643882}
@@ -4240,7 +4240,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -4743,7 +4743,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -4972,7 +4972,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -5201,7 +5201,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -5331,7 +5331,7 @@ Transform:
   m_GameObject: {fileID: 1549390898}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.31448954, w: 0.94926095}
-  m_LocalPosition: {x: -6.22, y: 8.69, z: 0}
+  m_LocalPosition: {x: -6.02, y: 8.816, z: 0}
   m_LocalScale: {x: 9.28, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5364,7 +5364,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -5593,7 +5593,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -5756,7 +5756,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -5907,7 +5907,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -6188,7 +6188,7 @@ Transform:
   m_GameObject: {fileID: 1804441591}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.07, y: 5.33, z: 0}
+  m_LocalPosition: {x: -13.975, y: 5.41, z: 0}
   m_LocalScale: {x: 2.93, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6221,7 +6221,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -6514,7 +6514,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -6873,7 +6873,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -7102,7 +7102,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -7265,7 +7265,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -7571,7 +7571,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 170
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -7791,25 +7791,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57965978f65575341b8dd7904e0461cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
-  jumpPower: 7.5
-  chargeDuration: 1
-  dashDuration: 0.05
-  dashSpeed: 1.5
+  moveSpeed: 6
+  jumpPower: 8
+  chargeDuration: 0.75
+  dashDuration: 0.2
+  dashSpeed: 15
   maxDashCount: 1
   gravityScale: 3
+  groundedDelay: 0.1
   risingGravityMultiplier: 1
   fallingGravityMultiplier: 1.5
   horizontalInput: 0
   verticalInput: 0
+  horizontalSmooth: 0
+  verticalSmooth: 0
   chargePercent: 0
   dashVelocity: {x: 0, y: 0}
   dashEndTime: 0
   dashCount: 0
+  lastGroundedTime: 0
   platformCount: 0
   isOnPlatform: 0
   isChargeJumping: 0
-  isControlling: 1
 --- !u!1001 &9212210909327989150
 PrefabInstance:
   m_ObjectHideFlags: 0

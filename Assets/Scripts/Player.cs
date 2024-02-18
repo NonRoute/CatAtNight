@@ -14,20 +14,23 @@ public class Player : MonoBehaviour
     [SerializeField] private float dashSpeed = 5f;
     [SerializeField] private int maxDashCount = 1;
     [SerializeField] private float gravityScale = 1.5f;
+    [SerializeField] private float groundedDelay = 0.1f;
     [SerializeField] private float risingGravityMultiplier = 1f;
     [SerializeField] private float fallingGravityMultiplier = 1.5f;
 
     [Header("Debug")]
     [SerializeField] private float horizontalInput = 0f;
     [SerializeField] private float verticalInput = 0f;
+    [SerializeField] private float horizontalSmooth = 0f;
+    [SerializeField] private float verticalSmooth = 0f;
     [SerializeField] private float chargePercent = 0f;
     [SerializeField] private Vector2 dashVelocity = Vector2.zero;
     [SerializeField] private float dashEndTime = 0f;
     [SerializeField] private int dashCount = 0;
+    [SerializeField] private float lastGroundedTime = 0f;
     [SerializeField] private int platformCount = 0;
     [SerializeField] private bool isOnPlatform = false;
     [SerializeField] private bool isChargeJumping = false;
-    [SerializeField] private bool isControlling = true;
 
     private SpriteRenderer sprite;
     private Rigidbody2D rb;
@@ -50,11 +53,9 @@ public class Player : MonoBehaviour
     private void ReadInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
-        if(isOnPlatform && horizontalInput != 0)
-        {
-            isControlling = true;
-        }
         verticalInput = Input.GetAxisRaw("Vertical");
+        horizontalSmooth = Input.GetAxis("Horizontal");
+        verticalSmooth = Input.GetAxis("Vertical");
     }
 
     private void UpdateSprite()
@@ -87,14 +88,15 @@ public class Player : MonoBehaviour
         rb.gravityScale = gravityScale * ((rb.velocity.y < 0) ? fallingGravityMultiplier : risingGravityMultiplier);
 
         Vector2 newVelocity = rb.velocity;
-        if (isControlling)
-        {
-            newVelocity.x = horizontalInput * moveSpeed;
-        }
 
         if(Time.time < dashEndTime)
         {
-            newVelocity += dashVelocity;
+            newVelocity = dashVelocity;
+            newVelocity.x += horizontalSmooth * moveSpeed;
+        }
+        else
+        {
+            newVelocity.x = horizontalSmooth * moveSpeed;
         }
 
         rb.velocity = newVelocity;
@@ -104,8 +106,6 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // Try to Go down
-            if (isOnPlatform && verticalInput < 0) return;
 
             // RealJump
             if (isOnPlatform)
@@ -114,6 +114,7 @@ public class Player : MonoBehaviour
             }
             else
             {
+                if (Time.time - lastGroundedTime < groundedDelay) return;
                 Dash();
             }
         }
@@ -132,9 +133,9 @@ public class Player : MonoBehaviour
         {
             jumpForce += chargePercent / 100 * jumpPower;
         }
-        Vector2 direction = (Vector2.up + Vector2.right * horizontalInput + Vector2.up * verticalInput).normalized;
+        //Vector2 direction = (Vector2.up + Vector2.right * horizontalInput + Vector2.up * verticalInput).normalized;
+        Vector2 direction = Vector2.up;
         rb.AddForce(jumpForce * direction, ForceMode2D.Impulse);
-        isControlling = false;
     }
 
     private void Dash()
@@ -170,6 +171,10 @@ public class Player : MonoBehaviour
         if(isOnPlatform)
         {
             dashCount = 0;
+        }
+        else
+        {
+            lastGroundedTime = Time.time;
         }
     }
 
