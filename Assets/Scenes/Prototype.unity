@@ -7791,16 +7791,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57965978f65575341b8dd7904e0461cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3.5
-  jumpPower: 150
+  moveSpeed: 4
+  jumpPower: 7.5
   chargeDuration: 1
-  dashPower: 200
+  dashDuration: 0.05
+  dashSpeed: 1.5
   maxDashCount: 1
-  additionalRisingMultiplier: 1.5
-  additionalFallingMultiplier: 1.5
+  gravityScale: 3
+  risingGravityMultiplier: 1
+  fallingGravityMultiplier: 1.5
   horizontalInput: 0
   verticalInput: 0
   chargePercent: 0
+  dashVelocity: {x: 0, y: 0}
+  dashEndTime: 0
   dashCount: 0
   platformCount: 0
   isOnPlatform: 0

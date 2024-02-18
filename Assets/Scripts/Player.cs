@@ -1,22 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [Header("Values")]
     [SerializeField] private float moveSpeed = 3.5f;
-    [SerializeField] private float jumpPower = 250f;
+    [SerializeField] private float jumpPower = 5f;
     [SerializeField] private float chargeDuration = 1f;
-    [SerializeField] private float dashPower = 200f;
+    [SerializeField] private float dashDuration = 0.2f;
+    [SerializeField] private float dashSpeed = 5f;
     [SerializeField] private int maxDashCount = 1;
-    [SerializeField] private float additionalRisingMultiplier = 1.5f;
-    [SerializeField] private float additionalFallingMultiplier = 1.5f;
+    [SerializeField] private float gravityScale = 1.5f;
+    [SerializeField] private float risingGravityMultiplier = 1f;
+    [SerializeField] private float fallingGravityMultiplier = 1.5f;
 
     [Header("Debug")]
     [SerializeField] private float horizontalInput = 0f;
     [SerializeField] private float verticalInput = 0f;
     [SerializeField] private float chargePercent = 0f;
+    [SerializeField] private Vector2 dashVelocity = Vector2.zero;
+    [SerializeField] private float dashEndTime = 0f;
     [SerializeField] private int dashCount = 0;
     [SerializeField] private int platformCount = 0;
     [SerializeField] private bool isOnPlatform = false;
@@ -43,12 +49,12 @@ public class Player : MonoBehaviour
 
     private void ReadInput()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
         if(isOnPlatform && horizontalInput != 0)
         {
             isControlling = true;
         }
-        verticalInput = Input.GetAxis("Vertical");
+        verticalInput = Input.GetAxisRaw("Vertical");
     }
 
     private void UpdateSprite()
@@ -74,37 +80,24 @@ public class Player : MonoBehaviour
     {
         if(isChargeJumping)
         {
-            Vector2 newVelocity = rb.velocity;
-            newVelocity.x = 0;
-            rb.velocity = newVelocity;
+            rb.velocity = Vector2.zero;
+            rb.gravityScale = 0;
             return;
         }
+        rb.gravityScale = gravityScale * ((rb.velocity.y < 0) ? fallingGravityMultiplier : risingGravityMultiplier);
 
-        if(rb.velocity.y < 0)
+        Vector2 newVelocity = rb.velocity;
+        if (isControlling)
         {
-            Vector3 newPos = transform.position;
-            newPos.y += rb.velocity.y * additionalFallingMultiplier * Time.deltaTime;
-            transform.position = newPos;
-        }
-        else
-        {
-            Vector3 newPos = transform.position;
-            newPos.y += rb.velocity.y * additionalRisingMultiplier * Time.deltaTime;
-            transform.position = newPos;
-        }
-
-        if(isOnPlatform && isControlling)
-        {
-            Vector2 newVelocity = rb.velocity;
             newVelocity.x = horizontalInput * moveSpeed;
-            rb.velocity = newVelocity;
         }
-        else
+
+        if(Time.time < dashEndTime)
         {
-            Vector3 newPos = transform.position;
-            newPos.x += horizontalInput * moveSpeed * Time.deltaTime;
-            transform.position = newPos;
+            newVelocity += dashVelocity;
         }
+
+        rb.velocity = newVelocity;
     }
 
     private void UpdateJumping()
@@ -139,15 +132,17 @@ public class Player : MonoBehaviour
         {
             jumpForce += chargePercent / 100 * jumpPower;
         }
-        rb.AddForce(jumpForce * Vector2.up);
+        Vector2 direction = (Vector2.up + Vector2.right * horizontalInput + Vector2.up * verticalInput).normalized;
+        rb.AddForce(jumpForce * direction, ForceMode2D.Impulse);
         isControlling = false;
     }
 
     private void Dash()
     {
         if (dashCount >= maxDashCount) return;
-        rb.velocity = 2f * Vector2.up;
-        rb.AddForce(dashPower * (new Vector2(horizontalInput, verticalInput)).normalized);
+        Vector2 direction = (new Vector2(horizontalInput, verticalInput)).normalized;
+        dashVelocity = dashSpeed * direction;
+        dashEndTime = Time.time + dashDuration;
         dashCount++;
     }
 

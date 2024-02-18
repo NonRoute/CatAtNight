@@ -8,7 +8,7 @@ public class PassThroughPlatform : Platform
 
     private void Update()
     {
-        if(isPlayerOnPlatform && Input.GetAxis("Vertical") < 0 && Input.GetKeyDown(KeyCode.Space))
+        if(isPlayerOnPlatform && Input.GetAxisRaw("Vertical") < 0 && Input.GetKeyDown(KeyCode.Space))
         {
             col.enabled = false;
             StartCoroutine(EnableCollider());
