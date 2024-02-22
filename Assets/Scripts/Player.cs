@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
 
     private void UpdateMovement()
     {
-        if(isChargeJumping)
+        if (isChargeJumping)
         {
             rb.velocity = Vector2.zero;
             rb.gravityScale = 0;
@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
 
         Vector2 newVelocity = rb.velocity;
 
-        if(Time.time < dashEndTime)
+        if (Time.time < dashEndTime)
         {
             newVelocity = dashVelocity;
             newVelocity.x += horizontalSmooth * moveSpeed;
@@ -103,7 +103,8 @@ public class Player : MonoBehaviour
 
     private void UpdateJumping()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0))
         {
 
             // RealJump
@@ -117,7 +118,7 @@ public class Player : MonoBehaviour
                 Dash();
             }
         }
-        if (isChargeJumping && Input.GetKeyUp(KeyCode.Space))
+        if (isChargeJumping && (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton0)))
         {
             Jump(true);
             chargePercent = 0;
@@ -163,11 +164,11 @@ public class Player : MonoBehaviour
         SetOnPlatform(platformCount > 0);
     }
 
-    private void SetOnPlatform(bool onPlatform) 
+    private void SetOnPlatform(bool onPlatform)
     {
         if (isOnPlatform == onPlatform) return;
         isOnPlatform = onPlatform;
-        if(isOnPlatform)
+        if (isOnPlatform)
         {
             dashCount = 0;
         }
@@ -179,7 +180,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.TryGetComponent<Platform>(out _))
+        if (collision.gameObject.TryGetComponent<Platform>(out _))
         {
             AddPlatformCount(1);
         }

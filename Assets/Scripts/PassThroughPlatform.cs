@@ -8,7 +8,11 @@ public class PassThroughPlatform : Platform
 
     private void Update()
     {
-        if(isPlayerOnPlatform && Input.GetAxisRaw("Vertical") < 0 && Input.GetKeyDown(KeyCode.Space))
+        bool downKeyboard1 = Input.GetAxisRaw("Vertical") < 0 && Input.GetKeyDown(KeyCode.Space);
+        bool downKeyboard2 = Input.GetKeyDown(KeyCode.LeftShift);
+        bool downController = Input.GetKeyDown(KeyCode.JoystickButton1);
+
+        if (isPlayerOnPlatform && (downKeyboard1 || downKeyboard2 || downController))
         {
             col.enabled = false;
             StartCoroutine(EnableCollider());
@@ -31,12 +35,12 @@ public class PassThroughPlatform : Platform
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        SetPlayerOnPlatform(collision,true);
+        SetPlayerOnPlatform(collision, true);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        SetPlayerOnPlatform(collision,false);
+        SetPlayerOnPlatform(collision, false);
     }
 
 }
