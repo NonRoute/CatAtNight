@@ -75,3 +75,10 @@ crashlytics-build.properties
 # MacOS
 .DS_Store
 __MACOSX/
+
+# Web Build
+CatAtNight/
+
+# Debug Info
+CatAtNight_*/
+
