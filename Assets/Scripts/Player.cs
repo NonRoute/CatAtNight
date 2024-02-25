@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private const bool IS_DEBUG = true;
+
     [Header("Values")]
     [SerializeField] private float moveSpeed = 3.5f;
     [SerializeField] private float jumpPower = 5f;
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int platformCount = 0;
     [SerializeField] private bool isOnPlatform = false;
     [SerializeField] private bool isChargeJumping = false;
+    [SerializeField] private bool noClip = false;
 
     private SpriteRenderer sprite;
     private Rigidbody2D rb;
@@ -44,6 +47,11 @@ public class Player : MonoBehaviour
     {
         ReadInput();
         UpdateSprite();
+        if(IS_DEBUG && noClip)
+        {
+            transform.Translate(3f * moveSpeed * Time.deltaTime * new Vector3(horizontalSmooth,verticalSmooth,0f));
+            return;
+        }
         UpdateMovement();
         UpdateJumping();
         CountChargePercent();
@@ -55,6 +63,15 @@ public class Player : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
         horizontalSmooth = Input.GetAxis("Horizontal");
         verticalSmooth = Input.GetAxis("Vertical");
+        if(IS_DEBUG && Input.GetKeyDown(KeyCode.C))
+        {
+            noClip = !noClip;
+            rb.bodyType = (noClip) ? RigidbodyType2D.Kinematic : RigidbodyType2D.Dynamic;
+            Color newColor = sprite.color;
+            newColor.a = (noClip) ? 0.5f : 1f;
+            sprite.color = newColor;
+            rb.velocity = Vector2.zero;
+        }
     }
 
     private void UpdateSprite()
