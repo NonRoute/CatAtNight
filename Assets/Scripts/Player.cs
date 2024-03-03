@@ -45,11 +45,15 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (DialogueManager.Instance.isDialogueActive)
+        {
+            return;
+        }
         ReadInput();
         UpdateSprite();
-        if(IS_DEBUG && noClip)
+        if (IS_DEBUG && noClip)
         {
-            transform.Translate(3f * moveSpeed * Time.deltaTime * new Vector3(horizontalSmooth,verticalSmooth,0f));
+            transform.Translate(3f * moveSpeed * Time.deltaTime * new Vector3(horizontalSmooth, verticalSmooth, 0f));
             return;
         }
         UpdateMovement();
@@ -63,7 +67,7 @@ public class Player : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
         horizontalSmooth = Input.GetAxis("Horizontal");
         verticalSmooth = Input.GetAxis("Vertical");
-        if(IS_DEBUG && Input.GetKeyDown(KeyCode.C))
+        if (IS_DEBUG && Input.GetKeyDown(KeyCode.C))
         {
             noClip = !noClip;
             rb.bodyType = (noClip) ? RigidbodyType2D.Kinematic : RigidbodyType2D.Dynamic;
