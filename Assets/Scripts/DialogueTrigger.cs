@@ -25,15 +25,17 @@ public class Dialogue
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
+    private bool isTriggered = false;
 
     public void TriggerDialogue()
     {
         DialogueManager.Instance.StartDialogue(dialogue);
+        isTriggered = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && !isTriggered)
         {
             TriggerDialogue();
         }
