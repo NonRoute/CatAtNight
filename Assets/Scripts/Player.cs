@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamagable
 {
     private const bool IS_DEBUG = true;
 
     [Header("Values")]
+    [SerializeField] private float health = 9f;
+    [SerializeField] private float maxHealth = 9f;
     [SerializeField] private float moveSpeed = 3.5f;
     [SerializeField] private float jumpPower = 5f;
     [SerializeField] private float chargeDuration = 1f;
@@ -20,6 +22,14 @@ public class Player : MonoBehaviour
     [SerializeField] private float fallingGravityMultiplier = 1.5f;
 
     [Header("Debug")]
+    [SerializeField] private bool isFreeze = false;
+    [SerializeField] private bool isInterrupted = false;
+    [SerializeField] private float lastInterruptedTime = 0f;
+    [SerializeField] private float interruptedDuration = 0f;
+    [SerializeField] private bool isBouncing = false;
+    [SerializeField] private float lastBounceTime = 0f;
+    [SerializeField] private float bounceDuration = 0f;
+    [SerializeField] private Vector2 bounceVelocity;
     [SerializeField] private float horizontalInput = 0f;
     [SerializeField] private float verticalInput = 0f;
     [SerializeField] private float horizontalSmooth = 0f;
@@ -41,11 +51,14 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        health = maxHealth;
+        StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
     }
 
     void Update()
     {
-        if (DialogueManager.Instance.isDialogueActive)
+        UpdateStatus();
+        if (isFreeze)
         {
             return;
         }
@@ -56,9 +69,24 @@ public class Player : MonoBehaviour
             transform.Translate(3f * moveSpeed * Time.deltaTime * new Vector3(horizontalSmooth, verticalSmooth, 0f));
             return;
         }
+        if(isInterrupted)
+        {
+            UpdateInterrupted();
+            return;
+        }
         UpdateMovement();
         UpdateJumping();
         CountChargePercent();
+    }
+
+    private void UpdateStatus()
+    {
+        bool willFreeze = false;
+        if(DialogueManager.Instance != null)
+        {
+            willFreeze |= DialogueManager.Instance.isDialogueActive;
+        }
+        isFreeze = willFreeze;
     }
 
     private void ReadInput()
@@ -97,6 +125,27 @@ public class Player : MonoBehaviour
         sprite.transform.localScale = newScale;
     }
 
+    private void UpdateInterrupted()
+    {
+        UpdateGravity();
+        float currentTime = Time.time;
+        if(isBouncing)
+        {
+            if (currentTime - lastBounceTime > bounceDuration)
+            {
+                isBouncing = false;
+            }
+            else
+            {
+                rb.velocity = bounceVelocity;
+            }
+        }
+        if (currentTime - lastInterruptedTime > interruptedDuration)
+        {
+            isInterrupted = false;
+        }
+    }
+
     private void UpdateMovement()
     {
         if (isChargeJumping)
@@ -105,7 +154,7 @@ public class Player : MonoBehaviour
             rb.gravityScale = 0;
             return;
         }
-        rb.gravityScale = gravityScale * ((rb.velocity.y < 0) ? fallingGravityMultiplier : risingGravityMultiplier);
+        UpdateGravity();
 
         Vector2 newVelocity = rb.velocity;
 
@@ -120,6 +169,11 @@ public class Player : MonoBehaviour
         }
 
         rb.velocity = newVelocity;
+    }
+
+    private void UpdateGravity()
+    {
+        rb.gravityScale = gravityScale * ((rb.velocity.y < 0) ? fallingGravityMultiplier : risingGravityMultiplier);
     }
 
     private void UpdateJumping()
@@ -212,6 +266,35 @@ public class Player : MonoBehaviour
         if (collision.gameObject.TryGetComponent<Platform>(out _))
         {
             AddPlatformCount(-1);
+        }
+    }
+
+    public EntityType GetEntityType()
+    {
+        return EntityType.Player;
+    }
+
+    public void RecieveDamage(DamageInfo damageInfo, Vector2 attackerPos)
+    {
+        health -= damageInfo.damage;
+        if(health < 0)
+        {
+            health = 0;
+        }
+        SoundManager.TryPlayNew("TestCatHurt");
+        StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
+        if(damageInfo.isInterrupt)
+        {
+            isInterrupted = true;
+            lastInterruptedTime = Time.time;
+            interruptedDuration = damageInfo.interruptDuration;
+        }
+        if(damageInfo.isBounce)
+        {
+            isBouncing = true;
+            lastBounceTime = Time.time;
+            bounceDuration = damageInfo.bounceDuration;
+            bounceVelocity = damageInfo.bounceSpeed * ((Vector2)transform.position - attackerPos).normalized;
         }
     }
 }
