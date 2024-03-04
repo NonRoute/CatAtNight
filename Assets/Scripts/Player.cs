@@ -60,6 +60,7 @@ public class Player : MonoBehaviour, IDamagable
         UpdateStatus();
         if (isFreeze)
         {
+            rb.velocity = Vector2.zero;
             return;
         }
         ReadInput();
