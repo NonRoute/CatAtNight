@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Obstacle : MonoBehaviour
 {
     [SerializeField] private DamageInfo damageInfo = new();
@@ -12,7 +12,9 @@ public class Obstacle : MonoBehaviour
         if(collision.gameObject.TryGetComponent(out IDamagable damagable))
         {
             if (!damageInfo.targetEntityType.HasFlag(damagable.GetEntityType())) return;
-            damagable.RecieveDamage(damageInfo, transform.position);
+            //print(collision.contacts.Length);
+            ContactPoint2D contact = collision.GetContact(0);
+            damagable.RecieveDamage(damageInfo, contact.point);
         }
     }
 }
