@@ -13,9 +13,18 @@ public class Monster : MonoBehaviour, IDamagable
     [SerializeField] private float jumpForce = 1.5f;
     [SerializeField] private float jumpCooldown = 5f;
 
-    private int moveDirection = MOVE_RIGHT;
-    private float moveTimeElapsed;
-    private float jumpTimeElapsed = 0f;
+    [Header("Debug")]
+    [SerializeField] private int moveDirection = MOVE_RIGHT;
+    [SerializeField] private float moveTimeElapsed;
+    [SerializeField] private float jumpTimeElapsed = 0f;
+    [SerializeField] private bool isInterrupted = false;
+    [SerializeField] private float lastInterruptedTime = 0f;
+    [SerializeField] private float interruptedDuration = 0f;
+    [SerializeField] private bool isBouncing = false;
+    [SerializeField] private float lastBounceTime = 0f;
+    [SerializeField] private float bounceDuration = 0f;
+    [SerializeField] private Vector2 bounceVelocity;
+
     private Rigidbody2D rb;
 
     private void Start()
@@ -35,6 +44,11 @@ public class Monster : MonoBehaviour, IDamagable
             moveTimeElapsed = 0f;
         }
 
+        if (isInterrupted)
+        {
+            UpdateInterrupted();
+            return;
+        }
         Move();
         Jump();
     }
@@ -65,9 +79,42 @@ public class Monster : MonoBehaviour, IDamagable
     public void RecieveDamage(DamageInfo damageInfo, Vector2 attackerPos)
     {
         health -= damageInfo.damage;
-        if (health < 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
+        }
+        if (damageInfo.isInterrupt)
+        {
+            isInterrupted = true;
+            lastInterruptedTime = Time.time;
+            interruptedDuration = damageInfo.interruptDuration;
+        }
+        if (damageInfo.isBounce)
+        {
+            isBouncing = true;
+            lastBounceTime = Time.time;
+            bounceDuration = damageInfo.bounceDuration;
+            bounceVelocity = damageInfo.bounceSpeed * ((Vector2)transform.position - attackerPos).normalized;
+        }
+    }
+
+    private void UpdateInterrupted()
+    {
+        float currentTime = Time.time;
+        if (isBouncing)
+        {
+            if (currentTime - lastBounceTime > bounceDuration)
+            {
+                isBouncing = false;
+            }
+            else
+            {
+                rb.velocity = bounceVelocity;
+            }
+        }
+        if (currentTime - lastInterruptedTime > interruptedDuration)
+        {
+            isInterrupted = false;
         }
     }
 }
