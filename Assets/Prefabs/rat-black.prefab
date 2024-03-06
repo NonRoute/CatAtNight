@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2111369169775908117}
   - component: {fileID: 8488326655536366732}
   - component: {fileID: 3835358305300879681}
+  - component: {fileID: -2564036477668588701}
+  - component: {fileID: 2919645147619117798}
   m_Layer: 0
   m_Name: rat-black
   m_TagString: Untagged
@@ -120,3 +122,47 @@ CapsuleCollider2D:
   m_Offset: {x: 0.010210026, y: -0.10718833}
   m_Size: {x: 0.4854166, y: 0.32063004}
   m_Direction: 1
+--- !u!114 &-2564036477668588701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8383841986680396537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411ffa08650bfa047b7d329a4169507b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  moveSpeed: 1
+  moveDuration: 1
+  jumpForce: 1.5
+  jumpCooldown: 5
+--- !u!50 &2919645147619117798
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8383841986680396537}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
