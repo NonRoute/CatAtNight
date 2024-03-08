@@ -7,21 +7,32 @@ public class Player : MonoBehaviour, IDamagable
 {
     private const bool IS_DEBUG = true;
 
-    [Header("Values")]
+    [Header("Status")]
     [SerializeField] private float health = 9f;
     [SerializeField] private float maxHealth = 9f;
-    [SerializeField] private float moveSpeed = 3.5f;
-    [SerializeField] private float jumpPower = 5f;
-    [SerializeField] private float chargeDuration = 1f;
+    [SerializeField] private float stamina = 100f;
+    [SerializeField] private float maxStamina = 100f;
+    [Header("Power Values")]
+    [SerializeField] private float moveSpeed = 6f;
+    [SerializeField] private float floatSpeed = 10f;
+    [SerializeField] private float runMultiplier = 2f;
+    [SerializeField] private float staminaDrainRate = 20f;
+    [SerializeField] private float staminaRegenRate = 10f;
+    [SerializeField] private float staminaRegenDelay = 1f;
+    [SerializeField] private float runJumpStaminaUsage = 10f;
+    [SerializeField] private float minimumStamina = 30f;
+    [SerializeField] private float jumpPower = 8f;
+    [SerializeField] private float chargeDuration = 0.75f;
     [SerializeField] private float dashDuration = 0.2f;
-    [SerializeField] private float dashSpeed = 5f;
+    [SerializeField] private float dashSpeed = 15f;
     [SerializeField] private int maxDashCount = 1;
-    [SerializeField] private float gravityScale = 1.5f;
     [SerializeField] private float groundedDelay = 0.1f;
+    [Header("Gravity Values")]
+    [SerializeField] private float gravityScale = 3f;
     [SerializeField] private float risingGravityMultiplier = 1f;
     [SerializeField] private float fallingGravityMultiplier = 1.5f;
 
-    [Header("Debug")]
+    [Header("Debug Values")]
     [SerializeField] private bool isFreeze = false;
     [SerializeField] private bool isInterrupted = false;
     [SerializeField] private float lastInterruptedTime = 0f;
@@ -42,6 +53,10 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private int platformCount = 0;
     [SerializeField] private bool isOnPlatform = false;
     [SerializeField] private bool isChargeJumping = false;
+    [SerializeField] private float lastRunningTime = 0f;
+    [SerializeField] private bool isTryingToRun = false;
+    [SerializeField] private bool isRunning = false;
+    [SerializeField] private bool isStaminaOut = false;
     [SerializeField] private bool noClip = false;
 
     private SpriteRenderer sprite;
@@ -52,6 +67,7 @@ public class Player : MonoBehaviour, IDamagable
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         health = maxHealth;
+        stamina = maxStamina;
         StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
     }
 
@@ -65,6 +81,7 @@ public class Player : MonoBehaviour, IDamagable
         }
         ReadInput();
         UpdateSprite();
+        UpdateStamina();
         if (IS_DEBUG && noClip)
         {
             transform.Translate(3f * moveSpeed * Time.deltaTime * new Vector3(horizontalSmooth, verticalSmooth, 0f));
@@ -96,6 +113,7 @@ public class Player : MonoBehaviour, IDamagable
         verticalInput = Input.GetAxisRaw("Vertical");
         horizontalSmooth = Input.GetAxis("Horizontal");
         verticalSmooth = Input.GetAxis("Vertical");
+        isTryingToRun = Input.GetKey(KeyCode.LeftControl);
         if (IS_DEBUG && Input.GetKeyDown(KeyCode.C))
         {
             noClip = !noClip;
@@ -147,6 +165,49 @@ public class Player : MonoBehaviour, IDamagable
         }
     }
 
+    private void UpdateStamina()
+    {
+        if(isRunning)
+        {
+            stamina -= staminaDrainRate * Time.deltaTime;
+        }
+        else if(Time.time - lastRunningTime > staminaRegenDelay)
+        {
+            stamina += staminaRegenRate * Time.deltaTime;
+        }
+
+        if(stamina <= 0)
+        {
+            stamina = 0;
+            isStaminaOut = true;
+        }
+        if(stamina > maxStamina)
+        {
+            stamina = maxStamina;
+        }
+
+        if(stamina >= minimumStamina)
+        {
+            isStaminaOut = false;
+        }
+
+        bool wasRunning = isRunning;
+
+        if(isTryingToRun)
+        {
+            isRunning = !isStaminaOut;
+        }
+        else
+        {
+            isRunning = false;
+        }
+
+        if(wasRunning && !isRunning)
+        {
+            lastRunningTime = Time.time;
+        }
+    }
+
     private void UpdateMovement()
     {
         if (isChargeJumping)
@@ -159,14 +220,22 @@ public class Player : MonoBehaviour, IDamagable
 
         Vector2 newVelocity = rb.velocity;
 
+        bool isGrounded = isOnPlatform && Mathf.Abs(rb.velocity.y) <= 0.1f; 
+        float speed = (isGrounded) ? moveSpeed : floatSpeed;
+        if(isRunning)
+        {
+            speed *= runMultiplier;
+        }
+
         if (Time.time < dashEndTime)
         {
             newVelocity = dashVelocity;
-            newVelocity.x += horizontalSmooth * moveSpeed;
+            newVelocity.x += horizontalSmooth * speed;
         }
         else
         {
-            newVelocity.x = horizontalSmooth * moveSpeed;
+            
+            newVelocity.x = horizontalSmooth * speed;
         }
 
         rb.velocity = newVelocity;
@@ -186,7 +255,15 @@ public class Player : MonoBehaviour, IDamagable
             // RealJump
             if (isOnPlatform)
             {
-                isChargeJumping = true;
+                if(isRunning)
+                {
+                    Jump(false);
+                    stamina -= runJumpStaminaUsage;
+                }
+                else
+                {
+                    isChargeJumping = true;
+                }
             }
             else
             {
