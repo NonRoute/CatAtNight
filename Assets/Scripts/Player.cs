@@ -525,7 +525,7 @@ public class Player : MonoBehaviour, IDamagable
 
     public void RecieveDamage(DamageInfo damageInfo, Vector2 attackerPos)
     {
-        if(Time.time - lastDamagedTime > immortalDuration)
+        if (Time.time - lastDamagedTime > immortalDuration)
         {
             health -= damageInfo.damage;
             if (health < 0)
@@ -536,7 +536,7 @@ public class Player : MonoBehaviour, IDamagable
             StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
             lastDamagedTime = Time.time;
         }
-        if(damageInfo.isInterrupt)
+        if (damageInfo.isInterrupt)
         {
             isInterrupted = true;
             lastInterruptedTime = Time.time;
@@ -593,14 +593,14 @@ public class Player : MonoBehaviour, IDamagable
         playerPosition.position = rb.position;
     }
 
-private void UpdateLiquidMode()
+    private void UpdateLiquidMode()
     {
         bool onPlatform = Physics2D.OverlapCircle(l_platformCheck.position, 0.3f, platformLayer);
         SetOnPlatform(onPlatform || platformCount > 0);
         UpdateGravity();
 
         // Update Interrupted
-        if(isInterrupted)
+        if (isInterrupted)
         {
             if (Time.time - lastInterruptedTime > interruptedDuration)
             {
@@ -616,7 +616,7 @@ private void UpdateLiquidMode()
         }
 
         // Update Movement
-        if(horizontalSmooth != 0)
+        if (horizontalSmooth != 0)
         {
             RaycastHit2D hit = Physics2D.Raycast(origin: rb.transform.position, direction: Vector2.down
                 , distance: 1f, layerMask: platformLayer);
@@ -646,7 +646,7 @@ private void UpdateLiquidMode()
         rb.velocity = newVelocity;
 
         // Update Dashing
-        if(!isOnPlatform && Input.GetKeyDown(KeyCode.Space))
+        if (!isOnPlatform && Input.GetKeyDown(KeyCode.Space))
         {
             if (dashCount >= maxDashCount) return;
             Vector2 direction = (new Vector2(horizontalInput, verticalInput)).normalized;
