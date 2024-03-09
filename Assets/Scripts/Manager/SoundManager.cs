@@ -37,6 +37,10 @@ public class SoundManager : MonoBehaviour
             return;
         }
         instance = this;
+#if UNITY_EDITOR
+        if (Application.isPlaying)
+            UnityEditor.SceneVisibilityManager.instance.Show(gameObject, false);
+#endif
         DontDestroyOnLoad(gameObject);
 
         InitSoundList();

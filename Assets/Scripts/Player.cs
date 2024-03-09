@@ -43,6 +43,12 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private Transform wallCheckPivot;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
+    [Header("Zone 1")]
+    [SerializeField] private GameObject yarnBall;
+    [SerializeField] private Vector3 offset = new Vector3(0, 1.6f, 0);
+    private GameObject pickedUpYarnBall;
+    private Vector2 yarnBallVel;
+    [SerializeField] private float yarnBallSmoothTime;
 
     [Header("Debug Values")]
     [SerializeField] private bool isFreeze = false;
@@ -106,7 +112,7 @@ public class Player : MonoBehaviour, IDamagable
             transform.Translate(3f * moveSpeed * Time.deltaTime * new Vector3(horizontalSmooth, verticalSmooth, 0f));
             return;
         }
-        if(isInterrupted)
+        if (isInterrupted)
         {
             UpdateInterrupted();
             return;
@@ -114,12 +120,13 @@ public class Player : MonoBehaviour, IDamagable
         UpdateMovement();
         UpdateJumping();
         CountChargePercent();
+        UpdateYarnBall();
     }
 
     private void UpdateGameStatus()
     {
         bool willFreeze = false;
-        if(DialogueManager.Instance != null)
+        if (DialogueManager.Instance != null)
         {
             willFreeze |= DialogueManager.Instance.isDialogueActive;
         }
@@ -179,7 +186,7 @@ public class Player : MonoBehaviour, IDamagable
     {
         UpdateGravity();
         float currentTime = Time.time;
-        if(isBouncing)
+        if (isBouncing)
         {
             if (currentTime - lastBounceTime > bounceDuration)
             {
@@ -198,28 +205,28 @@ public class Player : MonoBehaviour, IDamagable
 
     private void UpdateStamina()
     {
-        if(isRunning && horizontalInput != 0)
+        if (isRunning && horizontalInput != 0)
         {
             UseStamina(staminaDrainRate * Time.deltaTime);
         }
-        else if(Time.time - lastRunningTime > staminaRegenDelay)
+        else if (Time.time - lastRunningTime > staminaRegenDelay)
         {
             stamina += staminaRegenRate * Time.deltaTime;
         }
 
-        if(stamina > maxStamina)
+        if (stamina > maxStamina)
         {
             stamina = maxStamina;
         }
 
-        if(stamina >= minimumStamina)
+        if (stamina >= minimumStamina)
         {
             isStaminaOut = false;
         }
 
         bool wasRunning = isRunning;
 
-        if(isTryingToRun)
+        if (isTryingToRun)
         {
             isRunning = !isStaminaOut;
         }
@@ -228,7 +235,7 @@ public class Player : MonoBehaviour, IDamagable
             isRunning = false;
         }
 
-        if(wasRunning && !isRunning)
+        if (wasRunning && !isRunning)
         {
             lastRunningTime = Time.time;
         }
@@ -262,9 +269,9 @@ public class Player : MonoBehaviour, IDamagable
 
         Vector2 newVelocity = rb.velocity;
 
-        bool isGrounded = isOnPlatform && Mathf.Abs(rb.velocity.y) <= 0.1f; 
+        bool isGrounded = isOnPlatform && Mathf.Abs(rb.velocity.y) <= 0.1f;
         float speed = (isGrounded) ? moveSpeed : floatSpeed;
-        if(isRunning)
+        if (isRunning)
         {
             speed *= runMultiplier;
         }
@@ -279,7 +286,7 @@ public class Player : MonoBehaviour, IDamagable
             newVelocity.x += horizontalSmooth * speed;
             FlipSprite(dashVelocity.x > 0);
         }
-        else if(isWallJumping)
+        else if (isWallJumping)
         {
             float lerpRate = (wallJumpEndTime - Time.time) / wallJumpDuration;
             newVelocity = wallJumpVelocity * lerpRate;
@@ -295,9 +302,9 @@ public class Player : MonoBehaviour, IDamagable
         if (isWalled && !isGrounded && horizontalInput != 0)
         {
             // Wall Slide
-            float newVelY = Mathf.Max(newVelocity.y,-wallSlideSpeed);
+            float newVelY = Mathf.Max(newVelocity.y, -wallSlideSpeed);
             // Wall Climb
-            if(isRunning && horizontalInput * (isFacingRight ? 1 : -1) > 0 && !isStaminaOut)
+            if (isRunning && horizontalInput * (isFacingRight ? 1 : -1) > 0 && !isStaminaOut)
             {
                 newVelY = wallClimbSpeed;
                 UseStamina(wallClimbeStaminaDrain * Time.deltaTime);
@@ -321,7 +328,7 @@ public class Player : MonoBehaviour, IDamagable
 
         if (isClimbingWall)
         {
-            if(pressedJump)
+            if (pressedJump)
             {
                 WallJump();
             }
@@ -334,7 +341,7 @@ public class Player : MonoBehaviour, IDamagable
             // RealJump
             if (isOnPlatform)
             {
-                if(isRunning)
+                if (isRunning)
                 {
                     Jump(false);
                     UseStamina(runJumpStaminaUsage);
@@ -355,6 +362,20 @@ public class Player : MonoBehaviour, IDamagable
             Jump(true);
             chargePercent = 0;
             isChargeJumping = false;
+        }
+    }
+
+    private void UpdateYarnBall()
+    {
+        if (pickedUpYarnBall != null)
+        {
+            pickedUpYarnBall.transform.position = transform.position + offset;
+            if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("THROW");
+                pickedUpYarnBall.GetComponent<YarnBall>().Throw();
+                pickedUpYarnBall = null;
+            }
         }
     }
 
@@ -430,6 +451,14 @@ public class Player : MonoBehaviour, IDamagable
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "YarnBallBox" && pickedUpYarnBall == null)
+        {
+            pickedUpYarnBall = Instantiate(yarnBall, (gameObject.transform.position + offset), Quaternion.identity);
+        }
+    }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent<Platform>(out _))
@@ -446,19 +475,19 @@ public class Player : MonoBehaviour, IDamagable
     public void RecieveDamage(DamageInfo damageInfo, Vector2 attackerPos)
     {
         health -= damageInfo.damage;
-        if(health < 0)
+        if (health < 0)
         {
             health = 0;
         }
         SoundManager.TryPlayNew("TestCatHurt");
         StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
-        if(damageInfo.isInterrupt)
+        if (damageInfo.isInterrupt)
         {
             isInterrupted = true;
             lastInterruptedTime = Time.time;
             interruptedDuration = damageInfo.interruptDuration;
         }
-        if(damageInfo.isBounce)
+        if (damageInfo.isBounce)
         {
             isBouncing = true;
             lastBounceTime = Time.time;
