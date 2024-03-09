@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Monster : MonoBehaviour, IDamagable
 {
     private const int MOVE_LEFT = -1;
@@ -12,6 +13,7 @@ public class Monster : MonoBehaviour, IDamagable
     [SerializeField] private float moveDuration = 1f;
     [SerializeField] private float jumpForce = 1.5f;
     [SerializeField] private float jumpCooldown = 5f;
+    [SerializeField] private DamageInfo damageInfo = new();
 
     [Header("Debug")]
     [SerializeField] private int moveDirection = MOVE_RIGHT;
@@ -24,6 +26,7 @@ public class Monster : MonoBehaviour, IDamagable
     [SerializeField] private float lastBounceTime = 0f;
     [SerializeField] private float bounceDuration = 0f;
     [SerializeField] private Vector2 bounceVelocity;
+
 
     private Rigidbody2D rb;
 
@@ -115,6 +118,17 @@ public class Monster : MonoBehaviour, IDamagable
         if (currentTime - lastInterruptedTime > interruptedDuration)
         {
             isInterrupted = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out IDamagable damagable))
+        {
+            if (!damageInfo.targetEntityType.HasFlag(damagable.GetEntityType())) return;
+            ContactPoint2D contact = collision.GetContact(0);
+            damagable.RecieveDamage(damageInfo, contact.point);
+            Destroy(gameObject);
         }
     }
 }
