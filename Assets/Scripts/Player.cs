@@ -274,13 +274,16 @@ public class Player : MonoBehaviour, IDamagable
 
         if (isDashing)
         {
-            newVelocity = dashVelocity;
+            float lerpRate = (dashEndTime - Time.time) / dashDuration;
+            newVelocity = dashVelocity * lerpRate;
             newVelocity.x += horizontalSmooth * speed;
             FlipSprite(dashVelocity.x > 0);
         }
         else if(isWallJumping)
         {
-            newVelocity = wallJumpVelocity;
+            float lerpRate = (wallJumpEndTime - Time.time) / wallJumpDuration;
+            newVelocity = wallJumpVelocity * lerpRate;
+            newVelocity.x += 0.5f * horizontalSmooth * moveSpeed;
             FlipSprite(wallJumpVelocity.x > 0);
         }
         else
