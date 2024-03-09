@@ -19,6 +19,12 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private float staminaDrainRate = 20f;
     [SerializeField] private float staminaRegenRate = 10f;
     [SerializeField] private float staminaRegenDelay = 1f;
+    [SerializeField] private float wallSlideSpeed = 3f;
+    [SerializeField] private float wallClimbSpeed = 8f;
+    [SerializeField] private float wallClimbeStaminaDrain = 2f;
+    [SerializeField] private float wallJumpSpeed = 12f;
+    [SerializeField] private float wallJumpDuration = 0.3f;
+    [SerializeField] private float wallJumpStaminaUsage = 10f;
     [SerializeField] private float runJumpStaminaUsage = 10f;
     [SerializeField] private float minimumStamina = 30f;
     [SerializeField] private float jumpPower = 8f;
@@ -31,6 +37,12 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private float gravityScale = 3f;
     [SerializeField] private float risingGravityMultiplier = 1f;
     [SerializeField] private float fallingGravityMultiplier = 1.5f;
+    [Header("Collider Values")]
+    [SerializeField] private Transform platformCheck;
+    [SerializeField] private LayerMask platformLayer;
+    [SerializeField] private Transform wallCheckPivot;
+    [SerializeField] private Transform wallCheck;
+    [SerializeField] private LayerMask wallLayer;
 
     [Header("Debug Values")]
     [SerializeField] private bool isFreeze = false;
@@ -45,17 +57,22 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private float verticalInput = 0f;
     [SerializeField] private float horizontalSmooth = 0f;
     [SerializeField] private float verticalSmooth = 0f;
+    [SerializeField] private bool isFacingRight = false;
     [SerializeField] private float chargePercent = 0f;
     [SerializeField] private Vector2 dashVelocity = Vector2.zero;
     [SerializeField] private float dashEndTime = 0f;
     [SerializeField] private int dashCount = 0;
+    [SerializeField] private Vector2 wallJumpVelocity = Vector2.zero;
+    [SerializeField] private float wallJumpEndTime = 0f;
     [SerializeField] private float lastGroundedTime = 0f;
     [SerializeField] private int platformCount = 0;
     [SerializeField] private bool isOnPlatform = false;
+    [SerializeField] private bool isWalled = false;
     [SerializeField] private bool isChargeJumping = false;
     [SerializeField] private float lastRunningTime = 0f;
     [SerializeField] private bool isTryingToRun = false;
     [SerializeField] private bool isRunning = false;
+    [SerializeField] private bool isClimbingWall = false;
     [SerializeField] private bool isStaminaOut = false;
     [SerializeField] private bool noClip = false;
 
@@ -73,15 +90,17 @@ public class Player : MonoBehaviour, IDamagable
 
     void Update()
     {
-        UpdateStatus();
+        UpdateGameStatus();
         if (isFreeze)
         {
             rb.velocity = Vector2.zero;
+            rb.gravityScale = 0;
             return;
         }
         ReadInput();
         UpdateSprite();
         UpdateStamina();
+        UpdateCollideCondition();
         if (IS_DEBUG && noClip)
         {
             transform.Translate(3f * moveSpeed * Time.deltaTime * new Vector3(horizontalSmooth, verticalSmooth, 0f));
@@ -97,7 +116,7 @@ public class Player : MonoBehaviour, IDamagable
         CountChargePercent();
     }
 
-    private void UpdateStatus()
+    private void UpdateGameStatus()
     {
         bool willFreeze = false;
         if(DialogueManager.Instance != null)
@@ -113,7 +132,7 @@ public class Player : MonoBehaviour, IDamagable
         verticalInput = Input.GetAxisRaw("Vertical");
         horizontalSmooth = Input.GetAxis("Horizontal");
         verticalSmooth = Input.GetAxis("Vertical");
-        isTryingToRun = Input.GetKey(KeyCode.LeftControl);
+        isTryingToRun = Input.GetKey(KeyCode.LeftControl) && horizontalInput != 0;
         if (IS_DEBUG && Input.GetKeyDown(KeyCode.C))
         {
             noClip = !noClip;
@@ -129,19 +148,31 @@ public class Player : MonoBehaviour, IDamagable
     {
         if (horizontalInput != 0)
         {
+            FlipSprite(horizontalInput > 0);
             if (horizontalInput > 0)
             {
                 sprite.flipX = true;
+                isFacingRight = true;
+                wallCheckPivot.transform.localScale = new Vector3(-1, 1, 1);
             }
             else
             {
                 sprite.flipX = false;
+                isFacingRight = false;
+                wallCheckPivot.transform.localScale = new Vector3(1, 1, 1);
             }
         }
 
         Vector3 newScale = sprite.transform.localScale;
         newScale.y = 0.25f * (1 - 0.25f / 100 * chargePercent);
         sprite.transform.localScale = newScale;
+    }
+
+    private void FlipSprite(bool isFlip)
+    {
+        sprite.flipX = isFlip;
+        isFacingRight = isFlip;
+        wallCheckPivot.transform.localScale = new Vector3(isFlip ? -1 : 1, 1, 1);
     }
 
     private void UpdateInterrupted()
@@ -167,20 +198,15 @@ public class Player : MonoBehaviour, IDamagable
 
     private void UpdateStamina()
     {
-        if(isRunning)
+        if(isRunning && horizontalInput != 0)
         {
-            stamina -= staminaDrainRate * Time.deltaTime;
+            UseStamina(staminaDrainRate * Time.deltaTime);
         }
         else if(Time.time - lastRunningTime > staminaRegenDelay)
         {
             stamina += staminaRegenRate * Time.deltaTime;
         }
 
-        if(stamina <= 0)
-        {
-            stamina = 0;
-            isStaminaOut = true;
-        }
         if(stamina > maxStamina)
         {
             stamina = maxStamina;
@@ -208,6 +234,22 @@ public class Player : MonoBehaviour, IDamagable
         }
     }
 
+    private void UseStamina(float usage)
+    {
+        stamina = Mathf.Max(stamina - usage, 0f);
+        if (stamina <= 0)
+        {
+            isStaminaOut = true;
+        }
+    }
+
+    private void UpdateCollideCondition()
+    {
+        bool onPlatform = Physics2D.OverlapCircle(platformCheck.position, 0.2f, platformLayer);
+        SetOnPlatform(onPlatform || platformCount > 0);
+        isWalled = Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
+    }
+
     private void UpdateMovement()
     {
         if (isChargeJumping)
@@ -227,15 +269,38 @@ public class Player : MonoBehaviour, IDamagable
             speed *= runMultiplier;
         }
 
-        if (Time.time < dashEndTime)
+        bool isDashing = Time.time < dashEndTime;
+        bool isWallJumping = Time.time < wallJumpEndTime;
+
+        if (isDashing)
         {
             newVelocity = dashVelocity;
             newVelocity.x += horizontalSmooth * speed;
+            FlipSprite(dashVelocity.x > 0);
+        }
+        else if(isWallJumping)
+        {
+            newVelocity = wallJumpVelocity;
+            FlipSprite(wallJumpVelocity.x > 0);
         }
         else
         {
-            
             newVelocity.x = horizontalSmooth * speed;
+        }
+
+        isClimbingWall = false;
+        if (isWalled && !isGrounded && horizontalInput != 0)
+        {
+            // Wall Slide
+            float newVelY = Mathf.Max(newVelocity.y,-wallSlideSpeed);
+            // Wall Climb
+            if(isRunning && horizontalInput * (isFacingRight ? 1 : -1) > 0 && !isStaminaOut)
+            {
+                newVelY = wallClimbSpeed;
+                UseStamina(wallClimbeStaminaDrain * Time.deltaTime);
+                isClimbingWall = true;
+            }
+            newVelocity.y = newVelY;
         }
 
         rb.velocity = newVelocity;
@@ -248,8 +313,19 @@ public class Player : MonoBehaviour, IDamagable
 
     private void UpdateJumping()
     {
+        bool pressedJump = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0);
+        bool releasedJump = Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton0);
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0))
+        if (isClimbingWall)
+        {
+            if(pressedJump)
+            {
+                WallJump();
+            }
+            return;
+        }
+
+        if (pressedJump)
         {
 
             // RealJump
@@ -258,7 +334,7 @@ public class Player : MonoBehaviour, IDamagable
                 if(isRunning)
                 {
                     Jump(false);
-                    stamina -= runJumpStaminaUsage;
+                    UseStamina(runJumpStaminaUsage);
                 }
                 else
                 {
@@ -271,7 +347,7 @@ public class Player : MonoBehaviour, IDamagable
                 Dash();
             }
         }
-        if (isChargeJumping && (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton0)))
+        if (isChargeJumping && releasedJump)
         {
             Jump(true);
             chargePercent = 0;
@@ -291,12 +367,24 @@ public class Player : MonoBehaviour, IDamagable
         rb.AddForce(jumpForce * direction, ForceMode2D.Impulse);
     }
 
+    private void WallJump()
+    {
+        Vector2 oppositeDirection = Vector2.left * (isFacingRight ? 1 : -1);
+        Vector2 jumpDirection = (2f * oppositeDirection + Vector2.up).normalized;
+        wallJumpVelocity = wallJumpSpeed * jumpDirection;
+        wallJumpEndTime = Time.time + wallJumpDuration;
+        FlipSprite(!isFacingRight);
+        UseStamina(wallJumpStaminaUsage);
+    }
+
     private void Dash()
     {
         if (dashCount >= maxDashCount) return;
         Vector2 direction = (new Vector2(horizontalInput, verticalInput)).normalized;
+        if (direction == Vector2.zero) return;
         dashVelocity = dashSpeed * direction;
         dashEndTime = Time.time + dashDuration;
+        wallJumpEndTime = Time.time;
         dashCount++;
     }
 

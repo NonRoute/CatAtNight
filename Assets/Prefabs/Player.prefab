@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6300911348913575887}
   - component: {fileID: 6949340063422121023}
   - component: {fileID: 3615816571002718566}
+  - component: {fileID: 2379853071842930428}
+  - component: {fileID: 765647660472248766}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -33,6 +35,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 135352152242957043}
+  - {fileID: 7853424831748672024}
+  - {fileID: 994092303103366131}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &6300911348913575887
@@ -80,21 +84,36 @@ MonoBehaviour:
   maxStamina: 100
   moveSpeed: 6
   floatSpeed: 10
-  runMultiplier: 1.5
+  runMultiplier: 2
   staminaDrainRate: 20
   staminaRegenRate: 10
   staminaRegenDelay: 1
+  wallSlideSpeed: 3
+  wallClimbSpeed: 8
+  wallClimbeStaminaDrain: 2
+  wallJumpSpeed: 15
+  wallJumpDuration: 0.25
+  wallJumpStaminaUsage: 10
   runJumpStaminaUsage: 10
   minimumStamina: 30
   jumpPower: 8
   chargeDuration: 0.75
   dashDuration: 0.2
   dashSpeed: 15
-  maxDashCount: 0
+  maxDashCount: 1
   groundedDelay: 0.1
   gravityScale: 3
   risingGravityMultiplier: 1
   fallingGravityMultiplier: 1.5
+  platformCheck: {fileID: 7853424831748672024}
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  wallCheckPivot: {fileID: 994092303103366131}
+  wallCheck: {fileID: 5363619793672450323}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
   isFreeze: 0
   isInterrupted: 0
   lastInterruptedTime: 0
@@ -107,17 +126,22 @@ MonoBehaviour:
   verticalInput: 0
   horizontalSmooth: 0
   verticalSmooth: 0
+  isFacingRight: 0
   chargePercent: 0
   dashVelocity: {x: 0, y: 0}
   dashEndTime: 0
   dashCount: 0
+  wallJumpVelocity: {x: 0, y: 0}
+  wallJumpEndTime: 0
   lastGroundedTime: 0
   platformCount: 0
   isOnPlatform: 0
+  isWalled: 0
   isChargeJumping: 0
   lastRunningTime: 0
   isTryingToRun: 0
   isRunning: 0
+  isClimbingWall: 0
   isStaminaOut: 0
   noClip: 0
 --- !u!70 &3615816571002718566
@@ -152,9 +176,183 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.12388617, y: 0.2706144}
-  m_Size: {x: 1.2275013, y: 1.5914063}
-  m_Direction: 0
+  m_Offset: {x: 0, y: -0.25}
+  m_Size: {x: 1.32, y: 0.55}
+  m_Direction: 1
+--- !u!70 &2379853071842930428
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455930444774944738}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.1, y: 0.75}
+  m_Size: {x: 1.2, y: 1}
+  m_Direction: 1
+--- !u!61 &765647660472248766
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455930444774944738}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.23}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.75, y: 1.6}
+  m_EdgeRadius: 0
+--- !u!1 &3860280069068958673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7853424831748672024}
+  m_Layer: 0
+  m_Name: PlatformCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7853424831748672024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3860280069068958673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7966581611437754249}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4712491976517236197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 994092303103366131}
+  m_Layer: 0
+  m_Name: WallCheckPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &994092303103366131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4712491976517236197}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5363619793672450323}
+  m_Father: {fileID: 7966581611437754249}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5399836928180476229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5363619793672450323}
+  m_Layer: 0
+  m_Name: WallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5363619793672450323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5399836928180476229}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.75, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 994092303103366131}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7462550174215218793
 GameObject:
   m_ObjectHideFlags: 0

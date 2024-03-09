@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7274069548851701570}
   - component: {fileID: 2688791450171216343}
   - component: {fileID: 3317650503664273410}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PassthroughCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
