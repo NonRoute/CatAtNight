@@ -21,7 +21,7 @@ public class KeyManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") && !isPickedUp)
+        if (other.gameObject.transform.parent.CompareTag("Player") && !isPickedUp)
         {
             isPickedUp = true;
         }

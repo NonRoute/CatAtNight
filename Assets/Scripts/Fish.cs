@@ -8,7 +8,7 @@ public class Fish : MonoBehaviour
     private ScoreManager scoreManager;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Player player = collision.gameObject.GetComponent<Player>();
+        Player player = collision.gameObject.transform.parent.GetComponent<Player>();
         if (player != null)
         {
             scoreManager.score++;
