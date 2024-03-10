@@ -5,27 +5,27 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Monster : MonoBehaviour, IDamagable
 {
-    private const int MOVE_LEFT = -1;
-    private const int MOVE_RIGHT = 1;
+    protected const int MOVE_LEFT = -1;
+    protected const int MOVE_RIGHT = 1;
 
-    [SerializeField] private float health = 2f;
-    [SerializeField] private float moveSpeed = 1f;
-    [SerializeField] private float moveDuration = 1f;
-    [SerializeField] private float jumpForce = 1.5f;
-    [SerializeField] private float jumpCooldown = 5f;
-    [SerializeField] private DamageInfo damageInfo = new();
+    [SerializeField] protected float health = 2f;
+    [SerializeField] protected float moveSpeed = 1f;
+    [SerializeField] protected float moveDuration = 1f;
+    [SerializeField] protected float jumpForce = 1.5f;
+    [SerializeField] protected float jumpCooldown = 5f;
+    [SerializeField] protected DamageInfo damageInfo = new();
 
     [Header("Debug")]
-    [SerializeField] private int moveDirection = MOVE_RIGHT;
-    [SerializeField] private float moveTimeElapsed;
-    [SerializeField] private float jumpTimeElapsed = 0f;
-    [SerializeField] private bool isInterrupted = false;
-    [SerializeField] private float lastInterruptedTime = 0f;
-    [SerializeField] private float interruptedDuration = 0f;
-    [SerializeField] private bool isBouncing = false;
-    [SerializeField] private float lastBounceTime = 0f;
-    [SerializeField] private float bounceDuration = 0f;
-    [SerializeField] private Vector2 bounceVelocity;
+    [SerializeField] protected int moveDirection = MOVE_RIGHT;
+    [SerializeField] protected float moveTimeElapsed;
+    [SerializeField] protected float jumpTimeElapsed = 0f;
+    [SerializeField] protected bool isInterrupted = false;
+    [SerializeField] protected float lastInterruptedTime = 0f;
+    [SerializeField] protected float interruptedDuration = 0f;
+    [SerializeField] protected bool isBouncing = false;
+    [SerializeField] protected float lastBounceTime = 0f;
+    [SerializeField] protected float bounceDuration = 0f;
+    [SerializeField] protected Vector2 bounceVelocity;
 
 
     private Rigidbody2D rb;
@@ -74,12 +74,12 @@ public class Monster : MonoBehaviour, IDamagable
             rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
         }
     }
-    public EntityType GetEntityType()
+    public virtual EntityType GetEntityType()
     {
         return EntityType.SmallEnemy;
     }
 
-    public void RecieveDamage(DamageInfo damageInfo, Vector2 attackerPos)
+    public virtual void RecieveDamage(DamageInfo damageInfo, Vector2 attackerPos)
     {
         health -= damageInfo.damage;
         if (health <= 0)
@@ -128,7 +128,6 @@ public class Monster : MonoBehaviour, IDamagable
             if (!damageInfo.targetEntityType.HasFlag(damagable.GetEntityType())) return;
             ContactPoint2D contact = collision.GetContact(0);
             damagable.RecieveDamage(damageInfo, contact.point);
-            Destroy(gameObject);
         }
     }
 }

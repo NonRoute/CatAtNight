@@ -45,7 +45,8 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private LayerMask wallLayer;
     [Header("Zone 1")]
     [SerializeField] private GameObject yarnBall;
-    [SerializeField] private Vector3 offset = new Vector3(0, 1.6f, 0);
+    [SerializeField] private Vector3 facingRightOffset;
+    [SerializeField] private Vector3 facingLeftOffset;
     private GameObject pickedUpYarnBall;
     private Vector2 yarnBallVel;
     [SerializeField] private float yarnBallSmoothTime;
@@ -417,11 +418,11 @@ public class Player : MonoBehaviour, IDamagable
     {
         if (pickedUpYarnBall != null)
         {
+            Vector3 offset = isFacingRight ? facingRightOffset : facingLeftOffset;
             pickedUpYarnBall.transform.position = transform.position + offset;
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("THROW");
-                pickedUpYarnBall.GetComponent<YarnBall>().Throw();
+                pickedUpYarnBall.GetComponent<YarnBall>().Throw(isFacingRight);
                 pickedUpYarnBall = null;
             }
         }
@@ -503,6 +504,7 @@ public class Player : MonoBehaviour, IDamagable
     {
         if (collision.gameObject.name == "YarnBallBox" && pickedUpYarnBall == null)
         {
+            Vector3 offset = isFacingRight ? facingRightOffset : facingLeftOffset;
             pickedUpYarnBall = Instantiate(yarnBall, (gameObject.transform.position + offset), Quaternion.identity);
         }
     }

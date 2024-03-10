@@ -14,17 +14,17 @@ public class YarnBall : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-        IEnumerator SelfDestruct()
+    IEnumerator SelfDestruct()
     {
         yield return new WaitForSeconds(10f);
         Destroy(gameObject);
     }
 
-    public void Throw()
+    public void Throw(bool isFacingRight)
     {
         rb.gravityScale = 1;
         rb.freezeRotation = false;
-        rb.AddForce(new Vector2(1, 1) * throwForceMultiplayer, ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(isFacingRight ? 1 : -1, 1) * throwForceMultiplayer, ForceMode2D.Impulse);
         StartCoroutine(SelfDestruct());
     }
     private void OnCollisionEnter2D(Collision2D collision)

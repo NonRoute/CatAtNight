@@ -147,6 +147,7 @@ MonoBehaviour:
     isBounce: 1
     bounceDuration: 0.1
     bounceSpeed: 5
+  entityType: 2
   moveDirection: 1
   moveTimeElapsed: 0
   jumpTimeElapsed: 0

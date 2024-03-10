@@ -12,4 +12,6 @@ public class DoorUnlock : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    public void Unlock() { Destroy(gameObject); }
 }
