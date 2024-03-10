@@ -587,7 +587,7 @@ public class Player : MonoBehaviour, IDamagable
             rb = normal_rb;
         }
         lastSetPlayerPosTime = Time.time;
-        playerPosition.position = rb.position;
+        playerPosition.position = position;
     }
 
     private void UpdateLiquidMode()
