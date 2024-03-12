@@ -20,6 +20,8 @@ public class DialogueManager : MonoBehaviour
 
     public Animator animator;
 
+    private GameObject currentNPC;
+
     private void Awake()
     {
         if (Instance == null)
@@ -28,9 +30,10 @@ public class DialogueManager : MonoBehaviour
         lines = new Queue<DialogueLine>();
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, GameObject NPC)
     {
         isDialogueActive = true;
+        currentNPC = NPC;
 
         gameObject.SetActive(true);
         animator.Play("show");
@@ -78,6 +81,7 @@ public class DialogueManager : MonoBehaviour
         isDialogueActive = false;
         animator.Play("hide");
         StartCoroutine(HideDialogue());
+        Destroy(currentNPC);
     }
 
     IEnumerator HideDialogue()
