@@ -47,13 +47,13 @@ MonoBehaviour:
   soundList:
   - name: TestClick
     clip: {fileID: 8300000, guid: 67d6563371fac3845a1d4dcbd6b4fc10, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
   - name: TestBGM
     clip: {fileID: 8300000, guid: 0c6f0ed1c8ef70448be7be0352c6e3cb, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 1
     source: {fileID: 0}
@@ -62,6 +62,12 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     isLoop: 0
+    source: {fileID: 0}
+  - name: Zone 1 Music
+    clip: {fileID: 8300000, guid: b6891bf38a3df44b29d9271a7acfea03, type: 3}
+    volume: 0.3
+    pitch: 1
+    isLoop: 1
     source: {fileID: 0}
   maxDistance: 40
   distanceMultiplier: 2
