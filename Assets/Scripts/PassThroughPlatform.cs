@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PassThroughPlatform : Platform
 {
-    private bool isPlayerOnPlatform;
+    [SerializeField] private bool isPlayerOnPlatform;
 
     private void Update()
     {
@@ -25,22 +25,22 @@ public class PassThroughPlatform : Platform
         col.enabled = true;
     }
 
-    private void SetPlayerOnPlatform(Collision2D other, bool onPlatform)
+    private void SetPlayerOnPlatform(Collider2D other, bool onPlatform)
     {
-        if (other.gameObject.TryGetComponent<Player>(out var player))
+        if (other.gameObject.CompareTag("Player"))
         {
             isPlayerOnPlatform = onPlatform;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        SetPlayerOnPlatform(collision, true);
+        SetPlayerOnPlatform(other, true);
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        SetPlayerOnPlatform(collision, false);
+        SetPlayerOnPlatform(other, false);
     }
 
 }
