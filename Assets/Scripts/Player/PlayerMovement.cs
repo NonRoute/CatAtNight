@@ -78,7 +78,7 @@ public partial class Player : MonoBehaviour, IDamagable
             stamina += staminaRegenRate * Time.deltaTime;
             stamina = Mathf.Min(100f, stamina);
         }
-        StatusUIManager.Instance.UpdateStaminaBar(stamina);
+        StatusUIManager.Instance.UpdateStaminaBar(stamina, isStaminaOut);
 
         if (stamina >= minimumStamina)
         {

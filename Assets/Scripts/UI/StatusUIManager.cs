@@ -13,6 +13,7 @@ public class StatusUIManager : MonoBehaviour
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private Slider hpSlider;
     [SerializeField] private Slider staminaSlider;
+    [SerializeField] private Color staminaColor;
 
     private void Awake()
     {
@@ -22,6 +23,11 @@ public class StatusUIManager : MonoBehaviour
             return;
         }
         instance = this;
+    }
+
+    private void Start()
+    {
+        staminaColor = staminaSlider.fillRect.GetComponent<Image>().color;
     }
 
     public void UpdateHealthBar(float hp, float maxHP)
@@ -39,10 +45,19 @@ public class StatusUIManager : MonoBehaviour
             hpSlider.fillRect.GetComponent<Image>().color = Color.white;
         }
     }
-    public void UpdateStaminaBar(float percent)
+    public void UpdateStaminaBar(float percent, bool isStaminaOut)
     {
         var fraction = percent/100f;
         staminaSlider.value = fraction;
+
+        if (isStaminaOut)
+        {
+            staminaSlider.fillRect.GetComponent<Image>().color = Color.red;
+        }
+        else
+        {
+            staminaSlider.fillRect.GetComponent<Image>().color = staminaColor;
+        }
     }
 
 }
