@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MovementTest.unity
     guid: 1856eb7e552c7244e8c54e33d38e5c8f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Title.unity
     guid: 397239cc3f1c8a9489cbb2af4b790eaf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Zone1.unity
     guid: d47d59a454682f541a0efac386f05193
   - enabled: 0

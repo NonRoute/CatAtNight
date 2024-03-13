@@ -82,7 +82,7 @@ MonoBehaviour:
   maxHealth: 9
   stamina: 100
   maxStamina: 100
-  immortalDuration: 1
+  immortalDuration: 0.5
   moveSpeed: 6
   floatSpeed: 10
   runMultiplier: 2
