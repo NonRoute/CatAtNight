@@ -76,12 +76,9 @@ public partial class Player : MonoBehaviour, IDamagable
         else if (Time.time - lastRunningTime > staminaRegenDelay)
         {
             stamina += staminaRegenRate * Time.deltaTime;
+            stamina = Mathf.Min(100f, stamina);
         }
-
-        if (stamina > maxStamina)
-        {
-            stamina = maxStamina;
-        }
+        StatusUIManager.Instance.UpdateStaminaBar(stamina);
 
         if (stamina >= minimumStamina)
         {

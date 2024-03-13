@@ -12,6 +12,7 @@ public class StatusUIManager : MonoBehaviour
 
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private Slider hpSlider;
+    [SerializeField] private Slider staminaSlider;
 
     private void Awake()
     {
@@ -38,4 +39,10 @@ public class StatusUIManager : MonoBehaviour
             hpSlider.fillRect.GetComponent<Image>().color = Color.white;
         }
     }
+    public void UpdateStaminaBar(float percent)
+    {
+        var fraction = percent/100f;
+        staminaSlider.value = fraction;
+    }
+
 }
