@@ -6,14 +6,13 @@ public class Fish : MonoBehaviour
 {
     [SerializeField]
     private ScoreManager scoreManager;
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (
-            collision.gameObject.transform.parent.TryGetComponent(
-                out Player player))
+            other.gameObject.CompareTag("Player"))
         {
             scoreManager.score++;
-            player.Heal(1);
+            other.GetComponentInParent<Player>().Heal(1);
             gameObject.SetActive(false);
         }
     }

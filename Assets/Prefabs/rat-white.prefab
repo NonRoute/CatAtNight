@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185108248288674588}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 18.87, y: -3.86, z: 0.0791642}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
@@ -172,9 +172,8 @@ MonoBehaviour:
     isInterrupt: 1
     interruptDuration: 1
     isBounce: 1
-    bounceDuration: 1
-    bounceSpeed: 15
-  entityType: 8
+    bounceDuration: 0.7
+    bounceSpeed: 20
   moveDirection: 1
   moveTimeElapsed: 0
   jumpTimeElapsed: 0
@@ -185,3 +184,4 @@ MonoBehaviour:
   lastBounceTime: 0
   bounceDuration: 0
   bounceVelocity: {x: 0, y: 0}
+  door: {fileID: 0}

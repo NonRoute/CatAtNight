@@ -54,8 +54,30 @@ public partial class Player : MonoBehaviour, IDamagable
         }
         UpdateMovement();
         UpdateJumping();
-        CountChargePercent();
+        IncreaseChargeJumpPercent();
         UpdateYarnBall();
+    }
+
+    private void ReadInput()
+    {
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
+        horizontalSmooth = Input.GetAxis("Horizontal");
+        verticalSmooth = Input.GetAxis("Vertical");
+        isTryingToRun = Input.GetKey(KeyCode.LeftControl) && horizontalInput != 0;
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            SwitchMode(!isLiquid);
+        }
+        if (IS_DEBUG && Input.GetKeyDown(KeyCode.C))
+        {
+            noClip = !noClip;
+            rb.bodyType = (noClip) ? RigidbodyType2D.Kinematic : RigidbodyType2D.Dynamic;
+            Color newColor = sprite.color;
+            newColor.a = (noClip) ? 0.5f : 1f;
+            sprite.color = newColor;
+            rb.velocity = Vector2.zero;
+        }
     }
 
     private void UpdateGameStatus()
@@ -68,6 +90,19 @@ public partial class Player : MonoBehaviour, IDamagable
         isFreeze = willFreeze;
     }
 
+    private void UpdateYarnBall()
+    {
+        if (pickedUpYarnBall != null)
+        {
+            Vector3 offset = isFacingRight ? facingRightOffset : facingLeftOffset;
+            pickedUpYarnBall.transform.position = transform.position + offset;
+            if (Input.GetMouseButtonDown(0))
+            {
+                pickedUpYarnBall.GetComponent<YarnBall>().Throw(isFacingRight);
+                pickedUpYarnBall = null;
+            }
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -77,4 +112,5 @@ public partial class Player : MonoBehaviour, IDamagable
             pickedUpYarnBall = Instantiate(yarnBall, (gameObject.transform.position + offset), Quaternion.identity);
         }
     }
+
 }

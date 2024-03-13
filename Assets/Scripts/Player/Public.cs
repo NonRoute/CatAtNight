@@ -31,7 +31,7 @@ public partial class Player : MonoBehaviour, IDamagable
       Vector2 direction = ((Vector2)transform.position - attackerPos).normalized;
       if (isLiquid)
       {
-        rb.AddForce(5f * damageInfo.bounceSpeed * direction, ForceMode2D.Impulse);
+        rb.AddForce(2f * damageInfo.bounceSpeed * direction, ForceMode2D.Impulse);
         return;
       }
       isBouncing = true;
