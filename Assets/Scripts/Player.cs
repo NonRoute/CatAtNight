@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -554,6 +555,12 @@ public class Player : MonoBehaviour, IDamagable
             bounceDuration = damageInfo.bounceDuration;
             bounceVelocity = damageInfo.bounceSpeed * direction;
         }
+    }
+
+    public void Heal(float amount)
+    {
+        health = Mathf.Min(health + amount, maxHealth);
+        StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
     }
 
     private void SwitchMode(bool toLiquid)

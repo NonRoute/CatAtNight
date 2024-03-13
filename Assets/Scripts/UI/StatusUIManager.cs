@@ -25,7 +25,17 @@ public class StatusUIManager : MonoBehaviour
 
     public void UpdateHealthBar(float hp, float maxHP)
     {
-        hpSlider.value = hp / maxHP;
-        hpText.text = Mathf.RoundToInt(hp).ToString();
+        var hpPercent = hp / maxHP;
+        hpSlider.value = hpPercent;
+        hpText.text = $"HEALTH {Mathf.RoundToInt(hp)} / {Mathf.RoundToInt(maxHP)}";
+
+        if (hpPercent <= (1f / 3))
+        {
+            hpSlider.fillRect.GetComponent<Image>().color = Color.red;
+        }
+        else
+        {
+            hpSlider.fillRect.GetComponent<Image>().color = Color.white;
+        }
     }
 }
