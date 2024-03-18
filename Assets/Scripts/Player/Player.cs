@@ -67,7 +67,7 @@ public partial class Player : MonoBehaviour, IDamagable
         verticalInput = Input.GetAxisRaw("Vertical");
         horizontalSmooth = Input.GetAxis("Horizontal");
         verticalSmooth = Input.GetAxis("Vertical");
-        isTryingToRun = Input.GetKey(KeyCode.LeftControl) && horizontalInput != 0;
+        isTryingToRun = Input.GetKey(KeyCode.LeftShift) && horizontalInput != 0;
         if (Input.GetKeyDown(KeyCode.X))
         {
             SwitchMode(!isLiquid);
