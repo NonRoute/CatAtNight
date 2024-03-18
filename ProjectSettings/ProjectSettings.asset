@@ -162,7 +162,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.DefaultCompany.CatatNight
-    Standalone: com.DefaultCompany.Cat-at-Night
+    Standalone: com.CatAtNight.Cat-at-Night
   buildNumber:
     Standalone: 0
     VisionOS: 0
