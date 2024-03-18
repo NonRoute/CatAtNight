@@ -21,7 +21,7 @@ public partial class Player : MonoBehaviour, IDamagable
             bone_localRotations[i] = t.localRotation;
         }
 
-        restoreFromSave();
+        RestoreFromSave();
 
         StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
     }
@@ -84,7 +84,7 @@ public partial class Player : MonoBehaviour, IDamagable
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            saveGame();
+            SaveGame();
         }
     }
 

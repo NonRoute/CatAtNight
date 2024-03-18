@@ -16,6 +16,13 @@ public class MainMenuManager : MonoBehaviour
         LoadContinueText();
     }
 
+    public void NewGame()
+    {
+        DataManager.Instance.gameData = new();
+
+        StartGame();
+    }
+
     public void StartGame()
     {
         SoundManager.TryPlayNew(clickSfxName);

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public partial class Player : MonoBehaviour, IDamagable
 {
-    private void saveGame()
+    private void SaveGame()
     {
         var gameData = DataManager.Instance.gameData;
         gameData.position = playerPosition.position;
@@ -12,7 +12,7 @@ public partial class Player : MonoBehaviour, IDamagable
         DataManager.Instance.saveData();
     }
 
-    private void restoreFromSave()
+    private void RestoreFromSave()
     {
         var gameData = DataManager.Instance.gameData;
 
