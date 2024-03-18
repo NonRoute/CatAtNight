@@ -51,7 +51,7 @@ public partial class Player : MonoBehaviour, IDamagable
 
   private GameObject pickedUpYarnBall;
   private Vector2 yarnBallVel;
-
+  [SerializeField] private GameObject zone1;
   [SerializeField] private float yarnBallSmoothTime;
 
   [Header("Liquid Mode Values")]
