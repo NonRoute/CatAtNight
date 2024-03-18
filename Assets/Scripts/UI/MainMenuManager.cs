@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,9 +8,12 @@ public class MainMenuManager : MonoBehaviour
     public string bgmName = "TestBGM";
     public string clickSfxName = "TestClick";
 
+    public TMP_Text continueLevelText;
+
     public void Start()
     {
         SoundManager.TryPlayMusic(bgmName);
+        LoadContinueText();
     }
 
     public void StartGame()
@@ -26,4 +28,10 @@ public class MainMenuManager : MonoBehaviour
         Application.Quit();
     }
 
+    private void LoadContinueText()
+    {
+        var gameData = DataManager.Instance.gameData;
+
+        continueLevelText.text = $"Level {gameData.unlockedLevel}";
+    }
 }

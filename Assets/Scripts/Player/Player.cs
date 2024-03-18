@@ -20,6 +20,9 @@ public partial class Player : MonoBehaviour, IDamagable
             bone_localPositions[i] = t.localPosition;
             bone_localRotations[i] = t.localRotation;
         }
+
+        restoreFromSave();
+
         StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
     }
 
@@ -77,6 +80,11 @@ public partial class Player : MonoBehaviour, IDamagable
             newColor.a = (noClip) ? 0.5f : 1f;
             sprite.color = newColor;
             rb.velocity = Vector2.zero;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            saveGame();
         }
     }
 
