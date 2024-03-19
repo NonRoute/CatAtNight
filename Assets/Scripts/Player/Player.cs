@@ -86,6 +86,10 @@ public partial class Player : MonoBehaviour, IDamagable
         {
             SaveGame();
         }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseUIManager.Instance.TogglePauseMenu();
+        }
     }
 
     private void UpdateGameStatus()
