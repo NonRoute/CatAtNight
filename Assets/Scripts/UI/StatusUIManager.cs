@@ -10,7 +10,6 @@ public class StatusUIManager : MonoBehaviour
     private static StatusUIManager instance;
     public static StatusUIManager Instance => instance;
 
-    [SerializeField] private Canvas canvas;
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private Slider hpSlider;
     [SerializeField] private Slider staminaSlider;
@@ -29,7 +28,6 @@ public class StatusUIManager : MonoBehaviour
     private void Start()
     {
         staminaColor = staminaSlider.fillRect.GetComponent<Image>().color;
-        canvas = GetComponent<Canvas>();
     }
 
     public void UpdateHealthBar(float hp, float maxHP)

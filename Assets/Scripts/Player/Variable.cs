@@ -9,8 +9,9 @@ public partial class Player : MonoBehaviour, IDamagable
   [SerializeField] private float stamina = 100f;
   [SerializeField] private float maxStamina = 100f;
   [SerializeField] private float immortalDuration = 1f;
+  [SerializeField] private bool isLoadSave = true;
 
-  [Header("Power Values")]
+    [Header("Power Values")]
   [SerializeField] private float moveSpeed = 6f;
   [SerializeField] private float floatSpeed = 10f;
   [SerializeField] private float runMultiplier = 2f;

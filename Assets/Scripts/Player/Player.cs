@@ -21,7 +21,10 @@ public partial class Player : MonoBehaviour, IDamagable
             bone_localRotations[i] = t.localRotation;
         }
 
-        RestoreFromSave();
+        if(isLoadSave)
+        {
+            RestoreFromSave();
+        }
 
         StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
     }
@@ -88,7 +91,10 @@ public partial class Player : MonoBehaviour, IDamagable
         }
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            PauseUIManager.Instance.TogglePauseMenu();
+            if(PauseUIManager.Instance != null)
+            {
+                PauseUIManager.Instance.TogglePauseMenu();
+            }
         }
     }
 
