@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,16 @@ using UnityEngine;
 public class Boss : Monster
 {
     [SerializeField] private GameObject door;
+    [SerializeField] private CinemachineVirtualCamera cam;
+    [SerializeField] private Transform playerPos;
+
+    public void OnDead()
+    {
+        cam.Follow = playerPos;
+        Destroy(gameObject);
+        Destroy(door);
+    }
+
     public override EntityType GetEntityType()
     {
         return EntityType.Boss;
@@ -15,8 +26,7 @@ public class Boss : Monster
         health -= damageInfo.damage;
         if (health <= 0)
         {
-            Destroy(gameObject);
-            Destroy(door);
+            OnDead();
         }
         if (damageInfo.isInterrupt)
         {

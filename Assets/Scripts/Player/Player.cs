@@ -114,7 +114,7 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.CompareTag("YarnBallBox") || collision.gameObject.CompareTag("BossRoomYarnBallBox") && pickedUpYarnBall == null))
+        if ((collision.gameObject.CompareTag("YarnBallBox") || collision.gameObject.CompareTag("BossRoomYarnBallBox")) && pickedUpYarnBall == null)
         {
             Vector3 offset = isFacingRight ? facingRightOffset : facingLeftOffset;
             pickedUpYarnBall = Instantiate(yarnBall, (gameObject.transform.position + offset), Quaternion.identity);
