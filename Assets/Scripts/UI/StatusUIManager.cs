@@ -45,9 +45,8 @@ public class StatusUIManager : MonoBehaviour
             hpSlider.fillRect.GetComponent<Image>().color = Color.white;
         }
     }
-    public void UpdateStaminaBar(float percent, bool isStaminaOut)
+    public void UpdateStaminaBar(float fraction, bool isStaminaOut)
     {
-        var fraction = percent/100f;
         staminaSlider.value = fraction;
 
         if (isStaminaOut)

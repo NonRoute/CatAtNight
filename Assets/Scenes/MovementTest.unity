@@ -51547,7 +51547,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hold CTRL to use Stamina
+  m_text: 'Hold SHIFT to use Stamina
 
     1. Running instead of walking
 
@@ -65110,7 +65110,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press SHIFT or DOWN+SPACE to DROP DOWN
+  m_text: Press CTRL or DOWN+SPACE to DROP DOWN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
