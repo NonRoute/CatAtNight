@@ -28,9 +28,8 @@ public partial class Player : MonoBehaviour, IDamagable
                 wallCheckPivot.transform.localScale = new Vector3(1, 1, 1);
             }
         }
-
         Vector3 newScale = sprite.transform.localScale;
-        newScale.y = 0.25f * (1 - 0.25f / 100 * chargePercent);
+        newScale.y = (1 - 0.25f / 100 * chargePercent) * initialScaleY;
         sprite.transform.localScale = newScale;
     }
 
@@ -78,7 +77,7 @@ public partial class Player : MonoBehaviour, IDamagable
             stamina += staminaRegenRate * Time.deltaTime;
             stamina = Mathf.Min(maxStamina, stamina);
         }
-        StatusUIManager.Instance.UpdateStaminaBar(stamina/maxStamina, isStaminaOut);
+        StatusUIManager.Instance.UpdateStaminaBar(stamina / maxStamina, isStaminaOut);
 
         if (stamina >= minimumStamina)
         {

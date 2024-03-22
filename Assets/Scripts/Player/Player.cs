@@ -14,6 +14,7 @@ public partial class Player : MonoBehaviour, IDamagable
         bone_rigidbodies = liquid_rb.gameObject.GetComponentsInChildren<Rigidbody2D>();
         bone_localPositions = new Vector3[bone_rigidbodies.Length];
         bone_localRotations = new Quaternion[bone_rigidbodies.Length];
+        initialScaleY = sprite.transform.localScale.y;
         for (int i = 0; i < bone_rigidbodies.Length; i++)
         {
             Transform t = bone_rigidbodies[i].transform;
