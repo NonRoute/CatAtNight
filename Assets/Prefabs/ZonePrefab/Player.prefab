@@ -103,7 +103,7 @@ MonoBehaviour:
   chargeDuration: 0.75
   dashDuration: 0.35
   dashSpeed: 35
-  maxDashCount: 1
+  maxDashCount: 0
   groundedDelay: 0.1
   gravityScale: 3
   risingGravityMultiplier: 1
@@ -166,6 +166,7 @@ MonoBehaviour:
   isStaminaOut: 0
   noClip: 0
   lastDamagedTime: 0
+  initialScaleY: 0
   playerPosition: {fileID: 4011058918413553049}
   normalColliders: {fileID: 3740527523559206018}
   liquidForm: {fileID: 5352324573042091964}
@@ -2038,8 +2039,8 @@ Transform:
   m_GameObject: {fileID: 7462550174215218793}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.344, y: 0.747, z: 0}
-  m_LocalScale: {x: 7.857627, y: 7.857627, z: 7.857627}
+  m_LocalPosition: {x: 0.344, y: 0.692, z: 0}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7966581611437754249}
@@ -2087,7 +2088,7 @@ SpriteRenderer:
   m_SortingOrder: 50
   m_Sprite: {fileID: 369217787, guid: 5b0e428e03ad64547b44a0e01b07e9c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 12, y: 12}
