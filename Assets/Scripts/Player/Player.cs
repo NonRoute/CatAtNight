@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public partial class Player : MonoBehaviour, IDamagable
@@ -22,7 +23,7 @@ public partial class Player : MonoBehaviour, IDamagable
             bone_localRotations[i] = t.localRotation;
         }
 
-        if(isLoadSave)
+        if (isLoadSave)
         {
             RestoreFromSave();
         }
@@ -47,11 +48,14 @@ public partial class Player : MonoBehaviour, IDamagable
             return;
         }
         UpdateSprite();
+        UpdateAnimation();
         UpdateStamina();
         UpdateCollideCondition();
         if (IS_DEBUG && noClip)
         {
-            transform.Translate(3f * moveSpeed * Time.deltaTime * new Vector3(horizontalSmooth, verticalSmooth, 0f));
+            transform.Translate(
+                3f * moveSpeed * Time.deltaTime * new Vector3(horizontalSmooth, verticalSmooth, 0f)
+            );
             return;
         }
         if (isInterrupted)
@@ -90,9 +94,9 @@ public partial class Player : MonoBehaviour, IDamagable
         {
             SaveGame();
         }
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(PauseUIManager.Instance != null)
+            if (PauseUIManager.Instance != null)
             {
                 PauseUIManager.Instance.TogglePauseMenu();
             }
@@ -125,10 +129,20 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.CompareTag("YarnBallBox") || collision.gameObject.CompareTag("BossRoomYarnBallBox")) && pickedUpYarnBall == null)
+        if (
+            (
+                collision.gameObject.CompareTag("YarnBallBox")
+                || collision.gameObject.CompareTag("BossRoomYarnBallBox")
+            )
+            && pickedUpYarnBall == null
+        )
         {
             Vector3 offset = isFacingRight ? facingRightOffset : facingLeftOffset;
-            pickedUpYarnBall = Instantiate(yarnBall, (gameObject.transform.position + offset), Quaternion.identity);
+            pickedUpYarnBall = Instantiate(
+                yarnBall,
+                (gameObject.transform.position + offset),
+                Quaternion.identity
+            );
             if (collision.gameObject.CompareTag("BossRoomYarnBallBox"))
             {
                 zone1.GetComponent<Zone1>().ChangeYarnBallBoxPosition();
@@ -136,4 +150,12 @@ public partial class Player : MonoBehaviour, IDamagable
         }
     }
 
+    private void UpdateAnimation()
+    {
+        animator.SetBool("is_grounded", isOnPlatform);
+        animator.SetBool("is_charging", isChargeJumping);
+        animator.SetBool("is_running", isRunning);
+        animator.SetBool("is_walking", !isRunning && Math.Abs(rb.velocity.x) > 1);
+        animator.SetFloat("speed_y", rb.velocity.y);
+    }
 }
