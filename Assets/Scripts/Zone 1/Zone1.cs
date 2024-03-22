@@ -6,13 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class Zone1 : MonoBehaviour
 {
-    private string musicName = "Zone 1 Music";
     [SerializeField] private GameObject[] bossRoomYarnBallBoxes;
-
-    void Start()
-    {
-        SoundManager.TryPlayMusic(musicName);
-    }
 
     public void ChangeYarnBallBoxPosition()
     {

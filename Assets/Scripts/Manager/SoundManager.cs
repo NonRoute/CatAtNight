@@ -78,9 +78,17 @@ public class SoundManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("SoundManager: OnSceneLoaded");
-        if (scene.buildIndex == 0)
+        switch (scene.buildIndex)
         {
-            PlayMusic("menu");
+            case 0:
+                PlayMusic("menu");
+                break;
+            case 2:
+                PlayMusic("Zone 1 Music");
+                break;
+            case 3:
+                PlayMusic("Zone 2 Music");
+                break;
         }
     }
 
