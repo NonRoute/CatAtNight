@@ -83,6 +83,7 @@ MonoBehaviour:
   stamina: 100
   maxStamina: 100
   immortalDuration: 0.5
+  isLoadSave: 0
   moveSpeed: 6
   floatSpeed: 10
   runMultiplier: 2
@@ -118,6 +119,7 @@ MonoBehaviour:
   yarnBall: {fileID: 6657760650752459850, guid: c1f9e49855cd9e548948b8428afc7ce9, type: 3}
   facingRightOffset: {x: 1.2, y: 0.2, z: 0}
   facingLeftOffset: {x: -1.2, y: 0.2, z: 0}
+  zone1: {fileID: 0}
   yarnBallSmoothTime: 0.3
   isLiquid: 0
   l_moveSpeed: 25
