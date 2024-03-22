@@ -17,13 +17,13 @@ public partial class Player : MonoBehaviour, IDamagable
             FlipSprite(horizontalInput > 0);
             if (horizontalInput > 0)
             {
-                sprite.flipX = true;
+                sprite.flipX = false;
                 isFacingRight = true;
                 wallCheckPivot.transform.localScale = new Vector3(-1, 1, 1);
             }
             else
             {
-                sprite.flipX = false;
+                sprite.flipX = true;
                 isFacingRight = false;
                 wallCheckPivot.transform.localScale = new Vector3(1, 1, 1);
             }
@@ -35,7 +35,7 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void FlipSprite(bool isFlip)
     {
-        sprite.flipX = isFlip;
+        sprite.flipX = !isFlip;
         isFacingRight = isFlip;
         wallCheckPivot.transform.localScale = new Vector3(isFlip ? -1 : 1, 1, 1);
     }
