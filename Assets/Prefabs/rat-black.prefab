@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 411ffa08650bfa047b7d329a4169507b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterScore: 1
   health: 2
   moveSpeed: 1
   moveDuration: 1
@@ -147,6 +148,7 @@ MonoBehaviour:
     isBounce: 1
     bounceDuration: 0.3
     bounceSpeed: 10
+  scoreObject: {fileID: 1794071527150709001, guid: 7cf5bba2546b4094d959934adfd05f38, type: 3}
   moveDirection: 1
   moveTimeElapsed: 0
   jumpTimeElapsed: 0

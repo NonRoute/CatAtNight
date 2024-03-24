@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
 
+    [SerializeField] private ScoreManager scoreManager;
     public Image characterIcon;
     public TextMeshProUGUI characterName;
     public TextMeshProUGUI dialogueArea;
@@ -21,6 +22,7 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
 
     private GameObject currentNPC;
+
 
     private void Awake()
     {
@@ -82,6 +84,7 @@ public class DialogueManager : MonoBehaviour
         animator.Play("hide");
         StartCoroutine(HideDialogue());
         Destroy(currentNPC);
+        scoreManager.friendshipScore++;
     }
 
     IEnumerator HideDialogue()

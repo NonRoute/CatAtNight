@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Monster : MonoBehaviour, IDamagable
@@ -8,12 +9,14 @@ public class Monster : MonoBehaviour, IDamagable
     protected const int MOVE_LEFT = -1;
     protected const int MOVE_RIGHT = 1;
 
+    [SerializeField] protected int monsterScore = 1;
     [SerializeField] protected float health = 2f;
     [SerializeField] protected float moveSpeed = 1f;
     [SerializeField] protected float moveDuration = 1f;
     [SerializeField] protected float jumpForce = 1.5f;
     [SerializeField] protected float jumpCooldown = 5f;
     [SerializeField] protected DamageInfo damageInfo = new();
+    [SerializeField] private ScoreManager scoreManager;
 
     [Header("Debug")]
     [SerializeField] protected int moveDirection = MOVE_RIGHT;
@@ -84,6 +87,7 @@ public class Monster : MonoBehaviour, IDamagable
         health -= damageInfo.damage;
         if (health <= 0)
         {
+            scoreManager.monsterScore += monsterScore;
             Destroy(gameObject);
         }
         if (damageInfo.isInterrupt)

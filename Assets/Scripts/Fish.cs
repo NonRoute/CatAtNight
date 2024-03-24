@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {
-    [SerializeField]
-    private ScoreManager scoreManager;
+    [SerializeField] private ScoreManager scoreManager;
     private bool isEnable = true;
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,7 +12,7 @@ public class Fish : MonoBehaviour
         if (
             other.gameObject.CompareTag("Player"))
         {
-            scoreManager.score++;
+            scoreManager.fishScore++;
             other.GetComponentInParent<Player>().Heal(1f);
             gameObject.SetActive(false);
             isEnable = false;
