@@ -19,6 +19,9 @@ public partial class Player : MonoBehaviour, IDamagable
     public float immortalDuration = 1f;
 
     [SerializeField]
+    public int skillUnlockedCount = 1;
+
+    [SerializeField]
     private bool isLoadSave = true;
 
     [Header("Power Values")]
@@ -227,6 +230,12 @@ public partial class Player : MonoBehaviour, IDamagable
 
     [SerializeField]
     private float lastGroundedTime = 0f;
+
+    //[SerializeField]
+    //private float lastFloatingTime = 0f;
+
+    [SerializeField]
+    private bool isGroundedDelay = true;
 
     [SerializeField]
     private int platformCount = 0;

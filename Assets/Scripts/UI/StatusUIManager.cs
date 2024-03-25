@@ -34,7 +34,7 @@ public class StatusUIManager : MonoBehaviour
     {
         var hpPercent = hp / maxHP;
         hpSlider.value = hpPercent;
-        hpText.text = $"HEALTH {Mathf.RoundToInt(hp)} / {Mathf.RoundToInt(maxHP)}";
+        hpText.text = $"Health: {Mathf.RoundToInt(hp)} / {Mathf.RoundToInt(maxHP)}";
 
         if (hpPercent <= (1f / 3))
         {

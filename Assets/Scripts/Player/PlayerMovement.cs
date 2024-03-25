@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public partial class Player : MonoBehaviour, IDamagable
@@ -114,6 +115,7 @@ public partial class Player : MonoBehaviour, IDamagable
     {
         bool onPlatform = Physics2D.OverlapCircle(platformCheck.position, 0.3f, platformLayer);
         SetOnPlatform(onPlatform || platformCount > 0);
+        isGroundedDelay = (Time.time - lastGroundedTime > 0.5f) && isOnPlatform;
         isWalled = Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
     }
 
@@ -121,7 +123,9 @@ public partial class Player : MonoBehaviour, IDamagable
     {
         if (isChargeJumping)
         {
-            rb.velocity = Vector2.zero;
+            //rb.velocity = Vector2.zero;
+            //.velocity = new Vector2(horizontalSmooth * moveSpeed * Math.Max(0.1f, 1 - chargePercent / 100), 0);
+            rb.velocity = new Vector2(horizontalSmooth * moveSpeed * 0.1f, 0);
             rb.gravityScale = 0;
             return;
         }
@@ -138,7 +142,8 @@ public partial class Player : MonoBehaviour, IDamagable
         //}
         //bool isGrounded = isOnPlatform && (Mathf.Abs(rb.velocity.y) <= 0.1f || angle > 0f);
 
-        bool isGrounded = isOnPlatform && Mathf.Abs(rb.velocity.y) <= 0.1f;
+        //bool isGrounded = isOnPlatform && Mathf.Abs(rb.velocity.y) <= 0.1f
+        bool isGrounded = isOnPlatform && isGroundedDelay;
         float speed = (isGrounded) ? moveSpeed : floatSpeed;
         if (isRunning)
         {
@@ -290,6 +295,7 @@ public partial class Player : MonoBehaviour, IDamagable
         isOnPlatform = onPlatform;
         if (isOnPlatform)
         {
+            //lastFloatingTime = Time.time;
             dashCount = 0;
         }
         else
@@ -312,6 +318,17 @@ public partial class Player : MonoBehaviour, IDamagable
         {
             AddPlatformCount(-1);
         }
+    }
+
+    private void UpdateAnimation()
+    {
+        //animator.SetBool("is_grounded", isOnPlatform)
+        animator.SetBool("is_grounded", isOnPlatform);
+        animator.SetBool("is_charging", isChargeJumping);
+        animator.SetBool("is_running", isRunning);
+        //animator.SetBool("is_walking", !isRunning && Math.Abs(rb.velocity.x) > 1
+        animator.SetBool("is_walking", !isRunning && horizontalInput != 0 && !isChargeJumping);
+        animator.SetFloat("speed_y", rb.velocity.y);
     }
 
 }

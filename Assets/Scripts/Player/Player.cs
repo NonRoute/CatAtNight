@@ -1,6 +1,15 @@
 using System;
 using UnityEngine;
 
+public struct PlayerData
+{
+    public float health;
+    public float maxHealth;
+    public float staminaDrainRate;
+    public float staminaRegenRate;
+    public int skillUnlockedCount;
+}
+
 public partial class Player : MonoBehaviour, IDamagable
 {
     private const bool IS_DEBUG = true;
@@ -37,8 +46,11 @@ public partial class Player : MonoBehaviour, IDamagable
         UpdateGameStatus();
         if (isFreeze)
         {
-            rb.velocity = Vector2.zero;
-            rb.gravityScale = 0;
+            UpdateAnimation();
+            animator.SetBool("is_running", false);
+            animator.SetBool("is_walking", false);
+            rb.velocity = new Vector2(0,rb.velocity.y);
+            //rb.gravityScale = 0;
             return;
         }
         ReadInput();
@@ -150,12 +162,16 @@ public partial class Player : MonoBehaviour, IDamagable
         }
     }
 
-    private void UpdateAnimation()
+    public PlayerData GetPlayerData()
     {
-        animator.SetBool("is_grounded", isOnPlatform);
-        animator.SetBool("is_charging", isChargeJumping);
-        animator.SetBool("is_running", isRunning);
-        animator.SetBool("is_walking", !isRunning && Math.Abs(rb.velocity.x) > 1);
-        animator.SetFloat("speed_y", rb.velocity.y);
+        return new PlayerData()
+        {    
+            health = this.health,
+            maxHealth = this.maxHealth,
+            staminaDrainRate = this.staminaDrainRate,
+            staminaRegenRate = this.staminaRegenRate,
+            skillUnlockedCount = this.skillUnlockedCount,
+        };
     }
+
 }

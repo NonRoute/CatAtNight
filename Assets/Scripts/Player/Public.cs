@@ -9,6 +9,7 @@ public partial class Player : MonoBehaviour, IDamagable
 
   public void RecieveDamage(DamageInfo damageInfo, Vector2 attackerPos)
   {
+    if (isFreeze) return;
     if (Time.time - lastDamagedTime > immortalDuration)
     {
       health -= damageInfo.damage;
