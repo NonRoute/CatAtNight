@@ -4,26 +4,26 @@ public partial class Player : MonoBehaviour, IDamagable
 {
     [Header("Status")]
     [SerializeField]
-    private float health = 9f;
+    public float health = 9f;
 
     [SerializeField]
-    private float maxHealth = 9f;
+    public float maxHealth = 9f;
 
     [SerializeField]
     private float stamina = 100f;
 
     [SerializeField]
-    private float maxStamina = 100f;
+    public float maxStamina = 100f;
 
     [SerializeField]
-    private float immortalDuration = 1f;
+    public float immortalDuration = 1f;
 
     [SerializeField]
     private bool isLoadSave = true;
 
     [Header("Power Values")]
     [SerializeField]
-    private float moveSpeed = 6f;
+    public float moveSpeed = 6f;
 
     [SerializeField]
     private float floatSpeed = 10f;
@@ -65,7 +65,7 @@ public partial class Player : MonoBehaviour, IDamagable
     private float minimumStamina = 30f;
 
     [SerializeField]
-    private float jumpPower = 8f;
+    public float jumpPower = 8f;
 
     [SerializeField]
     private float chargeDuration = 0.75f;
