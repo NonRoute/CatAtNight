@@ -6,7 +6,6 @@ using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
-    [SerializeField] private Canvas shopCanvas;
     [SerializeField] private Player player;
     [SerializeField] private StatusUIManager statusUIManager;
     [SerializeField] private ScoreManager scoreManager;
@@ -21,10 +20,6 @@ public class ShopManager : MonoBehaviour
         health.button.interactable = IsUpgradable(health.currentTier, health.upgradeValue) && IsScoreSufficient(health.upgradeCostType[health.currentTier], health.upgradeCostAmount[health.currentTier]);
     }
 
-    public void ToggleShopCanvas()
-    {
-        shopCanvas.GetComponent<Canvas>().enabled = !shopCanvas.GetComponent<Canvas>().enabled;
-    }
     private Sprite GetIcon(ShopItem.CostType costType)
     {
         switch (costType)
@@ -84,7 +79,7 @@ public class ShopManager : MonoBehaviour
 
             health.nextText.text = health.upgradeValue[health.currentTier + 1].ToString();
             health.costSprite.sprite = GetIcon(health.upgradeCostType[health.currentTier + 1]);
-            health.costText.text = health.upgradeCostAmount[health.currentTier + 1].ToString();
+            health.costText.text = "x " + health.upgradeCostAmount[health.currentTier + 1].ToString();
         }
         else
         {
