@@ -3,10 +3,10 @@ using UnityEngine;
 
 public partial class Player : MonoBehaviour, IDamagable
 {
-
     private void UpdatePlayerPosition()
     {
-        if (Time.time - lastSetPlayerPosTime < playerPosDelay) return;
+        if (Time.time - lastSetPlayerPosTime < playerPosDelay)
+            return;
         playerPosition.position = rb.transform.position;
         //playerPosition.position = Vector3.Lerp(playerPosition.position, rb.transform.position,0.8f);
     }
@@ -65,7 +65,6 @@ public partial class Player : MonoBehaviour, IDamagable
             isInterrupted = false;
         }
     }
-
 
     private void UpdateStamina()
     {
@@ -192,7 +191,9 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void UpdateGravity()
     {
-        rb.gravityScale = gravityScale * ((rb.velocity.y < 0) ? fallingGravityMultiplier : risingGravityMultiplier);
+        rb.gravityScale =
+            gravityScale
+            * ((rb.velocity.y < 0) ? fallingGravityMultiplier : risingGravityMultiplier);
     }
 
     private void UpdateJumping()
@@ -213,7 +214,6 @@ public partial class Player : MonoBehaviour, IDamagable
 
         if (pressedJump)
         {
-
             // RealJump
             if (isOnPlatform)
             {
@@ -229,7 +229,8 @@ public partial class Player : MonoBehaviour, IDamagable
             }
             else
             {
-                if (Time.time - lastGroundedTime < groundedDelay) return;
+                if (Time.time - lastGroundedTime < groundedDelay)
+                    return;
                 Dash();
             }
         }
@@ -265,9 +266,11 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void Dash()
     {
-        if (dashCount >= maxDashCount) return;
+        if (dashCount >= maxDashCount)
+            return;
         Vector2 direction = (new Vector2(horizontalInput, verticalInput)).normalized;
-        if (direction == Vector2.zero) return;
+        if (direction == Vector2.zero)
+            return;
         dashVelocity = dashSpeed * direction;
         dashEndTime = Time.time + dashDuration;
         wallJumpEndTime = Time.time;
@@ -276,7 +279,8 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void IncreaseChargeJumpPercent()
     {
-        if (!isChargeJumping) return;
+        if (!isChargeJumping)
+            return;
 
         chargePercent += (100f / chargeDuration) * Time.deltaTime;
         if (chargePercent > 100)
@@ -293,7 +297,8 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void SetOnPlatform(bool onPlatform)
     {
-        if (isOnPlatform == onPlatform) return;
+        if (isOnPlatform == onPlatform)
+            return;
         isOnPlatform = onPlatform;
         if (isOnPlatform)
         {
@@ -324,13 +329,12 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void UpdateAnimation()
     {
-        //animator.SetBool("is_grounded", isOnPlatform)
         animator.SetBool("is_grounded", isOnPlatform);
         animator.SetBool("is_charging", isChargeJumping);
         animator.SetBool("is_running", isRunning);
-        //animator.SetBool("is_walking", !isRunning && Math.Abs(rb.velocity.x) > 1
+        animator.SetBool("is_walled", isWalled);
+        animator.SetBool("is_climbing", isClimbingWall);
         animator.SetBool("is_walking", !isRunning && horizontalInput != 0 && !isChargeJumping);
         animator.SetFloat("speed_y", rb.velocity.y);
     }
-
 }
