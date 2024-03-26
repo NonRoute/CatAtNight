@@ -36,6 +36,7 @@ public partial class Player : MonoBehaviour, IDamagable
     }
     lastSetPlayerPosTime = Time.time;
     playerPosition.position = position;
+    StatusUIManager.Instance.ToggleLiquidImage(isLiquid);
   }
 
   private void UpdateLiquidMode()

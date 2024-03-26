@@ -10,10 +10,13 @@ public class StatusUIManager : MonoBehaviour
     private static StatusUIManager instance;
     public static StatusUIManager Instance => instance;
 
+    [SerializeField] private Canvas canvas;
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private Slider hpSlider;
     [SerializeField] private Slider staminaSlider;
     [SerializeField] private Color staminaColor;
+    [SerializeField] private GameObject solidImage;
+    [SerializeField] private GameObject liquidImage;
 
     private void Awake()
     {
@@ -28,6 +31,12 @@ public class StatusUIManager : MonoBehaviour
     private void Start()
     {
         staminaColor = staminaSlider.fillRect.GetComponent<Image>().color;
+    }
+
+    public void ToggleLiquidImage(bool isLiquid)
+    {
+        solidImage.SetActive(!isLiquid);
+        liquidImage.SetActive(isLiquid);
     }
 
     public void UpdateHealthBar(float hp, float maxHP)
@@ -45,6 +54,7 @@ public class StatusUIManager : MonoBehaviour
             hpSlider.fillRect.GetComponent<Image>().color = Color.white;
         }
     }
+
     public void UpdateStaminaBar(float fraction, bool isStaminaOut)
     {
         staminaSlider.value = fraction;
@@ -61,7 +71,8 @@ public class StatusUIManager : MonoBehaviour
 
     public void ToggleHide(bool isHide)
     {
-        gameObject.SetActive(!isHide);
+        canvas.enabled = !isHide;
+        //gameObject.SetActive(!isHide);
     }
 
 }

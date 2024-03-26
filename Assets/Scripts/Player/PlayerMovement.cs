@@ -116,6 +116,7 @@ public partial class Player : MonoBehaviour, IDamagable
         bool onPlatform = Physics2D.OverlapCircle(platformCheck.position, 0.3f, platformLayer);
         SetOnPlatform(onPlatform || platformCount > 0);
         isGroundedDelay = (Time.time - lastGroundedTime > 0.5f) && isOnPlatform;
+        //isFloatingDelay = isGroundedDelay && (Time.time - lastGroundedTime > 0.2f);
         isWalled = Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
     }
 
@@ -324,8 +325,8 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void UpdateAnimation()
     {
-        //animator.SetBool("is_grounded", isOnPlatform)
         animator.SetBool("is_grounded", isOnPlatform);
+        //animator.SetBool("is_grounded", isOnPlatform && (Time.time-lastGroundedTime > 0.2f));
         animator.SetBool("is_charging", isChargeJumping);
         animator.SetBool("is_running", isRunning);
         //animator.SetBool("is_walking", !isRunning && Math.Abs(rb.velocity.x) > 1

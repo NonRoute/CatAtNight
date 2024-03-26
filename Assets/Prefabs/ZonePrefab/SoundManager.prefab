@@ -52,7 +52,7 @@ MonoBehaviour:
     isLoop: 0
     source: {fileID: 0}
   - name: TestBGM
-    clip: {fileID: 8300000, guid: 0c6f0ed1c8ef70448be7be0352c6e3cb, type: 3}
+    clip: {fileID: 8300000, guid: b12f59b4639ab8d4b85e5e2f64b4b0b0, type: 3}
     volume: 0.5
     pitch: 1
     isLoop: 1

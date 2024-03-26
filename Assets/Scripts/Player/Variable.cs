@@ -233,7 +233,7 @@ public partial class Player : MonoBehaviour, IDamagable
     private float lastGroundedTime = 0f;
 
     //[SerializeField]
-    //private float lastFloatingTime = 0f;
+    //private bool isFloatingDelay = false;
 
     [SerializeField]
     private bool isGroundedDelay = true;

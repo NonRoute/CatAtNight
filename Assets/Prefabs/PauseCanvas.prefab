@@ -4291,7 +4291,7 @@ MonoBehaviour:
   - {fileID: 433119250285362605}
   - {fileID: 433119250285362605}
   - {fileID: 6082908987490169356}
-  - {fileID: 6082908987490169356}
+  - {fileID: 7163105178926418609}
   - {fileID: 7163105178926418609}
 --- !u!1 &3933367148862517585
 GameObject:
@@ -7640,7 +7640,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7884606209831834879
 CanvasRenderer:
