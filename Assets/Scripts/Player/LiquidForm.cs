@@ -55,7 +55,7 @@ public partial class Player : MonoBehaviour, IDamagable
     }
 
     // Update Jump
-    if (isOnPlatform && Input.GetKeyDown(KeyCode.Space))
+    if (isOnPlatform && playerInputActions.Player.Jump.WasPressedThisFrame())
     {
       rb.AddForce(l_jumpPower * Vector2.up, ForceMode2D.Impulse);
     }
@@ -91,7 +91,7 @@ public partial class Player : MonoBehaviour, IDamagable
     rb.velocity = newVelocity;
 
     // Update Dashing
-    if (!isOnPlatform && Input.GetKeyDown(KeyCode.Space))
+    if (!isOnPlatform && playerInputActions.Player.Jump.WasPressedThisFrame())
     {
       if (dashCount >= maxDashCount) return;
       Vector2 direction = (new Vector2(horizontalInput, verticalInput)).normalized;

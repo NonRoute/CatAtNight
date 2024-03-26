@@ -19,6 +19,8 @@ public partial class Player : MonoBehaviour, IDamagable
         normal_rb = GetComponent<Rigidbody2D>();
         rb = normal_rb;
         sprite = GetComponentInChildren<SpriteRenderer>();
+        playerInputActions = new PlayerInputActions();
+        playerInputActions.Player.Enable();
         health = maxHealth;
         stamina = maxStamina;
         bone_rigidbodies = liquid_rb.gameObject.GetComponentsInChildren<Rigidbody2D>();
@@ -83,12 +85,38 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void ReadInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-        horizontalSmooth = Input.GetAxis("Horizontal");
-        verticalSmooth = Input.GetAxis("Vertical");
-        isTryingToRun = Input.GetKey(KeyCode.LeftShift) && horizontalInput != 0;
-        if (Input.GetKeyDown(KeyCode.X))
+        //horizontalInput = Input.GetAxisRaw("Horizontal");
+        //verticalInput = Input.GetAxisRaw("Vertical");
+        horizontalInput = playerInputActions.Player.Horizontal.ReadValue<float>();
+        if (Math.Abs(horizontalInput) > 0.1f)
+        {
+            horizontalInput = Math.Sign(horizontalInput);
+        }
+        else
+        {
+            horizontalInput = 0f;
+        }
+        verticalInput = playerInputActions.Player.Vertical.ReadValue<float>();
+        if (Math.Abs(verticalInput) > 0.1f)
+        {
+            verticalInput = Math.Sign(verticalInput);
+        }
+        else
+        {
+            verticalInput = 0f;
+        }
+        //horizontalSmooth = Input.GetAxis("Horizontal");
+        //verticalSmooth = Input.GetAxis("Vertical"); 
+        horizontalSmooth = Mathf.MoveTowards(horizontalSmooth, horizontalInput, Time.deltaTime * 4f);
+        verticalSmooth = Mathf.MoveTowards(verticalSmooth, verticalInput, Time.deltaTime * 4f);
+        //print((horizontalSmooth, verticalSmooth));
+        //isTryingToRun = Input.GetKey(KeyCode.LeftShift) && horizontalInput != 0;
+        isTryingToRun = playerInputActions.Player.UseStamina.IsPressed() && horizontalInput != 0;
+        //if (Input.GetKeyDown(KeyCode.X))
+        //{
+        //    SwitchMode(!isLiquid);
+        //}
+        if (playerInputActions.Player.SwitchForm.WasPressedThisFrame())
         {
             SwitchMode(!isLiquid);
         }
@@ -106,7 +134,7 @@ public partial class Player : MonoBehaviour, IDamagable
         {
             SaveGame();
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (playerInputActions.Player.OpenMenu.WasPressedThisFrame())
         {
             if (PauseUIManager.Instance != null)
             {
@@ -131,7 +159,7 @@ public partial class Player : MonoBehaviour, IDamagable
         {
             Vector3 offset = isFacingRight ? facingRightOffset : facingLeftOffset;
             pickedUpYarnBall.transform.position = transform.position + offset;
-            if (Input.GetMouseButtonDown(0))
+            if (playerInputActions.Player.AtackAction.WasPressedThisFrame())
             {
                 pickedUpYarnBall.GetComponent<YarnBall>().Throw(isFacingRight);
                 pickedUpYarnBall = null;

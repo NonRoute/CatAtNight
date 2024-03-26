@@ -197,8 +197,10 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void UpdateJumping()
     {
-        bool pressedJump = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0);
-        bool releasedJump = Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton0);
+        //bool pressedJump = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0);
+        //bool releasedJump = Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton0);
+        bool pressedJump = playerInputActions.Player.Jump.WasPressedThisFrame();
+        bool releasedJump = playerInputActions.Player.Jump.WasReleasedThisFrame();
 
         if (isClimbingWall)
         {

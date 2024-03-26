@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public partial class Player : MonoBehaviour, IDamagable
 {
@@ -288,6 +289,9 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private SpriteRenderer sprite;
 
+    [SerializeField]
+    private PlayerInput playerInput;
+    private PlayerInputActions playerInputActions;
     [SerializeField]
     private Animator animator;
     private Rigidbody2D normal_rb;
