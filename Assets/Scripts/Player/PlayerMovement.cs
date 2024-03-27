@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public partial class Player : MonoBehaviour, IDamagable
@@ -39,6 +40,11 @@ public partial class Player : MonoBehaviour, IDamagable
         sprite.flipX = !isFlip;
         isFacingRight = isFlip;
         wallCheckPivot.transform.localScale = new Vector3(isFlip ? -1 : 1, 1, 1);
+    }
+
+    private void RotateSprite(float angle)
+    {
+        sprite.transform.localEulerAngles = new Vector3(0, 0, angle);
     }
 
     /// <summary>
@@ -112,11 +118,58 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void UpdateCollideCondition()
     {
-        bool onPlatform = Physics2D.OverlapCircle(platformCheck.position, 0.3f, platformLayer);
-        SetOnPlatform(onPlatform || platformCount > 0);
-        isGroundedDelay = (Time.time - lastGroundedTime > 0.5f) && isOnPlatform;
+        isGroundedDelay = (Time.time - lastGroundedTime > groundedDelayDuration) && isOnPlatform;
         //isFloatingDelay = isGroundedDelay && (Time.time - lastGroundedTime > 0.2f);
         isWalled = Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
+
+        //if(Time.time-lastJumpTime < jumpDelay)
+        //{
+        //    SetOnPlatform(false);
+        //    return;
+        //}
+
+        bool onPlatform = Physics2D.OverlapCircle(platformCheck.position, 0.4f, platformLayer);
+
+        RaycastHit2D hit = Physics2D.Raycast(origin: platformCheck.position, direction: Vector2.down
+          , distance: 1f, layerMask: platformLayer);
+
+        if (hit.collider != null)
+        {
+            //Vector2 perpendicular = Vector2.Perpendicular(hit.normal);
+            //print(perpendicular);
+            Debug.DrawLine((Vector2)platformCheck.position, (Vector2)platformCheck.position - hit.normal, Color.yellow, 2.0f);
+            RaycastHit2D hit2 = Physics2D.Raycast(platformCheck.position, -hit.normal, 0.4f, platformLayer);
+            if(hit2.collider != null)
+            {
+                float rightAngle = Vector2.Angle(hit2.normal, Vector2.right);
+                float leftAngle = Vector2.Angle(hit2.normal, Vector2.left);
+                float realAngle = Vector2.Angle(hit2.normal, Vector2.up);
+                if(realAngle > 30f && realAngle < 75f)
+                {
+                    RotateSprite(((rightAngle < leftAngle) ? -1 : 1) * realAngle);
+                    sprite.transform.localPosition = initialSpritePos - (Vector3)hit2.normal * 0.3f;
+                    lastRotateTime = Time.time;
+                    onPlatform = true;
+                }
+                else if (Time.time - lastRotateTime > 0.15f)
+                {
+                    RotateSprite(((rightAngle < leftAngle) ? -1 : 1) * realAngle);
+                    sprite.transform.localPosition = initialSpritePos;
+                }
+            }
+            else if(Time.time - lastRotateTime > 0.15f)
+            {
+                sprite.transform.localPosition = initialSpritePos;
+                RotateSprite(0);
+            }
+        }
+        else if(Time.time - lastRotateTime > 0.15f)
+        {
+            sprite.transform.localPosition = initialSpritePos;
+            RotateSprite(0);
+        }
+        isRayhitPlatform = onPlatform || platformCount > 0;
+        SetOnPlatform(isRayhitPlatform);
     }
 
     private void UpdateMovement()
@@ -139,6 +192,8 @@ public partial class Player : MonoBehaviour, IDamagable
 
         Vector2 newVelocity = rb.velocity;
 
+        //newVelocity.y = Mathf.Clamp(newVelocity.y, -maxVelY, maxVelY);
+
         //float angle = 0f;
         //RaycastHit2D hit = Physics2D.Raycast(origin: l_platformCheck.position, direction: Vector2.down
         //, distance: 1f, layerMask: platformLayer);
@@ -150,6 +205,12 @@ public partial class Player : MonoBehaviour, IDamagable
 
         //bool isGrounded = isOnPlatform && Mathf.Abs(rb.velocity.y) <= 0.1f
         bool isGrounded = isOnPlatform && isGroundedDelay;
+
+        //if(isGrounded)
+        //{
+        //    newVelocity.y = Mathf.Clamp(newVelocity.y, -maxVelY, maxVelY);
+        //}
+
         float speed = (isGrounded) ? moveSpeed : floatSpeed;
         if (isRunning)
         {
@@ -170,7 +231,8 @@ public partial class Player : MonoBehaviour, IDamagable
         {
             float lerpRate = (wallJumpEndTime - Time.time) / wallJumpDuration;
             newVelocity = wallJumpVelocity * lerpRate;
-            newVelocity.x += 0.5f * horizontalSmooth * moveSpeed;
+            newVelocity.x += horizontalSmooth * moveSpeed;
+            newVelocity.x += wallJumpVelocity .x* 0.5f;
             FlipSprite(wallJumpVelocity.x > 0);
         }
         else
@@ -178,11 +240,13 @@ public partial class Player : MonoBehaviour, IDamagable
             newVelocity.x = horizontalSmooth * speed;
         }
 
+        isWallSliding = false;
         isClimbingWall = false;
         if (isWalled && !isGrounded && horizontalInput != 0)
         {
             // Wall Slide
             float newVelY = Mathf.Max(newVelocity.y, -wallSlideSpeed);
+            isWallSliding = true;
             // Wall Climb
             if (isRunning && horizontalInput * (isFacingRight ? 1 : -1) > 0 && !isStaminaOut)
             {
@@ -210,7 +274,7 @@ public partial class Player : MonoBehaviour, IDamagable
         bool pressedJump = playerInputActions.Player.Jump.WasPressedThisFrame();
         bool releasedJump = playerInputActions.Player.Jump.WasReleasedThisFrame();
 
-        if (isClimbingWall)
+        if (isWallSliding)
         {
             if (pressedJump)
             {
@@ -258,7 +322,18 @@ public partial class Player : MonoBehaviour, IDamagable
         }
         //Vector2 direction = (Vector2.up + Vector2.right * horizontalInput + Vector2.up * verticalInput).normalized;
         Vector2 direction = Vector2.up;
+        RaycastHit2D hit = Physics2D.Raycast(origin: platformCheck.position, direction: Vector2.down
+          , distance: 0.5f, layerMask: platformLayer);
+
+        if (hit.collider != null)
+        {
+            direction = hit.normal;
+        }
         rb.AddForce(jumpForce * direction, ForceMode2D.Impulse);
+        if(isChargeJump)
+        {
+            lastJumpTime = Time.time;
+        }
     }
 
     private void WallJump()
@@ -267,6 +342,7 @@ public partial class Player : MonoBehaviour, IDamagable
         Vector2 jumpDirection = (2f * oppositeDirection + Vector2.up).normalized;
         wallJumpVelocity = wallJumpSpeed * jumpDirection;
         wallJumpEndTime = Time.time + wallJumpDuration;
+        animator.SetBool("is_sliding", isWallSliding);
         FlipSprite(!isFacingRight);
         UseStamina(wallJumpStaminaUsage);
     }
@@ -299,6 +375,7 @@ public partial class Player : MonoBehaviour, IDamagable
     private void AddPlatformCount(int count)
     {
         platformCount += count;
+        if (isRayhitPlatform) return;
         SetOnPlatform(platformCount > 0);
     }
 
@@ -341,7 +418,7 @@ public partial class Player : MonoBehaviour, IDamagable
         animator.SetBool("is_charging", isChargeJumping);
         animator.SetBool("is_running", isRunning);
         animator.SetBool("is_walled", isWalled);
-        animator.SetBool("is_sliding", isWalled && !(isOnPlatform && isGroundedDelay) && horizontalInput != 0);
+        animator.SetBool("is_sliding", isWallSliding);
         animator.SetBool("is_climbing", isClimbingWall);
         animator.SetBool("is_walking", !isRunning && horizontalInput != 0 && !isChargeJumping);
         animator.SetFloat("speed_y", rb.velocity.y);

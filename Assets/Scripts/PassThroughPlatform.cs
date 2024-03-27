@@ -9,7 +9,7 @@ public class PassThroughPlatform : Platform
     private void Update()
     {
         bool downKeyboard1 = Input.GetAxisRaw("Vertical") < 0 && Input.GetKeyDown(KeyCode.Space);
-        bool downKeyboard2 = false;// Input.GetKeyDown(KeyCode.LeftControl);
+        bool downKeyboard2 = Input.GetKeyDown(KeyCode.LeftControl);
         bool downController = Input.GetKeyDown(KeyCode.JoystickButton1);
 
         if (isPlayerOnPlatform && (downKeyboard1 || downKeyboard2 || downController))

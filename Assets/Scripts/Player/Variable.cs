@@ -27,6 +27,10 @@ public partial class Player : MonoBehaviour, IDamagable
 
     [Header("Power Values")]
     [SerializeField]
+    public float maxVelX = 15f;
+    [SerializeField]
+    public float maxVelY = 15f;
+    [SerializeField]
     public float moveSpeed = 6f;
 
     [SerializeField]
@@ -85,6 +89,9 @@ public partial class Player : MonoBehaviour, IDamagable
 
     [SerializeField]
     private float groundedDelay = 0.1f;
+
+    [SerializeField]
+    private float groundedDelayDuration = 0.2f;
 
     [Header("Gravity Values")]
     [SerializeField]
@@ -232,6 +239,12 @@ public partial class Player : MonoBehaviour, IDamagable
     [SerializeField]
     private float lastGroundedTime = 0f;
 
+    [SerializeField]
+    private float lastJumpTime = 0f;
+
+    [SerializeField]
+    private float jumpDelay = 0.1f;
+
     //[SerializeField]
     //private bool isFloatingDelay = false;
 
@@ -240,6 +253,9 @@ public partial class Player : MonoBehaviour, IDamagable
 
     [SerializeField]
     private int platformCount = 0;
+
+    [SerializeField]
+    private bool isRayhitPlatform;
 
     [SerializeField]
     private bool isOnPlatform = false;
@@ -260,6 +276,9 @@ public partial class Player : MonoBehaviour, IDamagable
     private bool isRunning = false;
 
     [SerializeField]
+    private bool isWallSliding = false;
+
+    [SerializeField]
     private bool isClimbingWall = false;
 
     [SerializeField]
@@ -273,6 +292,12 @@ public partial class Player : MonoBehaviour, IDamagable
 
     [SerializeField]
     private float initialScaleY;
+
+    [SerializeField]
+    private Vector3 initialSpritePos;
+
+    [SerializeField]
+    private float lastRotateTime = 0f;
 
     [Header("References")]
     [SerializeField]

@@ -65603,12 +65603,28 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6949340063422121023, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
+      propertyPath: maxVelY
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949340063422121023, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
       propertyPath: isLoadSave
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6949340063422121023, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
       propertyPath: maxDashCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949340063422121023, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
+      propertyPath: groundedDelay
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949340063422121023, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
+      propertyPath: groundedDelayDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853424831748672024, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7966581611437754249, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
       propertyPath: m_LocalPosition.x
