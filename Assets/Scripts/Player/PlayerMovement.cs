@@ -127,6 +127,12 @@ public partial class Player : MonoBehaviour, IDamagable
             //.velocity = new Vector2(horizontalSmooth * moveSpeed * Math.Max(0.1f, 1 - chargePercent / 100), 0);
             rb.velocity = new Vector2(horizontalSmooth * moveSpeed * 0.1f, 0);
             rb.gravityScale = 0;
+            if(!isOnPlatform)
+            {
+                Jump(true);
+                chargePercent = 0;
+                isChargeJumping = false;
+            }
             return;
         }
         UpdateGravity();
@@ -335,6 +341,7 @@ public partial class Player : MonoBehaviour, IDamagable
         animator.SetBool("is_charging", isChargeJumping);
         animator.SetBool("is_running", isRunning);
         animator.SetBool("is_walled", isWalled);
+        animator.SetBool("is_sliding", isWalled && !(isOnPlatform && isGroundedDelay) && horizontalInput != 0);
         animator.SetBool("is_climbing", isClimbingWall);
         animator.SetBool("is_walking", !isRunning && horizontalInput != 0 && !isChargeJumping);
         animator.SetFloat("speed_y", rb.velocity.y);
