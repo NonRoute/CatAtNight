@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7966581611437754249}
   - component: {fileID: 6300911348913575887}
   - component: {fileID: 6949340063422121023}
+  - component: {fileID: 8122826393693942434}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -85,6 +86,8 @@ MonoBehaviour:
   immortalDuration: 0.5
   skillUnlockedCount: 0
   isLoadSave: 0
+  maxVelX: 15
+  maxVelY: 100
   moveSpeed: 6
   floatSpeed: 10
   runMultiplier: 2
@@ -103,8 +106,9 @@ MonoBehaviour:
   chargeDuration: 0.75
   dashDuration: 0.35
   dashSpeed: 35
-  maxDashCount: 0
-  groundedDelay: 0.1
+  maxDashCount: 1
+  groundedDelay: 0.05
+  groundedDelayDuration: 0.5
   gravityScale: 3
   risingGravityMultiplier: 1
   fallingGravityMultiplier: 1.5
@@ -155,24 +159,61 @@ MonoBehaviour:
   wallJumpVelocity: {x: 0, y: 0}
   wallJumpEndTime: 0
   lastGroundedTime: 0
+  lastJumpTime: 0
+  jumpDelay: 0.1
   isGroundedDelay: 1
   platformCount: 0
+  isRayhitPlatform: 0
   isOnPlatform: 0
   isWalled: 0
   isChargeJumping: 0
   lastRunningTime: 0
   isTryingToRun: 0
   isRunning: 0
+  isWallSliding: 0
   isClimbingWall: 0
   isStaminaOut: 0
   noClip: 0
   lastDamagedTime: 0
   initialScaleY: 0
+  initialSpritePos: {x: 0, y: 0, z: 0}
+  lastRotateTime: 0
   playerPosition: {fileID: 4011058918413553049}
   normalColliders: {fileID: 3740527523559206018}
   liquidForm: {fileID: 5352324573042091964}
   liquid_rb: {fileID: 1556164492118065746}
+  playerInput: {fileID: 0}
   animator: {fileID: 3813545583808664413}
+--- !u!114 &8122826393693942434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455930444774944738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: e41463d21e40e5745abdcae48ac5cd8c, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard&Gamepad
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1050648397075450899
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,7 +908,7 @@ Transform:
   m_GameObject: {fileID: 3860280069068958673}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6, z: 0}
+  m_LocalPosition: {x: 0.2, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
