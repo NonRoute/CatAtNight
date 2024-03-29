@@ -283,14 +283,16 @@ public partial class Player : MonoBehaviour, IDamagable
     {
         bool pressedJump = playerInputActions.Player.Jump.WasPressedThisFrame();
         bool releasedJump = playerInputActions.Player.Jump.WasReleasedThisFrame();
+        bool dropDown = playerInputActions.Player.DropDown.WasPressedThisFrame();
 
-        if(pressedJump && verticalInput < 0)
+        if ((pressedJump && verticalInput < 0) || dropDown)
         {
             List<Platform> toBeDisable = new(passThroughPlatformList);
             foreach(Platform platform in toBeDisable)
             {
                 platform.TemporaryDisableCollider();
             }
+            return;
         }
 
         if (isWallSliding)
@@ -391,21 +393,5 @@ public partial class Player : MonoBehaviour, IDamagable
         hardPlatformCount += count;
         if (isRayhitPlatform) return;
         isOnHardPlatform = hardPlatformCount > 0;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.TryGetComponent<Platform>(out _))
-        {
-            AddHardPlatformCount(1);
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.TryGetComponent<Platform>(out _))
-        {
-            AddHardPlatformCount(-1);
-        }
     }
 }

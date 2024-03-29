@@ -116,6 +116,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DropDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c1579ee-864d-419c-a21c-de7fea3921d5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -789,6 +798,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef69990d-e975-4e6c-90b8-0de95319afe4"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DropDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -829,6 +849,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_OpenMenu = m_Player.FindAction("OpenMenu", throwIfNotFound: true);
         m_Player_AtackAction = m_Player.FindAction("AtackAction", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_DropDown = m_Player.FindAction("DropDown", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -900,6 +921,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_OpenMenu;
     private readonly InputAction m_Player_AtackAction;
     private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_DropDown;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -914,6 +936,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @OpenMenu => m_Wrapper.m_Player_OpenMenu;
         public InputAction @AtackAction => m_Wrapper.m_Player_AtackAction;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @DropDown => m_Wrapper.m_Player_DropDown;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -953,6 +976,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @DropDown.started += instance.OnDropDown;
+            @DropDown.performed += instance.OnDropDown;
+            @DropDown.canceled += instance.OnDropDown;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -987,6 +1013,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @DropDown.started -= instance.OnDropDown;
+            @DropDown.performed -= instance.OnDropDown;
+            @DropDown.canceled -= instance.OnDropDown;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1025,5 +1054,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnOpenMenu(InputAction.CallbackContext context);
         void OnAtackAction(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnDropDown(InputAction.CallbackContext context);
     }
 }

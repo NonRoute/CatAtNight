@@ -86,8 +86,8 @@ MonoBehaviour:
   immortalDuration: 0.5
   skillUnlockedCount: 0
   isLoadSave: 0
-  maxVelX: 15
-  maxVelY: 100
+  maxVerticalVelocity: 15
+  maxFloatingVelocity: 150
   moveSpeed: 6
   floatSpeed: 10
   runMultiplier: 2
@@ -108,7 +108,6 @@ MonoBehaviour:
   dashSpeed: 35
   maxDashCount: 0
   groundedDelay: 0.05
-  groundedDelayDuration: 0.5
   gravityScale: 3
   risingGravityMultiplier: 1
   fallingGravityMultiplier: 1.5
@@ -144,6 +143,7 @@ MonoBehaviour:
   verticalInput: 0
   horizontalSmooth: 0
   verticalSmooth: 0
+  isOnSlope: 0
   isFacingRight: 0
   isFreeze: 0
   isInterrupted: 0
@@ -160,11 +160,8 @@ MonoBehaviour:
   wallJumpVelocity: {x: 0, y: 0}
   wallJumpEndTime: 0
   isGrounded: 1
-  isFloating: 0
   lastGroundedTime: 0
-  lastJumpTime: 0
-  jumpDelay: 0.1
-  isGroundedDelay: 1
+  isFloating: 0
   hardPlatformCount: 0
   isRayhitPlatform: 0
   isOnHardPlatform: 0
@@ -184,7 +181,6 @@ MonoBehaviour:
   normalColliders: {fileID: 3740527523559206018}
   liquidForm: {fileID: 5352324573042091964}
   liquid_rb: {fileID: 1556164492118065746}
-  spritePivot: {fileID: 7853424831748672024}
   animator: {fileID: 3813545583808664413}
 --- !u!114 &8122826393693942434
 MonoBehaviour:
@@ -280,7 +276,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -291,7 +287,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 0.2}
+  m_Size: {x: 1.2, y: 0.6}
   m_EdgeRadius: 0
 --- !u!1 &1050648397075450899
 GameObject:
