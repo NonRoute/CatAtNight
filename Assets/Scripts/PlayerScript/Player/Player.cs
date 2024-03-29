@@ -80,6 +80,7 @@ public partial class Player : MonoBehaviour, IDamagable
         UpdateGameState();
         if (isFreeze)
         {
+            UpdatePhysicsCondition();
             UpdateAnimationState();
             animator.SetBool("is_running", false);
             animator.SetBool("is_walking", false);
