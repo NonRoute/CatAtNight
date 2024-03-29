@@ -129,7 +129,7 @@ public partial class Player : MonoBehaviour, IDamagable
     [SerializeField]
     private Vector3 facingLeftOffset;
 
-    private GameObject pickedUpYarnBall;
+    private YarnBall pickedUpYarnBall;
     private Vector2 yarnBallVel;
 
     [SerializeField]
@@ -161,10 +161,10 @@ public partial class Player : MonoBehaviour, IDamagable
     private Transform l_platformCheck;
 
     [SerializeField]
-    private float lastSetPlayerPosTime = 0f;
+    private float lastSetCameraFollowTime = 0f;
 
     [SerializeField]
-    private float playerPosDelay = 0.15f;
+    private float cameraFollowDelay = 0.15f;
 
     [SerializeField]
     private float l_dashDuration = 0.2f;
@@ -304,7 +304,7 @@ public partial class Player : MonoBehaviour, IDamagable
 
     [Header("References")]
     [SerializeField]
-    private Transform playerPosition;
+    private Transform cameraFollowTransform;
 
     [SerializeField]
     private GameObject normalColliders;

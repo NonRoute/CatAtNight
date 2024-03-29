@@ -5,7 +5,7 @@ public partial class Player : MonoBehaviour, IDamagable
     public void SaveGame()
     {
         var gameData = DataManager.Instance.gameData;
-        gameData.position = playerPosition.position;
+        gameData.position = cameraFollowTransform.position;
         gameData.health = health;
         gameData.liquidMode = isLiquid;
 
@@ -17,7 +17,7 @@ public partial class Player : MonoBehaviour, IDamagable
         var gameData = DataManager.Instance.gameData;
 
         rb.transform.position = gameData.position;
-        UpdatePlayerPosition();
+        UpdateCameraFollowPosition();
 
         health = gameData.health;
 

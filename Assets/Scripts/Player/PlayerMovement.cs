@@ -4,12 +4,13 @@ using UnityEngine;
 
 public partial class Player : MonoBehaviour, IDamagable
 {
-    private void UpdatePlayerPosition()
+    private void UpdateCameraFollowPosition()
     {
-        if (Time.time - lastSetPlayerPosTime < playerPosDelay)
+        // Have some delay between each time to prevent camera shaking
+        if (Time.time - lastSetCameraFollowTime < cameraFollowDelay)
             return;
-        playerPosition.position = rb.transform.position;
-        //playerPosition.position = Vector3.Lerp(playerPosition.position, rb.transform.position,0.8f);
+        // Set position to current rigidbody (current form) position
+        cameraFollowTransform.position = rb.transform.position;
     }
 
     private void UpdateSprite()
@@ -33,6 +34,21 @@ public partial class Player : MonoBehaviour, IDamagable
         Vector3 newScale = sprite.transform.localScale;
         newScale.y = (1 - 0.25f / 100 * chargePercent) * initialScaleY;
         sprite.transform.localScale = newScale;
+
+        UpdateAnimationState();
+    }
+
+    private void UpdateAnimationState()
+    {
+        animator.SetBool("is_grounded", isOnPlatform);
+        //animator.SetBool("is_grounded", isOnPlatform && (Time.time-lastGroundedTime > 0.2f));
+        animator.SetBool("is_charging", isChargeJumping);
+        animator.SetBool("is_running", isRunning);
+        animator.SetBool("is_walled", isWalled);
+        animator.SetBool("is_sliding", isWallSliding);
+        animator.SetBool("is_climbing", isClimbingWall);
+        animator.SetBool("is_walking", !isRunning && horizontalInput != 0 && !isChargeJumping);
+        animator.SetFloat("speed_y", rb.velocity.y);
     }
 
     private void FlipSprite(bool isFlip)
@@ -50,7 +66,7 @@ public partial class Player : MonoBehaviour, IDamagable
     /// <summary>
     /// Interrupt is Uncontrollable State ex. being damaged, being bounced
     /// </summary>
-    private void UpdateInterrupted()
+    private void UpdateWhenInterrupted()
     {
         UpdateGravity();
         float currentTime = Time.time;
@@ -90,16 +106,11 @@ public partial class Player : MonoBehaviour, IDamagable
             isStaminaOut = false;
         }
 
+        if (isLiquid) return;
+
         bool wasRunning = isRunning;
 
-        if (isTryingToRun)
-        {
-            isRunning = !isStaminaOut;
-        }
-        else
-        {
-            isRunning = false;
-        }
+        isRunning = isTryingToRun && !isStaminaOut;
 
         if (wasRunning && !isRunning)
         {
@@ -116,7 +127,7 @@ public partial class Player : MonoBehaviour, IDamagable
         }
     }
 
-    private void UpdateCollideCondition()
+    private void UpdatePhysicsCondition()
     {
         isGroundedDelay = (Time.time - lastGroundedTime > groundedDelayDuration) && isOnPlatform;
         //isFloatingDelay = isGroundedDelay && (Time.time - lastGroundedTime > 0.2f);
@@ -139,12 +150,12 @@ public partial class Player : MonoBehaviour, IDamagable
             //print(perpendicular);
             Debug.DrawLine((Vector2)platformCheck.position, (Vector2)platformCheck.position - hit.normal, Color.yellow, 2.0f);
             RaycastHit2D hit2 = Physics2D.Raycast(platformCheck.position, -hit.normal, 0.4f, platformLayer);
-            if(hit2.collider != null)
+            if (hit2.collider != null)
             {
                 float rightAngle = Vector2.Angle(hit2.normal, Vector2.right);
                 float leftAngle = Vector2.Angle(hit2.normal, Vector2.left);
                 float realAngle = Vector2.Angle(hit2.normal, Vector2.up);
-                if(realAngle > 30f && realAngle < 75f)
+                if (realAngle > 30f && realAngle < 75f)
                 {
                     RotateSprite(((rightAngle < leftAngle) ? -1 : 1) * realAngle);
                     sprite.transform.localPosition = initialSpritePos - (Vector3)hit2.normal * 0.3f;
@@ -157,13 +168,13 @@ public partial class Player : MonoBehaviour, IDamagable
                     sprite.transform.localPosition = initialSpritePos;
                 }
             }
-            else if(Time.time - lastRotateTime > rotateDelay)
+            else if (Time.time - lastRotateTime > rotateDelay)
             {
                 sprite.transform.localPosition = initialSpritePos;
                 RotateSprite(0);
             }
         }
-        else if(Time.time - lastRotateTime > rotateDelay)
+        else if (Time.time - lastRotateTime > rotateDelay)
         {
             sprite.transform.localPosition = initialSpritePos;
             RotateSprite(0);
@@ -176,15 +187,13 @@ public partial class Player : MonoBehaviour, IDamagable
     {
         if (isChargeJumping)
         {
-            //rb.velocity = Vector2.zero;
-            //.velocity = new Vector2(horizontalSmooth * moveSpeed * Math.Max(0.1f, 1 - chargePercent / 100), 0);
+            // Much Slower Movement when Charging Jump
+            // May change direction to match the terrain in the future
             rb.velocity = new Vector2(horizontalSmooth * moveSpeed * 0.1f, 0);
             rb.gravityScale = 0;
-            if(!isOnPlatform)
+            if (!isOnPlatform)
             {
                 Jump(true);
-                chargePercent = 0;
-                isChargeJumping = false;
             }
             return;
         }
@@ -232,7 +241,7 @@ public partial class Player : MonoBehaviour, IDamagable
             float lerpRate = (wallJumpEndTime - Time.time) / wallJumpDuration;
             newVelocity = wallJumpVelocity * lerpRate;
             newVelocity.x += horizontalSmooth * moveSpeed;
-            newVelocity.x += wallJumpVelocity .x* 0.5f;
+            newVelocity.x += wallJumpVelocity.x * 0.5f;
             FlipSprite(wallJumpVelocity.x > 0);
         }
         else
@@ -269,8 +278,6 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void UpdateJumping()
     {
-        //bool pressedJump = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0);
-        //bool releasedJump = Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.JoystickButton0);
         bool pressedJump = playerInputActions.Player.Jump.WasPressedThisFrame();
         bool releasedJump = playerInputActions.Player.Jump.WasReleasedThisFrame();
 
@@ -281,6 +288,11 @@ public partial class Player : MonoBehaviour, IDamagable
                 WallJump();
             }
             return;
+        }
+
+        if (isChargeJumping)
+        {
+            IncreaseChargeJumpPercent();
         }
 
         if (pressedJump)
@@ -300,6 +312,7 @@ public partial class Player : MonoBehaviour, IDamagable
             }
             else
             {
+                // Prevent Dashing when Dropping Down
                 if (Time.time - lastGroundedTime < groundedDelay)
                     return;
                 Dash();
@@ -322,18 +335,21 @@ public partial class Player : MonoBehaviour, IDamagable
         }
         //Vector2 direction = (Vector2.up + Vector2.right * horizontalInput + Vector2.up * verticalInput).normalized;
         Vector2 direction = Vector2.up;
-        RaycastHit2D hit = Physics2D.Raycast(origin: platformCheck.position, direction: Vector2.down
-          , distance: 0.5f, layerMask: platformLayer);
+        //RaycastHit2D hit = Physics2D.Raycast(origin: platformCheck.position, direction: Vector2.down
+        //  , distance: 0.5f, layerMask: platformLayer);
+        //if (hit.collider != null)
+        //{
+        //    direction = hit.normal;
+        //}
 
-        if (hit.collider != null)
-        {
-            direction = hit.normal;
-        }
         rb.AddForce(jumpForce * direction, ForceMode2D.Impulse);
-        if(isChargeJump)
+        if (isChargeJump)
         {
             lastJumpTime = Time.time;
         }
+
+        chargePercent = 0;
+        isChargeJumping = false;
     }
 
     private void WallJump()
@@ -362,9 +378,6 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void IncreaseChargeJumpPercent()
     {
-        if (!isChargeJumping)
-            return;
-
         chargePercent += (100f / chargeDuration) * Time.deltaTime;
         if (chargePercent > 100)
         {
@@ -409,18 +422,5 @@ public partial class Player : MonoBehaviour, IDamagable
         {
             AddPlatformCount(-1);
         }
-    }
-
-    private void UpdateAnimation()
-    {
-        animator.SetBool("is_grounded", isOnPlatform);
-        //animator.SetBool("is_grounded", isOnPlatform && (Time.time-lastGroundedTime > 0.2f));
-        animator.SetBool("is_charging", isChargeJumping);
-        animator.SetBool("is_running", isRunning);
-        animator.SetBool("is_walled", isWalled);
-        animator.SetBool("is_sliding", isWallSliding);
-        animator.SetBool("is_climbing", isClimbingWall);
-        animator.SetBool("is_walking", !isRunning && horizontalInput != 0 && !isChargeJumping);
-        animator.SetFloat("speed_y", rb.velocity.y);
     }
 }

@@ -34,8 +34,8 @@ public partial class Player : MonoBehaviour, IDamagable
       normal_rb.velocity = Vector2.zero;
       rb = normal_rb;
     }
-    lastSetPlayerPosTime = Time.time;
-    playerPosition.position = position;
+    lastSetCameraFollowTime = Time.time;
+    cameraFollowTransform.position = position;
     StatusUIManager.Instance.ToggleLiquidImage(isLiquid);
   }
 
