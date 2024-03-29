@@ -299,6 +299,9 @@ public partial class Player : MonoBehaviour, IDamagable
     [SerializeField]
     private float lastRotateTime = 0f;
 
+    [SerializeField]
+    private float rotateDelay = 0.05f;
+
     [Header("References")]
     [SerializeField]
     private Transform playerPosition;

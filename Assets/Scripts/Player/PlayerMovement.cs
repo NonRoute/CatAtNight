@@ -151,19 +151,19 @@ public partial class Player : MonoBehaviour, IDamagable
                     lastRotateTime = Time.time;
                     onPlatform = true;
                 }
-                else if (Time.time - lastRotateTime > 0.15f)
+                else if (Time.time - lastRotateTime > rotateDelay)
                 {
                     RotateSprite(((rightAngle < leftAngle) ? -1 : 1) * realAngle);
                     sprite.transform.localPosition = initialSpritePos;
                 }
             }
-            else if(Time.time - lastRotateTime > 0.15f)
+            else if(Time.time - lastRotateTime > rotateDelay)
             {
                 sprite.transform.localPosition = initialSpritePos;
                 RotateSprite(0);
             }
         }
-        else if(Time.time - lastRotateTime > 0.15f)
+        else if(Time.time - lastRotateTime > rotateDelay)
         {
             sprite.transform.localPosition = initialSpritePos;
             RotateSprite(0);
