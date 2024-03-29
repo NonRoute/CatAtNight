@@ -498,6 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596928fb3b0c48b43a462a423437a29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPassthrough: 0
 --- !u!66 &173510566
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -56943,6 +56944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596928fb3b0c48b43a462a423437a29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPassthrough: 0
 --- !u!61 &1593485389
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57976,6 +57978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596928fb3b0c48b43a462a423437a29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPassthrough: 0
 --- !u!61 &1769236919
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65566,6 +65569,14 @@ PrefabInstance:
     - target: {fileID: 455930444774944738, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949340063422121023, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
+      propertyPath: maxVelY
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949340063422121023, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
+      propertyPath: maxDashCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7966581611437754249, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
       propertyPath: m_LocalPosition.x

@@ -27,7 +27,7 @@ public partial class Player : MonoBehaviour, IDamagable
             lastInterruptedTime = Time.time;
             interruptedDuration = damageInfo.interruptDuration;
             if (pickedUpYarnBall != null)
-            { 
+            {
                 ThrowYarnBall();
             }
         }
@@ -52,6 +52,13 @@ public partial class Player : MonoBehaviour, IDamagable
         StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
     }
 
+    public void UpgradeHealth(float newMaxHealth)
+    {
+        maxHealth = newMaxHealth;
+        health = maxHealth;
+        StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
+    }
+
     // Get player data to other scripts want to use
     public PlayerData GetPlayerData()
     {
@@ -64,4 +71,48 @@ public partial class Player : MonoBehaviour, IDamagable
             skillUnlockedCount = skillUnlockedCount,
         };
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Platform Check
+        if(collision.gameObject.TryGetComponent(out Platform platform))
+        {
+            if(platform.IsPassthrough)
+            {
+                passThroughPlatformList.Add(platform);
+            }
+            else
+            {
+                AddHardPlatformCount(1);
+            }
+        }
+        // Pick Up Yarn Ball
+        if (isInterrupted) return;
+        if ((collision.gameObject.CompareTag("YarnBallBox") || collision.gameObject.CompareTag("BossRoomYarnBallBox"))
+            && pickedUpYarnBall == null)
+        {
+            CreateYarnBall();
+            if (collision.gameObject.CompareTag("BossRoomYarnBallBox"))
+            {
+                zone1.GetComponent<Zone1>().ChangeYarnBallBoxPosition();
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        // Platform Check
+        if (collision.gameObject.TryGetComponent(out Platform platform))
+        {
+            if (platform.IsPassthrough)
+            {
+                passThroughPlatformList.Remove(platform);
+            }
+            else
+            {
+                AddHardPlatformCount(-1);
+            }
+        }
+    }
+
 }

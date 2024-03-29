@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8273791172167529557}
   - component: {fileID: 9078878889960649742}
   - component: {fileID: 8872009797337520781}
-  - component: {fileID: 1594668033405871406}
+  - component: {fileID: 326558089381492695}
   m_Layer: 6
   m_Name: PassthroughCollider 1
   m_TagString: Untagged
@@ -130,7 +130,7 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!114 &1594668033405871406
+--- !u!114 &326558089381492695
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,6 +139,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6617636350038894433}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91dbed80618920042b717e57a3c305f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 596928fb3b0c48b43a462a423437a29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPassthrough: 1

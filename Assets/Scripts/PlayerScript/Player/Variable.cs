@@ -1,35 +1,40 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public partial class Player : MonoBehaviour, IDamagable
 {
     [Header("Status")]
-    [SerializeField]
-    public float health = 9f;
 
     [SerializeField]
-    public float maxHealth = 9f;
+    private float health = 9f;
+
+    [SerializeField]
+    private float maxHealth = 9f;
 
     [SerializeField]
     private float stamina = 100f;
 
     [SerializeField]
-    public float maxStamina = 100f;
+    private float maxStamina = 100f;
 
     [SerializeField]
-    public float immortalDuration = 1f;
+    private float immortalDuration = 1f;
 
     [SerializeField]
-    public int skillUnlockedCount = 1;
+    private int skillUnlockedCount = 1;
 
     [SerializeField]
     private bool isLoadSave = true;
 
     [Header("Power Values")]
+
     [SerializeField]
-    public float maxVelX = 15f;
+    public float maxVerticalVelocity = 15f;
+
     [SerializeField]
-    public float maxVelY = 15f;
+    public float maxFloatingVelocity = 150f;
+
     [SerializeField]
     public float moveSpeed = 6f;
 
@@ -73,7 +78,7 @@ public partial class Player : MonoBehaviour, IDamagable
     private float minimumStamina = 30f;
 
     [SerializeField]
-    public float jumpPower = 8f;
+    private float jumpPower = 8f;
 
     [SerializeField]
     private float chargeDuration = 0.75f;
@@ -90,10 +95,8 @@ public partial class Player : MonoBehaviour, IDamagable
     [SerializeField]
     private float groundedDelay = 0.1f;
 
-    [SerializeField]
-    private float groundedDelayDuration = 0.2f;
-
     [Header("Gravity Values")]
+
     [SerializeField]
     private float gravityScale = 3f;
 
@@ -104,6 +107,7 @@ public partial class Player : MonoBehaviour, IDamagable
     private float fallingGravityMultiplier = 1.5f;
 
     [Header("Collider Values")]
+
     [SerializeField]
     private Transform platformCheck;
 
@@ -120,6 +124,7 @@ public partial class Player : MonoBehaviour, IDamagable
     private LayerMask wallLayer;
 
     [Header("Zone 1")]
+
     [SerializeField]
     private GameObject yarnBall;
 
@@ -130,6 +135,7 @@ public partial class Player : MonoBehaviour, IDamagable
     private Vector3 facingLeftOffset;
 
     private YarnBall pickedUpYarnBall;
+
     private Vector2 yarnBallVel;
 
     [SerializeField]
@@ -179,6 +185,32 @@ public partial class Player : MonoBehaviour, IDamagable
     private float l_dashEndTime = 0f;
 
     [Header("Debug Values")]
+
+    [SerializeField]
+    List<Platform> passThroughPlatformList;
+
+    [Header("--Input")]
+
+    [SerializeField]
+    private float horizontalInput = 0f;
+
+    [SerializeField]
+    private float verticalInput = 0f;
+
+    [SerializeField]
+    private float horizontalSmooth = 0f;
+
+    [SerializeField]
+    private float verticalSmooth = 0f;
+
+    [Header("--States")]
+
+    [SerializeField]
+    private bool isOnSlope = false;
+
+    [SerializeField]
+    private bool isFacingRight = false;
+
     [SerializeField]
     private bool isFreeze = false;
 
@@ -204,31 +236,16 @@ public partial class Player : MonoBehaviour, IDamagable
     private Vector2 bounceVelocity;
 
     [SerializeField]
-    private float horizontalInput = 0f;
-
-    [SerializeField]
-    private float verticalInput = 0f;
-
-    [SerializeField]
-    private float horizontalSmooth = 0f;
-
-    [SerializeField]
-    private float verticalSmooth = 0f;
-
-    [SerializeField]
-    private bool isFacingRight = false;
-
-    [SerializeField]
     private float chargePercent = 0f;
 
     [SerializeField]
-    private Vector2 dashVelocity = Vector2.zero;
+    private int dashCount = 0;
 
     [SerializeField]
     private float dashEndTime = 0f;
 
     [SerializeField]
-    private int dashCount = 0;
+    private Vector2 dashVelocity = Vector2.zero;
 
     [SerializeField]
     private Vector2 wallJumpVelocity = Vector2.zero;
@@ -237,28 +254,22 @@ public partial class Player : MonoBehaviour, IDamagable
     private float wallJumpEndTime = 0f;
 
     [SerializeField]
+    private bool isGrounded = true;
+
+    [SerializeField]
     private float lastGroundedTime = 0f;
 
     [SerializeField]
-    private float lastJumpTime = 0f;
+    private bool isFloating = false;
 
     [SerializeField]
-    private float jumpDelay = 0.1f;
-
-    //[SerializeField]
-    //private bool isFloatingDelay = false;
-
-    [SerializeField]
-    private bool isGroundedDelay = true;
-
-    [SerializeField]
-    private int platformCount = 0;
+    private int hardPlatformCount = 0;
 
     [SerializeField]
     private bool isRayhitPlatform;
 
     [SerializeField]
-    private bool isOnPlatform = false;
+    private bool isOnHardPlatform = false;
 
     [SerializeField]
     private bool isWalled = false;
@@ -296,13 +307,8 @@ public partial class Player : MonoBehaviour, IDamagable
     [SerializeField]
     private Vector3 initialSpritePos;
 
-    [SerializeField]
-    private float lastRotateTime = 0f;
-
-    [SerializeField]
-    private float rotateDelay = 0.05f;
-
     [Header("References")]
+
     [SerializeField]
     private Transform cameraFollowTransform;
 
@@ -317,11 +323,13 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private SpriteRenderer sprite;
 
-    [SerializeField]
-    private PlayerInput playerInput;
     private PlayerInputActions playerInputActions;
+
     [SerializeField]
     private Animator animator;
+
     private Rigidbody2D normal_rb;
+
     private Rigidbody2D rb;
+
 }

@@ -70,9 +70,7 @@ public class ShopManager : MonoBehaviour
     {
         DecreaseScore(health.upgradeCostType[health.currentTier], health.upgradeCostAmount[health.currentTier]);
         health.currentTier++;
-        player.maxHealth = health.upgradeValue[health.currentTier];
-        player.health += health.upgradeValue[health.currentTier] - health.upgradeValue[health.currentTier - 1];
-        statusUIManager.UpdateHealthBar(player.health, player.maxHealth);
+        player.UpgradeHealth(health.upgradeValue[health.currentTier]);
         health.currentText.text = health.upgradeValue[health.currentTier].ToString();
         if (IsUpgradable(health.currentTier, health.upgradeValue))
         {

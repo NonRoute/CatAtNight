@@ -17,7 +17,7 @@ public partial class Player : MonoBehaviour, IDamagable
     // Change to FALSE when build
     private const bool IS_DEBUG = true;
 
-    void Start()
+    private void Start()
     {
         InitVariables();
         InitInputs();
@@ -45,6 +45,9 @@ public partial class Player : MonoBehaviour, IDamagable
         // Initialize Scale of Player (used in charging jump)
         initialScaleY = sprite.transform.localScale.y;
 
+        // Initialize Lists
+        passThroughPlatformList = new();
+
         // Initialize Bone Positions for Liquid Form
         bone_rigidbodies = liquid_rb.gameObject.GetComponentsInChildren<Rigidbody2D>();
         bone_localPositions = new Vector3[bone_rigidbodies.Length];
@@ -66,7 +69,7 @@ public partial class Player : MonoBehaviour, IDamagable
         playerInputActions.Player.Enable();
     }
 
-    void Update()
+    private void Update()
     {
         // Update Position That Camera will Follow
         UpdateCameraFollowPosition();
@@ -198,21 +201,6 @@ public partial class Player : MonoBehaviour, IDamagable
     {
         pickedUpYarnBall.GetComponent<YarnBall>().Throw(isFacingRight);
         pickedUpYarnBall = null;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Pick Up Yarn Ball
-        if (isInterrupted) return;
-        if ((collision.gameObject.CompareTag("YarnBallBox") || collision.gameObject.CompareTag("BossRoomYarnBallBox"))
-            && pickedUpYarnBall == null)
-        {
-            CreateYarnBall();
-            if (collision.gameObject.CompareTag("BossRoomYarnBallBox"))
-            {
-                zone1.GetComponent<Zone1>().ChangeYarnBallBoxPosition();
-            }
-        }
     }
 
 }
