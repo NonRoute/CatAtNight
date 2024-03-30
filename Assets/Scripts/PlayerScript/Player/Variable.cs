@@ -263,15 +263,6 @@ public partial class Player : MonoBehaviour, IDamagable
     private bool isFloating = false;
 
     [SerializeField]
-    private int hardPlatformCount = 0;
-
-    [SerializeField]
-    private bool isRayhitPlatform;
-
-    [SerializeField]
-    private bool isOnHardPlatform = false;
-
-    [SerializeField]
     private bool isWalled = false;
 
     [SerializeField]

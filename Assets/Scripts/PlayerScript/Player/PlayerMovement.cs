@@ -121,7 +121,7 @@ public partial class Player : MonoBehaviour, IDamagable
     {
         isWalled = Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
 
-        bool grounded = isOnHardPlatform;
+        bool grounded = false;
         if(isLiquid)
         {
             grounded |= Physics2D.OverlapCircle(platformCheck.position, 0.4f, platformLayer);
@@ -285,14 +285,16 @@ public partial class Player : MonoBehaviour, IDamagable
         bool releasedJump = playerInputActions.Player.Jump.WasReleasedThisFrame();
         bool dropDown = playerInputActions.Player.DropDown.WasPressedThisFrame();
 
+        bool isDropDown = false;
         if ((pressedJump && verticalInput < 0) || dropDown)
         {
             List<Platform> toBeDisable = new(passThroughPlatformList);
             foreach(Platform platform in toBeDisable)
             {
+                isDropDown = true;
                 platform.TemporaryDisableCollider();
             }
-            return;
+            if (isDropDown) return;
         }
 
         if (isWallSliding)
@@ -386,12 +388,5 @@ public partial class Player : MonoBehaviour, IDamagable
         {
             chargePercent = 100;
         }
-    }
-
-    private void AddHardPlatformCount(int count)
-    {
-        hardPlatformCount += count;
-        if (isRayhitPlatform) return;
-        isOnHardPlatform = hardPlatformCount > 0;
     }
 }

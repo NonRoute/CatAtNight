@@ -108,26 +108,4 @@ public partial class Player : MonoBehaviour, IDamagable
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out Platform platform))
-        {
-            if (!platform.IsPassthrough)
-            {
-                AddHardPlatformCount(1);
-            }
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out Platform platform))
-        {
-            if (!platform.IsPassthrough)
-            {
-                AddHardPlatformCount(-1);
-            }
-        }
-    }
-
 }

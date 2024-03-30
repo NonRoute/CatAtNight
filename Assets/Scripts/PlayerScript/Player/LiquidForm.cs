@@ -42,7 +42,7 @@ public partial class Player : MonoBehaviour, IDamagable
   private void UpdateLiquidMode()
   {
     bool onPlatform = Physics2D.OverlapCircle(l_platformCheck.position, 0.3f, platformLayer);
-    SetGrounded(onPlatform || hardPlatformCount > 0);
+    SetGrounded(onPlatform);
     UpdateGravity();
 
     // Update Interrupted
@@ -56,7 +56,7 @@ public partial class Player : MonoBehaviour, IDamagable
     }
 
     // Update Jump
-    if (isOnHardPlatform && playerInputActions.Player.Jump.WasPressedThisFrame())
+    if (isGrounded && playerInputActions.Player.Jump.WasPressedThisFrame())
     {
       rb.AddForce(l_jumpPower * Vector2.up, ForceMode2D.Impulse);
     }
@@ -92,7 +92,7 @@ public partial class Player : MonoBehaviour, IDamagable
     rb.velocity = newVelocity;
 
     // Update Dashing
-    if (!isOnHardPlatform && playerInputActions.Player.Jump.WasPressedThisFrame())
+    if (!isGrounded && playerInputActions.Player.Jump.WasPressedThisFrame())
     {
       if (dashCount >= maxDashCount) return;
       Vector2 direction = (new Vector2(horizontalInput, verticalInput)).normalized;
