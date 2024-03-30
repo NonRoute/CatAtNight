@@ -134,6 +134,9 @@ public partial class Player : MonoBehaviour, IDamagable
     private float liquidMoveForce = 25f;
 
     [SerializeField]
+    private float liquidFloatingMultiplier = 0.05f;
+
+    [SerializeField]
     private float liquidJumpForce = 75f;
 
     [SerializeField]
@@ -198,6 +201,9 @@ public partial class Player : MonoBehaviour, IDamagable
 
     [SerializeField]
     private GameObject liquidForm;
+
+    [SerializeField]
+    private GameObject staticLiquidSprite;
 
     [SerializeField]
     private GameObject spriteObject;
@@ -341,6 +347,30 @@ public partial class Player : MonoBehaviour, IDamagable
     // Need to seperate this because dashing should stop when player transform from liquid to solid form
     [SerializeField]
     private float liquidDashEndTime = 0f;
+
+    [SerializeField]
+    private float timeBeforeEnter;
+
+    [SerializeField]
+    private Vector3 positionBeforeEnter;
+
+    [SerializeField]
+    private bool isInPipe = false;
+
+    [SerializeField]
+    private bool isPipeForward = false;
+
+    [SerializeField]
+    private int pipeIndex = 0;
+
+    [SerializeField]
+    private float travelStartTime = 0f;
+
+    [SerializeField]
+    private float travelEndTime = 0f;
+
+    [SerializeField]
+    private Pipe currentPipe;
 
     [Header("--Others")]
 

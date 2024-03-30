@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public partial class Player : MonoBehaviour, IDamagable
 {
@@ -27,8 +28,9 @@ public partial class Player : MonoBehaviour, IDamagable
             {
                 Vector2 perpendicular = Vector2.Perpendicular(hit.normal);
                 //print(perpendicular);
-                Debug.DrawLine((Vector2)rb.transform.position, (Vector2)rb.transform.position + perpendicular, Color.yellow, 2.0f);
-                rb.AddForce(liquidMoveForce * horizontalSmooth * -perpendicular.normalized);
+                //Debug.DrawLine((Vector2)rb.transform.position, (Vector2)rb.transform.position + perpendicular, Color.yellow, 2.0f);
+                float forcePower = liquidMoveForce * horizontalSmooth * (isFloating ? liquidFloatingMultiplier : 1);
+                rb.AddForce(forcePower * -perpendicular.normalized);
             }
             else
             {
@@ -51,6 +53,10 @@ public partial class Player : MonoBehaviour, IDamagable
         }
 
         rb.velocity = newVelocity;
+        //if(newVelocity.sqrMagnitude > 400) // Debug Player Momentum
+        //{
+        //    print(newVelocity.sqrMagnitude);
+        //}
     }
 
     private void SwitchMode(bool toLiquid)
@@ -122,12 +128,12 @@ public partial class Player : MonoBehaviour, IDamagable
 
         if (hit.collider != null)
         {
-            Debug.DrawLine((Vector2)liquidPlayerBottomTransform.position, (Vector2)liquidPlayerBottomTransform.position - hit.normal * 0.4f, Color.yellow, 2.0f);
+            //Debug.DrawLine((Vector2)liquidPlayerBottomTransform.position, (Vector2)liquidPlayerBottomTransform.position - hit.normal * 0.4f, Color.yellow, 2.0f);
             grounded = true;
         }
         SetGrounded(grounded);
 
-        // Check FLoating
+        // Check Floating
         if (grounded && rb.velocity.y < 0)
         {
             isFloating = false;
@@ -168,5 +174,67 @@ public partial class Player : MonoBehaviour, IDamagable
                 dashCount++;
             }
         }
+    }
+
+    private void UpdateInPipe()
+    {
+        if(Time.time < travelEndTime)
+        {
+            Vector3 newPosition = (travelEndTime - Time.time) * GetPipePosition(pipeIndex-1) + (Time.time - travelStartTime) * GetPipePosition(pipeIndex);
+            newPosition /= travelEndTime - travelStartTime;
+            transform.position = newPosition;
+            return;
+        }
+
+        ++pipeIndex;
+
+        if(pipeIndex >= currentPipe.GetVertices(isPipeForward).Count)
+        {
+            EndMovePipe();
+            return;
+        }
+
+        travelStartTime = travelEndTime;
+        travelEndTime += GetPipeDuration(pipeIndex);
+    }
+
+    private void StartMovePipe(PipeEnd pipeEnd)
+    {
+        isPipeForward = pipeEnd.IsForward;
+        currentPipe = pipeEnd.Pipe;
+        isInPipe = true;
+        pipeIndex = 0;
+        positionBeforeEnter = rb.position;
+        timeBeforeEnter = Time.time;
+        travelStartTime = timeBeforeEnter;
+        travelEndTime = timeBeforeEnter + GetPipeDuration(pipeIndex);
+
+        SwitchMode(false);
+        spriteObject.SetActive(false);
+        staticLiquidSprite.SetActive(true);
+        normalColliders.SetActive(false);
+        normal_rb.bodyType = RigidbodyType2D.Kinematic;
+        normal_rb.gravityScale = 0f;
+        StatusUIManager.Instance.ToggleLiquidImage(true);
+    }
+    private void EndMovePipe()
+    {
+        staticLiquidSprite.SetActive(false);
+        SwitchMode(true); 
+        liquidDashVelocity = currentPipe.GetEndVelocity(isPipeForward);
+        liquidDashEndTime = Time.time + 0.2f;
+        rb.velocity = currentPipe.GetEndVelocity(isPipeForward);
+        isInPipe = false;
+    }
+
+    private Vector3 GetPipePosition(int index)
+    {
+        if (index < 0) return positionBeforeEnter;
+        return currentPipe.GetVertices(isPipeForward)[index].vertex.position;
+    }
+    private float GetPipeDuration(int index)
+    {
+        if (index < 0) return timeBeforeEnter;
+        return currentPipe.GetVertices(isPipeForward)[index].timeToTravel;
     }
 }

@@ -93,6 +93,12 @@ public partial class Player : MonoBehaviour, IDamagable
         // Read Input for movement
         ReadInput();
         UpdateStamina();
+
+        if (isInPipe)
+        {
+            UpdateInPipe();
+            return;
+        }
         if (isLiquid)
         {
             UpdateLiquidMode();

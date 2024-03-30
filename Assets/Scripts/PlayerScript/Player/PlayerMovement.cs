@@ -92,7 +92,7 @@ public partial class Player : MonoBehaviour, IDamagable
             isStaminaOut = false;
         }
 
-        if (isLiquid)
+        if (isLiquid || isInPipe)
         {
             isRunning = false;
             return;

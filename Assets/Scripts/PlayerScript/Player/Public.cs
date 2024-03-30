@@ -72,6 +72,12 @@ public partial class Player : MonoBehaviour, IDamagable
         };
     }
 
+    public bool CheckPlayerMomentum(float sqrMagnitude)
+    {
+        // sqrMagnitude should be 400f
+        return isLiquid && rb.velocity.sqrMagnitude > sqrMagnitude;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Platform Check
@@ -83,6 +89,17 @@ public partial class Player : MonoBehaviour, IDamagable
             }
             return;
         }
+
+        // Check In Pipe
+        if(isLiquid)
+        {
+            if (collision.gameObject.TryGetComponent(out PipeEnd pipeEnd))
+            {
+                StartMovePipe(pipeEnd);
+                return;
+            }
+        }
+
         // Pick Up Yarn Ball
         if (isInterrupted) return;
         if ((collision.gameObject.CompareTag("YarnBallBox") || collision.gameObject.CompareTag("BossRoomYarnBallBox"))
