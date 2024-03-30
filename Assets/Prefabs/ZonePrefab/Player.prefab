@@ -91,7 +91,7 @@ MonoBehaviour:
   jumpPower: 8
   chargeDuration: 0.75
   dashDuration: 0.35
-  dashSpeed: 35
+  dashSpeed: 40
   maxDashCount: 1
   baseStaminaRegenRate: 10
   baseStaminaDrainRate: 2

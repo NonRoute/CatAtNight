@@ -234,8 +234,7 @@ public partial class Player : MonoBehaviour, IDamagable
             float lerpRate = (dashEndTime - Time.time) / dashDuration;
             newVelocity = dashVelocity * lerpRate;
             float sign = Mathf.Sign(newVelocity.x);
-            newVelocity.x = sign * Mathf.Max(sign*newVelocity.x, sign*horizontalSmooth * baseSpeed);
-            newVelocity.x += horizontalSmooth * baseSpeed;
+            newVelocity.x = sign * Mathf.Max(sign * newVelocity.x, sign * horizontalSmooth * baseSpeed);
             FlipSprite(dashVelocity.x > 0);
         }
         else if (isWallJumping)
@@ -305,7 +304,7 @@ public partial class Player : MonoBehaviour, IDamagable
 
         if (isWallSliding)
         {
-            if (pressedJump)
+            if (pressedJump && !isStaminaOut)
             {
                 WallJump();
             }
