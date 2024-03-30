@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KeyManager : MonoBehaviour
 {
-    [SerializeField] Transform player;
+    private Transform player;
 
     public bool isPickedUp;
     private Vector2 vel;
@@ -23,6 +23,7 @@ public class KeyManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && !isPickedUp)
         {
+            player = GameplayStateManager.Instance.Player.transform;
             isPickedUp = true;
         }
     }

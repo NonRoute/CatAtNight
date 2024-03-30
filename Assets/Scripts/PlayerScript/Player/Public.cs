@@ -59,6 +59,11 @@ public partial class Player : MonoBehaviour, IDamagable
         StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
     }
 
+    public Transform GetCameraFollow()
+    {
+        return cameraFollowTransform;
+    }
+
     // Get player data to other scripts want to use
     public PlayerData GetPlayerData()
     {

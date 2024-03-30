@@ -17,16 +17,22 @@ public partial class Player : MonoBehaviour, IDamagable
     // Change to FALSE when build
     private const bool IS_DEBUG = true;
 
+    private void Awake()
+    {
+        GameplayStateManager.Instance.SetPlayer(this);
+    }
+
     private void Start()
     {
         InitVariables();
         InitInputs();
+
         // Load Save need to be use somewhere else, not here
         // Because we shouldn't load save each time player is loaded
-        if (isLoadSave)
-        {
-            RestoreFromSave();
-        }
+        //if (isLoadSave)
+        //{
+        //    RestoreFromSave();
+        //}
 
         StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
     }

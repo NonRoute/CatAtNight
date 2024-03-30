@@ -35,6 +35,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private float currentScroll = 0f;
     [SerializeField] private float targetScroll = 0f;
     [SerializeField] private float scrollSpeed = 20f;
+    [SerializeField] private int saveSlot = 0;
 
     private void Start()
     {
@@ -126,11 +127,18 @@ public class MainMenuManager : MonoBehaviour
     public void NewGame()
     {
         DataManager.Instance.gameData = new();
-        StartGame();
+        saveSlot = 0;
+        StartGame(false);
     }
 
-    public void StartGame()
+    public void SetSaveSlot(int saveSlot)
     {
+        this.saveSlot = saveSlot;
+    }
+
+    public void StartGame(bool isLoadSave)
+    {
+        GameplayStateManager.Instance.SetStartMode(isLoadSave, saveSlot);
         SoundManager.TryPlayNew(clickSfxName);
         SoundManager.TryStop(bgmName);
         SceneManager.LoadScene(gameplaySceneName);

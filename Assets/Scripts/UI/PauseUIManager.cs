@@ -12,7 +12,6 @@ public class PauseUIManager : MonoBehaviour
     public static PauseUIManager Instance => instance;
 
     [SerializeField] private Canvas canvas;
-    [SerializeField] private Player player;
     [SerializeField] private string mainMenu = "Title";
     [SerializeField] private GameObject[] MenuPanels;
     [SerializeField] private Image[] MenuButtons;
@@ -69,7 +68,7 @@ public class PauseUIManager : MonoBehaviour
     public void InitMenu(int index)
     {
         if (index < 2) return;
-        PlayerData playerData = player.GetPlayerData();
+        PlayerData playerData = GameplayStateManager.Instance.Player.GetPlayerData();
         if(index == 2) // Player Status
         {
             statusPanel.SetupValue(playerData);
@@ -82,7 +81,7 @@ public class PauseUIManager : MonoBehaviour
 
     public void SaveBackToMenu()
     {
-        player.SaveGame();
+        GameplayStateManager.Instance.SaveGame();
         BackToMenu();
     }
 

@@ -12,7 +12,7 @@ public partial class Player : MonoBehaviour, IDamagable
         DataManager.Instance.saveData();
     }
 
-    private void RestoreFromSave()
+    public void RestoreFromSave()
     {
         var gameData = DataManager.Instance.gameData;
 

@@ -33,7 +33,7 @@ public class Monster : MonoBehaviour, IDamagable
 
     private Rigidbody2D rb;
 
-    private void Start()
+    protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         moveTimeElapsed = moveSpeed / 2;

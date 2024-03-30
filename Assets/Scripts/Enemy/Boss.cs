@@ -7,11 +7,16 @@ public class Boss : Monster
 {
     [SerializeField] private GameObject door;
     [SerializeField] private CinemachineVirtualCamera cam;
-    [SerializeField] private Transform playerPos;
+
+    protected override void Start()
+    {
+        base.Start();
+        CinemachineVirtualCamera cam = FindAnyObjectByType<CinemachineVirtualCamera>();
+    }
 
     public void OnDead()
     {
-        cam.Follow = playerPos;
+        cam.Follow = GameplayStateManager.Instance.Player.GetCameraFollow();
         Destroy(gameObject);
         Destroy(door);
     }

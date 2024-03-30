@@ -6,7 +6,7 @@ using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
-    [SerializeField] private Player player;
+    private Player player;
     [SerializeField] private StatusUIManager statusUIManager;
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private Sprite FishIcon;
@@ -14,6 +14,11 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Sprite FriendshipIcon;
     [SerializeField] private Sprite AdventureIcon;
     [SerializeField] private ShopItem health = new ShopItem();
+
+    private void Start()
+    {
+        player = GameplayStateManager.Instance.Player;
+    }
 
     void Update()
     {
