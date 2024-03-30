@@ -78,11 +78,11 @@ public partial class Player : MonoBehaviour, IDamagable
     {
         if (isRunning && horizontalInput != 0)
         {
-            UseStamina(staminaDrainRate * Time.deltaTime);
+            DrainStamina(runningStaminaDrainMultiplier);
         }
         else if (Time.time - lastRunningTime > staminaRegenDelay)
         {
-            stamina += staminaRegenRate * Time.deltaTime;
+            stamina += baseStaminaRegenRate * Time.deltaTime;
             stamina = Mathf.Min(maxStamina, stamina);
         }
         StatusUIManager.Instance.UpdateStaminaBar(stamina / maxStamina, isStaminaOut);
@@ -108,33 +108,39 @@ public partial class Player : MonoBehaviour, IDamagable
         }
     }
 
-    private void UseStamina(float usage)
+    private void ReduceStamina(float amount)
     {
-        stamina = Mathf.Max(stamina - usage, 0f);
+        stamina = Mathf.Max(stamina - amount, 0f);
         if (stamina <= 0)
         {
             isStaminaOut = true;
         }
     }
 
+    private void UseStamina(float usageMultiplier)
+    {
+        ReduceStamina(baseStaminaUsage * usageMultiplier);
+    }
+
+    private void DrainStamina(float rateMultiplier)
+    {
+        ReduceStamina(baseStaminaDrainRate * rateMultiplier * Time.deltaTime);
+    }
+
     private void UpdatePhysicsCondition()
     {
-        isWalled = Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
+        isWalled = Physics2D.OverlapCircle(wallCheckTransform.position, 0.2f, wallLayer);
 
         bool grounded = false;
-        if(isLiquid)
-        {
-            grounded |= Physics2D.OverlapCircle(platformCheck.position, 0.4f, platformLayer);
-        }
 
-        RaycastHit2D hit = Physics2D.Raycast(origin: platformCheck.position, direction: Vector2.down
+        RaycastHit2D hit = Physics2D.Raycast(origin: playerFeetTransform.position, direction: Vector2.down
           , distance: 1f, layerMask: platformLayer);
 
         bool isRotated = false;
         if (hit.collider != null)
         {
-            Debug.DrawLine((Vector2)platformCheck.position, (Vector2)platformCheck.position - hit.normal, Color.yellow, 2.0f);
-            RaycastHit2D hit_rotated = Physics2D.Raycast(platformCheck.position, -hit.normal, 0.6f, platformLayer);
+            //Debug.DrawLine((Vector2)platformCheck.position, (Vector2)platformCheck.position - hit.normal, Color.yellow, 2.0f);
+            RaycastHit2D hit_rotated = Physics2D.Raycast(playerFeetTransform.position, -hit.normal, 0.6f, platformLayer);
             if (hit_rotated.collider != null)
             {
                 float rightAngle = Vector2.Angle(hit_rotated.normal, Vector2.right);
@@ -153,7 +159,6 @@ public partial class Player : MonoBehaviour, IDamagable
                 }
             }
         }
-        isOnSlope = isRotated;
         if(!isRotated)
         {
             sprite.transform.localPosition = initialSpritePos;
@@ -168,7 +173,7 @@ public partial class Player : MonoBehaviour, IDamagable
         }
 
         // For One-way Slope
-        RaycastHit2D hit_vel = Physics2D.Raycast(origin: platformCheck.position, direction: rb.velocity.x * Vector2.right
+        RaycastHit2D hit_vel = Physics2D.Raycast(origin: playerFeetTransform.position, direction: rb.velocity.x * Vector2.right
           , distance: 0.5f, layerMask: platformLayer);
         if (hit_vel.collider != null)
         {
@@ -257,12 +262,13 @@ public partial class Player : MonoBehaviour, IDamagable
             if (isRunning && horizontalInput * (isFacingRight ? 1 : -1) > 0 && !isStaminaOut)
             {
                 newVelY = wallClimbSpeed;
-                UseStamina(wallClimbStaminaDrain * Time.deltaTime);
+                DrainStamina(wallClimbStaminaDrainMultiplier);
                 isClimbingWall = true;
             }
             newVelocity.y = newVelY;
         }
             
+        // Only limit vertical velocity when !isFloating right now
         //newVelocity.y = Mathf.Min(newVelocity.y,isFloating ? maxFloatingVelocity : maxVerticalVelocity);
         if(!isFloating)
         {
@@ -319,7 +325,7 @@ public partial class Player : MonoBehaviour, IDamagable
                 if (isRunning)
                 {
                     Jump(false);
-                    UseStamina(runJumpStaminaUsage);
+                    UseStamina(runJumpStaminaUsageMultiplier);
                 }
                 else
                 {
@@ -364,7 +370,7 @@ public partial class Player : MonoBehaviour, IDamagable
         wallJumpEndTime = Time.time + wallJumpDuration;
         animator.SetBool("is_sliding", isWallSliding);
         FlipSprite(!isFacingRight);
-        UseStamina(wallJumpStaminaUsage);
+        UseStamina(wallJumpStaminaUsageMultiplier);
     }
 
     private void Dash()

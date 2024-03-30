@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7966581611437754249}
   - component: {fileID: 6300911348913575887}
   - component: {fileID: 6949340063422121023}
-  - component: {fileID: 8122826393693942434}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -83,135 +82,100 @@ MonoBehaviour:
   maxHealth: 3
   stamina: 100
   maxStamina: 100
-  immortalDuration: 0.5
   skillUnlockedCount: 0
   isLoadSave: 0
-  maxVerticalVelocity: 15
-  maxFloatingVelocity: 150
   moveSpeed: 6
   floatSpeed: 10
   runMultiplier: 2
-  staminaDrainRate: 20
-  staminaRegenRate: 10
-  staminaRegenDelay: 1
-  wallSlideSpeed: 3
-  wallClimbSpeed: 8
-  wallClimbStaminaDrain: 2
-  wallJumpSpeed: 25
-  wallJumpDuration: 0.3
-  wallJumpStaminaUsage: 10
-  runJumpStaminaUsage: 10
-  minimumStamina: 30
   jumpPower: 8
   chargeDuration: 0.75
   dashDuration: 0.35
   dashSpeed: 35
-  maxDashCount: 0
-  groundedDelay: 0.05
+  maxDashCount: 1
+  baseStaminaRegenRate: 10
+  baseStaminaDrainRate: 2
+  baseStaminaUsage: 10
+  runningStaminaDrainMultiplier: 8
+  runJumpStaminaUsageMultiplier: 1
+  wallSlideSpeed: 3
+  wallClimbSpeed: 8
+  wallClimbStaminaDrainMultiplier: 3
+  wallJumpSpeed: 25
+  wallJumpDuration: 0.3
+  wallJumpStaminaUsageMultiplier: 1
+  maxVerticalVelocity: 15
+  maxFloatingVelocity: 150
   gravityScale: 3
   risingGravityMultiplier: 1
   fallingGravityMultiplier: 1.5
-  platformCheck: {fileID: 7853424831748672024}
+  groundedDelay: 0.05
+  minimumStamina: 30
+  staminaRegenDelay: 1
+  immortalDuration: 0.5
+  cameraFollowDelay: 0.15
   platformLayer:
     serializedVersion: 2
     m_Bits: 64
-  wallCheckPivot: {fileID: 994092303103366131}
-  wallCheck: {fileID: 5363619793672450323}
   wallLayer:
     serializedVersion: 2
     m_Bits: 128
+  isLiquid: 0
+  liquidMoveForce: 100
+  liquidJumpForce: 75
+  liquidDashDuration: 0.15
+  liquidDashSpeed: 30
+  liquidMaxVerticalVelocity: 30
+  liquidMaxHorizontalVelocity: 30
   yarnBall: {fileID: 6657760650752459850, guid: c1f9e49855cd9e548948b8428afc7ce9, type: 3}
   facingRightOffset: {x: 1.2, y: 0.2, z: 0}
   facingLeftOffset: {x: -1.2, y: 0.2, z: 0}
   zone1: {fileID: 0}
   yarnBallSmoothTime: 0.3
-  isLiquid: 0
-  l_moveSpeed: 25
-  l_jumpPower: 75
-  bone_rigidbodies: []
-  bone_localPositions: []
-  bone_localRotations: []
-  l_platformCheck: {fileID: 1993321779579144029}
-  lastSetCameraFollowTime: 0
-  cameraFollowDelay: 0.15
-  l_dashDuration: 0.15
-  l_dashSpeed: 30
-  l_dashVelocity: {x: 0, y: 0}
-  l_dashEndTime: 0
-  passThroughPlatformList: []
+  playerFeetTransform: {fileID: 7853424831748672024}
+  liquidPlayerBottomTransform: {fileID: 1993321779579144029}
+  wallCheckPivot: {fileID: 994092303103366131}
+  wallCheckTransform: {fileID: 5363619793672450323}
+  cameraFollowTransform: {fileID: 4011058918413553049}
+  normalColliders: {fileID: 3740527523559206018}
+  liquid_rb: {fileID: 1556164492118065746}
+  liquidForm: {fileID: 5352324573042091964}
+  spriteObject: {fileID: 7462550174215218793}
   horizontalInput: 0
   verticalInput: 0
   horizontalSmooth: 0
   verticalSmooth: 0
-  isOnSlope: 0
   isFacingRight: 0
   isFreeze: 0
   isInterrupted: 0
   lastInterruptedTime: 0
   interruptedDuration: 0
+  lastDamagedTime: 0
   isBouncing: 0
   lastBounceTime: 0
   bounceDuration: 0
   bounceVelocity: {x: 0, y: 0}
+  passThroughPlatformList: []
+  isGrounded: 1
+  lastGroundedTime: 0
+  isFloating: 0
+  isChargeJumping: 0
   chargePercent: 0
   dashCount: 0
   dashEndTime: 0
   dashVelocity: {x: 0, y: 0}
   wallJumpVelocity: {x: 0, y: 0}
   wallJumpEndTime: 0
-  isGrounded: 1
-  lastGroundedTime: 0
-  isFloating: 0
-  hardPlatformCount: 0
-  isRayhitPlatform: 0
-  isOnHardPlatform: 0
   isWalled: 0
-  isChargeJumping: 0
-  lastRunningTime: 0
+  isWallSliding: 0
   isTryingToRun: 0
   isRunning: 0
-  isWallSliding: 0
+  lastRunningTime: 0
   isClimbingWall: 0
   isStaminaOut: 0
+  liquidDashVelocity: {x: 0, y: 0}
+  liquidDashEndTime: 0
+  lastSetCameraFollowTime: 0
   noClip: 0
-  lastDamagedTime: 0
-  initialScaleY: 0
-  initialSpritePos: {x: 0, y: 0, z: 0}
-  cameraFollowTransform: {fileID: 4011058918413553049}
-  normalColliders: {fileID: 3740527523559206018}
-  liquidForm: {fileID: 5352324573042091964}
-  liquid_rb: {fileID: 1556164492118065746}
-  animator: {fileID: 3813545583808664413}
---- !u!114 &8122826393693942434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455930444774944738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: e41463d21e40e5745abdcae48ac5cd8c, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Gamepad
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &609167211944849140
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +303,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 106092c4aa4240a48a5bfd36099eaefb, type: 2}
@@ -514,7 +478,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 106092c4aa4240a48a5bfd36099eaefb, type: 2}
@@ -689,7 +653,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 106092c4aa4240a48a5bfd36099eaefb, type: 2}
@@ -824,7 +788,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1993321779579144029}
   m_Layer: 0
-  m_Name: LiquidPlatformCheck
+  m_Name: LiquidBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -839,7 +803,7 @@ Transform:
   m_GameObject: {fileID: 3686948509741142355}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.55, z: 0}
+  m_LocalPosition: {x: 0, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1039,7 +1003,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 106092c4aa4240a48a5bfd36099eaefb, type: 2}
@@ -1279,7 +1243,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 106092c4aa4240a48a5bfd36099eaefb, type: 2}
@@ -1417,7 +1381,7 @@ GameObject:
   - component: {fileID: 8582903221396330904}
   - component: {fileID: 828835675359001808}
   m_Layer: 0
-  m_Name: Player_SoftBody
+  m_Name: LiquidForm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1615,7 +1579,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 106092c4aa4240a48a5bfd36099eaefb, type: 2}
@@ -1795,7 +1759,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 106092c4aa4240a48a5bfd36099eaefb, type: 2}
@@ -1907,7 +1871,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 106092c4aa4240a48a5bfd36099eaefb, type: 2}
@@ -2188,7 +2152,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 106092c4aa4240a48a5bfd36099eaefb, type: 2}

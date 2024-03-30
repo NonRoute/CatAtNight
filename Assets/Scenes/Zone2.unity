@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 594337943}
   - component: {fileID: 594337942}
   - component: {fileID: 594337941}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,6 +639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596928fb3b0c48b43a462a423437a29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPassthrough: 0
 --- !u!19719996 &594337944
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -8226,6 +8227,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84bd45a45cc3b3c4fad81f6a006a7531, type: 3}
+--- !u!1 &971489836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 971489838}
+  - component: {fileID: 971489837}
+  m_Layer: 0
+  m_Name: Zone2Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &971489837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971489836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb6815c69b3a7540b70e386bdae9ba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &971489838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971489836}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &997019653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8273,6 +8318,10 @@ PrefabInstance:
     - target: {fileID: 283057107384515610, guid: 528e2ef76fb801e47b4bfdec68ca4709, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3772654523880601883, guid: 528e2ef76fb801e47b4bfdec68ca4709, type: 3}
+      propertyPath: orthographic size
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6583682018307596764, guid: 528e2ef76fb801e47b4bfdec68ca4709, type: 3}
       propertyPath: m_Name
@@ -8595,7 +8644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dbed80618920042b717e57a3c305f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerOnPlatform: 0
 --- !u!19719996 &1279946145
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -8857,6 +8905,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1209195424}
+    - target: {fileID: 2163034183769492768, guid: acd8b0651228cf247818bd710805aa3e, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21428,3 +21480,4 @@ SceneRoots:
   - {fileID: 832028200}
   - {fileID: 1042374375}
   - {fileID: 1355997441}
+  - {fileID: 971489838}

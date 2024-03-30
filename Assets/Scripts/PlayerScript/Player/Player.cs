@@ -36,7 +36,8 @@ public partial class Player : MonoBehaviour, IDamagable
         // Initialize References
         normal_rb = GetComponent<Rigidbody2D>();
         rb = normal_rb;
-        sprite = GetComponentInChildren<SpriteRenderer>();
+        sprite = spriteObject.GetComponent<SpriteRenderer>();
+        animator = spriteObject.GetComponent<Animator>();
 
         // Initialize Status
         health = maxHealth;
@@ -49,14 +50,14 @@ public partial class Player : MonoBehaviour, IDamagable
         passThroughPlatformList = new();
 
         // Initialize Bone Positions for Liquid Form
-        bone_rigidbodies = liquid_rb.gameObject.GetComponentsInChildren<Rigidbody2D>();
-        bone_localPositions = new Vector3[bone_rigidbodies.Length];
-        bone_localRotations = new Quaternion[bone_rigidbodies.Length];
+        boneRigidbodies = liquid_rb.gameObject.GetComponentsInChildren<Rigidbody2D>();
+        boneLocalPositions = new Vector3[boneRigidbodies.Length];
+        bone_localRotations = new Quaternion[boneRigidbodies.Length];
         initialSpritePos = sprite.transform.localPosition;
-        for (int i = 0; i < bone_rigidbodies.Length; i++)
+        for (int i = 0; i < boneRigidbodies.Length; i++)
         {
-            Transform t = bone_rigidbodies[i].transform;
-            bone_localPositions[i] = t.localPosition;
+            Transform t = boneRigidbodies[i].transform;
+            boneLocalPositions[i] = t.localPosition;
             bone_localRotations[i] = t.localRotation;
         }
     }

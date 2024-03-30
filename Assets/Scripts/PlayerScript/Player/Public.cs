@@ -33,10 +33,10 @@ public partial class Player : MonoBehaviour, IDamagable
         }
         if (damageInfo.isBounce)
         {
-            Vector2 direction = ((Vector2)transform.position - attackerPos).normalized;
+            Vector2 direction = ((Vector2)rb.position - attackerPos).normalized;
             if (isLiquid)
             {
-                rb.AddForce(2f * damageInfo.bounceSpeed * direction, ForceMode2D.Impulse);
+                rb.AddForce(4f * damageInfo.bounceSpeed * direction, ForceMode2D.Impulse);
                 return;
             }
             isBouncing = true;
@@ -66,8 +66,8 @@ public partial class Player : MonoBehaviour, IDamagable
         {
             health = health,
             maxHealth = maxHealth,
-            staminaDrainRate = staminaDrainRate,
-            staminaRegenRate = staminaRegenRate,
+            staminaDrainRate = baseStaminaDrainRate,
+            staminaRegenRate = baseStaminaRegenRate,
             skillUnlockedCount = skillUnlockedCount,
         };
     }

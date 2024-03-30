@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public partial class Player : MonoBehaviour, IDamagable
 {
@@ -19,21 +18,12 @@ public partial class Player : MonoBehaviour, IDamagable
     private float maxStamina = 100f;
 
     [SerializeField]
-    private float immortalDuration = 1f;
-
-    [SerializeField]
     private int skillUnlockedCount = 1;
 
     [SerializeField]
     private bool isLoadSave = true;
 
     [Header("Power Values")]
-
-    [SerializeField]
-    public float maxVerticalVelocity = 15f;
-
-    [SerializeField]
-    public float maxFloatingVelocity = 150f;
 
     [SerializeField]
     public float moveSpeed = 6f;
@@ -43,39 +33,6 @@ public partial class Player : MonoBehaviour, IDamagable
 
     [SerializeField]
     private float runMultiplier = 2f;
-
-    [SerializeField]
-    private float staminaDrainRate = 20f;
-
-    [SerializeField]
-    private float staminaRegenRate = 10f;
-
-    [SerializeField]
-    private float staminaRegenDelay = 1f;
-
-    [SerializeField]
-    private float wallSlideSpeed = 3f;
-
-    [SerializeField]
-    private float wallClimbSpeed = 8f;
-
-    [SerializeField]
-    private float wallClimbStaminaDrain = 2f;
-
-    [SerializeField]
-    private float wallJumpSpeed = 12f;
-
-    [SerializeField]
-    private float wallJumpDuration = 0.3f;
-
-    [SerializeField]
-    private float wallJumpStaminaUsage = 10f;
-
-    [SerializeField]
-    private float runJumpStaminaUsage = 10f;
-
-    [SerializeField]
-    private float minimumStamina = 30f;
 
     [SerializeField]
     private float jumpPower = 8f;
@@ -93,9 +50,47 @@ public partial class Player : MonoBehaviour, IDamagable
     private int maxDashCount = 1;
 
     [SerializeField]
-    private float groundedDelay = 0.1f;
+    private float baseStaminaRegenRate = 10f;
 
-    [Header("Gravity Values")]
+    [SerializeField]
+    private float baseStaminaDrainRate = 2f;
+
+    [SerializeField]
+    private float baseStaminaUsage = 10f;
+
+    [SerializeField]
+    private float runningStaminaDrainMultiplier = 8f;
+
+    [SerializeField]
+    private float runJumpStaminaUsageMultiplier = 1f;
+
+    [SerializeField]
+    private float wallSlideSpeed = 3f;
+
+    [SerializeField]
+    private float wallClimbSpeed = 8f;
+
+    [SerializeField]
+    private float wallClimbStaminaDrainMultiplier = 3f;
+
+    [SerializeField]
+    private float wallJumpSpeed = 25f;
+
+    [SerializeField]
+    private float wallJumpDuration = 0.3f;
+
+    [SerializeField]
+    private float wallJumpStaminaUsageMultiplier = 1f;
+
+    [Header("Static Values")]
+
+    [SerializeField]
+    public float maxVerticalVelocity = 15f;
+
+    // Max Vertical Velocity when Floating
+    // It limits jumping so It is currently disabled
+    [SerializeField]
+    public float maxFloatingVelocity = 150f;
 
     [SerializeField]
     private float gravityScale = 3f;
@@ -106,22 +101,52 @@ public partial class Player : MonoBehaviour, IDamagable
     [SerializeField]
     private float fallingGravityMultiplier = 1.5f;
 
-    [Header("Collider Values")]
+    [SerializeField]
+    private float groundedDelay = 0.1f;
 
     [SerializeField]
-    private Transform platformCheck;
+    private float minimumStamina = 30f;
+
+    [SerializeField]
+    private float staminaRegenDelay = 1f;
+
+    // Duration that player will be immortal after receiving damage
+    [SerializeField]
+    private float immortalDuration = 1f;
+
+    [SerializeField]
+    private float cameraFollowDelay = 0.15f;
+
+    [Header("Collider Values")]
 
     [SerializeField]
     private LayerMask platformLayer;
 
     [SerializeField]
-    private Transform wallCheckPivot;
-
-    [SerializeField]
-    private Transform wallCheck;
-
-    [SerializeField]
     private LayerMask wallLayer;
+
+    [Header("Liquid Mode Values")]
+
+    [SerializeField]
+    private bool isLiquid = false;
+
+    [SerializeField]
+    private float liquidMoveForce = 25f;
+
+    [SerializeField]
+    private float liquidJumpForce = 75f;
+
+    [SerializeField]
+    private float liquidDashDuration = 0.2f;
+
+    [SerializeField]
+    private float liquidDashSpeed = 15f;
+
+    [SerializeField]
+    public float liquidMaxVerticalVelocity = 30f;
+
+    [SerializeField]
+    public float liquidMaxHorizontalVelocity = 30f;
 
     [Header("Zone 1")]
 
@@ -144,50 +169,59 @@ public partial class Player : MonoBehaviour, IDamagable
     [SerializeField]
     private float yarnBallSmoothTime;
 
-    [Header("Liquid Mode Values")]
-    [SerializeField]
-    private bool isLiquid = false;
+    [Header("References")]
 
     [SerializeField]
-    private float l_moveSpeed = 25f;
+    private Transform playerFeetTransform;
 
     [SerializeField]
-    private float l_jumpPower = 75f;
+    private Transform liquidPlayerBottomTransform;
 
     [SerializeField]
-    private Rigidbody2D[] bone_rigidbodies;
+    private Transform wallCheckPivot;
 
     [SerializeField]
-    private Vector3[] bone_localPositions;
+    private Transform wallCheckTransform;
 
     [SerializeField]
+    private Transform cameraFollowTransform;
+
+    [SerializeField]
+    private GameObject normalColliders;
+
+    private Rigidbody2D rb;
+
+    private Rigidbody2D normal_rb;
+
+    [SerializeField]
+    private Rigidbody2D liquid_rb;
+
+    [SerializeField]
+    private GameObject liquidForm;
+
+    [SerializeField]
+    private GameObject spriteObject;
+
+    private SpriteRenderer sprite;
+
+    private Animator animator;
+
+    // Initial liquid mode values
+    private Rigidbody2D[] boneRigidbodies;
+
+    private Vector3[] boneLocalPositions;
+
     private Quaternion[] bone_localRotations;
 
-    [SerializeField]
-    private Transform l_platformCheck;
+    // Use to Set Scale y when Charging Jump
+    private float initialScaleY;
 
-    [SerializeField]
-    private float lastSetCameraFollowTime = 0f;
+    // Use to restore sprite position after rotated
+    private Vector3 initialSpritePos;
 
-    [SerializeField]
-    private float cameraFollowDelay = 0.15f;
-
-    [SerializeField]
-    private float l_dashDuration = 0.2f;
-
-    [SerializeField]
-    private float l_dashSpeed = 15f;
-
-    [SerializeField]
-    private Vector2 l_dashVelocity = Vector2.zero;
-
-    [SerializeField]
-    private float l_dashEndTime = 0f;
+    private PlayerInputActions playerInputActions;
 
     [Header("Debug Values")]
-
-    [SerializeField]
-    List<Platform> passThroughPlatformList;
 
     [Header("--Input")]
 
@@ -206,13 +240,13 @@ public partial class Player : MonoBehaviour, IDamagable
     [Header("--States")]
 
     [SerializeField]
-    private bool isOnSlope = false;
-
-    [SerializeField]
     private bool isFacingRight = false;
 
     [SerializeField]
     private bool isFreeze = false;
+
+    // Damage-related variables
+    [Header("--Damage-related")]
 
     [SerializeField]
     private bool isInterrupted = false;
@@ -222,6 +256,9 @@ public partial class Player : MonoBehaviour, IDamagable
 
     [SerializeField]
     private float interruptedDuration = 0f;
+
+    [SerializeField]
+    private float lastDamagedTime = 0f;
 
     [SerializeField]
     private bool isBouncing = false;
@@ -234,6 +271,24 @@ public partial class Player : MonoBehaviour, IDamagable
 
     [SerializeField]
     private Vector2 bounceVelocity;
+
+    // Jumping-related variables
+    [Header("--Jump-related")]
+
+    [SerializeField]
+    List<Platform> passThroughPlatformList;
+
+    [SerializeField]
+    private bool isGrounded = true;
+
+    [SerializeField]
+    private float lastGroundedTime = 0f;
+
+    [SerializeField]
+    private bool isFloating = false;
+
+    [SerializeField]
+    private bool isChargeJumping = false;
 
     [SerializeField]
     private float chargePercent = 0f;
@@ -254,22 +309,13 @@ public partial class Player : MonoBehaviour, IDamagable
     private float wallJumpEndTime = 0f;
 
     [SerializeField]
-    private bool isGrounded = true;
-
-    [SerializeField]
-    private float lastGroundedTime = 0f;
-
-    [SerializeField]
-    private bool isFloating = false;
-
-    [SerializeField]
     private bool isWalled = false;
 
     [SerializeField]
-    private bool isChargeJumping = false;
+    private bool isWallSliding = false;
 
-    [SerializeField]
-    private float lastRunningTime = 0f;
+    // Stamina-related variables
+    [Header("--Stamina-related")]
 
     [SerializeField]
     private bool isTryingToRun = false;
@@ -278,7 +324,7 @@ public partial class Player : MonoBehaviour, IDamagable
     private bool isRunning = false;
 
     [SerializeField]
-    private bool isWallSliding = false;
+    private float lastRunningTime = 0f;
 
     [SerializeField]
     private bool isClimbingWall = false;
@@ -286,41 +332,22 @@ public partial class Player : MonoBehaviour, IDamagable
     [SerializeField]
     private bool isStaminaOut = false;
 
+    // Liquid Mode-related variables
+    [Header("--Liquid Mode-related")]
+
+    [SerializeField]
+    private Vector2 liquidDashVelocity = Vector2.zero;
+
+    // Need to seperate this because dashing should stop when player transform from liquid to solid form
+    [SerializeField]
+    private float liquidDashEndTime = 0f;
+
+    [Header("--Others")]
+
+    [SerializeField]
+    private float lastSetCameraFollowTime = 0f;
+
     [SerializeField]
     private bool noClip = false;
-
-    [SerializeField]
-    private float lastDamagedTime = 0f;
-
-    [SerializeField]
-    private float initialScaleY;
-
-    [SerializeField]
-    private Vector3 initialSpritePos;
-
-    [Header("References")]
-
-    [SerializeField]
-    private Transform cameraFollowTransform;
-
-    [SerializeField]
-    private GameObject normalColliders;
-
-    [SerializeField]
-    private GameObject liquidForm;
-
-    [SerializeField]
-    private Rigidbody2D liquid_rb;
-
-    private SpriteRenderer sprite;
-
-    private PlayerInputActions playerInputActions;
-
-    [SerializeField]
-    private Animator animator;
-
-    private Rigidbody2D normal_rb;
-
-    private Rigidbody2D rb;
 
 }

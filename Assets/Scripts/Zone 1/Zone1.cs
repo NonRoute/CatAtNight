@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class Zone1 : MonoBehaviour
 {
     [SerializeField] private GameObject[] bossRoomYarnBallBoxes;
+
+    private void Start()
+    {
+        SoundManager.TryPlayMusic("Zone 1 Music");
+    }
 
     public void ChangeYarnBallBoxPosition()
     {
