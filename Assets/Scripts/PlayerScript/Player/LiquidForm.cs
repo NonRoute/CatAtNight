@@ -200,6 +200,10 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void StartMovePipe(PipeEnd pipeEnd)
     {
+        //Reset Dashing
+        dashCount = 0;
+
+        // Set Up Moving In Pipe
         isPipeForward = pipeEnd.IsForward;
         currentPipe = pipeEnd.Pipe;
         isInPipe = true;
@@ -209,6 +213,7 @@ public partial class Player : MonoBehaviour, IDamagable
         travelStartTime = timeBeforeEnter;
         travelEndTime = timeBeforeEnter + GetPipeDuration(pipeIndex);
 
+        // Switch to Static Mode
         SwitchMode(false);
         spriteObject.SetActive(false);
         staticLiquidSprite.SetActive(true);

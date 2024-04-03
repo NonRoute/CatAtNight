@@ -167,7 +167,7 @@ public partial class Player : MonoBehaviour, IDamagable
         SetGrounded(grounded);
 
         // Check FLoating
-        if(grounded && rb.velocity.y < 0)
+        if(grounded && rb.velocity.y <= 0)
         {
             isFloating = false;
         }
