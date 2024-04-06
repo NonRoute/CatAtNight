@@ -87,8 +87,9 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void Update()
     {
-        // Update Position That Camera will Follow
+        // Update Position References
         UpdateCameraFollowPosition();
+        UpdateCompanionMovement();
 
         // Update State of the Game
         // Currently there is only freezing state
@@ -162,8 +163,14 @@ public partial class Player : MonoBehaviour, IDamagable
             SwitchMode(!isLiquid);
         }
 
+        // Call Companion
+        if (playerInputActions.Player.CallCompanion.WasPressedThisFrame())
+        {
+            companion.ToggleCompanion(startDelayedPosition);
+        }
+
         // Noclip for DEBUG only. No need to change anything here
-        if (IS_DEBUG && Input.GetKeyDown(KeyCode.C))
+        if (IS_DEBUG && Input.GetKeyDown(KeyCode.X))
         {
             noClip = !noClip;
             rb.bodyType = (noClip) ? RigidbodyType2D.Kinematic : RigidbodyType2D.Dynamic;

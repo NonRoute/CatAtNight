@@ -46532,10 +46532,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e047d13b8f873344b8c53aeb15f7be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGoingToNextPos: 0
-  timeToTravel: 1
+  isEnabled: 0
+  isJumpingToNextPos: 0
+  isWalkingToNextPos: 0
+  walkSpeed: 5
+  runSpeed: 8
+  timeToJump: 1
   gravity: -20
   destination: {x: 0, y: 0}
+  verticalThreshold: 5
+  spriteTransform: {fileID: 34374241}
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &531349876
 Rigidbody2D:
   serializedVersion: 4
@@ -66750,6 +66759,22 @@ PrefabInstance:
     - target: {fileID: 455930444774944738, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949340063422121023, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
+      propertyPath: companion
+      value: 
+      objectReference: {fileID: 531349875}
+    - target: {fileID: 6949340063422121023, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
+      propertyPath: delayDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949340063422121023, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
+      propertyPath: companionTriggerTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949340063422121023, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
+      propertyPath: companionTriggerDistance
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7966581611437754249, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
       propertyPath: m_LocalPosition.x

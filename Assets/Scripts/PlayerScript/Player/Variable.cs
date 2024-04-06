@@ -151,6 +151,29 @@ public partial class Player : MonoBehaviour, IDamagable
     [SerializeField]
     public float liquidMaxHorizontalVelocity = 30f;
 
+    [Header("Companion Skill Values")]
+
+    [SerializeField]
+    private Vector2 lastGroundPosition;
+
+    [SerializeField]
+    private Vector2 lastLandingPosition;
+
+    [SerializeField]
+    private float startDelayDistance = 8f;
+
+    [SerializeField]
+    private float companionTriggerDistance = 3f;
+
+    [SerializeField]
+    private float companionTriggerTime = 3f;
+
+    [SerializeField]
+    private float delayDistance = 2f;
+
+    [SerializeField]
+    private float delayPositionTime = 1f;
+
     [Header("Zone 1")]
 
     [SerializeField]
@@ -173,6 +196,9 @@ public partial class Player : MonoBehaviour, IDamagable
     private float yarnBallSmoothTime;
 
     [Header("References")]
+
+    [SerializeField]
+    private Companion companion;
 
     [SerializeField]
     private Transform playerFeetTransform;
@@ -371,6 +397,21 @@ public partial class Player : MonoBehaviour, IDamagable
 
     [SerializeField]
     private Pipe currentPipe;
+
+    // Companion-related variables
+    [Header("--Companion-related")]
+
+    [SerializeField]
+    private Vector2 startDelayedPosition = Vector2.zero;
+
+    [SerializeField]
+    private Vector2 delayedPosition = Vector2.zero;
+
+    [SerializeField]
+    private float lastSetDelayedPositionTime = 0f;
+
+    [SerializeField]
+    private float lastSetCompanionPositionTime = 0f;
 
     [Header("--Others")]
 

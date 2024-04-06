@@ -7,9 +7,36 @@ public partial class Player : MonoBehaviour, IDamagable
     {
         // Have some delay between each time to prevent camera shaking
         if (Time.time - lastSetCameraFollowTime < cameraFollowDelay)
-            return;
-        // Set position to current rigidbody (current form) position
-        cameraFollowTransform.position = rb.transform.position;
+        {
+            // Set position to current rigidbody (current form) position
+            cameraFollowTransform.position = rb.transform.position;
+        }
+    }
+
+    private void UpdateCompanionMovement()
+    {
+        // Set position for Companion
+        Vector2 currentPosition = lastGroundPosition;
+        // Update Position to Follow
+        if (Vector2.Distance(currentPosition, delayedPosition) > delayDistance
+            || Time.time - lastSetDelayedPositionTime > delayPositionTime)
+        {
+            delayedPosition = currentPosition;
+            lastSetDelayedPositionTime = Time.time;
+        }
+        // Update Position when start Calling Companion
+        if (Vector2.Distance(currentPosition, startDelayedPosition) > startDelayDistance)
+        {
+            startDelayedPosition = currentPosition;
+        }
+
+
+        if (Vector2.Distance(delayedPosition, companion.transform.position) > companionTriggerDistance
+            || Time.time - lastSetCompanionPositionTime > companionTriggerTime)
+        {
+            companion.GoToNextPos(delayedPosition);
+            lastSetCompanionPositionTime = Time.time;
+        }
     }
 
     private void UpdateSprite()
@@ -146,7 +173,7 @@ public partial class Player : MonoBehaviour, IDamagable
                 float rightAngle = Vector2.Angle(hit_rotated.normal, Vector2.right);
                 float leftAngle = Vector2.Angle(hit_rotated.normal, Vector2.left);
                 float rotateAngle = Vector2.Angle(hit_rotated.normal, Vector2.up);
-                if(Mathf.Abs(rotateAngle) > 30f)
+                if (Mathf.Abs(rotateAngle) > 30f)
                 {
                     isRotated = true;
                     RotateSprite(((rightAngle < leftAngle) ? -1 : 1) * rotateAngle);
@@ -157,9 +184,22 @@ public partial class Player : MonoBehaviour, IDamagable
                 {
                     grounded |= hit.distance <= 0.3f;
                 }
+
+                if(grounded)
+                {
+                    lastGroundPosition = hit.point;
+                    if(Mathf.Abs(rotateAngle) <= 1f)
+                    {
+                        lastGroundPosition.y = Mathf.RoundToInt(lastGroundPosition.y);
+                    }
+                    if(!isGrounded)
+                    {
+                        lastLandingPosition = lastGroundPosition;
+                    }
+                }
             }
         }
-        if(!isRotated)
+        if (!isRotated)
         {
             sprite.transform.localPosition = initialSpritePos;
             RotateSprite(0);
@@ -167,7 +207,7 @@ public partial class Player : MonoBehaviour, IDamagable
         SetGrounded(grounded);
 
         // Check FLoating
-        if(grounded && rb.velocity.y <= 0)
+        if (grounded && rb.velocity.y <= 0)
         {
             isFloating = false;
         }
@@ -266,10 +306,10 @@ public partial class Player : MonoBehaviour, IDamagable
             }
             newVelocity.y = newVelY;
         }
-            
+
         // Only limit vertical velocity when !isFloating right now
         //newVelocity.y = Mathf.Min(newVelocity.y,isFloating ? maxFloatingVelocity : maxVerticalVelocity);
-        if(!isFloating)
+        if (!isFloating)
         {
             newVelocity.y = Mathf.Min(newVelocity.y, maxVerticalVelocity);
         }
@@ -294,7 +334,7 @@ public partial class Player : MonoBehaviour, IDamagable
         if ((pressedJump && verticalInput < 0) || dropDown)
         {
             List<Platform> toBeDisable = new(passThroughPlatformList);
-            foreach(Platform platform in toBeDisable)
+            foreach (Platform platform in toBeDisable)
             {
                 isDropDown = true;
                 platform.TemporaryDisableCollider();
