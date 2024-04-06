@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 // For sending player status to other scripts
@@ -19,6 +20,14 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void Awake()
     {
+        StartCoroutine(SetInstance());
+    }
+
+    IEnumerator SetInstance()
+    {
+        Debug.Log("Waiting for GameplayStateManager Instance");
+        yield return new WaitUntil(() => GameplayStateManager.Instance != null);
+        Debug.Log("Setting Player Instance");
         GameplayStateManager.Instance.SetPlayer(this);
     }
 

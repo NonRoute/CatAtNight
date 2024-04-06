@@ -9316,6 +9316,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Virtual Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 2163034183769492768, guid: acd8b0651228cf247818bd710805aa3e, type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 2050962826}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21644,6 +21648,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!4 &2050962826 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4011058918413553049, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
+  m_PrefabInstance: {fileID: 1209195423}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2093769805
 GameObject:
   m_ObjectHideFlags: 0
