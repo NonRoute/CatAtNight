@@ -67,6 +67,7 @@ public partial class Player : MonoBehaviour, IDamagable
         if (isLiquid)
         {
             normal_rb.bodyType = RigidbodyType2D.Kinematic;
+            normal_rb.velocity = Vector2.zero;
             spriteObject.SetActive(false);
             normalColliders.SetActive(false);
             liquid_rb.transform.position = position;
@@ -90,7 +91,6 @@ public partial class Player : MonoBehaviour, IDamagable
             normal_rb.velocity = Vector2.zero;
             rb = normal_rb;
         }
-        lastSetCameraFollowTime = Time.time;
         cameraFollowTransform.position = position;
         StatusUIManager.Instance.ToggleLiquidImage(isLiquid);
     }

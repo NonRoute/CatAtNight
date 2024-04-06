@@ -5,27 +5,34 @@ using UnityEngine;
 public class Companion : MonoBehaviour
 {
     [SerializeField] bool isEnabled = false;
-    [SerializeField] bool isJumping = false;
+    [SerializeField] bool isWalkingOut = false;
+    // Walk
+    [SerializeField] Vector2 destination;
     [SerializeField] bool isGoingToNextPos = false;
     [SerializeField] float walkSpeed = 5f;
-    [SerializeField] float runSpeed = 8f;
+    [SerializeField] float runSpeed = 9f;
+    [SerializeField] float runThreshold = 6f;
+    // Jump
+    [SerializeField] bool isJumping = false;
     [SerializeField] float timeToJump = 1f;
     [SerializeField] float gravity = -10f;
-    [SerializeField] Vector2 destination;
-    [SerializeField] float verticalThreshold = 1f;
+
+    // may use in the future
+    // but it is really hard to implement right now
     [SerializeField] Queue<Vector2> jumpPositions;
+
+    // References
     [SerializeField] Transform spriteTransform;
+    private float outDirection = 1f;
     private Vector2 startPosition;
-    private float direction = 1;
-    private float walkEndTime = 0f;
     private float jumpEndTime;
     private float velocityX;
     private float velocityY;
 
     private Rigidbody2D rb;
 
-    [SerializeField]
-    private LayerMask platformLayer;
+    [SerializeField] private LayerMask platformLayer;
+    [SerializeField] private LayerMask blockLayer;
 
     private void Start()
     {
@@ -40,51 +47,148 @@ public class Companion : MonoBehaviour
             GoToPlayerPos();
         }
 
+        if (isJumping)
+        {
+            UpdateJumping();
+            return;
+        }
+
+        if (isWalkingOut)
+        {
+            UpdateWalkOut();
+        }
+
         if (!isEnabled) return;
 
         if (isGoingToNextPos)
         {
+            UpdateWalking();
+        }
+    }
 
-            if (Mathf.Abs(transform.position.x - destination.x) < Mathf.Abs(transform.position.y - destination.y))
-            {
-                isGoingToNextPos = false;
-                Jump(transform.position, destination);
-                return;
-            }
+    private void UpdateWalking()
+    {
+        bool willJump = false;
 
-            RaycastHit2D hit = Physics2D.Raycast(origin: transform.position + 0.2f * Vector3.up, direction: Vector2.down
-            , distance: 1f, layerMask: platformLayer);
+        Vector2 currentPos = transform.position;
 
-            if (hit.collider != null)
-            {
-                Vector2 perpendicular = Vector2.Perpendicular(hit.normal);
-                RotateSprite(hit.normal);
-                float direction = Mathf.Sign(destination.x - transform.position.x);
-                Vector2 velocity = direction * walkSpeed * -perpendicular.normalized;
-                transform.Translate(velocity * Time.deltaTime);
-            }
-            else
-            {
-                isGoingToNextPos = false;
-                Jump(transform.position, destination);
-            }
+        RaycastHit2D hit = Physics2D.Raycast(origin: currentPos + 0.2f * Vector2.up, direction: Vector2.down
+        , distance: 1f, layerMask: platformLayer);
 
-            if(Vector2.Distance(transform.position, destination) < 0.1f)
+        Vector2 walkDirection = Vector2.right;
+
+        if (hit.collider != null)
+        {
+            Vector2 perpendicular = Vector2.Perpendicular(hit.normal);
+            RotateSprite(hit.normal);
+            float direction = Mathf.Sign(destination.x - currentPos.x);
+            float speed = walkSpeed;
+            float distanceX = Mathf.Abs(destination.x - currentPos.x);
+            if (distanceX > runThreshold)
             {
-                transform.position = destination;
-                isGoingToNextPos = false;
+                speed = runSpeed;
+                // Smoothing
+                if (distanceX < runThreshold + 2f)
+                {
+                    speed = Mathf.Lerp(walkSpeed, runSpeed, (distanceX - runThreshold) / 2f);
+                }
             }
+            walkDirection = direction * -perpendicular.normalized;
+            Vector2 velocity = speed * walkDirection;
+            transform.Translate(velocity * Time.deltaTime);
+        }
+        else
+        {
+            willJump = true;
         }
 
-        if (isJumping)
+        Debug.DrawLine(currentPos + 0.5f * Vector2.up, currentPos + 0.5f * Vector2.up + 0.3f * walkDirection, Color.yellow, 2.0f);
+        RaycastHit2D hit_side = Physics2D.Raycast(origin: currentPos + 0.5f * Vector2.up, direction: walkDirection
+        , distance: 0.3f, layerMask: blockLayer);
+        if (hit_side.collider != null)
         {
-            Vector2 displacement = new Vector2(velocityX, velocityY) * Time.deltaTime;
-            transform.Translate(displacement);
-            if (Time.time > jumpEndTime)
+            //print(hit_side.collider.gameObject.name);
+            willJump = true;
+        }
+
+        willJump |= 1.5f * Mathf.Abs(currentPos.x - destination.x) < Mathf.Abs(currentPos.y - destination.y);
+
+        if (willJump)
+        {
+            isGoingToNextPos = false;
+            Jump(currentPos, destination);
+            return;
+        }
+
+        if (Vector2.Distance(transform.position, destination) < 0.1f)
+        {
+            transform.position = destination;
+            isGoingToNextPos = false;
+        }
+    }
+
+    private void UpdateJumping()
+    {
+        Vector2 displacement = new Vector2(velocityX, velocityY) * Time.deltaTime;
+        transform.Translate(displacement);
+        if (Time.time > jumpEndTime)
+        {
+            transform.position = destination;
+            RaycastHit2D hit = Physics2D.Raycast(origin: transform.position + 0.2f * Vector3.up, direction: Vector2.down
+                , distance: 1f, layerMask: platformLayer);
+            if (hit.collider != null)
             {
-                transform.position = destination;
-                isJumping = false;
+                RotateSprite(hit.normal);
             }
+            isJumping = false;
+        }
+    }
+
+    private void UpdateWalkOut()
+    {
+        bool willJump = false;
+
+        Vector2 currentPos = transform.position;
+
+        RaycastHit2D hit = Physics2D.Raycast(origin: currentPos + 0.2f * Vector2.up, direction: Vector2.down
+        , distance: 1f, layerMask: platformLayer);
+
+        Vector2 walkDirection = Vector2.right;
+
+        if (hit.collider != null)
+        {
+            Vector2 perpendicular = Vector2.Perpendicular(hit.normal);
+            RotateSprite(hit.normal);
+            walkDirection = outDirection * -perpendicular.normalized;
+            Vector2 velocity = runSpeed * walkDirection;
+            transform.Translate(velocity * Time.deltaTime);
+        }
+        else
+        {
+            willJump = true;
+        }
+
+        RaycastHit2D hit_side = Physics2D.Raycast(origin: currentPos + 0.2f * Vector2.up, direction: walkDirection
+        , distance: 0.3f, layerMask: blockLayer);
+        if (hit_side.collider != null)
+        {
+            willJump = true;
+        }
+
+        if (willJump)
+        {
+            Jump(currentPos, currentPos + new Vector2(outDirection * 20f, 9f));
+            StartCoroutine(Hide());
+            isWalkingOut = false;
+            return;
+        }
+
+        Vector2 playerPos = GameplayStateManager.Instance.Player.GetCameraFollow().position;
+
+        if (Mathf.Abs(playerPos.x - currentPos.x) > 20f)
+        {
+            spriteTransform.gameObject.SetActive(false);
+            isWalkingOut = false;
         }
     }
 
@@ -103,38 +207,53 @@ public class Companion : MonoBehaviour
         float rightAngle = Vector2.Angle(normal, Vector2.right);
         float leftAngle = Vector2.Angle(normal, Vector2.left);
         float rotateAngle = Vector2.Angle(normal, Vector2.up);
+        RotateSprite(((rightAngle < leftAngle) ? -1 : 1) * rotateAngle);
         spriteTransform.rotation = Quaternion.Euler(0f, 0f, ((rightAngle < leftAngle) ? -1 : 1) * rotateAngle);
+    }
+
+    private void RotateSprite(float angle)
+    {
+        spriteTransform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
     public void ToggleCompanion(Vector2 posToJump)
     {
         isEnabled = !isEnabled;
+        Vector2 playerPos = GameplayStateManager.Instance.Player.GetCameraFollow().position;
+        float direction = Mathf.Sign(posToJump.x - playerPos.x);
         if (isEnabled)
         {
-            Vector2 playPos = GameplayStateManager.Instance.Player.GetCameraFollow().position;
-            float direction = Mathf.Sign(posToJump.x - playPos.x);
-            transform.position = posToJump + new Vector2(direction * 20f, 9f);
+            // Jump in
+            spriteTransform.gameObject.SetActive(true);
+            Vector2 startPos = posToJump + new Vector2(direction * 20f, 9f);
+            //posToJump += direction * 0.5f * Vector2.right;
             isGoingToNextPos = false;
-            Jump(transform.position, posToJump);
+            Jump(startPos, posToJump);
+        }
+        else
+        {
+            // Jump out
+            //Vector2 endPos = posToJump + new Vector2(direction * 20f, 9f);
+            //Jump(transform.position, endPos);
+            isGoingToNextPos = false;
+            isWalkingOut = true;
+            outDirection = direction;
+            //StartCoroutine(Hide());
         }
     }
 
-    [ContextMenu("Simulate Travel")]
-    public void GoToNextPos()
+    IEnumerator Hide()
     {
-        GoToNextPos(destination);
+        yield return new WaitForSeconds(timeToJump);
+        if (!isEnabled)
+        {
+            spriteTransform.gameObject.SetActive(false);
+        }
     }
 
-    [ContextMenu("Simulate Travel to Player")]
-    public void GoToPlayerPos()
+    public void GoTo(Vector2 destination)
     {
-        GoToNextPos(GameplayStateManager.Instance.Player.GetCameraFollow().position - 0.55f * Vector3.up);
-    }
-
-    public void GoToNextPos(Vector2 destination)
-    {
-        if (!isEnabled) return;
-        if (isJumping) return;
+        if (!isEnabled || isJumping) return;
 
         RaycastHit2D hit = Physics2D.Raycast(origin: destination, direction: Vector2.down
           , distance: 0.5f, layerMask: platformLayer);
@@ -143,33 +262,30 @@ public class Companion : MonoBehaviour
             destination.y = hit.point.y;
         }
 
-        WalkToNextPos(destination);
+        WalkTo(destination);
     }
 
-    private void WalkToNextPos(Vector2 destination)
+    private void WalkTo(Vector2 destination)
     {
         startPosition = transform.position;
         this.destination = destination;
 
         // Set feet to ground
-        RaycastHit2D hit = Physics2D.Raycast(origin: startPosition, direction: Vector2.down
-          , distance: 3f, layerMask: platformLayer);
+        RaycastHit2D hit = Physics2D.Raycast(origin: startPosition + 0.2f * Vector2.up, direction: Vector2.down
+          , distance: 0.5f, layerMask: platformLayer);
         if (hit.collider != null)
         {
             startPosition.y = hit.point.y;
         }
         transform.position = startPosition;
-        direction = Mathf.Sign(destination.x - startPosition.x);
-
-        walkEndTime = Time.time + Mathf.Abs(destination.x - startPosition.x) / walkSpeed;
 
         isGoingToNextPos = true;
     }
 
-
     private void Jump(Vector2 startPosition, Vector2 destination)
     {
         transform.position = startPosition;
+        RotateSprite(0f);
         this.startPosition = startPosition;
         this.destination = destination;
 
@@ -180,5 +296,12 @@ public class Companion : MonoBehaviour
 
         jumpEndTime = Time.time + timeToJump;
         isJumping = true;
+    }
+
+    // For Debug Only
+    [ContextMenu("Simulate Travel to Player")]
+    public void GoToPlayerPos()
+    {
+        GoTo(GameplayStateManager.Instance.Player.GetCameraFollow().position - 0.55f * Vector3.up);
     }
 }

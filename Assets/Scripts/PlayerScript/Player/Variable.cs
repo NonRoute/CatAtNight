@@ -114,9 +114,6 @@ public partial class Player : MonoBehaviour, IDamagable
     [SerializeField]
     private float immortalDuration = 1f;
 
-    [SerializeField]
-    private float cameraFollowDelay = 0.15f;
-
     [Header("Collider Values")]
 
     [SerializeField]
@@ -154,22 +151,16 @@ public partial class Player : MonoBehaviour, IDamagable
     [Header("Companion Skill Values")]
 
     [SerializeField]
-    private Vector2 lastGroundPosition;
-
-    [SerializeField]
-    private Vector2 lastLandingPosition;
-
-    [SerializeField]
     private float startDelayDistance = 8f;
 
     [SerializeField]
-    private float companionTriggerDistance = 3f;
+    private float companionTriggerDistance = 5f;
 
     [SerializeField]
-    private float companionTriggerTime = 3f;
+    private float companionTriggerTime = 2f;
 
     [SerializeField]
-    private float delayDistance = 2f;
+    private float delayDistance = 3f;
 
     [SerializeField]
     private float delayPositionTime = 1f;
@@ -402,6 +393,12 @@ public partial class Player : MonoBehaviour, IDamagable
     [Header("--Companion-related")]
 
     [SerializeField]
+    private Vector2 lastGroundPosition;
+
+    [SerializeField]
+    private Vector2 lastLandingPosition;
+
+    [SerializeField]
     private Vector2 startDelayedPosition = Vector2.zero;
 
     [SerializeField]
@@ -414,9 +411,6 @@ public partial class Player : MonoBehaviour, IDamagable
     private float lastSetCompanionPositionTime = 0f;
 
     [Header("--Others")]
-
-    [SerializeField]
-    private float lastSetCameraFollowTime = 0f;
 
     [SerializeField]
     private bool noClip = false;

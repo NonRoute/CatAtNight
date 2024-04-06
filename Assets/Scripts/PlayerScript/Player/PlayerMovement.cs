@@ -5,12 +5,9 @@ public partial class Player : MonoBehaviour, IDamagable
 {
     private void UpdateCameraFollowPosition()
     {
-        // Have some delay between each time to prevent camera shaking
-        if (Time.time - lastSetCameraFollowTime < cameraFollowDelay)
-        {
-            // Set position to current rigidbody (current form) position
-            cameraFollowTransform.position = rb.transform.position;
-        }
+        // No need to delay anymore because we enabled physics interpolation
+        // Set position to current rigidbody (current form) position
+        cameraFollowTransform.position = rb.transform.position;
     }
 
     private void UpdateCompanionMovement()
@@ -34,7 +31,7 @@ public partial class Player : MonoBehaviour, IDamagable
         if (Vector2.Distance(delayedPosition, companion.transform.position) > companionTriggerDistance
             || Time.time - lastSetCompanionPositionTime > companionTriggerTime)
         {
-            companion.GoToNextPos(delayedPosition);
+            companion.GoTo(delayedPosition);
             lastSetCompanionPositionTime = Time.time;
         }
     }
