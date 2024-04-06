@@ -13,11 +13,28 @@ public class Companion : MonoBehaviour
     private float velocityX;
     private float velocityY;
 
+    private Rigidbody2D rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.P))
         {
             GoToPlayerPos();
+        }
+        if (isGoingToNextPos)
+        {
+            Vector2 displacement = new Vector2(velocityX,velocityY) * Time.deltaTime;
+            transform.Translate(displacement);
+            if (Time.time > travelEndTime)
+            {
+                transform.position = destination;
+                isGoingToNextPos = false;
+            }
         }
     }
 
@@ -25,14 +42,7 @@ public class Companion : MonoBehaviour
     {
         if(isGoingToNextPos)
         {
-            Vector2 displacement = new Vector2(velocityX,velocityY) * Time.fixedDeltaTime;
-            transform.Translate(displacement);
             velocityY += gravity * Time.fixedDeltaTime;
-            if(Time.time > travelEndTime)
-            {
-                transform.position = destination;
-                isGoingToNextPos = false;
-            }
         }
     }
 
@@ -45,7 +55,7 @@ public class Companion : MonoBehaviour
     [ContextMenu("Simulate Travel to Player")]
     public void GoToPlayerPos()
     {
-        GoToNextPos(GameplayStateManager.Instance.Player.transform.position - 0.55f * Vector3.up);
+        GoToNextPos(GameplayStateManager.Instance.Player.GetCameraFollow().position - 0.55f * Vector3.up);
     }
 
     public void GoToNextPos(Vector2 destination)

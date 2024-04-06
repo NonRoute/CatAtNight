@@ -24,17 +24,17 @@ public partial class Player : MonoBehaviour, IDamagable
             RaycastHit2D hit = Physics2D.Raycast(origin: rb.transform.position, direction: Vector2.down
                 , distance: 1f, layerMask: platformLayer);
 
+            float forcePower = liquidMoveForce * horizontalSmooth * (isFloating ? liquidFloatingMultiplier : 1);
             if (hit.collider != null)
             {
                 Vector2 perpendicular = Vector2.Perpendicular(hit.normal);
                 //print(perpendicular);
                 //Debug.DrawLine((Vector2)rb.transform.position, (Vector2)rb.transform.position + perpendicular, Color.yellow, 2.0f);
-                float forcePower = liquidMoveForce * horizontalSmooth * (isFloating ? liquidFloatingMultiplier : 1);
                 rb.AddForce(forcePower * -perpendicular.normalized);
             }
             else
             {
-                rb.AddForce(liquidMoveForce * horizontalSmooth * Vector2.right);
+                rb.AddForce(forcePower * Vector2.right);
             }
         }
 
