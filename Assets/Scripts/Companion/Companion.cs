@@ -6,6 +6,7 @@ public class Companion : MonoBehaviour
 {
     [SerializeField] bool isEnabled = false;
     [SerializeField] bool isWalkingOut = false;
+    [SerializeField] bool isStayStill = false;
     // Walk
     [SerializeField] Vector2 destination;
     [SerializeField] bool isGoingToNextPos = false;
@@ -42,10 +43,6 @@ public class Companion : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            GoToPlayerPos();
-        }
 
         if (isJumping)
         {
@@ -88,9 +85,9 @@ public class Companion : MonoBehaviour
             {
                 speed = runSpeed;
                 // Smoothing
-                if (distanceX < runThreshold + 2f)
+                if (distanceX < runThreshold + 4f)
                 {
-                    speed = Mathf.Lerp(walkSpeed, runSpeed, (distanceX - runThreshold) / 2f);
+                    speed = Mathf.Lerp(walkSpeed, runSpeed, (distanceX - runThreshold) / 4f);
                 }
             }
             walkDirection = direction * -perpendicular.normalized;
@@ -102,12 +99,10 @@ public class Companion : MonoBehaviour
             willJump = true;
         }
 
-        Debug.DrawLine(currentPos + 0.5f * Vector2.up, currentPos + 0.5f * Vector2.up + 0.3f * walkDirection, Color.yellow, 2.0f);
-        RaycastHit2D hit_side = Physics2D.Raycast(origin: currentPos + 0.5f * Vector2.up, direction: walkDirection
+        RaycastHit2D hit_side = Physics2D.Raycast(origin: currentPos + 0.2f * Vector2.up, direction: walkDirection
         , distance: 0.3f, layerMask: blockLayer);
         if (hit_side.collider != null)
         {
-            //print(hit_side.collider.gameObject.name);
             willJump = true;
         }
 
@@ -221,21 +216,18 @@ public class Companion : MonoBehaviour
         isEnabled = !isEnabled;
         Vector2 playerPos = GameplayStateManager.Instance.Player.GetCameraFollow().position;
         float direction = Mathf.Sign(posToJump.x - playerPos.x);
+        isGoingToNextPos = false;
         if (isEnabled)
         {
             // Jump in
             spriteTransform.gameObject.SetActive(true);
             Vector2 startPos = posToJump + new Vector2(direction * 20f, 9f);
             //posToJump += direction * 0.5f * Vector2.right;
-            isGoingToNextPos = false;
             Jump(startPos, posToJump);
         }
         else
         {
             // Jump out
-            //Vector2 endPos = posToJump + new Vector2(direction * 20f, 9f);
-            //Jump(transform.position, endPos);
-            isGoingToNextPos = false;
             isWalkingOut = true;
             outDirection = direction;
             //StartCoroutine(Hide());
@@ -253,9 +245,9 @@ public class Companion : MonoBehaviour
 
     public void GoTo(Vector2 destination)
     {
-        if (!isEnabled || isJumping) return;
+        if (!isEnabled || isJumping || isStayStill) return;
 
-        RaycastHit2D hit = Physics2D.Raycast(origin: destination, direction: Vector2.down
+        RaycastHit2D hit = Physics2D.Raycast(origin: destination + 0.1f * Vector2.up, direction: Vector2.down
           , distance: 0.5f, layerMask: platformLayer);
         if (hit.collider != null)
         {
@@ -296,6 +288,20 @@ public class Companion : MonoBehaviour
 
         jumpEndTime = Time.time + timeToJump;
         isJumping = true;
+    }
+
+    public void SetStayStill(Vector2 destination)
+    {
+        if (!isEnabled) return;
+        isStayStill = false;
+        GoTo(destination);
+        isStayStill = true;
+    }
+    public void SetFollow(Vector2 destination)
+    {
+        if (!isEnabled) return;
+        isStayStill = false;
+        GoTo(destination);
     }
 
     // For Debug Only

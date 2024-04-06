@@ -580,7 +580,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 3
     m_ConditionEvent: speed_y
-    m_EventTreshold: -2
+    m_EventTreshold: -0.01
   - m_ConditionMode: 4
     m_ConditionEvent: speed_y
     m_EventTreshold: 4
@@ -590,7 +590,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0
+  m_TransitionDuration: 0.05
   m_TransitionOffset: 0
   m_ExitTime: 0
   m_HasExitTime: 0

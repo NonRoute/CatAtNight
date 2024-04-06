@@ -168,6 +168,14 @@ public partial class Player : MonoBehaviour, IDamagable
         {
             companion.ToggleCompanion(startDelayedPosition);
         }
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            companion.SetFollow(startDelayedPosition);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            companion.SetStayStill(lastGroundPosition);
+        }
 
         // Noclip for DEBUG only. No need to change anything here
         if (IS_DEBUG && Input.GetKeyDown(KeyCode.X))
