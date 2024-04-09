@@ -89,7 +89,9 @@ public partial class Player : MonoBehaviour, IDamagable
     {
         // Update Position References
         UpdateCameraFollowPosition();
-        UpdateCompanionMovement();
+
+        //Temporary remove because player cannnot move
+        //UpdateCompanionMovement();
 
         // Update State of the Game
         // Currently there is only freezing state
@@ -101,7 +103,7 @@ public partial class Player : MonoBehaviour, IDamagable
             UpdateAnimationState();
             animator.SetBool("is_running", false);
             animator.SetBool("is_walking", false);
-            rb.velocity = new Vector2(0,rb.velocity.y);
+            rb.velocity = new Vector2(0, rb.velocity.y);
             //rb.gravityScale = 0;
             return;
         }
@@ -168,7 +170,7 @@ public partial class Player : MonoBehaviour, IDamagable
         {
             companion.ToggleCompanion(startDelayedPosition);
         }
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             companion.SetFollow(startDelayedPosition);
         }
