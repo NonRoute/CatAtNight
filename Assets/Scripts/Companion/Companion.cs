@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Companion : MonoBehaviour
 {
     [SerializeField] bool isEnabled = false;
+    public bool IsEnabled => isEnabled;
     [SerializeField] bool isWalkingOut = false;
     [SerializeField] bool isStayStill = false;
     // Walk
@@ -18,17 +20,29 @@ public class Companion : MonoBehaviour
     [SerializeField] float timeToJump = 1f;
     [SerializeField] float gravity = -10f;
 
+    // Talk
+    [SerializeField] private float textBoxEndTime;
+    [SerializeField] private bool isTalking;
+
+    // Choice
+    public bool hasChoice3 = false;
+
     // may use in the future
     // but it is really hard to implement right now
     [SerializeField] Queue<Vector2> jumpPositions;
 
     // References
+    [SerializeField] private GameObject textBox;
+    [SerializeField] private TMP_Text textBoxText;
     [SerializeField] Transform spriteTransform;
+    private SpriteRenderer sprite;
+    private Animator anim;
     private float outDirection = 1f;
     private Vector2 startPosition;
     private float jumpEndTime;
     private float velocityX;
     private float velocityY;
+    [SerializeField] float currentSpeed = 5f;
 
     private Rigidbody2D rb;
 
@@ -39,10 +53,14 @@ public class Companion : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         jumpPositions = new Queue<Vector2>();
+        sprite = spriteTransform.gameObject.GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        UpdateTextBox();
+        UpdateSprite();
 
         if (isJumping)
         {
@@ -63,6 +81,17 @@ public class Companion : MonoBehaviour
         }
     }
 
+    private void UpdateSprite()
+    {
+        anim.SetBool("isWalking", isGoingToNextPos || isWalkingOut);
+        anim.SetBool("isJumping", isJumping);
+        anim.SetFloat("walkSpeed", currentSpeed / walkSpeed);
+    }
+
+    private void FlipSprite(bool isFacingRight)
+    {
+        sprite.flipX = isFacingRight;
+    }
     private void UpdateWalking()
     {
         bool willJump = false;
@@ -89,6 +118,7 @@ public class Companion : MonoBehaviour
                 {
                     speed = Mathf.Lerp(walkSpeed, runSpeed, (distanceX - runThreshold) / 4f);
                 }
+                currentSpeed = speed;
             }
             walkDirection = direction * -perpendicular.normalized;
             Vector2 velocity = speed * walkDirection;
@@ -98,6 +128,8 @@ public class Companion : MonoBehaviour
         {
             willJump = true;
         }
+
+        FlipSprite(walkDirection.x > 0);
 
         RaycastHit2D hit_side = Physics2D.Raycast(origin: currentPos + 0.2f * Vector2.up, direction: walkDirection
         , distance: 0.3f, layerMask: blockLayer);
@@ -156,12 +188,15 @@ public class Companion : MonoBehaviour
             RotateSprite(hit.normal);
             walkDirection = outDirection * -perpendicular.normalized;
             Vector2 velocity = runSpeed * walkDirection;
+            currentSpeed = runSpeed;
             transform.Translate(velocity * Time.deltaTime);
         }
         else
         {
             willJump = true;
         }
+
+        FlipSprite(walkDirection.x > 0);
 
         RaycastHit2D hit_side = Physics2D.Raycast(origin: currentPos + 0.2f * Vector2.up, direction: walkDirection
         , distance: 0.3f, layerMask: blockLayer);
@@ -220,7 +255,12 @@ public class Companion : MonoBehaviour
         if (isEnabled)
         {
             // Jump in
+            isJumping = false;
+            isWalkingOut = false;
+            isStayStill = false;
+            CompanionUIManager.Instance.SetStatus(1);
             spriteTransform.gameObject.SetActive(true);
+            StartCoroutine(StartTextBox("Hi", 2f));
             Vector2 startPos = posToJump + new Vector2(direction * 20f, 9f);
             //posToJump += direction * 0.5f * Vector2.right;
             Jump(startPos, posToJump);
@@ -228,6 +268,7 @@ public class Companion : MonoBehaviour
         else
         {
             // Jump out
+            StartCoroutine(StartTextBox("Bye bye", 2f));
             isWalkingOut = true;
             outDirection = direction;
             //StartCoroutine(Hide());
@@ -288,11 +329,13 @@ public class Companion : MonoBehaviour
 
         jumpEndTime = Time.time + timeToJump;
         isJumping = true;
+        FlipSprite(deltaX > 0);
     }
 
     public void SetStayStill(Vector2 destination)
     {
         if (!isEnabled) return;
+        StartCoroutine(StartTextBox("Roger that", 2f));
         isStayStill = false;
         GoTo(destination);
         isStayStill = true;
@@ -300,6 +343,7 @@ public class Companion : MonoBehaviour
     public void SetFollow(Vector2 destination)
     {
         if (!isEnabled) return;
+        StartCoroutine(StartTextBox("Yes, sir", 2f));
         isStayStill = false;
         GoTo(destination);
     }
@@ -309,5 +353,30 @@ public class Companion : MonoBehaviour
     public void GoToPlayerPos()
     {
         GoTo(GameplayStateManager.Instance.Player.GetCameraFollow().position - 0.55f * Vector3.up);
+    }
+
+    IEnumerator StartTextBox(string text, float duration)
+    {
+        yield return new WaitForSeconds(0.2f);
+        isTalking = true;
+        textBox.SetActive(true);
+        textBoxText.text = text;
+        textBoxEndTime = Time.time + duration;
+    }
+
+    public void StopTextBox()
+    {
+        isTalking = false;
+        textBox.SetActive(false);
+    }
+
+    private void UpdateTextBox()
+    {
+        if (!isTalking) return;
+
+        if (Time.time >= textBoxEndTime)
+        {
+            StopTextBox();
+        }
     }
 }

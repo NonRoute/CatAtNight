@@ -129,6 +129,7 @@ public partial class Player : MonoBehaviour, IDamagable
         {
             //Debug.DrawLine((Vector2)liquidPlayerBottomTransform.position, (Vector2)liquidPlayerBottomTransform.position - hit.normal * 0.4f, Color.yellow, 2.0f);
             grounded = true;
+            lastGroundPosition = hit.point;
         }
         SetGrounded(grounded);
 

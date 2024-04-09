@@ -53,10 +53,15 @@ public partial class Player : MonoBehaviour, IDamagable
         rb = normal_rb;
         sprite = spriteObject.GetComponent<SpriteRenderer>();
         animator = spriteObject.GetComponent<Animator>();
+        InitCompanion();
 
         // Initialize Status
         health = maxHealth;
         stamina = maxStamina;
+        if(skillUnlockedCount < 3)
+        {
+            CompanionUIManager.Instance.Hide();
+        }
 
         // Initialize Scale of Player (used in charging jump)
         initialScaleY = sprite.transform.localScale.y;
@@ -90,8 +95,9 @@ public partial class Player : MonoBehaviour, IDamagable
         // Update Position References
         UpdateCameraFollowPosition();
 
-        //Temporary remove because player cannnot move
-        //UpdateCompanionMovement();
+        // Fixed Dependencies
+        UpdateCompanionMovement();
+        UpdateTextBox();
 
         // Update State of the Game
         // Currently there is only freezing state
@@ -166,21 +172,37 @@ public partial class Player : MonoBehaviour, IDamagable
         }
 
         // Call Companion
-        if (playerInputActions.Player.CallCompanion.WasPressedThisFrame())
+        if(skillUnlockedCount >= 3)
         {
-            companion.ToggleCompanion(startDelayedPosition);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            companion.SetFollow(startDelayedPosition);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            companion.SetStayStill(lastGroundPosition);
+            if (playerInputActions.Player.CallCompanion.WasPressedThisFrame())
+            {
+                if(!companion.IsEnabled)
+                {
+                    StartTextBox("Come here", 2f);
+                }
+                else
+                {
+                    StartTextBox("You can go now", 2f);
+                }
+                CompanionUIManager.Instance.SetOpen(!companion.IsEnabled);
+                companion.ToggleCompanion(startDelayedPosition);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                StartTextBox("Follow Me", 2f);
+                CompanionUIManager.Instance.SetStatus(1);
+                companion.SetFollow(startDelayedPosition);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                StartTextBox("Stop Here", 2f);
+                CompanionUIManager.Instance.SetStatus(2);
+                companion.SetStayStill(lastGroundPosition);
+            }
         }
 
         // Noclip for DEBUG only. No need to change anything here
-        if (IS_DEBUG && Input.GetKeyDown(KeyCode.X))
+        if (IS_DEBUG && Input.GetKeyDown(KeyCode.V))
         {
             noClip = !noClip;
             rb.bodyType = (noClip) ? RigidbodyType2D.Kinematic : RigidbodyType2D.Dynamic;
@@ -241,6 +263,30 @@ public partial class Player : MonoBehaviour, IDamagable
     {
         pickedUpYarnBall.GetComponent<YarnBall>().Throw(isFacingRight);
         pickedUpYarnBall = null;
+    }
+
+    public void StartTextBox(string text, float duration)
+    {
+        isTalking = true;
+        textBox.SetActive(true);
+        textBoxText.text = text;
+        textBoxEndTime = Time.time + duration;
+    }
+
+    public void StopTextBox()
+    {
+        isTalking = false;
+        textBox.SetActive(false);
+    }
+
+    private void UpdateTextBox()
+    {
+        if (!isTalking) return;
+
+        if(Time.time >= textBoxEndTime)
+        {
+            StopTextBox();
+        }
     }
 
 }

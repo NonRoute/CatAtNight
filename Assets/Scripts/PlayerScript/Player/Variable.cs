@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public partial class Player : MonoBehaviour, IDamagable
@@ -189,6 +190,14 @@ public partial class Player : MonoBehaviour, IDamagable
     [Header("References")]
 
     [SerializeField]
+    private GameObject textBox;
+
+    [SerializeField]
+    private TMP_Text textBoxText;
+
+    [SerializeField]
+    private GameObject companionPrefab;
+
     private Companion companion;
 
     [SerializeField]
@@ -409,6 +418,12 @@ public partial class Player : MonoBehaviour, IDamagable
 
     [SerializeField]
     private float lastSetCompanionPositionTime = 0f;
+
+    [SerializeField]
+    private float textBoxEndTime;
+
+    [SerializeField]
+    private bool isTalking;
 
     [Header("--Others")]
 

@@ -12,6 +12,13 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void UpdateCompanionMovement()
     {
+        if (skillUnlockedCount < 3) return;
+
+        if(companion == null)
+        {
+            InitCompanion();
+        }
+
         // Set position for Companion
         Vector2 currentPosition = lastGroundPosition;
         // Update Position to Follow
@@ -34,6 +41,13 @@ public partial class Player : MonoBehaviour, IDamagable
             companion.GoTo(delayedPosition);
             lastSetCompanionPositionTime = Time.time;
         }
+    }
+
+    private void InitCompanion()
+    {
+        GameObject companionObject = Instantiate(companionPrefab);
+        companionObject.transform.SetSiblingIndex(transform.GetSiblingIndex()+1);
+        companion = companionObject.GetComponent<Companion>();
     }
 
     private void UpdateSprite()

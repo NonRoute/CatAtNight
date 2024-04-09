@@ -73,6 +73,10 @@ public class ShopManager : MonoBehaviour
 
     public void UpgradeHealth()
     {
+        if(player == null)
+        {
+            player = GameplayStateManager.Instance.Player;
+        }
         DecreaseScore(health.upgradeCostType[health.currentTier], health.upgradeCostAmount[health.currentTier]);
         health.currentTier++;
         player.UpgradeHealth(health.upgradeValue[health.currentTier]);
