@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6984642533811633930}
   - component: {fileID: 4653116473478750762}
-  - component: {fileID: 1711025507230064688}
   - component: {fileID: 8203510121053355422}
+  - component: {fileID: 7961910431378739389}
+  - component: {fileID: 8409746089340005278}
   m_Layer: 0
   m_Name: fish
   m_TagString: Untagged
@@ -75,18 +76,31 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 40
-  m_Sprite: {fileID: 21300000, guid: 4ce5c08a0cfe04c4d85af2a85d583d98, type: 3}
+  m_Sprite: {fileID: 1757416999, guid: 03417e1f1e5c0d240af14884f3eb29d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 0.18, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &1711025507230064688
+--- !u!114 &8203510121053355422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3046568521791382922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b25f8e6028c77248b4d6f2930a3db97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreManager: {fileID: 0}
+--- !u!60 &7961910431378739389
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,87 +136,41 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 5.12, y: 5.12}
+    oldSize: {x: 4.5, y: 4}
+    newSize: {x: 0.18, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.92, y: -1.1}
-      - {x: 1.9599999, y: -0.97999996}
-      - {x: 2.05, y: -0.79999995}
-      - {x: 2.1499999, y: -0.55}
-      - {x: 2.18, y: -0.45}
-      - {x: 2.18, y: -0.35}
-      - {x: 2.1299999, y: -0.28}
-      - {x: 2.04, y: -0.28}
-      - {x: 1.73, y: -0.35}
-      - {x: 1.26, y: -0.51}
-      - {x: 1.02, y: -0.53999996}
-      - {x: 0.97999996, y: -0.44}
-      - {x: 0.88, y: -0.24}
-      - {x: 0.83, y: -0.089999996}
-      - {x: 0.77, y: 0.07}
-      - {x: 0.55, y: 0.48999998}
-      - {x: 0.42999998, y: 0.69}
-      - {x: 0.35, y: 0.81}
-      - {x: 0.17, y: 1.05}
-      - {x: 0.03, y: 1.1899999}
-      - {x: -0.03, y: 1.24}
-      - {x: -0.28, y: 1.35}
-      - {x: -0.68, y: 1.42}
-      - {x: -1.42, y: 1.42}
-      - {x: -1.61, y: 1.4}
-      - {x: -1.8199999, y: 1.36}
-      - {x: -2.1699998, y: 1.29}
-      - {x: -2.26, y: 1.2099999}
-      - {x: -2.24, y: 1.13}
-      - {x: -2.01, y: 0.93}
-      - {x: -1.67, y: 0.66999996}
-      - {x: -1.5799999, y: 0.61}
-      - {x: -1.68, y: 0.59}
-      - {x: -1.9499999, y: 0.59}
-      - {x: -2.06, y: 0.63}
-      - {x: -2.1499999, y: 0.63}
-      - {x: -2.26, y: 0.53}
-      - {x: -2.26, y: 0.38}
-      - {x: -2.25, y: 0.31}
-      - {x: -2.1699998, y: -0.07}
-      - {x: -2.12, y: -0.22}
-      - {x: -2.1, y: -0.32}
-      - {x: -2.02, y: -0.56}
-      - {x: -1.93, y: -0.78}
-      - {x: -1.8299999, y: -0.95}
-      - {x: -1.7099999, y: -1.0799999}
-      - {x: -1.51, y: -1.17}
-      - {x: -1.42, y: -1.18}
-      - {x: -0.38, y: -1.18}
-      - {x: -0.04, y: -1.14}
-      - {x: 0.78999996, y: -0.94}
-      - {x: 0.94, y: -0.85999995}
-      - {x: 1.04, y: -1.1999999}
-      - {x: 1.16, y: -1.54}
-      - {x: 1.1999999, y: -1.88}
-      - {x: 1.22, y: -1.9799999}
-      - {x: 1.27, y: -2.12}
-      - {x: 1.35, y: -2.22}
-      - {x: 1.43, y: -2.22}
-      - {x: 1.51, y: -2.1499999}
-      - {x: 1.68, y: -1.5799999}
-      - {x: 1.73, y: -1.5}
+    - - {x: -1.25, y: 2}
+      - {x: -2.25, y: 0.25}
+      - {x: -2.25, y: -1}
+      - {x: -1.5, y: -2}
+      - {x: -0.25, y: -2}
+      - {x: 2.25, y: -0.5}
+      - {x: 2.25, y: 1.5}
+      - {x: 2, y: 2}
   m_UseDelaunayMesh: 0
---- !u!114 &8203510121053355422
-MonoBehaviour:
+--- !u!95 &8409746089340005278
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3046568521791382922}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b25f8e6028c77248b4d6f2930a3db97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreObject: {fileID: 1794071527150709001, guid: 7cf5bba2546b4094d959934adfd05f38, type: 3}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4f474dc8c0fc17340aa8b11c47f4b19b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
