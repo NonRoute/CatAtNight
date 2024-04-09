@@ -26,6 +26,7 @@ public class Companion : MonoBehaviour
 
     // Choice
     public bool hasChoice3 = false;
+    public string responseText;
 
     // may use in the future
     // but it is really hard to implement right now
@@ -340,12 +341,18 @@ public class Companion : MonoBehaviour
         GoTo(destination);
         isStayStill = true;
     }
+
     public void SetFollow(Vector2 destination)
     {
         if (!isEnabled) return;
         StartCoroutine(StartTextBox("Yes, sir", 2f));
         isStayStill = false;
         GoTo(destination);
+    }
+    public void StartChoice3()
+    {
+        if (!isEnabled || !hasChoice3) return;
+        StartCoroutine(StartTextBox(responseText, 2f));
     }
 
     // For Debug Only

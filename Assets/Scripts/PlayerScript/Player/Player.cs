@@ -199,6 +199,12 @@ public partial class Player : MonoBehaviour, IDamagable
                 CompanionUIManager.Instance.SetStatus(2);
                 companion.SetStayStill(lastGroundPosition);
             }
+            if (companion.hasChoice3 && Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                StartTextBox(choice3TalkText, 2f);
+                CompanionUIManager.Instance.SetStatus(3);
+                companion.StartChoice3();
+            }
         }
 
         // Noclip for DEBUG only. No need to change anything here
@@ -263,20 +269,6 @@ public partial class Player : MonoBehaviour, IDamagable
     {
         pickedUpYarnBall.GetComponent<YarnBall>().Throw(isFacingRight);
         pickedUpYarnBall = null;
-    }
-
-    public void StartTextBox(string text, float duration)
-    {
-        isTalking = true;
-        textBox.SetActive(true);
-        textBoxText.text = text;
-        textBoxEndTime = Time.time + duration;
-    }
-
-    public void StopTextBox()
-    {
-        isTalking = false;
-        textBox.SetActive(false);
     }
 
     private void UpdateTextBox()

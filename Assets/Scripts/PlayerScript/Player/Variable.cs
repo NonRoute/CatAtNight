@@ -425,6 +425,9 @@ public partial class Player : MonoBehaviour, IDamagable
     [SerializeField]
     private bool isTalking;
 
+    [SerializeField]
+    private string choice3TalkText;
+
     [Header("--Others")]
 
     [SerializeField]

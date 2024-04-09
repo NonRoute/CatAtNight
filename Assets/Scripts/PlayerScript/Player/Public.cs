@@ -130,4 +130,35 @@ public partial class Player : MonoBehaviour, IDamagable
         }
     }
 
+    public void StartTextBox(string text, float duration)
+    {
+        isTalking = true;
+        textBox.SetActive(true);
+        textBoxText.text = text;
+        textBoxEndTime = Time.time + duration;
+    }
+
+    public void StopTextBox()
+    {
+        isTalking = false;
+        textBox.SetActive(false);
+    }
+
+    public Companion GetCompanion()
+    {
+        return companion;
+    }
+
+    public void SetUpChoice3(string talkText, string responseText)
+    {
+        choice3TalkText = talkText;
+        companion.responseText = responseText;
+        companion.hasChoice3 = true;
+    }
+
+    public void ClearChoice3()
+    {
+        companion.hasChoice3 = false;
+    }
+
 }
