@@ -243,7 +243,7 @@ public partial class Player : MonoBehaviour, IDamagable
         isGrounded = grounded;
         if (isGrounded)
         {
-            dashCount = 0;
+            ResetDash();
         }
         else
         {
@@ -434,7 +434,7 @@ public partial class Player : MonoBehaviour, IDamagable
         dashVelocity = dashSpeed * direction;
         dashEndTime = Time.time + dashDuration;
         wallJumpEndTime = Time.time;
-        dashCount++;
+        AddDashCount();
     }
 
     private void IncreaseChargeJumpPercent()
@@ -443,6 +443,24 @@ public partial class Player : MonoBehaviour, IDamagable
         if (chargePercent > 100)
         {
             chargePercent = 100;
+        }
+    }
+
+    private void AddDashCount()
+    {
+        ++dashCount;
+        if(dashCount >= maxDashCount)
+        {
+            StatusUIManager.Instance.ToggleDashIcon(false);
+        }
+    }
+
+    private void ResetDash()
+    {
+        dashCount = 0;
+        if(skillUnlockedCount >= 1)
+        {
+            StatusUIManager.Instance.ToggleDashIcon(true);
         }
     }
 }

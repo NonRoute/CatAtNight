@@ -171,7 +171,7 @@ public partial class Player : MonoBehaviour, IDamagable
                 if (direction == Vector2.zero) return;
                 liquidDashVelocity = liquidDashSpeed * direction;
                 liquidDashEndTime = Time.time + liquidDashDuration;
-                dashCount++;
+                AddDashCount();
             }
         }
     }
@@ -201,7 +201,7 @@ public partial class Player : MonoBehaviour, IDamagable
     private void StartMovePipe(PipeEnd pipeEnd)
     {
         //Reset Dashing
-        dashCount = 0;
+        ResetDash();
 
         // Set Up Moving In Pipe
         isPipeForward = pipeEnd.IsForward;

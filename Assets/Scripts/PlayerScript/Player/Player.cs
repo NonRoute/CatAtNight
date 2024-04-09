@@ -62,6 +62,10 @@ public partial class Player : MonoBehaviour, IDamagable
         {
             CompanionUIManager.Instance.Hide();
         }
+        if(skillUnlockedCount < 1)
+        {
+            StatusUIManager.Instance.ToggleDashIcon(false);
+        }
 
         // Initialize Scale of Player (used in charging jump)
         initialScaleY = sprite.transform.localScale.y;
