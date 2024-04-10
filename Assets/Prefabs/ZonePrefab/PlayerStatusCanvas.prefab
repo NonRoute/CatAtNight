@@ -1952,6 +1952,9 @@ MonoBehaviour:
   solidImage: {fileID: 4310421520543181777}
   liquidImage: {fileID: 452440291850108165}
   dashIcon: {fileID: 6504157132440069676}
+  dashImage: {fileID: 5817880928782773541}
+  dashInactiveColor: {r: 0.53333336, g: 0.5372549, b: 0.54509807, a: 1}
+  dashActiveColor: {r: 0.24313726, g: 0.45882353, b: 1, a: 1}
 --- !u!1 &5515259234037005539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2533,8 +2536,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 544, y: 47}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 532.1, y: 40.7}
+  m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8288465089460394975
 CanvasRenderer:
@@ -2557,14 +2560,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2396226, g: 0.45815635, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8ae1e028a082ee840bde893e09ecab79, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a35db6bb125003d4a9a0c3a30626ea22, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

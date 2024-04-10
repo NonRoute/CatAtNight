@@ -46209,17 +46209,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97225448818a5574a9d59b961b931414, type: 3}
---- !u!114 &366414110 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5817880928782773541, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
-  m_PrefabInstance: {fileID: 1938935538266512237}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &383099265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66655,42 +66644,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2175228711441282539, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
-      propertyPath: dashImage
-      value: 
-      objectReference: {fileID: 366414110}
-    - target: {fileID: 2175228711441282539, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
-      propertyPath: dashActiveColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2175228711441282539, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
-      propertyPath: dashActiveColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2175228711441282539, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
-      propertyPath: dashActiveColor.g
-      value: 0.45882353
-      objectReference: {fileID: 0}
-    - target: {fileID: 2175228711441282539, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
-      propertyPath: dashActiveColor.r
-      value: 0.24313726
-      objectReference: {fileID: 0}
-    - target: {fileID: 2175228711441282539, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
-      propertyPath: dashInactiveColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2175228711441282539, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
-      propertyPath: dashInactiveColor.b
-      value: 0.54509807
-      objectReference: {fileID: 0}
-    - target: {fileID: 2175228711441282539, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
-      propertyPath: dashInactiveColor.g
-      value: 0.5372549
-      objectReference: {fileID: 0}
-    - target: {fileID: 2175228711441282539, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
-      propertyPath: dashInactiveColor.r
-      value: 0.53333336
-      objectReference: {fileID: 0}
     - target: {fileID: 4885021984399602033, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -66698,22 +66651,6 @@ PrefabInstance:
     - target: {fileID: 4885021984399602033, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5817880928782773541, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a35db6bb125003d4a9a0c3a30626ea22, type: 3}
-    - target: {fileID: 5817880928782773541, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5817880928782773541, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
-      propertyPath: m_Color.g
-      value: 0.45815635
-      objectReference: {fileID: 0}
-    - target: {fileID: 5817880928782773541, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
-      propertyPath: m_Color.r
-      value: 0.2396226
       objectReference: {fileID: 0}
     - target: {fileID: 6382647152477253542, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
       propertyPath: m_Name
