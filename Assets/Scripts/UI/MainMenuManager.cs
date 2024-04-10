@@ -47,6 +47,22 @@ public class MainMenuManager : MonoBehaviour
     {
         UpdateSwitchingPane();
         UpdateScrolling();
+        CheckKeyInput();
+    }
+
+    private void CheckKeyInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (currentPane == canvas)
+            {
+                ExitGame();
+            }
+            else
+            {
+                GoBack();
+            }
+        }
     }
 
     private void UpdateSwitchingPane()
@@ -69,7 +85,7 @@ public class MainMenuManager : MonoBehaviour
         float scroll = Mouse.current.scroll.ReadValue().y;
         targetScroll -= scroll;
         targetScroll = Mathf.Clamp(targetScroll, 0f, maxScroll);
-        currentScroll = Mathf.Lerp(currentScroll, targetScroll, scrollSpeed*Time.deltaTime);
+        currentScroll = Mathf.Lerp(currentScroll, targetScroll, scrollSpeed * Time.deltaTime);
         //currentScroll += scrollSpeed * scroll * Time.deltaTime;
         Vector3 pos = currentPaneRect.anchoredPosition;
         pos.y = currentScroll;
