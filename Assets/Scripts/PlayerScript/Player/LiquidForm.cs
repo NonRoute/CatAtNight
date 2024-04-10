@@ -157,6 +157,8 @@ public partial class Player : MonoBehaviour, IDamagable
             if (isDropDown) return;
         }
 
+        StatusUIManager.Instance.SetDashable(!isGrounded);
+
         if(pressedJump)
         {
             if (isGrounded) // Jump
@@ -166,7 +168,10 @@ public partial class Player : MonoBehaviour, IDamagable
             }
             else // Dash
             {
-                if (dashCount >= maxDashCount) return;
+                if (dashCount >= maxDashCount)
+                {
+                    return;
+                }
                 Vector2 direction = (new Vector2(horizontalInput, verticalInput)).normalized;
                 if (direction == Vector2.zero) return;
                 liquidDashVelocity = liquidDashSpeed * direction;

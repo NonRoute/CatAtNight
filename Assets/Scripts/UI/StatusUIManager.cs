@@ -18,6 +18,9 @@ public class StatusUIManager : MonoBehaviour
     [SerializeField] private GameObject solidImage;
     [SerializeField] private GameObject liquidImage;
     [SerializeField] private GameObject dashIcon;
+    [SerializeField] private Image dashImage;
+    [SerializeField] private Color dashInactiveColor;
+    [SerializeField] private Color dashActiveColor;
 
     private void Awake()
     {
@@ -68,6 +71,11 @@ public class StatusUIManager : MonoBehaviour
         {
             staminaSlider.fillRect.GetComponent<Image>().color = staminaColor;
         }
+    }
+
+    public void SetDashable(bool dashable)
+    {
+        dashImage.color = (dashable) ? dashActiveColor : dashInactiveColor;
     }
 
     public void ToggleDashIcon(bool isShow)

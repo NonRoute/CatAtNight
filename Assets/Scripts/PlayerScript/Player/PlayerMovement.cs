@@ -367,6 +367,10 @@ public partial class Player : MonoBehaviour, IDamagable
             IncreaseChargeJumpPercent();
         }
 
+        bool dashable = !isGrounded && !(Time.time - lastGroundedTime < groundedDelay);
+
+        StatusUIManager.Instance.SetDashable(dashable);
+
         if (pressedJump)
         {
             if (isGrounded)
@@ -386,7 +390,9 @@ public partial class Player : MonoBehaviour, IDamagable
             {
                 // Prevent Dashing when Dropping Down
                 if (Time.time - lastGroundedTime < groundedDelay)
+                {
                     return;
+                }
                 Dash();
             }
         }
@@ -427,7 +433,9 @@ public partial class Player : MonoBehaviour, IDamagable
     {
         isFloating = true;
         if (dashCount >= maxDashCount)
+        {
             return;
+        }
         Vector2 direction = (new Vector2(horizontalInput, verticalInput)).normalized;
         if (direction == Vector2.zero)
             return;
