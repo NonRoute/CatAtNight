@@ -54,7 +54,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (currentPane == canvas)
+            if (currentPane == null || currentPane == canvas)
             {
                 ExitGame();
             }
