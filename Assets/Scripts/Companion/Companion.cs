@@ -115,9 +115,10 @@ public class Companion : MonoBehaviour
             {
                 speed = runSpeed;
                 // Smoothing
-                if (distanceX < runThreshold + 4f)
+                float realDistanceX = Mathf.Abs(GameplayStateManager.Instance.Player.GetCameraFollow().position.x - currentPos.x);
+                if (realDistanceX < runThreshold + 6f)
                 {
-                    speed = Mathf.Lerp(walkSpeed, runSpeed, (distanceX - runThreshold) / 4f);
+                    speed = Mathf.Lerp(walkSpeed, runSpeed, (realDistanceX - runThreshold) / 6f);
                 }
                 currentSpeed = speed;
             }
@@ -257,14 +258,20 @@ public class Companion : MonoBehaviour
         {
             // Jump in
             isJumping = false;
-            isWalkingOut = false;
             isStayStill = false;
             CompanionUIManager.Instance.SetStatus(1);
             spriteTransform.gameObject.SetActive(true);
             StartCoroutine(StartTextBox("Hi", 2f));
-            Vector2 startPos = posToJump + new Vector2(direction * 20f, 9f);
-            //posToJump += direction * 0.5f * Vector2.right;
-            Jump(startPos, posToJump);
+            if(isWalkingOut)
+            {
+                isWalkingOut = false;
+            }
+            else
+            {
+                Vector2 startPos = posToJump + new Vector2(direction * 20f, 9f);
+                //posToJump += direction * 0.5f * Vector2.right;
+                Jump(startPos, posToJump);
+            }
         }
         else
         {
