@@ -22,7 +22,7 @@ public class DataManager
         gameData = loadData();
     }
 
-    private string saveFilePath => Application.persistentDataPath + "/save.json";
+    private string saveFilePath => Application.persistentDataPath + "/save" + GameplayStateManager.Instance.saveSlot + ".json";
 
     private GameData loadData()
     {

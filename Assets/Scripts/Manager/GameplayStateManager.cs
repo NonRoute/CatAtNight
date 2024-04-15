@@ -10,7 +10,7 @@ public class GameplayStateManager : MonoBehaviour
     public static GameplayStateManager Instance => instance;
 
     [SerializeField] private bool isLoadSave;
-    [SerializeField] private int saveSlot;
+    public int saveSlot;
     private bool isPausing;
     private bool isInDialogue;
     private Player player;
