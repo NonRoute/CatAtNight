@@ -26,9 +26,9 @@ public class DialogueTrigger : MonoBehaviour
         isTriggered = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.transform?.parent?.CompareTag("Player") == true && !isTriggered)
+        if (collision.transform?.parent?.CompareTag("Player") == true && !isTriggered && !GameplayStateManager.Instance.Player.IsInUI())
         {
             TriggerDialogue();
         }

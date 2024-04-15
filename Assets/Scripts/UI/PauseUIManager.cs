@@ -36,13 +36,19 @@ public class PauseUIManager : MonoBehaviour
         canvas = GetComponent<Canvas>();
     }
 
+    public bool IsOpen => canvas.enabled;
+
     public void TogglePauseMenu()
     {
-        StatusUIManager.Instance.ToggleHide(!canvas.enabled);
         canvas.enabled = !canvas.enabled;
         if(canvas.enabled)
         {
+            GameEventsManager.instance.playerEvents.DisablePlayerMovement();
             SwitchMenu(currentIndex);
+        }
+        else
+        {
+            GameEventsManager.instance.playerEvents.EnablePlayerMovement();
         }
     }
 
@@ -75,7 +81,7 @@ public class PauseUIManager : MonoBehaviour
         }
         if (index == 3) // Help Control
         {
-            helpPanel.SetupValue(playerData.skillUnlockedCount);
+            helpPanel.SetupValue(playerData.skillProgression);
         }
     }
 

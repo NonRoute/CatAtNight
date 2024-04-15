@@ -17,7 +17,7 @@ public class PlayerStatusPanel : MonoBehaviour
         staminaRegenRateText.text = "Stamina Regen Rate: " + pd.staminaRegenRate + "% / s";
         for (int i = 0; i < skillBlockPanes.Length; i++)
         {
-            skillBlockPanes[i].SetActive(pd.skillUnlockedCount <= i);
+            skillBlockPanes[i].SetActive(pd.skillProgression <= i);
         }
     }
 }

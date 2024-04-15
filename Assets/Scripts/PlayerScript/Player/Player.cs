@@ -10,7 +10,7 @@ public struct PlayerData
     public float maxHealth;
     public float staminaDrainRate;
     public float staminaRegenRate;
-    public int skillUnlockedCount;
+    public int skillProgression;
 }
 
 public partial class Player : MonoBehaviour, IDamagable
@@ -58,11 +58,11 @@ public partial class Player : MonoBehaviour, IDamagable
         // Initialize Status
         health = maxHealth;
         stamina = maxStamina;
-        if(skillUnlockedCount < 3)
+        if(skillProgression < 3)
         {
             CompanionUIManager.Instance.Hide();
         }
-        if(skillUnlockedCount < 1)
+        if(skillProgression < 1)
         {
             StatusUIManager.Instance.ToggleDashIcon(false);
         }
@@ -92,6 +92,24 @@ public partial class Player : MonoBehaviour, IDamagable
         // **May need to touch this later when scene changing happens
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
+    }
+
+    private void OnEnable()
+    {
+        GameEventsManager.instance.playerEvents.onEnablePlayerMovement += () => ToggleMovement(true);
+        GameEventsManager.instance.playerEvents.onDisablePlayerMovement += () => ToggleMovement(false);
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.instance.playerEvents.onEnablePlayerMovement -= () => ToggleMovement(true);
+        GameEventsManager.instance.playerEvents.onDisablePlayerMovement -= () => ToggleMovement(false);
+    }
+
+    private void ToggleMovement(bool enable)
+    {
+        isFreeze = !enable;
+        StatusUIManager.Instance.ToggleHide(isFreeze);
     }
 
     private void Update()
@@ -176,7 +194,7 @@ public partial class Player : MonoBehaviour, IDamagable
         }
 
         // Call Companion
-        if(skillUnlockedCount >= 3)
+        if(skillProgression >= 3)
         {
             if (playerInputActions.Player.CallCompanion.WasPressedThisFrame())
             {
@@ -229,19 +247,27 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void UpdateGameState()
     {
-        bool willFreeze = false;
-        if (DialogueManager.Instance != null)
-        {
-            willFreeze |= DialogueManager.Instance.isDialogueActive;
-        }
-        isFreeze = willFreeze;
+        //bool willFreeze = false;
+        //if (DialogueManager.Instance != null)
+        //{
+        //    willFreeze |= DialogueManager.Instance.isDialogueActive;
+        //}
+        //isFreeze = willFreeze;
 
         if (playerInputActions.Player.OpenMenu.WasPressedThisFrame())
         {
             if (PauseUIManager.Instance != null)
             {
-                PauseUIManager.Instance.TogglePauseMenu();
+                if(!isFreeze || PauseUIManager.Instance.IsOpen)
+                {
+                    PauseUIManager.Instance.TogglePauseMenu();
+                }
             }
+        }
+
+        if(playerInputActions.Player.Interact.WasPerformedThisFrame())
+        {
+            GameEventsManager.instance.inputEvents.SubmitPressed();
         }
     }
 

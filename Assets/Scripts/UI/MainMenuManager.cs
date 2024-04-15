@@ -157,7 +157,19 @@ public class MainMenuManager : MonoBehaviour
         GameplayStateManager.Instance.SetStartMode(isLoadSave, saveSlot);
         SoundManager.TryPlayNew(clickSfxName);
         SoundManager.TryStop(bgmName);
-        SceneManager.LoadScene(gameplaySceneName);
+        if (isLoadSave)
+        {
+            DataManager.Instance.reloadData();
+            string sceneName = DataManager.Instance.gameData.sceneName;
+            if(sceneName != "")
+            {
+                SceneManager.LoadScene(sceneName);
+            }
+        }
+        else
+        {
+            SceneManager.LoadScene(gameplaySceneName);
+        }
     }
 
     public void ExitGame()

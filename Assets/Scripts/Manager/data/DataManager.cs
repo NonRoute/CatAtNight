@@ -44,4 +44,9 @@ public class DataManager
         var dataAsJson = JsonUtility.ToJson(gameData);
         System.IO.File.WriteAllText(saveFilePath, dataAsJson);
     }
+
+    public void reloadData()
+    {
+        gameData = loadData();
+    }
 }

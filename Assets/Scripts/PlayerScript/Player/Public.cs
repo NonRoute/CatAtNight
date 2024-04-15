@@ -2,6 +2,11 @@ using UnityEngine;
 
 public partial class Player : MonoBehaviour, IDamagable
 {
+    public bool IsInUI()
+    {
+        return isFreeze;
+    }
+
     public EntityType GetEntityType()
     {
         return EntityType.Player;
@@ -73,7 +78,7 @@ public partial class Player : MonoBehaviour, IDamagable
             maxHealth = maxHealth,
             staminaDrainRate = baseStaminaDrainRate,
             staminaRegenRate = baseStaminaRegenRate,
-            skillUnlockedCount = skillUnlockedCount,
+            skillProgression = skillProgression,
         };
     }
 

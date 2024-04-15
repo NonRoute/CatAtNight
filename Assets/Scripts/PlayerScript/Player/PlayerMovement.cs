@@ -12,7 +12,7 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void UpdateCompanionMovement()
     {
-        if (skillUnlockedCount < 3) return;
+        if (skillProgression < 3) return;
 
         if(companion == null)
         {
@@ -466,7 +466,7 @@ public partial class Player : MonoBehaviour, IDamagable
     private void ResetDash()
     {
         dashCount = 0;
-        if(skillUnlockedCount >= 1)
+        if(skillProgression >= 1)
         {
             StatusUIManager.Instance.ToggleDashIcon(true);
         }

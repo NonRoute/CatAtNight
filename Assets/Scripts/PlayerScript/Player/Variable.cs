@@ -19,10 +19,10 @@ public partial class Player : MonoBehaviour, IDamagable
     private float maxStamina = 100f;
 
     [SerializeField]
-    private int skillUnlockedCount = 1;
+    private int skillProgression = 1;
 
-    [SerializeField]
-    private bool isLoadSave = true;
+    //[SerializeField]
+    //private bool isLoadSave = true;
 
     [Header("Power Values")]
 

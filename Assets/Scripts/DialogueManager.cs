@@ -34,6 +34,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue, GameObject NPC)
     {
+        GameEventsManager.instance.playerEvents.DisablePlayerMovement();
         isDialogueActive = true;
         currentNPC = NPC;
 
@@ -80,6 +81,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        GameEventsManager.instance.playerEvents.EnablePlayerMovement();
         isDialogueActive = false;
         animator.Play("hide");
         StartCoroutine(HideDialogue());
