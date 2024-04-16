@@ -24,7 +24,7 @@ public struct NewDialogue
 {
     public CharacterSprite[] sprites;
     public string characterName;
-    [TextArea(15, 20)]
+    [TextArea]
     public string text;
     public DialogueAction action;
 }
@@ -40,7 +40,7 @@ public struct CharacterSprite
 [System.Serializable]
 public struct BranchPoint
 {
-    [TextArea(15, 20)]
+    [TextArea]
     public string question;
     public Answer[] answers;
 }

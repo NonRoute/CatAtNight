@@ -39,6 +39,7 @@ public class DialogueTreeController : MonoBehaviour
         {
             Destroy(this);
         }
+        continueText.GetComponent<Button>().onClick.AddListener(SkipLine);
     }
 
     public void StartDialogue(DialogueTree dialogueTree, int startSection)
@@ -47,6 +48,7 @@ public class DialogueTreeController : MonoBehaviour
         waitForAnswer = false;
         dialogueBox.SetActive(true);
         OnDialogueStarted?.Invoke();
+        GameEventsManager.instance.playerEvents.DisablePlayerMovement();
         GameplayStateManager.Instance.isInDialogue = true;
         StartCoroutine(RunDialogue(dialogueTree, startSection));
     }
@@ -83,6 +85,7 @@ public class DialogueTreeController : MonoBehaviour
         if (dialogueTree.sections[section].endAfterDialogue)
         {
             OnDialogueEnded?.Invoke();
+            GameEventsManager.instance.playerEvents.EnablePlayerMovement();
             GameplayStateManager.Instance.isInDialogue = false;
             dialogueBox.SetActive(false);
             yield break;

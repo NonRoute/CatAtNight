@@ -39,14 +39,14 @@ public class QuestPoint : MonoBehaviour
     {
         GameEventsManager.instance.questEvents.onQuestStateChange += QuestStateChange;
         GameEventsManager.instance.inputEvents.onSubmitPressed += SubmitPressed;
-        DialogueTreeController.OnDialogueStarted += OnFinishConversation;
+        DialogueTreeController.OnDialogueEnded += OnFinishConversation;
     }
 
     private void OnDisable()
     {
         GameEventsManager.instance.questEvents.onQuestStateChange -= QuestStateChange;
         GameEventsManager.instance.inputEvents.onSubmitPressed -= SubmitPressed;
-        DialogueTreeController.OnDialogueStarted -= OnFinishConversation;
+        DialogueTreeController.OnDialogueEnded -= OnFinishConversation;
     }
 
     private void SubmitPressed()
