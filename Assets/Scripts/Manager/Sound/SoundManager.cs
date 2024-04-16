@@ -289,9 +289,10 @@ public class SoundManager : MonoBehaviour
     private void Stop(string name)
     {
         Sound sound = FindSound(name);
-        if (sound != null)
+        if (sound != null && sound.source.isPlaying)
         {
             sound.source.Stop();
+            currentMusicName = "";
         }
     }
 

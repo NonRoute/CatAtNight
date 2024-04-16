@@ -22,15 +22,25 @@ public struct DialogueSection
 [System.Serializable]
 public struct NewDialogue
 {
-    [TextArea]
+    public CharacterSprite[] sprites;
+    public string characterName;
+    [TextArea(15, 20)]
     public string text;
     public DialogueAction action;
 }
 
 [System.Serializable]
+public struct CharacterSprite
+{
+    public Sprite sprite;
+    public Vector2 offset;
+    public Color fadeColor;
+}
+
+[System.Serializable]
 public struct BranchPoint
 {
-    [TextArea]
+    [TextArea(15, 20)]
     public string question;
     public Answer[] answers;
 }

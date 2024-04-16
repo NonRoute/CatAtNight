@@ -1,20 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class QuestManager : MonoBehaviour
+public class QuestManager : MonoBehaviour, ISavable
 {
     [Header("Config")]
     [SerializeField] private bool loadQuestState = true;
 
     private Dictionary<string, Quest> questMap;
 
+    private Dictionary<string, string> tempQuestDict;
+
     // quest start requirements
     private int currentProgression;
     private int currentSkillProgression;
     private void Awake()
     {
-        questMap = CreateQuestMap();
+        questMap = CreateNewQuestMap();
     }
 
     private void OnEnable()
@@ -45,7 +49,12 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        
+        ReloadState();
+        UpdateRequirement();
+    }
+
+    private void ReloadState()
+    {
         foreach (Quest quest in questMap.Values)
         {
             // initialize any loaded quest steps
@@ -157,12 +166,30 @@ public class QuestManager : MonoBehaviour
         ChangeQuestState(id, quest.state);
     }
 
+    private Dictionary<string, Quest> CreateNewQuestMap()
+    {
+        // loads all QuestInfoSO Scriptable Objects under the Assets/Resources/Quests folder
+        QuestInfoSO[] allQuests = Resources.LoadAll<QuestInfoSO>("Quests");
+        // Create the quest map
+        Dictionary<string, Quest> idToQuestMap = new Dictionary<string, Quest>();
+        foreach (QuestInfoSO questInfo in allQuests)
+        {
+            if (idToQuestMap.ContainsKey(questInfo.id))
+            {
+                Debug.LogWarning("Duplicate ID found when creating quest map: " + questInfo.id);
+            }
+            idToQuestMap.Add(questInfo.id, new Quest(questInfo));
+        }
+        return idToQuestMap;
+    }
+
     private Dictionary<string, Quest> CreateQuestMap()
     {
         // loads all QuestInfoSO Scriptable Objects under the Assets/Resources/Quests folder
         QuestInfoSO[] allQuests = Resources.LoadAll<QuestInfoSO>("Quests");
         // Create the quest map
         Dictionary<string, Quest> idToQuestMap = new Dictionary<string, Quest>();
+        tempQuestDict = DataManager.Instance.gameData.allQuestData.ToDictionary(t => t.QuestId, t => t.QuestData);
         foreach (QuestInfoSO questInfo in allQuests)
         {
             if (idToQuestMap.ContainsKey(questInfo.id))
@@ -184,13 +211,14 @@ public class QuestManager : MonoBehaviour
         return quest;
     }
 
-    private void OnApplicationQuit()
-    {
-        SaveAllQuest();
-    }
+    //private void OnApplicationQuit()
+    //{
+    //    SaveAllQuest();
+    //}
 
     private void SaveAllQuest()
     {
+        DataManager.Instance.gameData.allQuestData = new();
         foreach (Quest quest in questMap.Values)
         {
             SaveQuest(quest);
@@ -205,7 +233,8 @@ public class QuestManager : MonoBehaviour
             // serialize using JsonUtility, but use whatever you want here (like JSON.NET)
             string serializedData = JsonUtility.ToJson(questData);
 
-            DataManager.Instance.gameData.allQuestData[quest.info.id] = serializedData;
+            //DataManager.Instance.gameData.allQuestData[quest.info.id] = serializedData;
+            DataManager.Instance.gameData.allQuestData.Add(new QuestAndData(quest.info.id, serializedData));
         }
         catch (System.Exception e)
         {
@@ -219,9 +248,9 @@ public class QuestManager : MonoBehaviour
         try
         {
             // load quest from saved data
-            if (DataManager.Instance.gameData.allQuestData.ContainsKey(questInfo.id) && loadQuestState)
+            if (tempQuestDict.ContainsKey(questInfo.id) && loadQuestState)
             {
-                string serializedData = DataManager.Instance.gameData.allQuestData[questInfo.id];
+                string serializedData = tempQuestDict[questInfo.id];
                 QuestData questData = JsonUtility.FromJson<QuestData>(serializedData);
                 quest = new Quest(questInfo, questData.state, questData.questStepIndex, questData.questStepStates);
             }
@@ -247,5 +276,58 @@ public class QuestManager : MonoBehaviour
             Debug.LogError("Failed to load quest with id " + quest.info.id + ": " + e);
         }
         return quest;
+    }
+
+    public void PreserveData()
+    {
+        DataManager.Instance.tempData.allQuestData = new();
+        foreach (Quest quest in questMap.Values)
+        {
+            try
+            {
+                QuestData questData = quest.GetQuestData();
+                // serialize using JsonUtility, but use whatever you want here (like JSON.NET)
+                string serializedData = JsonUtility.ToJson(questData);
+
+                //DataManager.Instance.gameData.allQuestData[quest.info.id] = serializedData;
+                DataManager.Instance.tempData.allQuestData.Add(new QuestAndData(quest.info.id, serializedData));
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("Failed to save quest with id " + quest.info.id + ": " + e);
+            }
+        }
+    }
+
+    public void RestoreData()
+    {
+        // loads all QuestInfoSO Scriptable Objects under the Assets/Resources/Quests folder
+        QuestInfoSO[] allQuests = Resources.LoadAll<QuestInfoSO>("Quests");
+        // Create the quest map
+        Dictionary<string, Quest> idToQuestMap = new Dictionary<string, Quest>();
+        tempQuestDict = DataManager.Instance.tempData.allQuestData.ToDictionary(t => t.QuestId, t => t.QuestData);
+        foreach (QuestInfoSO questInfo in allQuests)
+        {
+            if (idToQuestMap.ContainsKey(questInfo.id))
+            {
+                Debug.LogWarning("Duplicate ID found when creating quest map: " + questInfo.id);
+            }
+            idToQuestMap.Add(questInfo.id, LoadQuest(questInfo));
+        }
+        questMap = idToQuestMap;
+
+        ReloadState();
+    }
+
+    public void Save()
+    {
+        SaveAllQuest();
+    }
+
+    public void LoadSave()
+    {
+        questMap = CreateQuestMap();
+        ReloadState();
+        UpdateRequirement();
     }
 }

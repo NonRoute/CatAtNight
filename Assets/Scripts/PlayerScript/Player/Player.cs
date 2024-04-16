@@ -267,7 +267,14 @@ public partial class Player : MonoBehaviour, IDamagable
 
         if(playerInputActions.Player.Interact.WasPerformedThisFrame())
         {
-            GameEventsManager.instance.inputEvents.SubmitPressed();
+            if (GameplayStateManager.Instance.isInDialogue)
+            {
+                DialogueTreeController.instance.SkipLine();
+            }
+            else
+            {
+                GameEventsManager.instance.inputEvents.SubmitPressed();
+            }
         }
     }
 

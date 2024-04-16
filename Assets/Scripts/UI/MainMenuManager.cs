@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -181,6 +182,7 @@ public class MainMenuManager : MonoBehaviour
     {
         var gameData = DataManager.Instance.gameData;
 
-        continueLevelText.text = $"Level {gameData.unlockedLevel}";
+        //continueLevelText.text = $"Level {gameData.unlockedLevel}";
+        continueLevelText.text = $"{(DateTime) gameData.dateTime}";
     }
 }

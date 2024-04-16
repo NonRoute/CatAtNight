@@ -14,7 +14,8 @@ public class DialogueTreeController : MonoBehaviour
     [SerializeField] GameObject dialogueBox;
     [SerializeField] GameObject answerBox;
     [SerializeField] Button[] answerObjects;
-    [SerializeField] GameObject interactText;
+    [SerializeField] GameObject continueText;
+    [SerializeField] Image[] images;
 
     public static event Action OnDialogueStarted;
     public static event Action OnDialogueEnded;
@@ -40,35 +41,49 @@ public class DialogueTreeController : MonoBehaviour
         }
     }
 
-    public void StartDialogue(DialogueTree dialogueTree, int startSection, string name)
+    public void StartDialogue(DialogueTree dialogueTree, int startSection)
     {
         ResetBox();
         waitForAnswer = false;
-        nameText.text = name + "...";
         dialogueBox.SetActive(true);
         OnDialogueStarted?.Invoke();
+        GameplayStateManager.Instance.isInDialogue = true;
         StartCoroutine(RunDialogue(dialogueTree, startSection));
     }
 
     IEnumerator RunDialogue(DialogueTree dialogueTree, int section)
     {
-        interactText.SetActive(true);
+        continueText.SetActive(true);
         for (int i = 0; i < dialogueTree.sections[section].dialogue.Length; i++)
         {
             //dialogueText.text = dialogueTree.sections[section].dialogue[i];
+            print(i);
+            nameText.text = dialogueTree.sections[section].dialogue[i].characterName;
             StartCoroutine(TypeTextUncapped(dialogueText.text = dialogueTree.sections[section].dialogue[i].text));
-            ResolveAnswer(dialogueTree.sections[section].dialogue[i].action);
+            ResetSprites();
+            for (int j = 0; j < dialogueTree.sections[section].dialogue[i].sprites.Length; j++)
+            {
+                CharacterSprite cs = dialogueTree.sections[section].dialogue[i].sprites[j];
+                images[j].gameObject.SetActive(true);
+                images[j].sprite = cs.sprite;
+                images[j].rectTransform.localPosition = cs.offset;
+                images[j].color = cs.fadeColor;
+            }
+            ResolveAction(dialogueTree.sections[section].dialogue[i].action);
             while (skipLineTriggered == false)
             {
                 yield return null;
             }
+
+            print(i+"end");
             skipLineTriggered = false;
         }
-        interactText.SetActive(false);
+        continueText.SetActive(false);
 
         if (dialogueTree.sections[section].endAfterDialogue)
         {
             OnDialogueEnded?.Invoke();
+            GameplayStateManager.Instance.isInDialogue = false;
             dialogueBox.SetActive(false);
             yield break;
         }
@@ -93,7 +108,7 @@ public class DialogueTreeController : MonoBehaviour
 
         waitForAnswer = false;
 
-        ResolveAnswer(dialogueTree.sections[section].branchPoint.answers[answerIndex].action);
+        ResolveAction(dialogueTree.sections[section].branchPoint.answers[answerIndex].action);
 
         StartCoroutine(RunDialogue(dialogueTree, dialogueTree.sections[section].branchPoint.answers[answerIndex].nextElement));
     }
@@ -128,6 +143,14 @@ public class DialogueTreeController : MonoBehaviour
             }
         }
         isPrinting = false;
+    }
+
+    void ResetSprites()
+    {
+        foreach(Image image in images)
+        {
+            image.gameObject.SetActive(false);
+        }
     }
 
     void ResetBox()
@@ -174,7 +197,7 @@ public class DialogueTreeController : MonoBehaviour
         answerTriggered = true;
     }
 
-    public void ResolveAnswer(DialogueAction action)
+    public void ResolveAction(DialogueAction action)
     {
         DialogueActionType func = action.type;
         if (func == DialogueActionType.Nothing) return;

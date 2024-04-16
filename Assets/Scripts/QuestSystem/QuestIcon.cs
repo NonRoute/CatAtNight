@@ -11,34 +11,40 @@ public class QuestIcon : MonoBehaviour
     [SerializeField] private GameObject requirementsNotMetToFinishIcon;
     [SerializeField] private GameObject canFinishIcon;
 
-    public void SetState(QuestState newState, bool startPoint, bool finishPoint)
+    public void SetState(QuestState newState, bool startPoint, bool finishPoint, bool hasDialogue)
     {
         // set all to inactive
+        normalTalkIcon.SetActive(false);
         requirementsNotMetToStartIcon.SetActive(false);
         canStartIcon.SetActive(false);
         requirementsNotMetToFinishIcon.SetActive(false);
         canFinishIcon.SetActive(false);
 
+        bool hasIcon = false;
         // set the appropriate one to active based on the new state
         switch (newState)
         {
             case QuestState.REQUIREMENTS_NOT_MET:
-                if (startPoint) { requirementsNotMetToStartIcon.SetActive(true); }
+                if (startPoint) { requirementsNotMetToStartIcon.SetActive(true); hasIcon = true; }
                 break;
             case QuestState.CAN_START:
-                if (startPoint) { canStartIcon.SetActive(true); }
+                if (startPoint) { canStartIcon.SetActive(true); hasIcon = true; }
                 break;
             case QuestState.IN_PROGRESS:
-                if (finishPoint) { requirementsNotMetToFinishIcon.SetActive(true); }
+                if (finishPoint) { requirementsNotMetToFinishIcon.SetActive(true); hasIcon = true; }
                 break;
             case QuestState.CAN_FINISH:
-                if (finishPoint) { canFinishIcon.SetActive(true); }
+                if (finishPoint) { canFinishIcon.SetActive(true); hasIcon = true; }
                 break;
             case QuestState.FINISHED:
                 break;
             default:
                 Debug.LogWarning("Quest State not recognized by switch statement for quest icon: " + newState);
                 break;
+        }
+        if(!hasIcon && hasDialogue)
+        {
+            normalTalkIcon.SetActive(true);
         }
     }
 }

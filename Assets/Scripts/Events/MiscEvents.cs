@@ -2,12 +2,12 @@ using System;
 
 public class MiscEvents
 {
-    public event Action onCoinCollected;
-    public void CoinCollected() 
+    public event Action onFishCollected;
+    public void FishCollected() 
     {
-        if (onCoinCollected != null) 
+        if (onFishCollected != null) 
         {
-            onCoinCollected();
+            onFishCollected();
         }
     }
 

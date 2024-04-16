@@ -27,16 +27,39 @@ public partial class Player : MonoBehaviour, IDamagable, ISavable
     //    }
     //}
 
-    public bool IsStayInScene()
+    public void PreserveData()
     {
-        return false;
+        var tempData = DataManager.Instance.tempData;
+        // wait for new position
+        tempData.health = health;
+        tempData.maxHealth = maxHealth;
+        tempData.liquidMode = isLiquid;
     }
+
+    public void RestoreData()
+    {
+        print("RESTORE");
+        var tempData = DataManager.Instance.tempData;
+
+        rb.transform.position = tempData.position;
+
+        health = tempData.health;
+        maxHealth = tempData.maxHealth;
+        StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
+
+        if (tempData.liquidMode)
+        {
+            SwitchMode(true);
+        }
+    }
+
 
     public void Save()
     {
         var gameData = DataManager.Instance.gameData;
         gameData.position = cameraFollowTransform.position;
         gameData.health = health;
+        gameData.maxHealth = maxHealth;
         gameData.liquidMode = isLiquid;
     }
 
@@ -48,6 +71,7 @@ public partial class Player : MonoBehaviour, IDamagable, ISavable
         UpdateCameraFollowPosition();
 
         health = gameData.health;
+        maxHealth= gameData.maxHealth;
 
         if (gameData.liquidMode)
         {

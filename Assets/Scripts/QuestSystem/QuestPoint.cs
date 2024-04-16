@@ -16,7 +16,6 @@ public class QuestPoint : MonoBehaviour
     [SerializeField] private bool destroyAfterFinishQuest = false;
 
     [SerializeField] private bool hasDialogue = false;
-    [SerializeField] private string characterName = "NPC";
     [SerializeField] private DialogueTree dialogue;
     [SerializeField] private int repeatedSection;
     [SerializeField] private int startQuestSection;
@@ -57,6 +56,7 @@ public class QuestPoint : MonoBehaviour
             return;
         }
 
+        print(gameObject.name + "submit");
         // start or finish a quest
         OnTriggered();
     }
@@ -68,7 +68,7 @@ public class QuestPoint : MonoBehaviour
             if (hasDialogue)
             {
                 isTalking = true;
-                DialogueTreeController.instance.StartDialogue(dialogue, startQuestSection, characterName);
+                DialogueTreeController.instance.StartDialogue(dialogue, startQuestSection);
             }
             else
             {
@@ -80,7 +80,7 @@ public class QuestPoint : MonoBehaviour
             if (hasDialogue)
             {
                 isTalking = true;
-                DialogueTreeController.instance.StartDialogue(dialogue, finishQuestSection, characterName);
+                DialogueTreeController.instance.StartDialogue(dialogue, finishQuestSection);
             }
             else
             {
@@ -91,7 +91,7 @@ public class QuestPoint : MonoBehaviour
         {
             if (hasDialogue)
             {
-                DialogueTreeController.instance.StartDialogue(dialogue, repeatedSection, characterName);
+                DialogueTreeController.instance.StartDialogue(dialogue, repeatedSection);
             }
         }
     }
@@ -138,7 +138,7 @@ public class QuestPoint : MonoBehaviour
         if (quest.info.id.Equals(questId))
         {
             currentQuestState = quest.state;
-            questIcon.SetState(currentQuestState, startPoint, finishPoint);
+            questIcon.SetState(currentQuestState, startPoint, finishPoint, hasDialogue);
         }
     }
 

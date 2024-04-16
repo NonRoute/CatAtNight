@@ -48,7 +48,7 @@ public class QuestEvents
     }
 
     public event Action onRequirementChange;
-    public void QuestRequirementChange(string id, string requirement)
+    public void QuestRequirementChange()
     {
         if (onRequirementChange != null)
         {

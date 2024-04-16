@@ -15,11 +15,14 @@ public class DataManager
         private set { }
     }
 
+    public GameData tempData;
+
     public GameData gameData;
 
     private DataManager()
     {
         gameData = loadData();
+        tempData = gameData;
     }
 
     private string saveFilePath => Application.persistentDataPath + "/save" + GameplayStateManager.Instance.saveSlot + ".json";
@@ -41,12 +44,13 @@ public class DataManager
 
     public void saveData()
     {
-        var dataAsJson = JsonUtility.ToJson(gameData);
+        var dataAsJson = JsonUtility.ToJson(gameData,prettyPrint:true);
         System.IO.File.WriteAllText(saveFilePath, dataAsJson);
     }
 
     public void reloadData()
     {
         gameData = loadData();
+        tempData = gameData;
     }
 }
