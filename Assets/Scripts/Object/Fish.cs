@@ -24,6 +24,7 @@ public class Fish : MonoBehaviour
     IEnumerator DestroyFish()
     {
         yield return new WaitForSeconds(0.583f);
+        DataManager.Instance.DestroyObject(gameObject);
         gameObject.SetActive(false);
     }
 }

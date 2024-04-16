@@ -60,7 +60,8 @@ public class Talker : MonoBehaviour
     {
         if(isTalking && destroyAfterFinish)
         {
-            Destroy(gameObject);
+            DataManager.Instance.DestroyObject(gameObject);
+            gameObject.SetActive(false);
         }
         isTalking = false;
     }

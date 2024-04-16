@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
@@ -56,6 +57,7 @@ public class GameplayStateManager : MonoBehaviour
         DataManager.Instance.tempData.sceneName = SceneManager.GetActiveScene().name;
         DataManager.Instance.tempData.dateTime = (JsonDateTime)System.DateTime.Now;
         DataManager.Instance.autoSave();
+        LoadDestroyedObjects(DataManager.Instance.tempData);
     }
 
     IEnumerator LoadSave()
@@ -69,6 +71,7 @@ public class GameplayStateManager : MonoBehaviour
         }
         //player.RestoreFromSave();
         isLoadSave = false;
+        LoadDestroyedObjects(DataManager.Instance.gameData);
     }
 
     public void SaveGame()
@@ -115,6 +118,21 @@ public class GameplayStateManager : MonoBehaviour
         foreach (ISavable savable in FindObjectsOfType<MonoBehaviour>(true).OfType<ISavable>().ToArray())
         {
             savable.PreserveData();
+        }
+    }
+
+    public void LoadDestroyedObjects(GameData data)
+    {
+        foreach(string str in data.destroyedObjects)
+        {
+            if(GlobalObjectId.TryParse(str, out GlobalObjectId id))
+            {
+                Object obj = GlobalObjectId.GlobalObjectIdentifierToObjectSlow(id);
+                if(obj != null)
+                {
+                    ((GameObject) obj).SetActive(false);
+                }
+            }
         }
     }
 

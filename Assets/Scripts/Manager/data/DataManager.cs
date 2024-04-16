@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 #nullable enable
@@ -73,5 +74,12 @@ public class DataManager
         {
             return null;
         }
+    }
+
+    public void DestroyObject(Object obj)
+    {
+        GlobalObjectId id = GlobalObjectId.GetGlobalObjectIdSlow(obj);
+        gameData.destroyedObjects.Add(id.ToString());
+        tempData.destroyedObjects.Add(id.ToString());
     }
 }

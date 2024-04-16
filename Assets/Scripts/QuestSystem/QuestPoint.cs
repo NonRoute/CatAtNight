@@ -119,7 +119,8 @@ public class QuestPoint : MonoBehaviour
     {
         if (destroyAfterStartQuest)
         {
-            Destroy(gameObject);
+            DataManager.Instance.DestroyObject(gameObject);
+            gameObject.SetActive(false);
         }
         GameEventsManager.instance.questEvents.StartQuest(questId);
     }
@@ -127,7 +128,8 @@ public class QuestPoint : MonoBehaviour
     {
         if (destroyAfterFinishQuest)
         {
-            Destroy(gameObject);
+            DataManager.Instance.DestroyObject(gameObject);
+            gameObject.SetActive(false);
         }
         GameEventsManager.instance.questEvents.FinishQuest(questId);
     }
