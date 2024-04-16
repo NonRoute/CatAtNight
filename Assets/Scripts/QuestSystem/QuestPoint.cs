@@ -107,7 +107,7 @@ public class QuestPoint : MonoBehaviour
                     StartQuest();
                 }
             }
-            else if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
+            if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
             {
                 FinishQuest();
             }
