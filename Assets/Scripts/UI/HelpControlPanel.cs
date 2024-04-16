@@ -9,7 +9,6 @@ public class HelpControlPanel : MonoBehaviour
     {
         for (int i = 0; i < skillBlockPanes.Length; i++)
         {
-            if (i == 2 || i == 5) continue;
             skillBlockPanes[i].SetActive(skillUnlockedCount <= i);
         }
     }
