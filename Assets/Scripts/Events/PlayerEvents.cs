@@ -20,8 +20,8 @@ public class PlayerEvents
         }
     }
 
-    public event Action<Tuple<string,int>[]> onItemsGained;
-    public void ItemsGained(Tuple<string, int>[] items) 
+    public event Action<ItemCount[]> onItemsGained;
+    public void ItemsGained(ItemCount[] items) 
     {
         if (onItemsGained != null) 
         {

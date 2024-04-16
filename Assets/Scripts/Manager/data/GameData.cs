@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 #nullable enable
@@ -32,6 +33,11 @@ public struct ItemCount
     {
         ItemName = itemName;
         Amount = amount;
+    }
+
+    public static int CompareByNames(ItemCount i1, ItemCount i2)
+    {
+        return String.Compare(i1.ItemName, i2.ItemName);
     }
 }
 

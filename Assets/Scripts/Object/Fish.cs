@@ -12,6 +12,7 @@ public class Fish : MonoBehaviour
         if (
             other.gameObject.CompareTag("Player"))
         {
+            GameEventsManager.instance.miscEvents.FishCollected();
             scoreManager.fishScore++;
             other.GetComponentInParent<Player>().Heal(1f);
             gameObject.GetComponent<Animator>().Play("CollectFish");

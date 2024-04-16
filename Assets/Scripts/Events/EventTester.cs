@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class EventTester : MonoBehaviour
 {
+    [SerializeField] private string parameter;
+
+    [ContextMenu("AddItem")]
+    private void AddItemToInventory()
+    {
+        PlayerInventory.Instance.AddItem(parameter);
+    }
+
+    [ContextMenu("RemoveItem")]
+    private void RemoveItemToInventory()
+    {
+        PlayerInventory.Instance.RemoveItem(parameter);
+    }
+
+
     [ContextMenu("FishCollect")]
     private void TriggerCollectFish()
     {

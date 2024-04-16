@@ -59,7 +59,7 @@ public class DialogueTreeController : MonoBehaviour
         for (int i = 0; i < dialogueTree.sections[section].dialogue.Length; i++)
         {
             //dialogueText.text = dialogueTree.sections[section].dialogue[i];
-            print(i);
+            //print(i);
             nameText.text = dialogueTree.sections[section].dialogue[i].characterName;
             StartCoroutine(TypeTextUncapped(dialogueText.text = dialogueTree.sections[section].dialogue[i].text));
             ResetSprites();
@@ -77,7 +77,7 @@ public class DialogueTreeController : MonoBehaviour
                 yield return null;
             }
 
-            print(i+"end");
+            //print(i+"end");
             skipLineTriggered = false;
         }
         continueText.SetActive(false);

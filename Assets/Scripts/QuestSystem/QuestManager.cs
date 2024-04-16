@@ -94,6 +94,14 @@ public class QuestManager : MonoBehaviour, ISavable
         {
             meetsRequirements = false;
         }
+        // check player item requirements
+        foreach(ItemCount itemData in quest.info.itemsRequirement)
+        {
+            if(PlayerInventory.Instance.CheckItem(itemData.ItemName) < itemData.Amount)
+            {
+                meetsRequirements = false;
+            }
+        }
 
         // check quest prerequisites for completion
         foreach (QuestInfoSO prerequisiteQuestInfo in quest.info.questPrerequisites)
@@ -155,7 +163,7 @@ public class QuestManager : MonoBehaviour, ISavable
 
     private void ClaimRewards(Quest quest)
     {
-        GameEventsManager.instance.fishEvents.FishGained(quest.info.fishReward);
+        GameEventsManager.instance.fishEvents.GoldGained(quest.info.fishReward);
         GameEventsManager.instance.playerEvents.ItemsGained(quest.info.itemsReward);
     }
 

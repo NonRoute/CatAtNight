@@ -7,7 +7,7 @@ public class GameEventsManager : MonoBehaviour
 
     public InputEvents inputEvents;
     public PlayerEvents playerEvents;
-    public FishEvents fishEvents;
+    public GoldEvents fishEvents;
     public MiscEvents miscEvents;
     public QuestEvents questEvents;
 
@@ -22,7 +22,7 @@ public class GameEventsManager : MonoBehaviour
         // initialize all events
         inputEvents = new InputEvents();
         playerEvents = new PlayerEvents();
-        fishEvents = new FishEvents();
+        fishEvents = new GoldEvents();
         miscEvents = new MiscEvents();
         questEvents = new QuestEvents();
     }

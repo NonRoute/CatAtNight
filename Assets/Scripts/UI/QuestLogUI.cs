@@ -100,9 +100,9 @@ public class QuestLogUI : MonoBehaviour
         // rewards
         goldRewardsText.text = quest.info.fishReward + " Gold";
         string itemText = "";
-        foreach((string item, int amount) in quest.info.itemsReward)
+        foreach(ItemCount itemData in quest.info.itemsReward)
         {
-            itemText += item + " x" + amount + ", ";
+            itemText += itemData.ItemName + " x" + itemData.Amount + ", ";
         }
         itemsRewardText.text = itemText;
     }

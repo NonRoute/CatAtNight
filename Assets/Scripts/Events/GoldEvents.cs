@@ -1,9 +1,9 @@
 using System;
 
-public class FishEvents
+public class GoldEvents
 {
     public event Action<int> onGoldGained;
-    public void FishGained(int gold) 
+    public void GoldGained(int gold) 
     {
         if (onGoldGained != null) 
         {

@@ -26,6 +26,7 @@ public class QuestInfoSO : ScriptableObject
     public int progressionRequirement;
     [field: SerializeField] private SkillProgression skillRequirement;
     public int SkillRequirement => (int) skillRequirement;
+    public ItemCount[] itemsRequirement = { };
     public QuestInfoSO[] questPrerequisites;
 
     [Header("Steps")]
@@ -33,7 +34,7 @@ public class QuestInfoSO : ScriptableObject
 
     [Header("Rewards")]
     public int fishReward;
-    public Tuple<string,int>[] itemsReward;
+    public ItemCount[] itemsReward;
 
     // ensure the id is always the name of the Scriptable Object asset
     private void OnValidate()
