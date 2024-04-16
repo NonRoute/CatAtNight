@@ -31,7 +31,8 @@ public class QuestManager : MonoBehaviour, ISavable
 
         GameEventsManager.instance.questEvents.onQuestStepStateChange += QuestStepStateChange;
 
-        GameEventsManager.instance.playerEvents.onPlayerLevelChange += ProgressionChange;
+        GameEventsManager.instance.playerEvents.onPlayerProgressionChange += ProgressionChange;
+        GameEventsManager.instance.playerEvents.onPlayerSkillProgressionChange += SkillProgressionChange;
     }
 
     private void OnDisable()
@@ -44,7 +45,8 @@ public class QuestManager : MonoBehaviour, ISavable
 
         GameEventsManager.instance.questEvents.onQuestStepStateChange -= QuestStepStateChange;
 
-        GameEventsManager.instance.playerEvents.onPlayerLevelChange -= ProgressionChange;
+        GameEventsManager.instance.playerEvents.onPlayerProgressionChange -= ProgressionChange;
+        GameEventsManager.instance.playerEvents.onPlayerSkillProgressionChange -= SkillProgressionChange;
     }
 
     private void Start()
@@ -72,11 +74,6 @@ public class QuestManager : MonoBehaviour, ISavable
         Quest quest = GetQuestById(id);
         quest.state = state;
         GameEventsManager.instance.questEvents.QuestStateChange(quest);
-    }
-
-    private void ProgressionChange(int progression)
-    {
-        currentProgression = progression;
     }
 
     private bool CheckRequirementsMet(Quest quest)
@@ -336,6 +333,18 @@ public class QuestManager : MonoBehaviour, ISavable
     {
         questMap = CreateQuestMap();
         ReloadState();
+        UpdateRequirement();
+    }
+
+    private void ProgressionChange(int progression)
+    {
+        currentProgression = Math.Max(currentProgression, progression);
+        UpdateRequirement();
+    }
+
+    public void SkillProgressionChange(int skillProgression)
+    {
+        currentSkillProgression = skillProgression;
         UpdateRequirement();
     }
 }

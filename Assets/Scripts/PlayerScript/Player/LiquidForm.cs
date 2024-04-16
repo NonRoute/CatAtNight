@@ -60,6 +60,7 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void SwitchMode(bool toLiquid)
     {
+        if (skillProgression < 3) return;
         if (isLiquid == toLiquid) return;
         isLiquid = toLiquid;
         Vector2 position = rb.position;

@@ -12,7 +12,7 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void UpdateCompanionMovement()
     {
-        if (skillProgression < 3) return;
+        if (skillProgression < 2) return;
 
         if(companion == null)
         {
@@ -386,7 +386,7 @@ public partial class Player : MonoBehaviour, IDamagable
                     isChargeJumping = true;
                 }
             }
-            else
+            else if(skillProgression >= 1) // Check Dash
             {
                 // Prevent Dashing when Dropping Down
                 if (Time.time - lastGroundedTime < groundedDelay)

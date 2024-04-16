@@ -29,21 +29,21 @@ public class PlayerEvents
         }
     }
 
-    public event Action<int> onPlayerLevelChange;
-    public void PlayerLevelChange(int level) 
+    public event Action<int> onPlayerProgressionChange;
+    public void PlayerProgressionChange(int progression) 
     {
-        if (onPlayerLevelChange != null) 
+        if (onPlayerProgressionChange != null) 
         {
-            onPlayerLevelChange(level);
+            onPlayerProgressionChange(progression);
         }
     }
 
-    public event Action<int> onPlayerExperienceChange;
-    public void PlayerExperienceChange(int experience) 
+    public event Action<int> onPlayerSkillProgressionChange;
+    public void PlayerSkillProgressionChange(int skillUnlocked) 
     {
-        if (onPlayerExperienceChange != null) 
+        if (onPlayerSkillProgressionChange != null) 
         {
-            onPlayerExperienceChange(experience);
+            onPlayerSkillProgressionChange(skillUnlocked);
         }
     }
 }

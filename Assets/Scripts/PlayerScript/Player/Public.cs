@@ -2,6 +2,12 @@ using UnityEngine;
 
 public partial class Player : MonoBehaviour, IDamagable
 {
+    public void SetUnlockedSkill(int skillProgression)
+    {
+        this.skillProgression = skillProgression;
+        GameEventsManager.instance.playerEvents.PlayerSkillProgressionChange(skillProgression);
+    }
+
     public bool IsInUI()
     {
         return isFreeze;

@@ -194,7 +194,7 @@ public partial class Player : MonoBehaviour, IDamagable
         }
 
         // Call Companion
-        if(skillProgression >= 3)
+        if(skillProgression >= 2)
         {
             if (playerInputActions.Player.CallCompanion.WasPressedThisFrame())
             {
