@@ -27,6 +27,7 @@ public partial class Player : MonoBehaviour, IDamagable
             if (health < 0)
             {
                 health = 0;
+                Dead();
             }
             SoundManager.TryPlayNew("TestCatHurt");
             StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
@@ -55,6 +56,12 @@ public partial class Player : MonoBehaviour, IDamagable
             bounceDuration = damageInfo.bounceDuration;
             bounceVelocity = damageInfo.bounceSpeed * direction;
         }
+    }
+
+    public void Dead()
+    {
+        GameOverUIManager.Instance.OpenGameOverUI();
+        isDead = true;
     }
 
     public void Heal(float amount)

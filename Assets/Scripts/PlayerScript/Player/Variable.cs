@@ -255,6 +255,9 @@ public partial class Player : MonoBehaviour, IDamagable
 
     [Header("Debug Values")]
 
+    [SerializeField]
+    private bool isDead = false;
+
     [Header("--Input")]
 
     [SerializeField]

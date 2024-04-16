@@ -114,6 +114,7 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void Update()
     {
+        if (isDead) return;
         // Update Position References
         UpdateCameraFollowPosition();
 

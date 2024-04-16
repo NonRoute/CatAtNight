@@ -17,7 +17,7 @@ MonoBehaviour:
   hideBeforeStarted: 0
   hideAfterFinished: 0
   progressionRequirement: 0
-  skillRequirement: 0
+  skillRequirement: 2
   itemsRequirement:
   - ItemName: Glass
     Amount: 1
