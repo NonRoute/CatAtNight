@@ -34,6 +34,7 @@ public partial class Player : MonoBehaviour, IDamagable, ISavable
         tempData.health = health;
         tempData.maxHealth = maxHealth;
         tempData.liquidMode = isLiquid;
+        tempData.skillProgression = skillProgression;
     }
 
     public void RestoreData()
@@ -42,6 +43,7 @@ public partial class Player : MonoBehaviour, IDamagable, ISavable
         var tempData = DataManager.Instance.tempData;
 
         rb.transform.position = tempData.position;
+        skillProgression = tempData.skillProgression;
 
         health = tempData.health;
         maxHealth = tempData.maxHealth;
@@ -61,6 +63,7 @@ public partial class Player : MonoBehaviour, IDamagable, ISavable
         gameData.health = health;
         gameData.maxHealth = maxHealth;
         gameData.liquidMode = isLiquid;
+        gameData.skillProgression = skillProgression;
     }
 
     public void LoadSave()
@@ -69,6 +72,7 @@ public partial class Player : MonoBehaviour, IDamagable, ISavable
 
         rb.transform.position = gameData.position;
         UpdateCameraFollowPosition();
+        skillProgression = gameData.skillProgression;
 
         health = gameData.health;
         maxHealth= gameData.maxHealth;

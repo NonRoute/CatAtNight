@@ -4,13 +4,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PauseUIManager : MonoBehaviour
 {
 
     private static PauseUIManager instance;
     public static PauseUIManager Instance => instance;
-
     [SerializeField] private Canvas canvas;
     [SerializeField] private string mainMenu = "Title";
     [SerializeField] private GameObject[] MenuPanels;
@@ -20,6 +20,10 @@ public class PauseUIManager : MonoBehaviour
     [SerializeField] private Color focusButtonColor;
     [SerializeField] private Color unfocusButtonColor;
     [SerializeField] private int currentIndex = 0;
+    [SerializeField] private GameObject saveSlotPanel;
+
+    [SerializeField] private TMP_Text[] unlockedLevelTexts;
+    [SerializeField] private TMP_Text[] saveDateTexts;
 
     private void Awake()
     {
@@ -85,6 +89,25 @@ public class PauseUIManager : MonoBehaviour
         }
     }
 
+    public void ToggleSelectSaveMenu()
+    {
+        saveSlotPanel.SetActive(!saveSlotPanel.activeSelf);
+        if(saveSlotPanel.activeSelf)
+        {
+            LoadSaveSlotText();
+        }
+    }
+
+    public void SelectSaveSlot(int slot)
+    {
+        GameplayStateManager.Instance.saveSlot = slot;
+    }
+
+    public void SaveGame()
+    {
+        GameplayStateManager.Instance.SaveGame();
+    }
+
     public void SaveBackToMenu()
     {
         GameplayStateManager.Instance.SaveGame();
@@ -100,6 +123,22 @@ public class PauseUIManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    private void LoadSaveSlotText()
+    {
+        for (int i = 1; i <= 3; i++)
+        {
+            var gameData = DataManager.Instance.getData(i);
+            if (gameData == null)
+            {
+                unlockedLevelTexts[i].text = "[NO DATA]";
+                saveDateTexts[i].text = "";
+                continue;
+            }
+            unlockedLevelTexts[i].text = $"[Level: {gameData.unlockedLevel}]";
+            saveDateTexts[i].text = $"{(DateTime)gameData.dateTime}";
+        }
     }
 
 }

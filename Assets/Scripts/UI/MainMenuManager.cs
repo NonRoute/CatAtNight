@@ -18,7 +18,8 @@ public class MainMenuManager : MonoBehaviour
     public string bgmName = "TestBGM";
     public string clickSfxName = "TestClick";
 
-    public TMP_Text continueLevelText;
+    public TMP_Text[] unlockedLevelTexts;
+    public TMP_Text[] saveDateTexts;
     public Animator catAnimator;
     public Transform cat;
     public RectTransform grouper;
@@ -41,7 +42,7 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         SoundManager.TryPlayMusic(bgmName);
-        LoadContinueText();
+        LoadSaveSlotText();
     }
 
     private void Update()
@@ -156,19 +157,21 @@ public class MainMenuManager : MonoBehaviour
     public void StartGame(bool isLoadSave)
     {
         GameplayStateManager.Instance.SetStartMode(isLoadSave, saveSlot);
-        SoundManager.TryPlayNew(clickSfxName);
-        SoundManager.TryStop(bgmName);
         if (isLoadSave)
         {
             DataManager.Instance.reloadData();
             string sceneName = DataManager.Instance.gameData.sceneName;
             if(sceneName != "")
             {
+                SoundManager.TryPlayNew(clickSfxName);
+                SoundManager.TryStop(bgmName);
                 SceneManager.LoadScene(sceneName);
             }
         }
         else
         {
+            SoundManager.TryPlayNew(clickSfxName);
+            SoundManager.TryStop(bgmName);
             SceneManager.LoadScene(gameplaySceneName);
         }
     }
@@ -178,11 +181,20 @@ public class MainMenuManager : MonoBehaviour
         Application.Quit();
     }
 
-    private void LoadContinueText()
+    private void LoadSaveSlotText()
     {
-        var gameData = DataManager.Instance.gameData;
-
         //continueLevelText.text = $"Level {gameData.unlockedLevel}";
-        continueLevelText.text = $"{(DateTime) gameData.dateTime}";
+        for (int i = 0; i <= 3; i++)
+        {
+            var gameData = DataManager.Instance.getData(i);
+            if(gameData == null)
+            {
+                unlockedLevelTexts[i].text = "[NO DATA]";
+                saveDateTexts[i].text = "";
+                continue;
+            }
+            unlockedLevelTexts[i].text = $"[Level: {gameData.unlockedLevel}]";
+            saveDateTexts[i].text = $"{(DateTime)gameData.dateTime}";
+        }
     }
 }

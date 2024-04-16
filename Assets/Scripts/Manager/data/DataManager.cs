@@ -53,4 +53,25 @@ public class DataManager
         gameData = loadData();
         tempData = gameData;
     }
+
+    public void autoSave()
+    {
+        var dataAsJson = JsonUtility.ToJson(tempData, prettyPrint: true);
+        var autoSaveFilePath = Application.persistentDataPath + "/save0.json";
+        System.IO.File.WriteAllText(autoSaveFilePath, dataAsJson);
+    }
+
+    public GameData getData(int saveSlot)
+    {
+        string filePath = Application.persistentDataPath + "/save" + saveSlot + ".json";
+        if (System.IO.File.Exists(filePath))
+        {
+            var dataAsJson = System.IO.File.ReadAllText(filePath);
+            return JsonUtility.FromJson<GameData>(dataAsJson);
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

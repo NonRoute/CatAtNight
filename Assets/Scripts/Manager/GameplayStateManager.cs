@@ -52,6 +52,10 @@ public class GameplayStateManager : MonoBehaviour
         {
             savable.RestoreData();
         }
+        DataManager.Instance.tempData.currentScene = SceneManager.GetActiveScene().buildIndex;
+        DataManager.Instance.tempData.sceneName = SceneManager.GetActiveScene().name;
+        DataManager.Instance.tempData.dateTime = (JsonDateTime)System.DateTime.Now;
+        DataManager.Instance.autoSave();
     }
 
     IEnumerator LoadSave()
