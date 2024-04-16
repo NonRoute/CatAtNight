@@ -80,6 +80,7 @@ public partial class Player : MonoBehaviour, IDamagable, ISavable
 
         health = gameData.health;
         maxHealth= gameData.maxHealth;
+        StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
 
         if (gameData.liquidMode)
         {
