@@ -55786,6 +55786,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151422702}
   m_CullTransparentMesh: 1
+--- !u!114 &1154868175 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6380107885230646405, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
+  m_PrefabInstance: {fileID: 1938935538266512237}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1189831274
 GameObject:
   m_ObjectHideFlags: 0
@@ -62187,6 +62198,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 697474128514806288, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 697474128514806288, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 697474128514806288, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 697474128514806288, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2554852095462717817, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -62267,9 +62294,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3879200189656297370, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3879200189656297370, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5251924859494216655, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5251924859494216655, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341153992269513819, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341153992269513819, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7035877248197097739, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1110
+      objectReference: {fileID: 0}
     - target: {fileID: 8795692875869604673, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
       propertyPath: m_Name
       value: PauseCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9047885685618679108, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9047885685618679108, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -70078,6 +70141,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2175228711441282539, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
+      propertyPath: mainObjectiveText
+      value: 
+      objectReference: {fileID: 1154868175}
     - target: {fileID: 4885021984399602033, guid: 80e101698c022f34e9ba674ae4e0db42, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

@@ -7,6 +7,9 @@ public partial class Player : MonoBehaviour, IDamagable
     [Header("Status")]
 
     [SerializeField]
+    private string mainObjective = "";
+
+    [SerializeField]
     private float health = 9f;
 
     [SerializeField]

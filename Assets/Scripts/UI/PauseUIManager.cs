@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.EventSystems;
 
 public class PauseUIManager : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class PauseUIManager : MonoBehaviour
 
     [SerializeField] private TMP_Text[] unlockedLevelTexts;
     [SerializeField] private TMP_Text[] saveDateTexts;
+    [SerializeField] private TMP_Text mainObjectiveText;
+    [SerializeField] private QuestLogUI questLogUI;
 
     private void Awake()
     {
@@ -45,7 +48,7 @@ public class PauseUIManager : MonoBehaviour
     public void TogglePauseMenu()
     {
         canvas.enabled = !canvas.enabled;
-        if(canvas.enabled)
+        if (canvas.enabled)
         {
             GameEventsManager.instance.playerEvents.DisablePlayerMovement();
             SwitchMenu(currentIndex);
@@ -53,6 +56,7 @@ public class PauseUIManager : MonoBehaviour
         else
         {
             GameEventsManager.instance.playerEvents.EnablePlayerMovement();
+            EventSystem.current.SetSelectedGameObject(null);
         }
     }
 
@@ -77,9 +81,13 @@ public class PauseUIManager : MonoBehaviour
 
     public void InitMenu(int index)
     {
+        if (index == 0)
+        {
+            questLogUI.OnShowUI();
+        }
         if (index < 2) return;
         PlayerData playerData = GameplayStateManager.Instance.Player.GetPlayerData();
-        if(index == 2) // Player Status
+        if (index == 2) // Player Status
         {
             statusPanel.SetupValue(playerData);
         }
@@ -92,7 +100,7 @@ public class PauseUIManager : MonoBehaviour
     public void ToggleSelectSaveMenu()
     {
         saveSlotPanel.SetActive(!saveSlotPanel.activeSelf);
-        if(saveSlotPanel.activeSelf)
+        if (saveSlotPanel.activeSelf)
         {
             LoadSaveSlotText();
         }
@@ -139,6 +147,11 @@ public class PauseUIManager : MonoBehaviour
             unlockedLevelTexts[i].text = $"[Level: {gameData.unlockedLevel}]";
             saveDateTexts[i].text = $"{(DateTime)gameData.dateTime}";
         }
+    }
+
+    public void SetMainObjective(string mainObjective)
+    {
+        mainObjectiveText.text = "- " + mainObjective;
     }
 
 }

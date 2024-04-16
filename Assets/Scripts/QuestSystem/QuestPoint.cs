@@ -106,10 +106,10 @@ public class QuestPoint : MonoBehaviour
                 {
                     StartQuest();
                 }
-                else if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
-                {
-                    FinishQuest();
-                }
+            }
+            else if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
+            {
+                FinishQuest();
             }
             isTalking = false;
         }
@@ -124,6 +124,7 @@ public class QuestPoint : MonoBehaviour
         }
         GameEventsManager.instance.questEvents.StartQuest(questId);
     }
+
     private void FinishQuest()
     {
         if (destroyAfterFinishQuest)

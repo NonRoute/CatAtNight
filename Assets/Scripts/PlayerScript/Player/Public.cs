@@ -179,4 +179,11 @@ public partial class Player : MonoBehaviour, IDamagable
         companion.hasChoice3 = false;
     }
 
+    public void SetMainObjective(string mainObjective)
+    {
+        this.mainObjective = mainObjective;
+        StatusUIManager.Instance.SetMainObjective(mainObjective);
+        PauseUIManager.Instance.SetMainObjective(mainObjective);
+    }
+
 }

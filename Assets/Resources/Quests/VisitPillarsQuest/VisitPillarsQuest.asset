@@ -14,12 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <id>k__BackingField: VisitPillarsQuest
   displayName: Visit the Pillars!
-  levelRequirement: 1
+  hideBeforeStarted: 0
+  hideAfterFinished: 0
+  progressionRequirement: 0
+  skillRequirement: 0
+  itemsRequirement: []
   questPrerequisites:
   - {fileID: 11400000, guid: 8d2d7b9c64a7f354e9dce4d9d3083288, type: 2}
   questStepPrefabs:
   - {fileID: 5083092028424622553, guid: d1504d3a207ad594b99ed1c56c417ff3, type: 3}
   - {fileID: 5083092028424622553, guid: c1792c0de9a4cf44999d2dbcf3b90861, type: 3}
   - {fileID: 5083092028424622553, guid: 4671954624cddcf48815525fb730687c, type: 3}
-  goldReward: 200
-  experienceReward: 1000
+  fishReward: 0
+  itemsReward: []

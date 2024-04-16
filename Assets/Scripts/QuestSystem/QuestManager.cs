@@ -122,6 +122,7 @@ public class QuestManager : MonoBehaviour, ISavable
             {
                 ChangeQuestState(quest.info.id, QuestState.CAN_START);
             }
+            GameEventsManager.instance.questEvents.QuestStateChange(quest);
         }
     }
 

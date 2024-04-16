@@ -13,41 +13,50 @@ public class QuestLogUI : MonoBehaviour
     [SerializeField] private QuestLogScrollingList scrollingList;
     [SerializeField] private TextMeshProUGUI questDisplayNameText;
     [SerializeField] private TextMeshProUGUI questStatusText;
-    [SerializeField] private TextMeshProUGUI goldRewardsText;
+    [SerializeField] private TextMeshProUGUI fishRewardsText;
     [SerializeField] private TextMeshProUGUI itemsRewardText;
-    [SerializeField] private TextMeshProUGUI levelRequirementsText;
-    [SerializeField] private TextMeshProUGUI questRequirementsText;
+    //[SerializeField] private TextMeshProUGUI levelRequirementsText;
+    //[SerializeField] private TextMeshProUGUI questRequirementsText;
 
     private Button firstSelectedButton;
 
     private void OnEnable()
     {
-        GameEventsManager.instance.inputEvents.onQuestLogTogglePressed += QuestLogTogglePressed;
+        //GameEventsManager.instance.inputEvents.onQuestLogTogglePressed += QuestLogTogglePressed;
         GameEventsManager.instance.questEvents.onQuestStateChange += QuestStateChange;
     }
 
     private void OnDisable()
     {
-        GameEventsManager.instance.inputEvents.onQuestLogTogglePressed -= QuestLogTogglePressed;
+        //GameEventsManager.instance.inputEvents.onQuestLogTogglePressed -= QuestLogTogglePressed;
         GameEventsManager.instance.questEvents.onQuestStateChange -= QuestStateChange;
     }
 
-    private void QuestLogTogglePressed()
-    {
-        if (contentParent.activeInHierarchy)
-        {
-            HideUI();
-        }
-        else
-        {
-            ShowUI();
-        }
-    }
+    //private void QuestLogTogglePressed()
+    //{
+    //    if (contentParent.activeInHierarchy)
+    //    {
+    //        HideUI();
+    //    }
+    //    else
+    //    {
+    //        ShowUI();
+    //    }
+    //}
 
-    private void ShowUI()
+    //private void ShowUI()
+    //{
+    //    contentParent.SetActive(true);
+    //    GameEventsManager.instance.playerEvents.DisablePlayerMovement();
+    //    // note - this needs to happen after the content parent is set active,
+    //    // or else the onSelectAction won't work as expected
+    //    if (firstSelectedButton != null)
+    //    {
+    //        firstSelectedButton.Select();
+    //    }
+    //}
+    public void OnShowUI()
     {
-        contentParent.SetActive(true);
-        GameEventsManager.instance.playerEvents.DisablePlayerMovement();
         // note - this needs to happen after the content parent is set active,
         // or else the onSelectAction won't work as expected
         if (firstSelectedButton != null)
@@ -56,15 +65,16 @@ public class QuestLogUI : MonoBehaviour
         }
     }
 
-    private void HideUI()
-    {
-        contentParent.SetActive(false);
-        GameEventsManager.instance.playerEvents.EnablePlayerMovement();
-        EventSystem.current.SetSelectedGameObject(null);
-    }
+    //private void HideUI()
+    //{
+    //    contentParent.SetActive(false);
+    //    GameEventsManager.instance.playerEvents.EnablePlayerMovement();
+    //    EventSystem.current.SetSelectedGameObject(null);
+    //}
 
     private void QuestStateChange(Quest quest)
     {
+        if (quest.state == QuestState.REQUIREMENTS_NOT_MET || quest.state == QuestState.CAN_START) return;
         // add the button to the scrolling list if not already added
         QuestLogButton questLogButton = scrollingList.CreateButtonIfNotExists(quest, () => {
             SetQuestLogInfo(quest);
@@ -89,16 +99,16 @@ public class QuestLogUI : MonoBehaviour
         // status
         questStatusText.text = quest.GetFullStatusText();
 
-        // requirements
-        levelRequirementsText.text = "Level " + quest.info.progressionRequirement;
-        questRequirementsText.text = "";
-        foreach (QuestInfoSO prerequisiteQuestInfo in quest.info.questPrerequisites)
-        {
-            questRequirementsText.text += prerequisiteQuestInfo.displayName + "\n";
-        }
+        //// requirements
+        //levelRequirementsText.text = "Level " + quest.info.progressionRequirement;
+        //questRequirementsText.text = "";
+        //foreach (QuestInfoSO prerequisiteQuestInfo in quest.info.questPrerequisites)
+        //{
+        //    questRequirementsText.text += prerequisiteQuestInfo.displayName + "\n";
+        //}
 
         // rewards
-        goldRewardsText.text = quest.info.fishReward + " Gold";
+        fishRewardsText.text = quest.info.fishReward + " Fish";
         string itemText = "";
         foreach(ItemCount itemData in quest.info.itemsReward)
         {

@@ -66,6 +66,7 @@ public class GameData
     // TODO Implement
     public int score;
     public List<string> destroyedObjects = new();
+    public string mainObjective = "";
 
     // Position
     public int currentScene;

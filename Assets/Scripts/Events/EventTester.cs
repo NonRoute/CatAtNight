@@ -7,6 +7,12 @@ public class EventTester : MonoBehaviour
     [SerializeField] private string parameter;
     [SerializeField] private int parameterInt;
 
+    [ContextMenu("SetMainObjective")]
+    private void SetMainObjective()
+    {
+        GameplayStateManager.Instance.Player.SetMainObjective(parameter);
+    }
+
     [ContextMenu("SetSkill")]
     private void SetPlayerSkill()
     {

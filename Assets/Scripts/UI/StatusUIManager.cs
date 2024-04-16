@@ -21,6 +21,7 @@ public class StatusUIManager : MonoBehaviour
     [SerializeField] private Image dashImage;
     [SerializeField] private Color dashInactiveColor;
     [SerializeField] private Color dashActiveColor;
+    [SerializeField] private TMP_Text mainObjectiveText;
 
     private void Awake()
     {
@@ -87,6 +88,11 @@ public class StatusUIManager : MonoBehaviour
     {
         canvas.enabled = !isHide;
         //gameObject.SetActive(!isHide);
+    }
+
+    public void SetMainObjective(string mainObjective)
+    {
+        mainObjectiveText.text = "- " + mainObjective;
     }
 
 }
