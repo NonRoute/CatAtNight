@@ -24,7 +24,7 @@ public partial class Player : MonoBehaviour, IDamagable
         if (Time.time - lastDamagedTime > immortalDuration)
         {
             health -= damageInfo.damage;
-            if (health < 0)
+            if (health <= 0)
             {
                 health = 0;
                 Dead();

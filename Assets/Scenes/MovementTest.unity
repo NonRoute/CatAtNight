@@ -46186,7 +46186,7 @@ GameObject:
   - component: {fileID: 264429000}
   - component: {fileID: 264429003}
   m_Layer: 0
-  m_Name: cerberus-white (1)
+  m_Name: TestFInishQuestNoDialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53718,7 +53718,7 @@ GameObject:
   - component: {fileID: 858577250}
   - component: {fileID: 858577253}
   m_Layer: 0
-  m_Name: comcat0
+  m_Name: TestNPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55175,7 +55175,7 @@ GameObject:
   - component: {fileID: 1117074778}
   - component: {fileID: 1117074777}
   m_Layer: 0
-  m_Name: cerberus-white (2)
+  m_Name: TestFInishQuestWithDialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60415,11 +60415,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6984642533811633930, guid: 97225448818a5574a9d59b961b931414, type: 3}
   m_PrefabInstance: {fileID: 1842249204}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1574767086 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7966581611437754249, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
-  m_PrefabInstance: {fileID: 7153039261745886416}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1579399247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60730,7 +60725,7 @@ GameObject:
   - component: {fileID: 1655798892}
   - component: {fileID: 1655798891}
   m_Layer: 0
-  m_Name: cerberus-white (3)
+  m_Name: TestStartQuestWithDialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60877,7 +60872,7 @@ GameObject:
   - component: {fileID: 1658766402}
   - component: {fileID: 1658766405}
   m_Layer: 0
-  m_Name: cerberus-white
+  m_Name: TestStartQuestNoDialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62320,7 +62315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7035877248197097739, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1110
+      value: -1290
       objectReference: {fileID: 0}
     - target: {fileID: 8795692875869604673, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
       propertyPath: m_Name
@@ -62626,51 +62621,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 567570611}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1847687275
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1847687277}
-  - component: {fileID: 1847687276}
-  m_Layer: 0
-  m_Name: PlayerInventory
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1847687276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1847687275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4c5c00596987048a946347a09eefbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fishCount: 0
---- !u!4 &1847687277
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1847687275}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 41.518784, y: 19.984674, z: -0.33477092}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1574767086}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1864602221
 GameObject:
@@ -70490,10 +70440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7966581611437754249, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1847687277}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f34598b65781ad4cbdb977553284b5b, type: 3}
 --- !u!1001 &9212210909327989150
@@ -70579,8 +70526,8 @@ SceneRoots:
   - {fileID: 1784136738}
   - {fileID: 3786324482200804192}
   - {fileID: 364280370}
-  - {fileID: 1658766404}
   - {fileID: 858577251}
+  - {fileID: 1658766404}
   - {fileID: 264429002}
   - {fileID: 1655798894}
   - {fileID: 1117074780}

@@ -86,7 +86,7 @@ public class DialogueManager : MonoBehaviour
         animator.Play("hide");
         StartCoroutine(HideDialogue());
         Destroy(currentNPC);
-        scoreManager.friendshipScore++;
+        //scoreManager.friendshipScore++;
     }
 
     IEnumerator HideDialogue()

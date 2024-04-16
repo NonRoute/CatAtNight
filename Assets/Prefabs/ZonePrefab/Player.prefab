@@ -38,6 +38,7 @@ Transform:
   - {fileID: 994092303103366131}
   - {fileID: 352553058609604702}
   - {fileID: 4011058918413553049}
+  - {fileID: 120614042730719925}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &6300911348913575887
@@ -79,12 +80,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57965978f65575341b8dd7904e0461cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainObjective: 
   health: 3
   maxHealth: 3
   stamina: 100
   maxStamina: 100
-  skillUnlockedCount: 3
-  isLoadSave: 0
+  skillProgression: 1
   moveSpeed: 6
   floatSpeed: 10
   runMultiplier: 2
@@ -150,6 +151,7 @@ MonoBehaviour:
   liquidForm: {fileID: 5352324573042091964}
   staticLiquidSprite: {fileID: 8555494790186549837}
   spriteObject: {fileID: 7462550174215218793}
+  isDead: 0
   horizontalInput: 0
   verticalInput: 0
   horizontalSmooth: 0
@@ -200,6 +202,7 @@ MonoBehaviour:
   lastSetCompanionPositionTime: 0
   textBoxEndTime: 0
   isTalking: 0
+  choice3TalkText: 
   noClip: 0
 --- !u!1 &512954520055072255
 GameObject:
@@ -2436,6 +2439,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 6949340063422121023}
+--- !u!1 &7026006790136809845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 120614042730719925}
+  - component: {fileID: 6455639316075589223}
+  m_Layer: 0
+  m_Name: PlayerInventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &120614042730719925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026006790136809845}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 41.518784, y: 19.984674, z: -0.33477092}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7966581611437754249}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6455639316075589223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026006790136809845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4c5c00596987048a946347a09eefbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishCount: 0
 --- !u!1 &7462550174215218793
 GameObject:
   m_ObjectHideFlags: 0
