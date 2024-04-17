@@ -1765,8 +1765,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLoadSave: 0
+  isNewGame: 0
   saveSlot: 0
   isInDialogue: 0
+  mainCamera: {fileID: 0}
+  currentCamera: {fileID: 0}
 --- !u!4 &397846662
 Transform:
   m_ObjectHideFlags: 0
