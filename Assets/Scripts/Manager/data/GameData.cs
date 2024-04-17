@@ -78,7 +78,11 @@ public class GameData
     public float maxHealth = 9f;
     public bool liquidMode;
     public List<ItemCount> inventory = new();
+    public int fishCount;
 
-	// Quest
+    // Quest
     public List<QuestAndData> allQuestData = new();
+
+    // Other
+    public bool isKeyPickedUp;
 }

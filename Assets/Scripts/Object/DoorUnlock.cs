@@ -8,7 +8,10 @@ public class DoorUnlock : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Key"))
         {
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
+            DataManager.Instance.DestroyObject(other.gameObject);
+            other.gameObject.SetActive(false);
+            DataManager.Instance.DestroyObject(gameObject);
             gameObject.SetActive(false);
         }
     }

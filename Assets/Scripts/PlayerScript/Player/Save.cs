@@ -2,6 +2,17 @@ using UnityEngine;
 
 public partial class Player : MonoBehaviour, IDamagable, ISavable
 {
+
+    public void NewGame()
+    {
+        health = 5;
+        maxHealth = 5;
+        skillProgression = 0;
+        UpdateSkillUI();
+        StatusUIManager.Instance.UpdateHealthBar(health,maxHealth);
+        SwitchMode(false);
+        PreserveData();
+    }
     //public void SaveGame()
     //{
     //    var gameData = DataManager.Instance.gameData;
@@ -50,14 +61,13 @@ public partial class Player : MonoBehaviour, IDamagable, ISavable
         health = tempData.health;
         maxHealth = tempData.maxHealth;
         StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
+        UpdateSkillUI();
 
         if (tempData.liquidMode)
         {
             SwitchMode(true);
         }
     }
-
-
     public void Save()
     {
         var gameData = DataManager.Instance.gameData;
@@ -81,6 +91,7 @@ public partial class Player : MonoBehaviour, IDamagable, ISavable
         health = gameData.health;
         maxHealth= gameData.maxHealth;
         StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
+        UpdateSkillUI();
 
         if (gameData.liquidMode)
         {

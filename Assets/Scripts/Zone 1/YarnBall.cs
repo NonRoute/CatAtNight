@@ -7,7 +7,7 @@ using UnityEngine;
 public class YarnBall : MonoBehaviour
 {
     [SerializeField] private DamageInfo damageInfo = new();
-    [SerializeField] private float throwForceMultiplayer;
+    [SerializeField] private float throwForceMultiplier;
 
     private Rigidbody2D rb;
     void Start()
@@ -24,7 +24,8 @@ public class YarnBall : MonoBehaviour
     {
         rb.gravityScale = 1;
         rb.freezeRotation = false;
-        rb.AddForce(new Vector2(isFacingRight ? 1 : -1, 1) * throwForceMultiplayer, ForceMode2D.Impulse);
+        //rb.AddForce(new Vector2(isFacingRight ? 1 : -1, 1) * throwForceMultiplayer, ForceMode2D.Impulse);
+        rb.velocity = new Vector2(isFacingRight ? 1 : -1, 1) * throwForceMultiplier;
         StartCoroutine(SelfDestruct());
     }
     private void OnCollisionEnter2D(Collision2D collision)

@@ -68,6 +68,8 @@ public enum DialogueActionType
     AcceptQuest,
     RejectQuest,
     StartQuest,
+    FinishQuest,
     AddItem,
     RemoveItem,
+    SetMainObjective,
 }

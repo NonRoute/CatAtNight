@@ -27,17 +27,24 @@ public class PlayerInventory : MonoBehaviour, ISavable
     {
         GameEventsManager.instance.playerEvents.onItemsGained += OnGetItem;
         GameEventsManager.instance.miscEvents.onFishCollected += OnGetFish;
+        GameEventsManager.instance.fishEvents.onFishGained += OnGetManyFish;
     }
 
     private void OnDisable()
     {
         GameEventsManager.instance.playerEvents.onItemsGained -= OnGetItem;
         GameEventsManager.instance.miscEvents.onFishCollected -= OnGetFish;
+        GameEventsManager.instance.fishEvents.onFishGained -= OnGetManyFish;
     }
 
     private void OnGetFish()
     {
         fishCount++;
+    }
+
+    private void OnGetManyFish(int amount)
+    {
+        fishCount += amount;
     }
 
     private void OnGetItem(ItemCount[] items)
@@ -85,21 +92,25 @@ public class PlayerInventory : MonoBehaviour, ISavable
     public void PreserveData()
     {
         DataManager.Instance.tempData.inventory = inventory.Select(x => new ItemCount(x.Key, x.Value)).ToList();
+        DataManager.Instance.tempData.fishCount = fishCount;
     }
 
     public void RestoreData()
     {
         inventory = DataManager.Instance.tempData.inventory.ToDictionary(t => t.ItemName, t => t.Amount);
+        fishCount = DataManager.Instance.tempData.fishCount;
     }
 
     public void Save()
     {
         DataManager.Instance.gameData.inventory = inventory.Select(x => new ItemCount(x.Key, x.Value)).ToList();
+        DataManager.Instance.gameData.fishCount = fishCount;
     }
 
     public void LoadSave()
     {
         inventory = DataManager.Instance.gameData.inventory.ToDictionary(t => t.ItemName, t => t.Amount);
+        fishCount = DataManager.Instance.gameData.fishCount;
     }
 
     public string getInventoryData()

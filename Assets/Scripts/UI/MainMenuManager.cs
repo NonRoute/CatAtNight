@@ -144,7 +144,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void NewGame()
     {
-        DataManager.Instance.gameData = new();
+        DataManager.Instance.resetData();
+        GameplayStateManager.Instance.isNewGame = true;
         saveSlot = 0;
         StartGame(false);
     }

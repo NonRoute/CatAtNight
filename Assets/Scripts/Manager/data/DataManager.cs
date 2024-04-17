@@ -82,4 +82,10 @@ public class DataManager
         gameData.destroyedObjects.Add(id.ToString());
         tempData.destroyedObjects.Add(id.ToString());
     }
+
+    public void resetData()
+    {
+        gameData = new();
+        tempData = gameData;
+    }
 }

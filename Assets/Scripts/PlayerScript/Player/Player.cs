@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 // For sending player status to other scripts
 // Used in GetPlayerData()
@@ -58,14 +59,7 @@ public partial class Player : MonoBehaviour, IDamagable
         // Initialize Status
         health = maxHealth;
         stamina = maxStamina;
-        if(skillProgression < 3)
-        {
-            CompanionUIManager.Instance.Hide();
-        }
-        if(skillProgression < 1)
-        {
-            StatusUIManager.Instance.ToggleDashIcon(false);
-        }
+        UpdateSkillUI();
 
         // Initialize Scale of Player (used in charging jump)
         initialScaleY = sprite.transform.localScale.y;
@@ -83,6 +77,18 @@ public partial class Player : MonoBehaviour, IDamagable
             Transform t = boneRigidbodies[i].transform;
             boneLocalPositions[i] = t.localPosition;
             bone_localRotations[i] = t.localRotation;
+        }
+    }
+
+    private void UpdateSkillUI()
+    {
+        if (skillProgression < 2)
+        {
+            CompanionUIManager.Instance.SetShow(false);
+        }
+        if (skillProgression < 1)
+        {
+            StatusUIManager.Instance.ToggleDashIcon(false);
         }
     }
 
@@ -229,6 +235,13 @@ public partial class Player : MonoBehaviour, IDamagable
                 companion.StartChoice3();
             }
         }
+
+
+        float scroll = Mouse.current.scroll.ReadValue().y;
+        targetFOV -= scroll * scrollSpeed * Time.deltaTime;
+        targetFOV = Mathf.Clamp(targetFOV, minFOV, maxFOV);
+        currentFOV = Mathf.Lerp(currentFOV, targetFOV, zoomSpeed * Time.deltaTime);
+        GameplayStateManager.Instance.mainCamera.m_Lens.OrthographicSize = currentFOV;
 
         // Noclip for DEBUG only. No need to change anything here
         if (IS_DEBUG && Input.GetKeyDown(KeyCode.V))

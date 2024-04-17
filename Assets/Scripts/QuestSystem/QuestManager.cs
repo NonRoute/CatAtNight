@@ -161,7 +161,7 @@ public class QuestManager : MonoBehaviour, ISavable
 
     private void ClaimRewards(Quest quest)
     {
-        GameEventsManager.instance.fishEvents.GoldGained(quest.info.fishReward);
+        GameEventsManager.instance.fishEvents.FishGained(quest.info.fishReward);
         GameEventsManager.instance.playerEvents.ItemsGained(quest.info.itemsReward);
     }
 

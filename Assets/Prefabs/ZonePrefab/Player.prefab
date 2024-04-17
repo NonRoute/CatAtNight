@@ -80,6 +80,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57965978f65575341b8dd7904e0461cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minFOV: 5
+  maxFOV: 12
+  currentFOV: 8
+  targetFOV: 8
+  scrollSpeed: 2
+  zoomSpeed: 10
   mainObjective: 
   health: 3
   maxHealth: 3

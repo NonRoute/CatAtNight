@@ -22,6 +22,7 @@ public class StatusUIManager : MonoBehaviour
     [SerializeField] private Color dashInactiveColor;
     [SerializeField] private Color dashActiveColor;
     [SerializeField] private TMP_Text mainObjectiveText;
+    [SerializeField] private GameObject mainObjectiveObject;
 
     private void Awake()
     {
@@ -92,6 +93,12 @@ public class StatusUIManager : MonoBehaviour
 
     public void SetMainObjective(string mainObjective)
     {
+        if(mainObjective == "")
+        {
+            mainObjectiveObject.SetActive(false);
+            return;
+        }
+        mainObjectiveObject.SetActive(true);
         mainObjectiveText.text = "- " + mainObjective;
     }
 

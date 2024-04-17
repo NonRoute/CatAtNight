@@ -5,6 +5,14 @@ public partial class Player : MonoBehaviour, IDamagable
     public void SetUnlockedSkill(int skillProgression)
     {
         this.skillProgression = skillProgression;
+        if(skillProgression >= 1)
+        {
+            StatusUIManager.Instance.ToggleDashIcon(true);
+        }
+        if(skillProgression >= 2)
+        {
+            CompanionUIManager.Instance.SetShow(true);
+        }
         GameEventsManager.instance.playerEvents.PlayerSkillProgressionChange(skillProgression);
     }
 

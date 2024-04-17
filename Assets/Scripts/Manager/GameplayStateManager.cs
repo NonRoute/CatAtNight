@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Linq;
 using UnityEditor;
@@ -11,12 +12,15 @@ public class GameplayStateManager : MonoBehaviour
     public static GameplayStateManager Instance => instance;
 
     [SerializeField] private bool isLoadSave;
+    public bool isNewGame;
     public int saveSlot;
     private bool isChangingZone = false;
     private bool isPausing;
     public bool isInDialogue;
     private Player player;
     public Player Player => player;
+    public CinemachineVirtualCamera mainCamera;
+    public CinemachineVirtualCamera currentCamera;
 
     private void Awake()
     {
@@ -41,6 +45,12 @@ public class GameplayStateManager : MonoBehaviour
         if(isLoadSave)
         {
             StartCoroutine(LoadSave());
+        }
+        if(isNewGame)
+        {
+            // New Game
+            StartCoroutine(OnNewGame());
+            isNewGame = false;
         }
     }
 
@@ -72,6 +82,15 @@ public class GameplayStateManager : MonoBehaviour
         //player.RestoreFromSave();
         isLoadSave = false;
         LoadDestroyedObjects(DataManager.Instance.gameData);
+    }
+
+    IEnumerator OnNewGame()
+    {
+        Debug.Log("Waiting for Player Reference");
+        yield return new WaitUntil(() => player != null);
+        Debug.Log("Player Reference Get! Loading Values");
+        print("NEWGAME");
+        player.NewGame();
     }
 
     public void SaveGame()
@@ -134,6 +153,25 @@ public class GameplayStateManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SetCamera(CinemachineVirtualCamera virtualCamera)
+    {
+        if(currentCamera != null)
+        {
+            currentCamera.gameObject.SetActive(false);
+        }
+        currentCamera = virtualCamera;
+        currentCamera.gameObject.SetActive(true);
+    }
+
+    public void AutoSave()
+    {
+        PreserveData();
+        DataManager.Instance.tempData.currentScene = SceneManager.GetActiveScene().buildIndex;
+        DataManager.Instance.tempData.sceneName = SceneManager.GetActiveScene().name;
+        DataManager.Instance.tempData.dateTime = (JsonDateTime)System.DateTime.Now;
+        DataManager.Instance.autoSave();
     }
 
 }

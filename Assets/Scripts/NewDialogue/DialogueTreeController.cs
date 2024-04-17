@@ -210,8 +210,10 @@ public class DialogueTreeController : MonoBehaviour
             case DialogueActionType.AcceptQuest: isAcceptClicked = true; break;
             case DialogueActionType.RejectQuest: isAcceptClicked = false; break;
             case DialogueActionType.StartQuest: GameEventsManager.instance.questEvents.StartQuest(action.parameter); break;
+            case DialogueActionType.FinishQuest: GameEventsManager.instance.questEvents.FinishQuest(action.parameter); break;
             case DialogueActionType.AddItem: PlayerInventory.Instance.AddItem(action.parameter) ; break;
             case DialogueActionType.RemoveItem: PlayerInventory.Instance.RemoveItem(action.parameter); break;
+            case DialogueActionType.SetMainObjective: GameplayStateManager.Instance.Player.SetMainObjective(action.parameter); break;
         }
     }
 }

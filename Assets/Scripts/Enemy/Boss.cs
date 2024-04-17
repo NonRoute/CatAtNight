@@ -17,8 +17,14 @@ public class Boss : Monster
     public void OnDead()
     {
         cam.Follow = GameplayStateManager.Instance.Player.GetCameraFollow();
-        Destroy(gameObject);
-        Destroy(door);
+        DataManager.Instance.DestroyObject(gameObject);
+        gameObject.SetActive(false);
+        DataManager.Instance.DestroyObject(door);
+        door.SetActive(false);
+        GameplayStateManager.Instance.Player.SetUnlockedSkill(1);
+        DataManager.Instance.tempData.position = GameplayStateManager.Instance.Player.GetCameraFollow().position;
+        GameplayStateManager.Instance.AutoSave();
+        //Destroy(door);
     }
 
     public override EntityType GetEntityType()

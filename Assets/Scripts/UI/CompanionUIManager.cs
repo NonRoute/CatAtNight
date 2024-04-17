@@ -74,8 +74,8 @@ public class CompanionUIManager : MonoBehaviour
         statusPanel.SetActive(isOpen);
     }
 
-    public void Hide()
+    public void SetShow(bool isShow)
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(isShow);
     }
 }

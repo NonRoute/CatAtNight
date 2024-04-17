@@ -6,6 +6,13 @@ public partial class Player : MonoBehaviour, IDamagable
 {
     [Header("Status")]
 
+    [SerializeField] private float minFOV = 5f;
+    [SerializeField] private float maxFOV = 12f;
+    [SerializeField] private float currentFOV = 8f;
+    [SerializeField] private float targetFOV = 8f;
+    [SerializeField] private float scrollSpeed = 20f;
+    [SerializeField] private float zoomSpeed = 20f;
+
     [SerializeField]
     private string mainObjective = "";
 
