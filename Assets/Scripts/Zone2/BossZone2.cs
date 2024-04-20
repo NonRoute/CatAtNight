@@ -32,7 +32,6 @@ public class BossZone2 : Monster
     }
     public void OnDead()
     {
-        SoundManager.TryPlayNew("Boss Dead");
         cam.Follow = GameplayStateManager.Instance.Player.GetCameraFollow();
         DataManager.Instance.DestroyObject(gameObject);
         gameObject.SetActive(false);
@@ -42,6 +41,8 @@ public class BossZone2 : Monster
         DataManager.Instance.tempData.position = GameplayStateManager.Instance.Player.GetCameraFollow().position;
         GameplayStateManager.Instance.AutoSave();
         //Destroy(door);
+        SoundManager.TryPlay("Victory");
+        SoundManager.TryPlayMusic("Zone 2 Music");
     }
 
     public override EntityType GetEntityType()
@@ -52,7 +53,6 @@ public class BossZone2 : Monster
     public override void RecieveDamage(DamageInfo damageInfo, Vector2 attackerPos)
     {
         health -= damageInfo.damage;
-        SoundManager.TryPlayNew("Monster Hurt");
         if (health <= 0)
         {
             OnDead();
@@ -70,5 +70,6 @@ public class BossZone2 : Monster
             bounceDuration = damageInfo.bounceDuration;
             bounceVelocity = damageInfo.bounceSpeed * ((Vector2)transform.position - attackerPos).normalized;
         }
+        SoundManager.TryPlay("BossHit");
     }
 }

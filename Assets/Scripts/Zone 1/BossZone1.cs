@@ -16,7 +16,6 @@ public class BossZone1 : Monster
 
     public void OnDead()
     {
-        SoundManager.TryPlayNew("Boss Dead");
         cam.Follow = GameplayStateManager.Instance.Player.GetCameraFollow();
         DataManager.Instance.DestroyObject(gameObject);
         gameObject.SetActive(false);
@@ -38,7 +37,6 @@ public class BossZone1 : Monster
     public override void RecieveDamage(DamageInfo damageInfo, Vector2 attackerPos)
     {
         health -= damageInfo.damage;
-        SoundManager.TryPlayNew("Monster Hurt");
         if (health <= 0)
         {
             OnDead();
