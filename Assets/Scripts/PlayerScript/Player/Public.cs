@@ -5,11 +5,11 @@ public partial class Player : MonoBehaviour, IDamagable
     public void SetUnlockedSkill(int skillProgression)
     {
         this.skillProgression = skillProgression;
-        if(skillProgression >= 1)
+        if (skillProgression >= 1)
         {
             StatusUIManager.Instance.ToggleDashIcon(true);
         }
-        if(skillProgression >= 2)
+        if (skillProgression >= 2)
         {
             CompanionUIManager.Instance.SetShow(true);
         }
@@ -38,6 +38,7 @@ public partial class Player : MonoBehaviour, IDamagable
                 Dead();
             }
             SoundManager.TryPlayNew("TestCatHurt");
+            SoundManager.TryPlayNew("CatHurt");
             StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
             lastDamagedTime = Time.time;
         }
@@ -112,9 +113,9 @@ public partial class Player : MonoBehaviour, IDamagable
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Platform Check
-        if(collision.gameObject.TryGetComponent(out Platform platform))
+        if (collision.gameObject.TryGetComponent(out Platform platform))
         {
-            if(platform.IsPassthrough)
+            if (platform.IsPassthrough)
             {
                 passThroughPlatformList.Add(platform);
             }
@@ -122,7 +123,7 @@ public partial class Player : MonoBehaviour, IDamagable
         }
 
         // Check In Pipe
-        if(isLiquid)
+        if (isLiquid)
         {
             if (collision.gameObject.TryGetComponent(out PipeEnd pipeEnd))
             {

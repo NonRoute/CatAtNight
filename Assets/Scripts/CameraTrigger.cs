@@ -17,7 +17,7 @@ public class CameraTrigger : MonoBehaviour
             cam.Follow = targetGroup;
             GameplayStateManager.Instance.AutoSave();
             DataManager.Instance.DestroyObject(gameObject);
+            SoundManager.TryPlayMusic("Boss1BGM");
         }
     }
-
 }
