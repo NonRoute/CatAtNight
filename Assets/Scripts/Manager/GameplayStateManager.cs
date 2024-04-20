@@ -22,6 +22,8 @@ public class GameplayStateManager : MonoBehaviour
     public CinemachineVirtualCamera mainCamera;
     public CinemachineVirtualCamera currentCamera;
 
+    public bool isSaving = false;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -95,6 +97,7 @@ public class GameplayStateManager : MonoBehaviour
 
     public void SaveGame()
     {
+        isSaving = true;
         // For Data outside Scene
         DataManager.Instance.gameData = DataManager.Instance.tempData;
         // For Data inside Scene
@@ -110,6 +113,7 @@ public class GameplayStateManager : MonoBehaviour
         //DataManager.Instance.gameData.allQuestData.Add(new QuestAndData("TestTempQuest", "data idk"));
 
         DataManager.Instance.saveData();
+        isSaving = false;
     }
 
     public void SetStartMode(bool isLoadSave, int saveSlot)
@@ -165,11 +169,13 @@ public class GameplayStateManager : MonoBehaviour
 
     public void AutoSave()
     {
+        isSaving = true;
         PreserveData();
         DataManager.Instance.tempData.currentScene = SceneManager.GetActiveScene().buildIndex;
         DataManager.Instance.tempData.sceneName = SceneManager.GetActiveScene().name;
         DataManager.Instance.tempData.dateTime = (JsonDateTime)System.DateTime.Now;
         DataManager.Instance.autoSave();
+        isSaving = false;
     }
 
 }

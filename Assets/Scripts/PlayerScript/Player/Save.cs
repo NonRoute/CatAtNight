@@ -9,6 +9,7 @@ public partial class Player : MonoBehaviour, IDamagable, ISavable
         maxHealth = 5;
         skillProgression = 0;
         UpdateSkillUI();
+        DataManager.Instance.tempData.position = rb.transform.position;
         StatusUIManager.Instance.UpdateHealthBar(health,maxHealth);
         SwitchMode(false);
         PreserveData();
