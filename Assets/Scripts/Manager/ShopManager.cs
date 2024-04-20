@@ -27,13 +27,13 @@ public class ShopManager : MonoBehaviour
 
     private Sprite GetIcon(ShopItem.CostType costType)
     {
-        switch (costType)
+        return costType switch
         {
-            case ShopItem.CostType.Fish: return FishIcon;
-            case ShopItem.CostType.Monster: return MonsterIcon;
-            case ShopItem.CostType.Friendship: return FriendshipIcon;
-            default: return AdventureIcon;
-        }
+            ShopItem.CostType.Fish => FishIcon,
+            ShopItem.CostType.Monster => MonsterIcon,
+            ShopItem.CostType.Friendship => FriendshipIcon,
+            _ => AdventureIcon,
+        };
     }
 
     private void DecreaseScore(ShopItem.CostType costType, int value)
@@ -56,13 +56,13 @@ public class ShopManager : MonoBehaviour
 
     private bool IsScoreSufficient(ShopItem.CostType costType, int cost)
     {
-        switch (costType)
+        return costType switch
         {
-            case ShopItem.CostType.Fish: return cost <= scoreManager.fishScore;
-            case ShopItem.CostType.Monster: return cost <= scoreManager.monsterScore;
-            case ShopItem.CostType.Friendship: return cost <= scoreManager.friendshipScore;
-            default: return false;
-        }
+            ShopItem.CostType.Fish => cost <= scoreManager.fishScore,
+            ShopItem.CostType.Monster => cost <= scoreManager.monsterScore,
+            ShopItem.CostType.Friendship => cost <= scoreManager.friendshipScore,
+            _ => false,
+        };
     }
     private bool IsUpgradable(int currentTier, List<int> upgradeValue)
     {
@@ -71,7 +71,7 @@ public class ShopManager : MonoBehaviour
 
     public void UpgradeHealth()
     {
-        if(player == null)
+        if (player == null)
         {
             player = GameplayStateManager.Instance.Player;
         }

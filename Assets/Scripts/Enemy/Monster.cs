@@ -103,6 +103,8 @@ public class Monster : MonoBehaviour, IDamagable
             bounceDuration = damageInfo.bounceDuration;
             bounceVelocity = damageInfo.bounceSpeed * ((Vector2)transform.position - attackerPos).normalized;
         }
+
+        SoundManager.TryPlay("RatHit");
     }
 
     private void UpdateInterrupted()

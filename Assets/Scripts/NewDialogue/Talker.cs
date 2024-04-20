@@ -24,7 +24,10 @@ public class Talker : MonoBehaviour
             if (firstInteraction)
             {
                 firstInteraction = false;
-                scoreManager.friendshipScore++;
+                if(scoreManager != null)
+                {
+                    scoreManager.friendshipScore++;
+                }
                 return 0;
             }
             else
