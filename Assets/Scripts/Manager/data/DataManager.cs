@@ -1,5 +1,5 @@
-using UnityEditor;
 using UnityEngine;
+using StoneShelter;
 
 #nullable enable
 
@@ -76,11 +76,11 @@ public class DataManager
         }
     }
 
-    public void DestroyObject(Object obj)
+    public void DestroyObject(GameObject obj)
     {
-        GlobalObjectId id = GlobalObjectId.GetGlobalObjectIdSlow(obj);
-        gameData.destroyedObjects.Add(id.ToString());
-        tempData.destroyedObjects.Add(id.ToString());
+        string obj_guid = obj.GetComponent<GUID>().guid;
+        gameData.destroyedObjects.Add(obj_guid);
+        tempData.destroyedObjects.Add(obj_guid);
     }
 
     public void resetData()

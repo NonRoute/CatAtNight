@@ -9,6 +9,7 @@ public class DoorUnlock : MonoBehaviour
         if (other.gameObject.CompareTag("Key"))
         {
             //Destroy(other.gameObject);
+            other.gameObject.GetComponent<KeyManager>().isPickedUp = false;
             DataManager.Instance.DestroyObject(other.gameObject);
             other.gameObject.SetActive(false);
             DataManager.Instance.DestroyObject(gameObject);

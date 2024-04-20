@@ -1,8 +1,8 @@
 using Cinemachine;
 using System.Collections;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
+using StoneShelter;
 using UnityEngine.SceneManagement;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
@@ -144,13 +144,11 @@ public class GameplayStateManager : MonoBehaviour
     {
         foreach(string str in data.destroyedObjects)
         {
-            if(GlobalObjectId.TryParse(str, out GlobalObjectId id))
+            GUID guid = GUID.Find(str);
+            if (guid != null)
             {
-                Object obj = GlobalObjectId.GlobalObjectIdentifierToObjectSlow(id);
-                if(obj != null)
-                {
-                    ((GameObject) obj).SetActive(false);
-                }
+                GameObject obj = guid.gameObject;
+                obj.SetActive(false);
             }
         }
     }

@@ -55038,7 +55038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7035877248197097739, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3165
+      value: 3600
       objectReference: {fileID: 0}
     - target: {fileID: 7948940658722590354, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -55116,6 +55116,7 @@ GameObject:
   - component: {fileID: 940062309}
   - component: {fileID: 940062311}
   - component: {fileID: 940062310}
+  - component: {fileID: 940062312}
   m_Layer: 0
   m_Name: Joe
   m_TagString: Untagged
@@ -55198,9 +55199,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 11400000, guid: e222e3769f52eb74282160ae4f0783db, type: 2}
   firstInteraction: 1
+  scoreManager: {fileID: 0}
   repeatStartPosition: 3
   isTriggerWhenCollide: 0
   destroyAfterFinish: 0
+--- !u!114 &940062312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940062308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f399455614d3d1640ba6f4f06505ee57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_guid: d3ba450c-fa55-43dc-a0a4-ef4643d5aacc
+  m_guidPrefab: 1
 --- !u!1 &966563777
 GameObject:
   m_ObjectHideFlags: 0
@@ -80303,6 +80319,10 @@ PrefabInstance:
     - target: {fileID: 6984642533811633930, guid: 97225448818a5574a9d59b961b931414, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153847074558904914, guid: 97225448818a5574a9d59b961b931414, type: 3}
+      propertyPath: m_guid
+      value: c8a3ebff-11c7-40e6-8813-f7bbbf8f38a7
       objectReference: {fileID: 0}
     - target: {fileID: 8203510121053355422, guid: 97225448818a5574a9d59b961b931414, type: 3}
       propertyPath: scoreManager
