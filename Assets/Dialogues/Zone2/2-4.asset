@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8dca545e30f282c479a8b16c65908e4f, type: 3}
-  m_Name: 2-1
+  m_Name: 2-4
   m_EditorClassIdentifier: 
   sections:
   - dialogue:
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: -1448165594, guid: 5b0e428e03ad64547b44a0e01b07e9c4, type: 3}
+        offset: {x: -160, y: 100}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: Practical Cat
-      text: Hey, did you know you can use the dash skill by double-tapping the SPACEBAR
-        along with the direction you want to go?
+      characterName: Me
+      text: Can you help me
       action:
         type: 0
         parameter: 
@@ -29,7 +28,17 @@ MonoBehaviour:
         offset: {x: 160, y: 55}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Practical Cat
-      text: I hope you enjoy using the dash skill to move faster!
+      text: Use the 'Spacebar' to jump over these obstacles.
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
+        offset: {x: 160, y: 55}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Practical Cat
+      text: Remember, the longer you hold it, the higher you go. Have fun jumping
+        around!
       action:
         type: 0
         parameter: 
