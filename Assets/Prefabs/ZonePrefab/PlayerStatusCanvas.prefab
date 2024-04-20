@@ -1479,7 +1479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1585994870989538283
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1955,6 +1955,8 @@ MonoBehaviour:
   dashImage: {fileID: 5817880928782773541}
   dashInactiveColor: {r: 0.53333336, g: 0.5372549, b: 0.54509807, a: 1}
   dashActiveColor: {r: 0.24313726, g: 0.45882353, b: 1, a: 1}
+  mainObjectiveText: {fileID: 0}
+  mainObjectiveObject: {fileID: 0}
 --- !u!1 &5515259234037005539
 GameObject:
   m_ObjectHideFlags: 0
