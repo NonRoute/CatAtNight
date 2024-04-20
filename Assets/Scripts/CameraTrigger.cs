@@ -22,6 +22,7 @@ public class CameraTrigger : MonoBehaviour
             }
             DataManager.Instance.DestroyObject(gameObject);
             isTriggered = true;
+            SoundManager.TryPlayMusic("Boss1BGM");
         }
     }
 
