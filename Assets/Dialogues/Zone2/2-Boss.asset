@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dca545e30f282c479a8b16c65908e4f, type: 3}
+  m_Name: 2-Boss
+  m_EditorClassIdentifier: 
+  sections:
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 965bd1a490538104f8b9adf54c9abd19, type: 3}
+        offset: {x: 160, y: 55}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Skull
+      text: '[Boss]'
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: -1448165594, guid: 5b0e428e03ad64547b44a0e01b07e9c4, type: 3}
+        offset: {x: -160, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Me
+      text: '[Player]'
+      action:
+        type: 0
+        parameter: 
+    endAfterDialogue: 1
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: 
+      answers: []
