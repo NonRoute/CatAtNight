@@ -201,11 +201,11 @@ public partial class Player : MonoBehaviour, IDamagable
         }
 
         // Call Companion
-        if(skillProgression >= 2)
+        if (skillProgression >= 2)
         {
             if (playerInputActions.Player.CallCompanion.WasPressedThisFrame())
             {
-                if(!companion.IsEnabled)
+                if (!companion.IsEnabled)
                 {
                     StartTextBox("Come here", 2f);
                 }
@@ -244,6 +244,7 @@ public partial class Player : MonoBehaviour, IDamagable
         GameplayStateManager.Instance.mainCamera.m_Lens.OrthographicSize = currentFOV;
 
         // Noclip for DEBUG only. No need to change anything here
+#if UNITY_EDITOR
         if (IS_DEBUG && Input.GetKeyDown(KeyCode.V))
         {
             noClip = !noClip;
@@ -253,6 +254,7 @@ public partial class Player : MonoBehaviour, IDamagable
             sprite.color = newColor;
             rb.velocity = Vector2.zero;
         }
+#endif
         //if (Input.GetKeyDown(KeyCode.S))
         //{
         //    SaveGame();
@@ -272,14 +274,14 @@ public partial class Player : MonoBehaviour, IDamagable
         {
             if (PauseUIManager.Instance != null)
             {
-                if(!isFreeze || PauseUIManager.Instance.IsOpen)
+                if (!isFreeze || PauseUIManager.Instance.IsOpen)
                 {
                     PauseUIManager.Instance.TogglePauseMenu();
                 }
             }
         }
 
-        if(playerInputActions.Player.Interact.WasPerformedThisFrame())
+        if (playerInputActions.Player.Interact.WasPerformedThisFrame())
         {
             if (GameplayStateManager.Instance.isInDialogue)
             {
@@ -326,7 +328,7 @@ public partial class Player : MonoBehaviour, IDamagable
     {
         if (!isTalking) return;
 
-        if(Time.time >= textBoxEndTime)
+        if (Time.time >= textBoxEndTime)
         {
             StopTextBox();
         }

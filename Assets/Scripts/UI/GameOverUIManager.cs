@@ -30,11 +30,12 @@ public class GameOverUIManager : MonoBehaviour
     public void OpenGameOverUI()
     {
         canvas.enabled = true;
+        SoundManager.TryPlayMusic("GameOverBGM");
     }
 
     public void LoadAutoSave()
     {
-        GameplayStateManager.Instance.SetStartMode(isLoadSave:true, saveSlot:0);
+        GameplayStateManager.Instance.SetStartMode(isLoadSave: true, saveSlot: 0);
         DataManager.Instance.reloadData();
         string sceneName = DataManager.Instance.gameData.sceneName;
         if (sceneName != "")

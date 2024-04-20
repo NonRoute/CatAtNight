@@ -25,6 +25,8 @@ public class Boss : Monster
         DataManager.Instance.tempData.position = GameplayStateManager.Instance.Player.GetCameraFollow().position;
         GameplayStateManager.Instance.AutoSave();
         //Destroy(door);
+        SoundManager.TryPlay("Victory");
+        SoundManager.TryPlayMusic("Zone 1 Music");
     }
 
     public override EntityType GetEntityType()
@@ -52,5 +54,7 @@ public class Boss : Monster
             bounceDuration = damageInfo.bounceDuration;
             bounceVelocity = damageInfo.bounceSpeed * ((Vector2)transform.position - attackerPos).normalized;
         }
+
+        SoundManager.TryPlay("BossHit");
     }
 }
