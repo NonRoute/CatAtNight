@@ -111,6 +111,18 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
+  - name: Monster Hurt
+    clip: {fileID: 8300000, guid: d374ec2186de7234bb3fe0828ee1d823, type: 3}
+    volume: 0.3
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: Boss Dead
+    clip: {fileID: 8300000, guid: 5b9504328e3ada14ba512e5da384bce7, type: 3}
+    volume: 0.3
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
   maxDistance: 40
   distanceMultiplier: 2
   blendValue: 0.75

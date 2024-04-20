@@ -39,7 +39,7 @@ public class Monster : MonoBehaviour, IDamagable
         moveTimeElapsed = moveSpeed / 2;
     }
 
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         moveTimeElapsed += Time.deltaTime;
         jumpTimeElapsed += Time.deltaTime;
