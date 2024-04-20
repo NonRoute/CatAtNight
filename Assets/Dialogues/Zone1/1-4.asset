@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dca545e30f282c479a8b16c65908e4f, type: 3}
+  m_Name: 1-4
+  m_EditorClassIdentifier: 
+  sections:
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
+        offset: {x: 160, y: 55}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Practical Cat
+      text: Listen up! As you roam around, you'll find thorns and monsters. Touching
+        them isn't good for you. It'll hurt and you'll lose health.
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
+        offset: {x: 160, y: 55}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Practical Cat
+      text: You've got a health bar that shows how you're doing. If it goes all the
+        way down to zero, well, that's the end of your adventure for the night. So,
+        be careful and try to stay away from those thorns and monsters!
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
+        offset: {x: 160, y: 55}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Practical Cat
+      text: 'Here''s something important. Jumping on monsters? Bad idea. It hurts
+        you, not them. But don''t worry, I''ve got a trick for you. '
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
+        offset: {x: 160, y: 55}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Practical Cat
+      text: 'See that box over there? That''s full of yarn balls. Pick one up, and
+        you can throw it at the monsters by clicking. Boom! The monster is gone. '
+      action:
+        type: 0
+        parameter: 
+    endAfterDialogue: 1
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: 
+      answers: []

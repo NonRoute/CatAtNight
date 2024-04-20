@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2672230881854122353}
   - component: {fileID: 6393517937589233501}
   - component: {fileID: 1683066847096435226}
-  - component: {fileID: 6372207754703161262}
   - component: {fileID: 5379201696168973213}
+  - component: {fileID: 8905040830380111489}
   m_Layer: 0
   m_Name: PracticalCat
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5275117890152834933}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.74, y: -0.03, z: -0.025688516}
   m_LocalScale: {x: -9, y: 9, z: 9}
   m_ConstrainProportionsScale: 0
@@ -108,34 +108,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6372207754703161262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5275117890152834933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4af748d971ce9f42994dca6a83f91f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    dialogueLines:
-    - character: {fileID: 11400000, guid: 6f8e77619f685f74fbbe7792d6de06fd, type: 2}
-      line: Welcome, little adventurer! You're about to start a special journey that
-        happens only at night.
-    - character: {fileID: 11400000, guid: 46b35df99e204224db201bf73eceaa23, type: 2}
-      line: Meaw
-    - character: {fileID: 11400000, guid: 6f8e77619f685f74fbbe7792d6de06fd, type: 2}
-      line: 'You''ll go through seven nights, each one a new adventure. You''ll find
-        treasures, fight the enemy, and awaken powers to use later on. '
-    - character: {fileID: 11400000, guid: 6f8e77619f685f74fbbe7792d6de06fd, type: 2}
-      line: But first, let me show you how to move around.
-    - character: {fileID: 11400000, guid: 6f8e77619f685f74fbbe7792d6de06fd, type: 2}
-      line: Press 'A' to go left, and 'D' to go right.
-    - character: {fileID: 11400000, guid: 6f8e77619f685f74fbbe7792d6de06fd, type: 2}
-      line: Ready? Let's start your night adventure.
 --- !u!70 &5379201696168973213
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -171,3 +143,21 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.23020813}
   m_Size: {x: 0.50000006, y: 0.9604171}
   m_Direction: 0
+--- !u!114 &8905040830380111489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5275117890152834933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddaa6c26e0bc4aa4db59e978931bd824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: {fileID: 11400000, guid: f210ddab3cc4e944593e14bd7efdc141, type: 2}
+  firstInteraction: 1
+  scoreManager: {fileID: 0}
+  repeatStartPosition: 0
+  isTriggerWhenCollide: 1
+  destroyAfterFinish: 1

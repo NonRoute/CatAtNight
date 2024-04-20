@@ -50,7 +50,6 @@ public class ShopManager : MonoBehaviour
                 scoreManager.friendshipScore -= value;
                 break;
             default:
-                scoreManager.adventureScore -= value;
                 break;
         }
     }
@@ -62,7 +61,6 @@ public class ShopManager : MonoBehaviour
             case ShopItem.CostType.Fish: return cost <= scoreManager.fishScore;
             case ShopItem.CostType.Monster: return cost <= scoreManager.monsterScore;
             case ShopItem.CostType.Friendship: return cost <= scoreManager.friendshipScore;
-            case ShopItem.CostType.Adventure: return cost <= scoreManager.adventureScore;
             default: return false;
         }
     }

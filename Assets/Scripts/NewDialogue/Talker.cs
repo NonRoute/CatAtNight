@@ -8,6 +8,7 @@ public class Talker : MonoBehaviour
     public DialogueTree dialogue;
 
     public bool firstInteraction = true;
+    [SerializeField] private ScoreManager scoreManager;
     [SerializeField] int repeatStartPosition;
     [SerializeField] private bool isTriggerWhenCollide = false;
     [SerializeField] private bool destroyAfterFinish = false;
@@ -23,6 +24,7 @@ public class Talker : MonoBehaviour
             if (firstInteraction)
             {
                 firstInteraction = false;
+                scoreManager.friendshipScore++;
                 return 0;
             }
             else
@@ -58,7 +60,7 @@ public class Talker : MonoBehaviour
 
     private void OnDialogueFinish()
     {
-        if(isTalking && destroyAfterFinish)
+        if (isTalking && destroyAfterFinish)
         {
             DataManager.Instance.DestroyObject(gameObject);
             gameObject.SetActive(false);
