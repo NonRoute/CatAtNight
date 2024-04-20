@@ -119,7 +119,7 @@ MonoBehaviour:
   groundedDelay: 0.05
   minimumStamina: 30
   staminaRegenDelay: 1
-  immortalDuration: 0.5
+  immortalDuration: 2
   platformLayer:
     serializedVersion: 2
     m_Bits: 64
