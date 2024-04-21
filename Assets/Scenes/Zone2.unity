@@ -7993,7 +7993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7035877248197097739, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 9750
+      value: 4080
       objectReference: {fileID: 0}
     - target: {fileID: 7948940658722590354, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -8789,7 +8789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterScore: 5
   health: 8
-  moveSpeed: 1
+  moveSpeed: 10
   moveDuration: 1
   jumpForce: 1.5
   jumpCooldown: 5
