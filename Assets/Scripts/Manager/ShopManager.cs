@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using static UnityEditor.Progress;
 
 public class ShopManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Sprite MonsterIcon;
     [SerializeField] private Sprite FriendshipIcon;
     [SerializeField] private ShopItem health = new ShopItem();
+    [SerializeField] private ShopItem stamina = new ShopItem();
+    [SerializeField] private ShopItem immortal = new ShopItem();
 
     private void Start()
     {
@@ -22,6 +25,8 @@ public class ShopManager : MonoBehaviour
     void Update()
     {
         health.button.interactable = IsUpgradable(health.currentTier, health.upgradeValue) && IsScoreSufficient(health.upgradeCostType[health.currentTier], health.upgradeCostAmount[health.currentTier]);
+        stamina.button.interactable = IsUpgradable(stamina.currentTier, stamina.upgradeValue) && IsScoreSufficient(stamina.upgradeCostType[stamina.currentTier], stamina.upgradeCostAmount[stamina.currentTier]);
+        immortal.button.interactable = IsUpgradable(immortal.currentTier, immortal.upgradeValue) && IsScoreSufficient(immortal.upgradeCostType[immortal.currentTier], immortal.upgradeCostAmount[immortal.currentTier]);
     }
 
     private Sprite GetIcon(ShopItem.CostType costType)
@@ -62,33 +67,59 @@ public class ShopManager : MonoBehaviour
             _ => false,
         };
     }
-    private bool IsUpgradable(int currentTier, List<int> upgradeValue)
+    private bool IsUpgradable(int currentTier, List<float> upgradeValue)
     {
         return currentTier + 1 < upgradeValue.Count;
     }
 
     public void UpgradeHealth()
     {
+        Upgrade(health);
+    }
+    public void UpgradeStamina()
+    {
+        Upgrade(stamina);
+    }
+
+    public void UpgradeImmortal()
+    {
+        Upgrade(immortal);
+    }
+
+    public void Upgrade(ShopItem item)
+    {
         if (player == null)
         {
             player = GameplayStateManager.Instance.Player;
         }
-        DecreaseScore(health.upgradeCostType[health.currentTier], health.upgradeCostAmount[health.currentTier]);
-        health.currentTier++;
-        player.UpgradeHealth(health.upgradeValue[health.currentTier]);
-        health.currentText.text = health.upgradeValue[health.currentTier].ToString();
-        if (IsUpgradable(health.currentTier, health.upgradeValue))
+        DecreaseScore(item.upgradeCostType[item.currentTier], item.upgradeCostAmount[item.currentTier]);
+        item.currentTier++;
+        switch (item.name)
+        {
+            case "health":
+                player.UpgradeHealth(item.upgradeValue[item.currentTier]);
+                break;
+            case "stamina":
+                player.UpgradeStamina(item.upgradeValue[item.currentTier]);
+                break;
+            case "immortal":
+                player.UpgradeImmortal(item.upgradeValue[item.currentTier]);
+                break;
+
+        }
+        item.currentText.text = item.upgradeValue[item.currentTier].ToString();
+        if (IsUpgradable(item.currentTier, item.upgradeValue))
         {
 
-            health.nextText.text = health.upgradeValue[health.currentTier + 1].ToString();
-            health.costSprite.sprite = GetIcon(health.upgradeCostType[health.currentTier + 1]);
-            health.costText.text = "x " + health.upgradeCostAmount[health.currentTier + 1].ToString();
+            item.nextText.text = item.upgradeValue[item.currentTier + 1].ToString();
+            item.costSprite.sprite = GetIcon(item.upgradeCostType[item.currentTier + 1]);
+            item.costText.text = "x " + item.upgradeCostAmount[item.currentTier + 1].ToString();
         }
         else
         {
-            health.nextText.text = "-";
-            health.costSprite.gameObject.SetActive(false);
-            health.costText.text = "";
+            item.nextText.text = "-";
+            item.costSprite.gameObject.SetActive(false);
+            item.costText.text = "";
         }
 
     }
@@ -100,7 +131,8 @@ public class ShopItem
 {
     public enum CostType { Fish, Monster, Friendship };
 
-    public List<int> upgradeValue;
+    public string name;
+    public List<float> upgradeValue;
     public List<CostType> upgradeCostType;
     public List<int> upgradeCostAmount;
     public int currentTier = 0;
