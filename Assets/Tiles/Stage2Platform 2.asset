@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: Stage2Platform 2
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: -844134371, guid: 8ff0501504b1b488190a6105b4fe156a, type: 3}
+  m_DefaultSprite: {fileID: -1543485147, guid: c96d29caad9f0f544ab42030dc004777, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules:

@@ -2186,8 +2186,8 @@ Tilemap:
     m_Data: {fileID: 1671470134751369785, guid: 50286bf5bc59dcd42911f0858be6b0d7, type: 3}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -4, y: -17, z: 0}
-  m_Size: {x: 38, y: 18, z: 1}
+  m_Origin: {x: -4, y: -16, z: 0}
+  m_Size: {x: 22, y: 17, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -2301,7 +2301,7 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &6024287445509972828
+--- !u!114 &5967934191114185969
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
