@@ -19,7 +19,7 @@ MonoBehaviour:
         offset: {x: 160, y: 55}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Practical Cat
-      text: Why are we still here?
+      text: What brings you here?
       action:
         type: 0
         parameter: 
@@ -28,7 +28,7 @@ MonoBehaviour:
         offset: {x: 160, y: 55}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Practical Cat
-      text: Just to suffer?
+      text: Did you totally overlook what that cat just said down there?
       action:
         type: 0
         parameter: 

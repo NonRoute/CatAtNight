@@ -19,9 +19,8 @@ MonoBehaviour:
         offset: {x: 160, y: 55}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Practical Cat
-      text: Hey there, adventurer! I've got some news for you. Word has it that there's
-        a big challenge ahead. Yup, you guessed it! A boss fight is looming just
-        around the corner.
+      text: If you've already nabbed that key, crack open that door and get ready
+        to take down that restless ghost.
       action:
         type: 0
         parameter: 
@@ -39,7 +38,7 @@ MonoBehaviour:
         offset: {x: 160, y: 55}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Practical Cat
-      text: The night and adventure are calling you!
+      text: The only thing that'll put a hole in that ghostly soul is the holy spike.
       action:
         type: 0
         parameter: 

@@ -19,8 +19,7 @@ MonoBehaviour:
         offset: {x: 160, y: 55}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Practical Cat
-      text: Hey, did you know you can use the dash skill by double-tapping the SPACEBAR
-        along with the direction you want to go?
+      text: Greetings, dear friend! Did you enjoy running around the house?
       action:
         type: 0
         parameter: 
@@ -29,7 +28,27 @@ MonoBehaviour:
         offset: {x: 160, y: 55}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Practical Cat
-      text: I hope you enjoy using the dash skill to move faster!
+      text: 'Welcome to Stage 2: The Hightower. Here, I''ll teach you about the dashing
+        skill.'
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
+        offset: {x: 160, y: 55}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Practical Cat
+      text: To dash, simply double-tap the spacebar in the direction you wish to
+        go.
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
+        offset: {x: 160, y: 55}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Practical Cat
+      text: May you have a blast as you pursue your dream of freedom!
       action:
         type: 0
         parameter: 
