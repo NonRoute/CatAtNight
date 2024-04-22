@@ -12,7 +12,6 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Sprite FishIcon;
     [SerializeField] private Sprite MonsterIcon;
     [SerializeField] private Sprite FriendshipIcon;
-    [SerializeField] private Sprite AdventureIcon;
     [SerializeField] private ShopItem health = new ShopItem();
 
     private void Start()
@@ -32,7 +31,6 @@ public class ShopManager : MonoBehaviour
             ShopItem.CostType.Fish => FishIcon,
             ShopItem.CostType.Monster => MonsterIcon,
             ShopItem.CostType.Friendship => FriendshipIcon,
-            _ => AdventureIcon,
         };
     }
 
@@ -100,7 +98,7 @@ public class ShopManager : MonoBehaviour
 [System.Serializable]
 public class ShopItem
 {
-    public enum CostType { Fish, Monster, Friendship, Adventure };
+    public enum CostType { Fish, Monster, Friendship };
 
     public List<int> upgradeValue;
     public List<CostType> upgradeCostType;
