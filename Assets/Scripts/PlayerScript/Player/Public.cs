@@ -86,6 +86,16 @@ public partial class Player : MonoBehaviour, IDamagable
         StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
     }
 
+    public void UpgradeStamina(float newMaxStamina)
+    {
+        maxStamina = newMaxStamina;
+    }
+
+    public void UpgradeImmortal(float newImmortalDuration)
+    {
+        immortalDuration = newImmortalDuration;
+    }
+
     public Transform GetCameraFollow()
     {
         return cameraFollowTransform;
