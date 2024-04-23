@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7966581611437754249}
   - component: {fileID: 6300911348913575887}
   - component: {fileID: 6949340063422121023}
+  - component: {fileID: 3629508623801259825}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -210,6 +211,41 @@ MonoBehaviour:
   isTalking: 0
   choice3TalkText: 
   noClip: 0
+--- !u!58 &3629508623801259825
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455930444774944738}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &512954520055072255
 GameObject:
   m_ObjectHideFlags: 0

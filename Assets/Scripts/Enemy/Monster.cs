@@ -87,7 +87,10 @@ public class Monster : MonoBehaviour, IDamagable
         health -= damageInfo.damage;
         if (health <= 0)
         {
-            scoreManager.monsterScore += monsterScore;
+            if(scoreManager != null)
+            {
+                scoreManager.monsterScore += monsterScore;
+            }
             Destroy(gameObject);
         }
         if (damageInfo.isInterrupt)

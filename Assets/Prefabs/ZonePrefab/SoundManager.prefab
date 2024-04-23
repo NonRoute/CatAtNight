@@ -130,10 +130,28 @@ MonoBehaviour:
     isLoop: 1
     source: {fileID: 0}
   - name: Boss3BGM
-    clip: {fileID: 8300000, guid: 5d3d04d51bd0f8b4b81dad6fce0be4f1, type: 3}
+    clip: {fileID: 8300000, guid: 697560835caed71488a874dc39b8f787, type: 3}
     volume: 0.3
     pitch: 1
     isLoop: 1
+    source: {fileID: 0}
+  - name: SlimeHurt
+    clip: {fileID: 8300000, guid: b770acb82c7a0d24887e3303175300e9, type: 3}
+    volume: 0.5
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: SlimeJump
+    clip: {fileID: 8300000, guid: ac9bba34d4c862245bab0868bec009aa, type: 3}
+    volume: 0.7
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: DogDead
+    clip: {fileID: 8300000, guid: 4dfb1fcd8ba40df45928ecbc652973ae, type: 3}
+    volume: 0.7
+    pitch: 1
+    isLoop: 0
     source: {fileID: 0}
   maxDistance: 40
   distanceMultiplier: 2

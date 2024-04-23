@@ -11,6 +11,9 @@ public class Zone3Manager : MonoBehaviour
     [SerializeField] private Transform targetGroup;
     [SerializeField] private GameObject bossEntranceBlocker;
     [SerializeField] private GameObject doorToZone4;
+    [SerializeField] private GameObject dog;
+    [SerializeField] private SlimeBoss boss;
+
 
     private void Awake()
     {
@@ -27,6 +30,14 @@ public class Zone3Manager : MonoBehaviour
         SoundManager.TryPlayMusic("Zone 3 Music");
     }
 
+    [ContextMenu("RemoveDog")]
+    public void RemoveDog()
+    {
+        SoundManager.TryPlayNew("DogDead");
+        DataManager.Instance.DestroyObject(dog);
+        dog.SetActive(false);
+    }
+
     [ContextMenu("StartBoss")]
     public void StartBossFight()
     {
@@ -37,6 +48,7 @@ public class Zone3Manager : MonoBehaviour
             //wait
         }
         SoundManager.TryPlayMusic("Boss3BGM");
+        boss.ActivateBoss();
     }
 
     [ContextMenu("OpenBoss")]
@@ -52,7 +64,7 @@ public class Zone3Manager : MonoBehaviour
         GameplayStateManager.Instance.currentCamera.Follow = GameplayStateManager.Instance.Player.GetCameraFollow();
         SoundManager.TryPlayMusic("Zone 3 Music");
 
-        SoundManager.TryPlay("Victory");
+        SoundManager.TryPlayNew("Victory");
         DataManager.Instance.DestroyObject(doorToZone4);
         doorToZone4.SetActive(false);
         GameplayStateManager.Instance.Player.SetUnlockedSkill(3);
