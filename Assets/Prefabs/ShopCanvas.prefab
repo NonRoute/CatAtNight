@@ -1195,7 +1195,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1.5
+  m_text: 1.25
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e23ab584c6b9217449f73ef67b3fbc3c, type: 2}
   m_sharedMaterial: {fileID: -8339550280951505627, guid: e23ab584c6b9217449f73ef67b3fbc3c, type: 2}
@@ -3379,7 +3379,7 @@ MonoBehaviour:
     - 7
     - 8
     upgradeCostType: 000000000100000000000000010000000000000001000000
-    upgradeCostAmount: 030000000200000004000000030000000500000004000000
+    upgradeCostAmount: 020000000100000003000000020000000400000003000000
     currentTier: 0
     currentText: {fileID: 528738387292787991}
     nextText: {fileID: 846447066557222797}
@@ -3396,7 +3396,7 @@ MonoBehaviour:
     - 180
     - 200
     upgradeCostType: 020000000200000002000000020000000200000002000000
-    upgradeCostAmount: 0200000003000000040000000500000006000000
+    upgradeCostAmount: 0100000002000000030000000400000005000000
     currentTier: 0
     currentText: {fileID: 6625939181463766763}
     nextText: {fileID: 1846041257463247458}
@@ -3406,12 +3406,12 @@ MonoBehaviour:
   immortal:
     name: immortal
     upgradeValue:
+    - 1.25
     - 1.5
+    - 1.75
     - 2
-    - 2.5
-    - 3
     upgradeCostType: 01000000000000000200000000000000
-    upgradeCostAmount: 03000000030000000300000005000000
+    upgradeCostAmount: 02000000020000000200000004000000
     currentTier: 0
     currentText: {fileID: 1781117776271247427}
     nextText: {fileID: 5912906920284509969}

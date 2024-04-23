@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dca545e30f282c479a8b16c65908e4f, type: 3}
+  m_Name: 1-6
+  m_EditorClassIdentifier: 
+  sections:
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 681627895, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Critical cat
+      text: Let me introduce you to the art of dropping down from platforms. It's
+        a useful skill that can come in handy during tricky platforming sections
+        or when you need to make a quick escape.
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 681627895, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Critical cat
+      text: It's quite simple, really. When you're standing on a platform, just press
+        the Ctrl key. Your character will gracefully descend to the platform below.
+      action:
+        type: 0
+        parameter: Find the special key
+    endAfterDialogue: 1
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: 
+      answers: []
