@@ -109,18 +109,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Dash"",
+                    ""name"": ""DropDown"",
                     ""type"": ""Button"",
-                    ""id"": ""8e180b27-3bf9-49ca-9d00-7b6da2a10e13"",
+                    ""id"": ""9c1579ee-864d-419c-a21c-de7fea3921d5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""DropDown"",
+                    ""name"": ""Zoom"",
                     ""type"": ""Button"",
-                    ""id"": ""9c1579ee-864d-419c-a21c-de7fea3921d5"",
+                    ""id"": ""fe72422f-a49e-4b2b-815e-82bbd28ec3d0"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -330,6 +330,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""dcb252d9-8550-4d5d-bcd0-79865062878b"",
                     ""path"": ""<XInputController>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AtackAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""433bdc81-391a-4716-b627-0e408e4e34ca"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AtackAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60a866aa-584f-4e0a-8fa4-2ef1e3b4629f"",
+                    ""path"": ""<XInputController>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -768,39 +790,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""60cc24cf-4716-4a2b-b5f8-7c079c776efd"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""aa9cce60-704c-427f-a77b-aed2f69bafb5"",
-                    ""path"": ""<XInputController>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e1b03eaa-fc24-4ff0-8b04-89010874ce6f"",
-                    ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ef69990d-e975-4e6c-90b8-0de95319afe4"",
                     ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
@@ -809,6 +798,72 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""DropDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Gamepad Right Stick"",
+                    ""id"": ""92505860-fef5-4bbb-852f-21b28cbee953"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""d53a5fa1-92f5-4358-8a03-d195a47a6d53"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""d4a4eb26-ba67-4810-adc7-a73164fabcfe"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Xbox Right Stick"",
+                    ""id"": ""de8a23d9-b559-436d-8b7d-1ee501cee212"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""1b512574-8b25-480a-96aa-913f4e23d75f"",
+                    ""path"": ""<XInputController>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""06f143f1-7c2a-4504-855f-a39cab51b544"",
+                    ""path"": ""<XInputController>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -848,8 +903,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_OpenMenu = m_Player.FindAction("OpenMenu", throwIfNotFound: true);
         m_Player_AtackAction = m_Player.FindAction("AtackAction", throwIfNotFound: true);
-        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_DropDown = m_Player.FindAction("DropDown", throwIfNotFound: true);
+        m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -920,8 +975,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_OpenMenu;
     private readonly InputAction m_Player_AtackAction;
-    private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_DropDown;
+    private readonly InputAction m_Player_Zoom;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -935,8 +990,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @OpenMenu => m_Wrapper.m_Player_OpenMenu;
         public InputAction @AtackAction => m_Wrapper.m_Player_AtackAction;
-        public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @DropDown => m_Wrapper.m_Player_DropDown;
+        public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -973,12 +1028,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @AtackAction.started += instance.OnAtackAction;
             @AtackAction.performed += instance.OnAtackAction;
             @AtackAction.canceled += instance.OnAtackAction;
-            @Dash.started += instance.OnDash;
-            @Dash.performed += instance.OnDash;
-            @Dash.canceled += instance.OnDash;
             @DropDown.started += instance.OnDropDown;
             @DropDown.performed += instance.OnDropDown;
             @DropDown.canceled += instance.OnDropDown;
+            @Zoom.started += instance.OnZoom;
+            @Zoom.performed += instance.OnZoom;
+            @Zoom.canceled += instance.OnZoom;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1010,12 +1065,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @AtackAction.started -= instance.OnAtackAction;
             @AtackAction.performed -= instance.OnAtackAction;
             @AtackAction.canceled -= instance.OnAtackAction;
-            @Dash.started -= instance.OnDash;
-            @Dash.performed -= instance.OnDash;
-            @Dash.canceled -= instance.OnDash;
             @DropDown.started -= instance.OnDropDown;
             @DropDown.performed -= instance.OnDropDown;
             @DropDown.canceled -= instance.OnDropDown;
+            @Zoom.started -= instance.OnZoom;
+            @Zoom.performed -= instance.OnZoom;
+            @Zoom.canceled -= instance.OnZoom;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1053,7 +1108,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnOpenMenu(InputAction.CallbackContext context);
         void OnAtackAction(InputAction.CallbackContext context);
-        void OnDash(InputAction.CallbackContext context);
         void OnDropDown(InputAction.CallbackContext context);
+        void OnZoom(InputAction.CallbackContext context);
     }
 }

@@ -14,7 +14,7 @@ public partial class Player : MonoBehaviour, IDamagable
     {
         if (skillProgression < 2) return;
 
-        if(companion == null)
+        if (companion == null)
         {
             InitCompanion();
         }
@@ -46,7 +46,7 @@ public partial class Player : MonoBehaviour, IDamagable
     private void InitCompanion()
     {
         GameObject companionObject = Instantiate(companionPrefab);
-        companionObject.transform.SetSiblingIndex(transform.GetSiblingIndex()+1);
+        companionObject.transform.SetSiblingIndex(transform.GetSiblingIndex() + 1);
         companion = companionObject.GetComponent<Companion>();
     }
 
@@ -196,14 +196,14 @@ public partial class Player : MonoBehaviour, IDamagable
                     grounded |= hit.distance <= 0.3f;
                 }
 
-                if(grounded)
+                if (grounded)
                 {
                     lastGroundPosition = hit.point;
-                    if(Mathf.Abs(rotateAngle) <= 1f)
+                    if (Mathf.Abs(rotateAngle) <= 1f)
                     {
                         lastGroundPosition.y = Mathf.RoundToInt(lastGroundPosition.y);
                     }
-                    if(!isGrounded)
+                    if (!isGrounded)
                     {
                         lastLandingPosition = lastGroundPosition;
                     }
@@ -342,8 +342,9 @@ public partial class Player : MonoBehaviour, IDamagable
         bool dropDown = playerInputActions.Player.DropDown.WasPressedThisFrame();
 
         bool isDropDown = false;
-        if ((pressedJump && verticalInput < 0) || dropDown)
+        if ((pressedJump && rawVerticalInput <= -0.5) || dropDown)
         {
+
             List<Platform> toBeDisable = new(passThroughPlatformList);
             foreach (Platform platform in toBeDisable)
             {
@@ -386,7 +387,7 @@ public partial class Player : MonoBehaviour, IDamagable
                     isChargeJumping = true;
                 }
             }
-            else if(skillProgression >= 1) // Check Dash
+            else if (skillProgression >= 1) // Check Dash
             {
                 // Prevent Dashing when Dropping Down
                 if (Time.time - lastGroundedTime < groundedDelay)
@@ -457,7 +458,7 @@ public partial class Player : MonoBehaviour, IDamagable
     private void AddDashCount()
     {
         ++dashCount;
-        if(dashCount >= maxDashCount)
+        if (dashCount >= maxDashCount)
         {
             StatusUIManager.Instance.ToggleDashIcon(false);
         }
@@ -466,7 +467,7 @@ public partial class Player : MonoBehaviour, IDamagable
     private void ResetDash()
     {
         dashCount = 0;
-        if(skillProgression >= 1)
+        if (skillProgression >= 1)
         {
             StatusUIManager.Instance.ToggleDashIcon(true);
         }

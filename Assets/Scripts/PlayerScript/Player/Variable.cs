@@ -271,6 +271,12 @@ public partial class Player : MonoBehaviour, IDamagable
     [Header("--Input")]
 
     [SerializeField]
+    private float rawHorizontalInput = 0f;
+
+    [SerializeField]
+    private float rawVerticalInput = 0f;
+
+    [SerializeField]
     private float horizontalInput = 0f;
 
     [SerializeField]

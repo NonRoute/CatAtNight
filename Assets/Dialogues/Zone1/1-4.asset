@@ -51,8 +51,8 @@ MonoBehaviour:
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Fanatical cat
       text: 'See that box over there? That''s full of yarn balls. Pick one up, and
-        you can throw it at the monsters by clicking with mouse or B in Controller.
-        Boom! The monster is gone. '
+        you can throw it at the monsters by clicking with mouse or right shoulder
+        in Controller. Boom! The monster is gone. '
       action:
         type: 7
         parameter: Exterminate the sewer rats
