@@ -18,12 +18,12 @@ MonoBehaviour:
       - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
         offset: {x: 160, y: 55}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: Practical Cat
+      characterName: Oratorical cat
       text: Psst, hey there! If you want to face the big boss of the night, you need
         to find a special key. This key unlocks the door to the boss room.
       action:
-        type: 0
-        parameter: 
+        type: 7
+        parameter: Find the special key
     endAfterDialogue: 1
     goToNextDialogue: 0
     nextDialogue: 0

@@ -15,8 +15,8 @@ MonoBehaviour:
   sections:
   - dialogue:
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: 688741655, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Practical Cat
       text: Welcome, little adventurer! You're about to start a special journey that
@@ -25,8 +25,8 @@ MonoBehaviour:
         type: 0
         parameter: 
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: 688741655, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Practical Cat
       text: 'You''ll go through four nights, each one a new adventure. You''ll find
@@ -35,8 +35,8 @@ MonoBehaviour:
         type: 0
         parameter: 
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: 688741655, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Practical Cat
       text: But first, let me show you how to move around.
@@ -44,8 +44,8 @@ MonoBehaviour:
         type: 0
         parameter: 
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: 688741655, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Practical Cat
       text: Press 'A' to go left, and 'D' to go right.
@@ -53,14 +53,14 @@ MonoBehaviour:
         type: 0
         parameter: 
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: 688741655, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Practical Cat
       text: Ready? Let's start your night adventure.
       action:
-        type: 0
-        parameter: 
+        type: 7
+        parameter: Move around
     - sprites:
       - sprite: {fileID: -1448165594, guid: 5b0e428e03ad64547b44a0e01b07e9c4, type: 3}
         offset: {x: -160, y: 100}
