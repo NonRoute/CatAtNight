@@ -123,6 +123,12 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
+  - name: Zone 3 Music
+    clip: {fileID: 8300000, guid: 588a082d52144644bb2d30510ef03cc4, type: 3}
+    volume: 0.3
+    pitch: 1
+    isLoop: 1
+    source: {fileID: 0}
   maxDistance: 40
   distanceMultiplier: 2
   blendValue: 0.75

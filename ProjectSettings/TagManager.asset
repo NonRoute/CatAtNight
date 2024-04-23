@@ -8,6 +8,7 @@ TagManager:
   - YarnBallBox
   - BossRoomYarnBallBox
   - Shop
+  - ForDog
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - Platform
   - Wall
-  - 
+  - Tile
   - 
   - 
   - 
