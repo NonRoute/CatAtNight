@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class SlimeBoss : MonoBehaviour
@@ -26,6 +27,10 @@ public class SlimeBoss : MonoBehaviour
     [SerializeField] private DamageInfo damageInfo = new();
     [SerializeField] private float moveDirection = 1f;
     [SerializeField] private LayerMask floorLayer;
+
+    [SerializeField] string actionText = "Attack the Slime";
+    [SerializeField] string talkText = "Attack!";
+    [SerializeField] string responseText = "OK!";
 
 
     private Rigidbody2D rb;
@@ -90,22 +95,37 @@ public class SlimeBoss : MonoBehaviour
 
     private void UpdateInterrupted()
     {
-        sprite.transform.localPosition = shakePower * Mathf.Sign(Time.time * shakeSpeed) * Vector2.right;
+        sprite.transform.localPosition = shakePower * Mathf.Sin(Time.time * shakeSpeed) * Vector2.right;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print(collision.gameObject.name);
+        //print(collision.gameObject.name);
         if (collision.gameObject.TryGetComponent(out IDamagable damagable))
         {
             if (!damageInfo.targetEntityType.HasFlag(damagable.GetEntityType())) return;
             damagable.RecieveDamage(damageInfo, bottom.position + 2 * Vector3.down);
+        }
+        if (collision.gameObject.CompareTag("Companion"))
+        {
+            CompanionUIManager.Instance.OpenChoice3(actionText);
+            GameplayStateManager.Instance.Player.SetUpChoice3(talkText, responseText);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Companion"))
+        {
+            CompanionUIManager.Instance.HideChoice3();
+            GameplayStateManager.Instance.Player.ClearChoice3();
         }
     }
 
     [ContextMenu("Damage")]
     public void ReceiveDamage()
     {
+        if (isInterrupted) return;
         health -= 1;
         if(health <= 0)
         {
@@ -123,6 +143,7 @@ public class SlimeBoss : MonoBehaviour
     {
         DataManager.Instance.DestroyObject(gameObject);
         gameObject.SetActive(false);
+        SoundManager.TryPlayNew("Boss3Dead");
         Zone3Manager.Instance.AfterBossDead();
     }
 

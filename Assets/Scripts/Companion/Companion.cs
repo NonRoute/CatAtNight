@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+public enum CompanionAction
+{
+    AttackBossZone3,
+    HoldItem,
+}
+
 public class Companion : MonoBehaviour
 {
     [SerializeField] bool isEnabled = false;
@@ -27,6 +33,7 @@ public class Companion : MonoBehaviour
     // Choice
     public bool hasChoice3 = false;
     public string responseText;
+    public CompanionAction companionAction;
 
     // may use in the future
     // but it is really hard to implement right now
@@ -360,6 +367,12 @@ public class Companion : MonoBehaviour
     {
         if (!isEnabled || !hasChoice3) return;
         StartCoroutine(StartTextBox(responseText, 2f));
+        if(companionAction == CompanionAction.AttackBossZone3)
+        {
+            Zone3Manager.Instance.AttackBoss();
+            CompanionUIManager.Instance.SetStatus(1);
+            SetFollow(GameplayStateManager.Instance.Player.GetCameraFollow().position - 0.55f * Vector3.up);
+        }
     }
 
     // For Debug Only

@@ -171,6 +171,12 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
+  - name: Boss3Dead
+    clip: {fileID: 8300000, guid: cd41c98a64cc75c4cb1dfc03161a90e6, type: 3}
+    volume: 0.7
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
   maxDistance: 40
   distanceMultiplier: 2
   blendValue: 0.75

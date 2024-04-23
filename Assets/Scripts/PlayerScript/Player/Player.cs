@@ -218,26 +218,29 @@ public partial class Player : MonoBehaviour, IDamagable
                 CompanionUIManager.Instance.SetOpen(!companion.IsEnabled);
                 companion.ToggleCompanion(startDelayedPosition);
             }
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (companion.IsEnabled)
             {
-                StartTextBox("Follow Me", 2f);
-                SoundManager.TryPlayNew("CommandCom");
-                CompanionUIManager.Instance.SetStatus(1);
-                companion.SetFollow(startDelayedPosition);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                StartTextBox("Stop Here", 2f);
-                SoundManager.TryPlayNew("CommandCom");
-                CompanionUIManager.Instance.SetStatus(2);
-                companion.SetStayStill(lastGroundPosition);
-            }
-            if (companion.hasChoice3 && Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                StartTextBox(choice3TalkText, 2f);
-                SoundManager.TryPlayNew("CommandCom");
-                CompanionUIManager.Instance.SetStatus(3);
-                companion.StartChoice3();
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    StartTextBox("Follow Me", 2f);
+                    SoundManager.TryPlayNew("CommandCom");
+                    CompanionUIManager.Instance.SetStatus(1);
+                    companion.SetFollow(startDelayedPosition);
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    StartTextBox("Stop Here", 2f);
+                    SoundManager.TryPlayNew("CommandCom");
+                    CompanionUIManager.Instance.SetStatus(2);
+                    companion.SetStayStill(lastGroundPosition);
+                }
+                if (companion.hasChoice3 && Input.GetKeyDown(KeyCode.Alpha3))
+                {
+                    StartTextBox(choice3TalkText, 2f);
+                    SoundManager.TryPlayNew("CommandCom");
+                    CompanionUIManager.Instance.SetStatus(3);
+                    companion.StartChoice3();
+                }
             }
         }
 

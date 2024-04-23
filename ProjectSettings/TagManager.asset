@@ -9,6 +9,7 @@ TagManager:
   - BossRoomYarnBallBox
   - Shop
   - ForDog
+  - Companion
   layers:
   - Default
   - TransparentFX

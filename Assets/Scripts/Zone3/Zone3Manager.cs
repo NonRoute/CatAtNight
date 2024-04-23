@@ -42,13 +42,14 @@ public class Zone3Manager : MonoBehaviour
     public void StartBossFight()
     {
         GameplayStateManager.Instance.currentCamera.Follow = targetGroup;
-        GameplayStateManager.Instance.AutoSave();
-        while (GameplayStateManager.Instance.isSaving)
-        {
-            //wait
-        }
+        //GameplayStateManager.Instance.AutoSave();
+        //while (GameplayStateManager.Instance.isSaving)
+        //{
+        //    //wait
+        //}
         SoundManager.TryPlayMusic("Boss3BGM");
         boss.ActivateBoss();
+        GameplayStateManager.Instance.Player.ForceCallCompanion(true);
     }
 
     [ContextMenu("OpenBoss")]
@@ -56,6 +57,12 @@ public class Zone3Manager : MonoBehaviour
     {
         DataManager.Instance.DestroyObject(bossEntranceBlocker);
         bossEntranceBlocker.SetActive(false);
+    }
+
+    [ContextMenu("OpenBoss")]
+    public void AttackBoss()
+    {
+        boss.ReceiveDamage();
     }
 
     [ContextMenu("EndBoss")]

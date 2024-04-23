@@ -12,13 +12,21 @@ public class Zone3BossTrigger : MonoBehaviour
         if (collision.CompareTag("Player") && !isTriggered)
         {
             Zone3Manager.Instance.StartBossFight();
-            //GameplayStateManager.Instance.AutoSave();
-            //while (GameplayStateManager.Instance.isSaving)
-            //{
-            //    //wait
-            //}
-            DataManager.Instance.DestroyObject(gameObject);
+            DataManager.Instance.tempData.position = GameplayStateManager.Instance.Player.GetCameraFollow().position;
+            GameplayStateManager.Instance.AutoSave();
+            while (GameplayStateManager.Instance.isSaving)
+            {
+                //wait
+            }
+            StartCoroutine(DestroyDelayed(0.2f));
             isTriggered = true;
         }
     }
+
+    IEnumerator DestroyDelayed(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        DataManager.Instance.DestroyObject(gameObject);
+    }
+
 }

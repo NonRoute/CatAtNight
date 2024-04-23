@@ -205,4 +205,11 @@ public partial class Player : MonoBehaviour, IDamagable
         PauseUIManager.Instance.SetMainObjective(mainObjective);
     }
 
+    public void ForceCallCompanion(bool isCall)
+    {
+        if (isCall == companion.IsEnabled) return;
+        CompanionUIManager.Instance.SetOpen(!companion.IsEnabled);
+        companion.ToggleCompanion(startDelayedPosition);
+    }
+
 }
