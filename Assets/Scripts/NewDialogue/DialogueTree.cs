@@ -72,4 +72,6 @@ public enum DialogueActionType
     AddItem,
     RemoveItem,
     SetMainObjective,
+    PlaySound,
+    PlayBGM,
 }
