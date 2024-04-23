@@ -194,7 +194,7 @@ public class MainMenuManager : MonoBehaviour
                 saveDateTexts[i].text = "";
                 continue;
             }
-            unlockedLevelTexts[i].text = $"[Level: {gameData.unlockedLevel}]";
+            unlockedLevelTexts[i].text = $"Level {gameData.skillProgression + 1}";
             saveDateTexts[i].text = $"{((DateTime)gameData.dateTime).ToLocalTime()}";
         }
     }
