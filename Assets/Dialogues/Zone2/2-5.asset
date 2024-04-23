@@ -15,10 +15,10 @@ MonoBehaviour:
   sections:
   - dialogue:
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: Practical Cat
+      characterName: Pedantical cat
       text: If you've already nabbed that key, crack open that door and get ready
         to take down that restless ghost.
       action:
@@ -34,10 +34,10 @@ MonoBehaviour:
         type: 0
         parameter: 
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: Practical Cat
+      characterName: Pedantical cat
       text: The only thing that'll put a hole in that ghostly soul is the holy spike.
       action:
         type: 0

@@ -15,39 +15,39 @@ MonoBehaviour:
   sections:
   - dialogue:
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: 688741655, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: Practical Cat
+      characterName: Delphicoracle cat
       text: Greetings, dear friend! Did you enjoy running around the house?
       action:
         type: 0
         parameter: 
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: 688741655, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: Practical Cat
+      characterName: Delphicoracle cat
       text: 'Welcome to Stage 2: The Hightower. Here, I''ll teach you about the dashing
         skill.'
       action:
         type: 0
         parameter: 
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: 688741655, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: Practical Cat
+      characterName: Delphicoracle cat
       text: To dash, simply double-tap the spacebar in the direction you wish to
         go.
       action:
         type: 0
         parameter: 
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: 688741655, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: Practical Cat
+      characterName: Delphicoracle cat
       text: May you have a blast as you pursue your dream of freedom!
       action:
         type: 0

@@ -18,7 +18,7 @@ MonoBehaviour:
       - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
         offset: {x: 160, y: 55}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: Practical Cat
+      characterName: Dispeptical cat
       text: What brings you here?
       action:
         type: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
       - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
         offset: {x: 160, y: 55}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: Practical Cat
+      characterName: Dispeptical cat
       text: Did you totally overlook what that cat just said down there?
       action:
         type: 0

@@ -15,20 +15,20 @@ MonoBehaviour:
   sections:
   - dialogue:
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: 681627895, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: Practical Cat
+      characterName: Fanatical cat
       text: Listen up! As you roam around, you'll find thorns and monsters. Touching
         them isn't good for you. It'll hurt and you'll lose health.
       action:
         type: 0
         parameter: 
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: 681627895, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: Practical Cat
+      characterName: Fanatical cat
       text: You've got a health bar that shows how you're doing. If it goes all the
         way down to zero, well, that's the end of your adventure for the night. So,
         be careful and try to stay away from those thorns and monsters!
@@ -36,20 +36,20 @@ MonoBehaviour:
         type: 0
         parameter: 
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: 681627895, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: Practical Cat
+      characterName: Fanatical cat
       text: 'Here''s something important. Jumping on monsters? Bad idea. It hurts
         you, not them. But don''t worry, I''ve got a trick for you. '
       action:
         type: 0
         parameter: 
     - sprites:
-      - sprite: {fileID: 21300000, guid: 9fcd21de3b514144ab28d2b9e9332ccb, type: 3}
-        offset: {x: 160, y: 55}
+      - sprite: {fileID: 681627895, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: Practical Cat
+      characterName: Fanatical cat
       text: 'See that box over there? That''s full of yarn balls. Pick one up, and
         you can throw it at the monsters by clicking. Boom! The monster is gone. '
       action:
