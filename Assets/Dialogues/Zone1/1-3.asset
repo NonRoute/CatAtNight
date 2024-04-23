@@ -29,9 +29,9 @@ MonoBehaviour:
         offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Pragmatical cat
-      text: To dash, hold down the Shift key while moving in any direction. It's
-        a quick burst of speed that can get you out of tight spots or help you cover
-        ground fast.
+      text: To dash, hold down the Shift key (Keyboard) or Left Bumper (Controller)
+        while moving in any direction. It's a quick burst of speed that can get you
+        out of tight spots or help you cover ground fast.
       action:
         type: 0
         parameter: 

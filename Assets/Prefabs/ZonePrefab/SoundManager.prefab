@@ -206,6 +206,7 @@ MonoBehaviour:
     volume: 0.7
     pitch: 1
     isLoop: 0
+    source: {fileID: 0}
   - name: CatHuh
     clip: {fileID: 8300000, guid: 9ea97435856a14d02ad2aa5c531d9d5f, type: 3}
     volume: 1
@@ -214,6 +215,18 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ChipiChipi
     clip: {fileID: 8300000, guid: 26edab0a36aa04b39bd12d0388fbfd65, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: Boss2BGM
+    clip: {fileID: 8300000, guid: 0a2d18ff84d82495486036b7493492ff, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 1
+    source: {fileID: 0}
+  - name: Boss2Hit
+    clip: {fileID: 8300000, guid: 91a5399bffe3446579415d356f279940, type: 3}
     volume: 1
     pitch: 1
     isLoop: 0

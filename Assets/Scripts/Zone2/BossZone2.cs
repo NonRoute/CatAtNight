@@ -17,7 +17,7 @@ public class BossZone2 : Monster
         CinemachineVirtualCamera cam = FindAnyObjectByType<CinemachineVirtualCamera>();
     }
 
-    void FixedUpdate()
+    protected new void FixedUpdate()
     {
         if (isStarted)
         {
@@ -70,6 +70,6 @@ public class BossZone2 : Monster
             bounceDuration = damageInfo.bounceDuration;
             bounceVelocity = damageInfo.bounceSpeed * ((Vector2)transform.position - attackerPos).normalized;
         }
-        SoundManager.TryPlay("BossHit");
+        SoundManager.TryPlay("Boss2Hit");
     }
 }

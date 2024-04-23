@@ -28,7 +28,8 @@ MonoBehaviour:
         offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Dramatical cat
-      text: Hit the 'Spacebar' to jump. The longer you press, the higher you jump.
+      text: Hit the 'Spacebar' (Keyboard) or 'A' (Controller) to jump. The longer
+        you press, the higher you jump.
       action:
         type: 0
         parameter: 
