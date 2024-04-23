@@ -19,7 +19,7 @@ MonoBehaviour:
         offset: {x: 160, y: 55}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Practical Cat
-      text: Welcome, this is where the real fun begins.
+      text: Just head on over to the right side of the city.
       action:
         type: 0
         parameter: 
@@ -37,7 +37,8 @@ MonoBehaviour:
         offset: {x: 160, y: 55}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Practical Cat
-      text: I hope you're not climbing too far above the building's roof.
+      text: Oh, and forget about trying to jump up to that platform above you for
+        now
       action:
         type: 0
         parameter: 
@@ -46,7 +47,7 @@ MonoBehaviour:
         offset: {x: 160, y: 55}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Practical Cat
-      text: It doesn't have anything at all.
+      text: Total waste of time, trust me!
       action:
         type: 0
         parameter: 
