@@ -135,6 +135,30 @@ MonoBehaviour:
     pitch: 1
     isLoop: 1
     source: {fileID: 0}
+  - name: TwoCatTalk-1-1
+    clip: {fileID: 8300000, guid: 91a392e34ad0c43bfbeadeab33cd5500, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: TwoCatTalk-1-2
+    clip: {fileID: 8300000, guid: 6398e589ea6d04f5bb08d2f89d973b04, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: TwoCatTalk-2-1
+    clip: {fileID: 8300000, guid: bcddf9e0649e54e1d822327dd0116fa1, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: TwoCatTalk-2-2
+    clip: {fileID: 8300000, guid: a44c396e377114f8280454bfb227bac0, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
   maxDistance: 40
   distanceMultiplier: 2
   blendValue: 0.75
