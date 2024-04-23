@@ -201,6 +201,12 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
+  - name: CatHuh
+    clip: {fileID: 8300000, guid: 9ea97435856a14d02ad2aa5c531d9d5f, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
   maxDistance: 40
   distanceMultiplier: 2
   blendValue: 0.75
