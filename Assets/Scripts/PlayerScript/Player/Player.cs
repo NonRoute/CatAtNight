@@ -214,21 +214,26 @@ public partial class Player : MonoBehaviour, IDamagable
             }
             if (companion.IsEnabled)
             {
-                if (Input.GetKeyDown(KeyCode.Alpha1))
+                if (Input.GetKeyDown(KeyCode.Alpha1)
+                    || playerInputActions.Player.Companion1.WasPressedThisFrame())
                 {
                     StartTextBox("Follow Me", 2f);
                     SoundManager.TryPlayNew("CommandCom");
                     CompanionUIManager.Instance.SetStatus(1);
                     companion.SetFollow(startDelayedPosition);
                 }
-                if (Input.GetKeyDown(KeyCode.Alpha2))
+                if (Input.GetKeyDown(KeyCode.Alpha2)
+                    || playerInputActions.Player.Companion2.WasPressedThisFrame())
                 {
                     StartTextBox("Stop Here", 2f);
                     SoundManager.TryPlayNew("CommandCom");
                     CompanionUIManager.Instance.SetStatus(2);
                     companion.SetStayStill(lastGroundPosition);
                 }
-                if (companion.hasChoice3 && Input.GetKeyDown(KeyCode.Alpha3))
+                if (companion.hasChoice3 && (
+                    Input.GetKeyDown(KeyCode.Alpha3)
+                        || playerInputActions.Player.Companion3.WasPressedThisFrame()
+                ))
                 {
                     StartTextBox(choice3TalkText, 2f);
                     SoundManager.TryPlayNew("CommandCom");

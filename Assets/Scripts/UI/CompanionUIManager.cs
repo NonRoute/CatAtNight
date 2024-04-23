@@ -55,7 +55,7 @@ public class CompanionUIManager : MonoBehaviour
     {
         for (int i = 0; i < choicesBG.Length; i++)
         {
-            choicesBG[i].color = (choice-1 == i) ? chosenColor : normalColor;
+            choicesBG[i].color = (choice - 1 == i) ? chosenColor : normalColor;
         }
     }
 
@@ -63,12 +63,12 @@ public class CompanionUIManager : MonoBehaviour
     {
         if (isOpen)
         {
-            mainText.text = "Press C to Say Goodbye";
+            mainText.text = "Press C/RT to Say Goodbye";
             //mainText.fontSize = 22;
         }
         else
         {
-            mainText.text = "Press C to Call Companion";
+            mainText.text = "Press C/RT to Call Companion";
             //mainText.fontSize = 30;
         }
         statusPanel.SetActive(isOpen);

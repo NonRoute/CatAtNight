@@ -162,7 +162,7 @@ public class MainMenuManager : MonoBehaviour
         {
             DataManager.Instance.reloadData();
             string sceneName = DataManager.Instance.gameData.sceneName;
-            if(sceneName != "")
+            if (sceneName != "")
             {
                 SoundManager.TryPlayNew(clickSfxName);
                 SoundManager.TryStop(bgmName);
@@ -188,14 +188,14 @@ public class MainMenuManager : MonoBehaviour
         for (int i = 0; i <= 3; i++)
         {
             var gameData = DataManager.Instance.getData(i);
-            if(gameData == null)
+            if (gameData == null)
             {
                 unlockedLevelTexts[i].text = "[NO DATA]";
                 saveDateTexts[i].text = "";
                 continue;
             }
             unlockedLevelTexts[i].text = $"[Level: {gameData.unlockedLevel}]";
-            saveDateTexts[i].text = $"{(DateTime)gameData.dateTime}";
+            saveDateTexts[i].text = $"{((DateTime)gameData.dateTime).ToLocalTime()}";
         }
     }
 }
