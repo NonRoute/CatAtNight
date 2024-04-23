@@ -146,7 +146,7 @@ public class PauseUIManager : MonoBehaviour
                 continue;
             }
             unlockedLevelTexts[i].text = $"[Level: {gameData.unlockedLevel}]";
-            saveDateTexts[i].text = $"{(DateTime)gameData.dateTime}";
+            saveDateTexts[i].text = $"{((DateTime)gameData.dateTime).ToLocalTime()}";
         }
     }
 
