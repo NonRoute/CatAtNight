@@ -109,6 +109,7 @@ public class SlimeBoss : MonoBehaviour
         {
             CompanionUIManager.Instance.OpenChoice3(actionText);
             GameplayStateManager.Instance.Player.SetUpChoice3(talkText, responseText);
+            GameplayStateManager.Instance.Player.SetCompanionAction(CompanionAction.AttackBossZone3);
         }
     }
 

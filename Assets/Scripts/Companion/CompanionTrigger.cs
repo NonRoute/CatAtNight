@@ -10,6 +10,7 @@ public abstract class CompanionTrigger : MonoBehaviour
     [SerializeField] string actionText = "";
     [SerializeField] string talkText = "Hold this Box";
     [SerializeField] string responseText = "OK";
+    [SerializeField] CompanionAction actionType;
 
     abstract public void SetAction();
 
@@ -19,6 +20,7 @@ public abstract class CompanionTrigger : MonoBehaviour
         {
             CompanionUIManager.Instance.OpenChoice3(actionText);
             GameplayStateManager.Instance.Player.SetUpChoice3(talkText,responseText);
+            GameplayStateManager.Instance.Player.SetCompanionAction(actionType);
             SetAction();
         }
     }
