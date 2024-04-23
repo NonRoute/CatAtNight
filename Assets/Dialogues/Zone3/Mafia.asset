@@ -1,0 +1,245 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dca545e30f282c479a8b16c65908e4f, type: 3}
+  m_Name: Mafia
+  m_EditorClassIdentifier: 
+  sections:
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: Hello Newcomer! I am the owner of this place
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 949113280, guid: 5b0e428e03ad64547b44a0e01b07e9c4, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: You
+      text: Wow... Can I get some of your fish
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: You can take all of them, but you have to do me a favor first
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 949113280, guid: 5b0e428e03ad64547b44a0e01b07e9c4, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: You
+      text: What favor?
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: There was a dog down there. We have a way to deal with it but no one
+        want to do it.
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: If you can help us do it. You can take as many fish as you want!
+      action:
+        type: 0
+        parameter: 
+    endAfterDialogue: 0
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: Will you accept the quest?
+      answers:
+      - answerLabel: Yes
+        nextElement: 1
+        action:
+          type: 1
+          parameter: 
+      - answerLabel: No
+        nextElement: 2
+        action:
+          type: 2
+          parameter: 
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: That will help a ton!
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: The first thing I want you to do is getting the gem at the far east.
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: Then you come back here to make it a weapon that can deal with dogs
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: See you!
+      action:
+        type: 0
+        parameter: 
+    endAfterDialogue: 1
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: Will you accept the quest?
+      answers:
+      - answerLabel: Yes
+        nextElement: 1
+        action:
+          type: 1
+          parameter: 
+      - answerLabel: No
+        nextElement: 2
+        action:
+          type: 2
+          parameter: 
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: That's OK
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: You can come back here anytime if you change your mind.
+      action:
+        type: 0
+        parameter: 
+    endAfterDialogue: 1
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: Will you accept the quest?
+      answers:
+      - answerLabel: Yes
+        nextElement: 1
+        action:
+          type: 1
+          parameter: 
+      - answerLabel: No
+        nextElement: 2
+        action:
+          type: 2
+          parameter: 
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: Thanks for helping us!
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: If you want my help you can ask me later!
+      action:
+        type: 0
+        parameter: 
+    endAfterDialogue: 1
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: Will you accept the quest?
+      answers:
+      - answerLabel: Yes
+        nextElement: 1
+        action:
+          type: 1
+          parameter: 
+      - answerLabel: No
+        nextElement: 2
+        action:
+          type: 2
+          parameter: 
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: Now the dogs are gone...
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: What to do next...
+      action:
+        type: 0
+        parameter: 
+    endAfterDialogue: 1
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: Will you accept the quest?
+      answers:
+      - answerLabel: Yes
+        nextElement: 1
+        action:
+          type: 1
+          parameter: 
+      - answerLabel: No
+        nextElement: 2
+        action:
+          type: 2
+          parameter: 

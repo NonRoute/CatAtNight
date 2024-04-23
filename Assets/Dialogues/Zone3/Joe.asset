@@ -17,7 +17,7 @@ MonoBehaviour:
     - sprites:
       - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
         offset: {x: 300, y: 100}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+        fadeColor: {r: 0, g: 0, b: 0, a: 1}
       - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
         offset: {x: -300, y: 100}
         fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
@@ -29,7 +29,7 @@ MonoBehaviour:
     - sprites:
       - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
         offset: {x: 300, y: 100}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+        fadeColor: {r: 0, g: 0, b: 0, a: 1}
       - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
         offset: {x: -300, y: 100}
         fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
@@ -41,7 +41,7 @@ MonoBehaviour:
     - sprites:
       - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
         offset: {x: 300, y: 100}
-        fadeColor: {r: 0.5018867, g: 0.5018867, b: 0.5018867, a: 1}
+        fadeColor: {r: 0, g: 0, b: 0, a: 1}
       - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
         offset: {x: -300, y: 100}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -53,7 +53,7 @@ MonoBehaviour:
     - sprites:
       - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
         offset: {x: 300, y: 100}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+        fadeColor: {r: 0, g: 0, b: 0, a: 1}
       - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
         offset: {x: -300, y: 100}
         fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
@@ -82,7 +82,7 @@ MonoBehaviour:
     - sprites:
       - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
         offset: {x: 300, y: 100}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+        fadeColor: {r: 0, g: 0, b: 0, a: 1}
       - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
         offset: {x: -300, y: 100}
         fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
@@ -94,7 +94,7 @@ MonoBehaviour:
     - sprites:
       - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
         offset: {x: 300, y: 100}
-        fadeColor: {r: 0.5018867, g: 0.5018867, b: 0.5018867, a: 1}
+        fadeColor: {r: 0, g: 0, b: 0, a: 1}
       - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
         offset: {x: -300, y: 100}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -123,7 +123,7 @@ MonoBehaviour:
     - sprites:
       - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
         offset: {x: 300, y: 100}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+        fadeColor: {r: 0, g: 0, b: 0, a: 1}
       - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
         offset: {x: -300, y: 100}
         fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
@@ -152,7 +152,7 @@ MonoBehaviour:
     - sprites:
       - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
         offset: {x: 0, y: 100}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+        fadeColor: {r: 0, g: 0, b: 0, a: 1}
       characterName: Not Joe
       text: To be frank, that's not a quest. LOL
       action:

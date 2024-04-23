@@ -11,14 +11,6 @@ public class PushButton : MonoBehaviour
     public bool isPushed;
     public bool isUnlocked;
 
-    private void Start()
-    {
-        if(!door.activeInHierarchy)
-        {
-            isUnlocked = true;
-        }
-    }
-
     private void UpdateSprite()
     {
         pushSprite.SetActive(isPushed);
