@@ -31,7 +31,8 @@ MonoBehaviour:
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Critical cat
       text: It's quite simple, really. When you're standing on a platform, just press
-        the Ctrl key. Your character will gracefully descend to the platform below.
+        the Ctrl key. Or for controller, place A (jump) while moving down. Your character
+        will gracefully descend to the platform below.
       action:
         type: 0
         parameter: Find the special key
