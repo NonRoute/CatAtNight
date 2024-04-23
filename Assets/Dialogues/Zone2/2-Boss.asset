@@ -33,7 +33,7 @@ MonoBehaviour:
         type: 0
         parameter: 
     - sprites:
-      - sprite: {fileID: 21300000, guid: 8e2d17953f2974646a0674f8edb5faa9, type: 3}
+      - sprite: {fileID: 21300000, guid: 965bd1a490538104f8b9adf54c9abd19, type: 3}
         offset: {x: 160, y: 55}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Ghost
