@@ -87,18 +87,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Dash",
+                    "name": "DropDown",
                     "type": "Button",
-                    "id": "8e180b27-3bf9-49ca-9d00-7b6da2a10e13",
+                    "id": "9c1579ee-864d-419c-a21c-de7fea3921d5",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DropDown",
+                    "name": "Zoom",
                     "type": "Button",
-                    "id": "9c1579ee-864d-419c-a21c-de7fea3921d5",
+                    "id": "fe72422f-a49e-4b2b-815e-82bbd28ec3d0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -308,6 +308,28 @@
                     "name": "",
                     "id": "dcb252d9-8550-4d5d-bcd0-79865062878b",
                     "path": "<XInputController>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AtackAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "433bdc81-391a-4716-b627-0e408e4e34ca",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AtackAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "60a866aa-584f-4e0a-8fa4-2ef1e3b4629f",
+                    "path": "<XInputController>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -746,39 +768,6 @@
                 },
                 {
                     "name": "",
-                    "id": "60cc24cf-4716-4a2b-b5f8-7c079c776efd",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "aa9cce60-704c-427f-a77b-aed2f69bafb5",
-                    "path": "<XInputController>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e1b03eaa-fc24-4ff0-8b04-89010874ce6f",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ef69990d-e975-4e6c-90b8-0de95319afe4",
                     "path": "<Keyboard>/ctrl",
                     "interactions": "",
@@ -787,6 +776,72 @@
                     "action": "DropDown",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "Gamepad Right Stick",
+                    "id": "92505860-fef5-4bbb-852f-21b28cbee953",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "d53a5fa1-92f5-4358-8a03-d195a47a6d53",
+                    "path": "<Gamepad>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "d4a4eb26-ba67-4810-adc7-a73164fabcfe",
+                    "path": "<Gamepad>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Xbox Right Stick",
+                    "id": "de8a23d9-b559-436d-8b7d-1ee501cee212",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "1b512574-8b25-480a-96aa-913f4e23d75f",
+                    "path": "<XInputController>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "06f143f1-7c2a-4504-855f-a39cab51b544",
+                    "path": "<XInputController>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

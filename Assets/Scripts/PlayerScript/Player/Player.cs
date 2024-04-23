@@ -180,13 +180,13 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void ReadInput()
     {
-        horizontalInput = playerInputActions.Player.Horizontal.ReadValue<float>();
+        rawHorizontalInput = playerInputActions.Player.Horizontal.ReadValue<float>();
         // Deadzone for Controller Input
-        horizontalInput = (Math.Abs(horizontalInput) > 0.1f) ? Math.Sign(horizontalInput) : 0f;
+        horizontalInput = (Math.Abs(rawHorizontalInput) > 0.1f) ? Math.Sign(rawHorizontalInput) : 0f;
 
-        verticalInput = playerInputActions.Player.Vertical.ReadValue<float>();
+        rawVerticalInput = playerInputActions.Player.Vertical.ReadValue<float>();
         // Deadzone for Controller Input
-        verticalInput = (Math.Abs(verticalInput) > 0.1f) ? Math.Sign(verticalInput) : 0f;
+        verticalInput = (Math.Abs(rawVerticalInput) > 0.1f) ? Math.Sign(rawVerticalInput) : 0f;
 
         // Lerping to make Smooth Input (4f is the magic number right now)
         horizontalSmooth = Mathf.MoveTowards(horizontalSmooth, horizontalInput, Time.deltaTime * 4f);
@@ -246,6 +246,13 @@ public partial class Player : MonoBehaviour, IDamagable
 
 
         float scroll = Mouse.current.scroll.ReadValue().y;
+        float controllerScroll = playerInputActions.Player.Zoom.ReadValue<float>();
+
+        if (Math.Abs(controllerScroll) > 0.1)
+        {
+            scroll = controllerScroll * 5;
+        }
+
         targetFOV -= scroll * scrollSpeed * Time.deltaTime;
         targetFOV = Mathf.Clamp(targetFOV, minFOV, maxFOV);
         currentFOV = Mathf.Lerp(currentFOV, targetFOV, zoomSpeed * Time.deltaTime);
