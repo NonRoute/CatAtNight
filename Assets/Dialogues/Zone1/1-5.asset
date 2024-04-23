@@ -22,8 +22,8 @@ MonoBehaviour:
       text: Psst, hey there! If you want to face the big boss of the night, you need
         to find a special key. This key unlocks the door to the boss room.
       action:
-        type: 0
-        parameter: 
+        type: 7
+        parameter: Find the special key
     endAfterDialogue: 1
     goToNextDialogue: 0
     nextDialogue: 0

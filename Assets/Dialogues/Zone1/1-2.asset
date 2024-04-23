@@ -48,8 +48,8 @@ MonoBehaviour:
       characterName: Dramatical cat
       text: Try it out!
       action:
-        type: 0
-        parameter: 
+        type: 7
+        parameter: Practice to jump
     endAfterDialogue: 1
     goToNextDialogue: 0
     nextDialogue: 0

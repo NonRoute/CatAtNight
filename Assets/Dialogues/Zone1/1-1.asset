@@ -59,8 +59,8 @@ MonoBehaviour:
       characterName: Practical Cat
       text: Ready? Let's start your night adventure.
       action:
-        type: 0
-        parameter: 
+        type: 7
+        parameter: Move around
     - sprites:
       - sprite: {fileID: -1448165594, guid: 5b0e428e03ad64547b44a0e01b07e9c4, type: 3}
         offset: {x: -160, y: 100}

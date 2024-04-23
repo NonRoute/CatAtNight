@@ -77,37 +77,37 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: CatHurt
     clip: {fileID: 8300000, guid: 202933817391b403391ef803a71e306d, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
   - name: GameOverBGM
     clip: {fileID: 8300000, guid: a006afd41373845b9b44406b47b611a3, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     isLoop: 1
     source: {fileID: 0}
   - name: BossHit
     clip: {fileID: 8300000, guid: 25bb43eb565fd4ec7bd481a89651ad12, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
   - name: RatHit
     clip: {fileID: 8300000, guid: 25bb43eb565fd4ec7bd481a89651ad12, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
   - name: Boss1BGM
     clip: {fileID: 8300000, guid: 84f564e56d7ab4be6b84c8be0cd172ea, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     isLoop: 1
     source: {fileID: 0}
   - name: Victory
     clip: {fileID: 8300000, guid: 194256f25f99742209793ccb356c4e60, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
