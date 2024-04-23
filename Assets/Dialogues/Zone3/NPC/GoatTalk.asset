@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dca545e30f282c479a8b16c65908e4f, type: 3}
+  m_Name: GoatTalk
+  m_EditorClassIdentifier: 
+  sections:
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
+        offset: {x: -200, y: 100}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+      - sprite: {fileID: 21300000, guid: 6653d7a2974774fd89ca3c7a0a984190, type: 3}
+        offset: {x: 170, y: 130}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Goat
+      text: Hey! Do you know there are many kids suffering from mysterious disease
+        right now?
+      action:
+        type: 8
+        parameter: GoatTalk
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
+        offset: {x: -200, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      - sprite: {fileID: 21300000, guid: 6653d7a2974774fd89ca3c7a0a984190, type: 3}
+        offset: {x: 170, y: 130}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+      characterName: Cat
+      text: No? But anything I can help?
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
+        offset: {x: -200, y: 100}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+      - sprite: {fileID: 21300000, guid: 6653d7a2974774fd89ca3c7a0a984190, type: 3}
+        offset: {x: 170, y: 130}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Goat
+      text: Umm, yeah. Can you try to cure those kids?
+      action:
+        type: 8
+        parameter: GoatTalk
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
+        offset: {x: -200, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      - sprite: {fileID: 21300000, guid: 6653d7a2974774fd89ca3c7a0a984190, type: 3}
+        offset: {x: 170, y: 130}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+      characterName: Cat
+      text: Sure, but do you know what is that disease?
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
+        offset: {x: -200, y: 100}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+      - sprite: {fileID: 21300000, guid: 6653d7a2974774fd89ca3c7a0a984190, type: 3}
+        offset: {x: 170, y: 130}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Goat
+      text: Ummm...
+      action:
+        type: 8
+        parameter: GoatTalk
+    endAfterDialogue: 0
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: not sure but I heard its name "Ligma"?
+      answers:
+      - answerLabel: What is Ligma?
+        nextElement: 1
+        action:
+          type: 0
+          parameter: 
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
+        offset: {x: -200, y: 100}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+      - sprite: {fileID: 21300000, guid: 6653d7a2974774fd89ca3c7a0a984190, type: 3}
+        offset: {x: 170, y: 130}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Goat
+      text: LIGMA BALLZ!
+      action:
+        type: 8
+        parameter: GoatTalk
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
+        offset: {x: -200, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      - sprite: {fileID: 21300000, guid: 6653d7a2974774fd89ca3c7a0a984190, type: 3}
+        offset: {x: 170, y: 130}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+      characterName: Cat
+      text: ...
+      action:
+        type: 0
+        parameter: 
+    endAfterDialogue: 1
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: 
+      answers: []
