@@ -7,6 +7,7 @@ public enum CompanionAction
 {
     AttackBossZone3,
     HoldItem,
+    Boost,
 }
 
 public class Companion : MonoBehaviour
@@ -34,6 +35,7 @@ public class Companion : MonoBehaviour
     public bool hasChoice3 = false;
     public string responseText;
     public CompanionAction companionAction;
+    [SerializeField] GameObject platform;
 
     // may use in the future
     // but it is really hard to implement right now
@@ -350,6 +352,7 @@ public class Companion : MonoBehaviour
     public void SetStayStill(Vector2 destination)
     {
         if (!isEnabled) return;
+        ClearSomeAction();
         StartCoroutine(StartTextBox("Roger that", 2f));
         isStayStill = false;
         GoTo(destination);
@@ -371,19 +374,32 @@ public class Companion : MonoBehaviour
     public void SetFollow(Vector2 destination)
     {
         if (!isEnabled) return;
+        ClearSomeAction();
         StartCoroutine(StartTextBox(GetFollowAcknowledgeMessage(), 2f));
         isStayStill = false;
         GoTo(destination);
     }
+
+    public void ClearSomeAction()
+    {
+        platform.SetActive(false);
+    }
+
     public void StartChoice3()
     {
         if (!isEnabled || !hasChoice3) return;
         StartCoroutine(StartTextBox(responseText, 2f));
-        if(companionAction == CompanionAction.AttackBossZone3)
+        ClearSomeAction();
+        if (companionAction == CompanionAction.AttackBossZone3)
         {
             Zone3Manager.Instance.AttackBoss();
             CompanionUIManager.Instance.SetStatus(1);
-            SetFollow(GameplayStateManager.Instance.Player.GetCameraFollow().position - 0.55f * Vector3.up);
+            SetFollow(GameplayStateManager.Instance.Player.GetLastGroundPosition());
+        }
+        else if(companionAction == CompanionAction.Boost)
+        {
+            SetStayStill(GameplayStateManager.Instance.Player.GetLastGroundPosition());
+            platform.SetActive(true);
         }
     }
 
@@ -391,7 +407,7 @@ public class Companion : MonoBehaviour
     [ContextMenu("Simulate Travel to Player")]
     public void GoToPlayerPos()
     {
-        GoTo(GameplayStateManager.Instance.Player.GetCameraFollow().position - 0.55f * Vector3.up);
+        GoTo(GameplayStateManager.Instance.Player.GetLastGroundPosition());
     }
 
     IEnumerator StartTextBox(string text, float duration)
