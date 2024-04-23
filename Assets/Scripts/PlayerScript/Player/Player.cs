@@ -207,10 +207,12 @@ public partial class Player : MonoBehaviour, IDamagable
             {
                 if (!companion.IsEnabled)
                 {
+                    SoundManager.TryPlayNew("CallCom");
                     StartTextBox("Come here", 2f);
                 }
                 else
                 {
+                    SoundManager.TryPlayNew("ByeCom");
                     StartTextBox("You can go now", 2f);
                 }
                 CompanionUIManager.Instance.SetOpen(!companion.IsEnabled);
@@ -219,18 +221,21 @@ public partial class Player : MonoBehaviour, IDamagable
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 StartTextBox("Follow Me", 2f);
+                SoundManager.TryPlayNew("CommandCom");
                 CompanionUIManager.Instance.SetStatus(1);
                 companion.SetFollow(startDelayedPosition);
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 StartTextBox("Stop Here", 2f);
+                SoundManager.TryPlayNew("CommandCom");
                 CompanionUIManager.Instance.SetStatus(2);
                 companion.SetStayStill(lastGroundPosition);
             }
             if (companion.hasChoice3 && Input.GetKeyDown(KeyCode.Alpha3))
             {
                 StartTextBox(choice3TalkText, 2f);
+                SoundManager.TryPlayNew("CommandCom");
                 CompanionUIManager.Instance.SetStatus(3);
                 companion.StartChoice3();
             }

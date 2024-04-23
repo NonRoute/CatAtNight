@@ -135,6 +135,30 @@ MonoBehaviour:
     pitch: 1
     isLoop: 1
     source: {fileID: 0}
+  - name: TwoCatTalk-1-1
+    clip: {fileID: 8300000, guid: 91a392e34ad0c43bfbeadeab33cd5500, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: TwoCatTalk-1-2
+    clip: {fileID: 8300000, guid: 6398e589ea6d04f5bb08d2f89d973b04, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: TwoCatTalk-2-1
+    clip: {fileID: 8300000, guid: bcddf9e0649e54e1d822327dd0116fa1, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: TwoCatTalk-2-2
+    clip: {fileID: 8300000, guid: a44c396e377114f8280454bfb227bac0, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
   - name: SlimeHurt
     clip: {fileID: 8300000, guid: b770acb82c7a0d24887e3303175300e9, type: 3}
     volume: 0.5
@@ -150,6 +174,36 @@ MonoBehaviour:
   - name: DogDead
     clip: {fileID: 8300000, guid: 4dfb1fcd8ba40df45928ecbc652973ae, type: 3}
     volume: 0.7
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: GoatTalk
+    clip: {fileID: 8300000, guid: 4dfb1fcd8ba40df45928ecbc652973ae, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: ByeCom
+    clip: {fileID: 8300000, guid: 82605554d790c1c44b80093209637c78, type: 3}
+    volume: 0.7
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: CallCom
+    clip: {fileID: 8300000, guid: 5cb5d8cc9d81a6d4f9b7ba4c811afeda, type: 3}
+    volume: 0.7
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: CommandCom
+    clip: {fileID: 8300000, guid: ea1b7fcd33d0b534a9ccb8ee37f60fc8, type: 3}
+    volume: 0.7
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: CatHuh
+    clip: {fileID: 8300000, guid: 9ea97435856a14d02ad2aa5c531d9d5f, type: 3}
+    volume: 1
     pitch: 1
     isLoop: 0
     source: {fileID: 0}

@@ -12,11 +12,11 @@ public class Zone3BossTrigger : MonoBehaviour
         if (collision.CompareTag("Player") && !isTriggered)
         {
             Zone3Manager.Instance.StartBossFight();
-            GameplayStateManager.Instance.AutoSave();
-            while (GameplayStateManager.Instance.isSaving)
-            {
-                //wait
-            }
+            //GameplayStateManager.Instance.AutoSave();
+            //while (GameplayStateManager.Instance.isSaving)
+            //{
+            //    //wait
+            //}
             DataManager.Instance.DestroyObject(gameObject);
             isTriggered = true;
         }

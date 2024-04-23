@@ -15,14 +15,17 @@ public class CameraTrigger : MonoBehaviour
         if (collision.CompareTag("Player") && !isTriggered)
         {
             cam.Follow = targetGroup;
-            GameplayStateManager.Instance.AutoSave();
-            while(GameplayStateManager.Instance.isSaving)
-            {
-                //wait
-            }
+            //while(GameplayStateManager.Instance.isSaving)
+            //{
+            //    //wait
+            //}
             DataManager.Instance.DestroyObject(gameObject);
             isTriggered = true;
             SoundManager.TryPlayMusic("Boss1BGM");
+
+
+            DataManager.Instance.tempData.position = GameplayStateManager.Instance.Player.GetCameraFollow().position;
+            GameplayStateManager.Instance.AutoSave();
         }
     }
 
