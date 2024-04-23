@@ -78,6 +78,7 @@ __MACOSX/
 
 # Web Build
 CatAtNight/
+CatAtNightWeb/
 
 # Debug Info
 CatAtNight_*/

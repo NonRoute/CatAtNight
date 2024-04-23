@@ -37,7 +37,7 @@ public class BossZone2 : Monster
         gameObject.SetActive(false);
         DataManager.Instance.DestroyObject(door);
         door.SetActive(false);
-        GameplayStateManager.Instance.Player.SetUnlockedSkill(1);
+        GameplayStateManager.Instance.Player.SetUnlockedSkill(2);
         DataManager.Instance.tempData.position = GameplayStateManager.Instance.Player.GetCameraFollow().position;
         GameplayStateManager.Instance.AutoSave();
         //Destroy(door);
