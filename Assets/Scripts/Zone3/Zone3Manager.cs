@@ -52,14 +52,14 @@ public class Zone3Manager : MonoBehaviour
         GameplayStateManager.Instance.Player.ForceCallCompanion(true);
     }
 
-    [ContextMenu("OpenBoss")]
+    [ContextMenu("OpenBossRoom")]
     public void ClearBossEntrance()
     {
         DataManager.Instance.DestroyObject(bossEntranceBlocker);
         bossEntranceBlocker.SetActive(false);
     }
 
-    [ContextMenu("OpenBoss")]
+    [ContextMenu("AttackBoss")]
     public void AttackBoss()
     {
         boss.ReceiveDamage();
