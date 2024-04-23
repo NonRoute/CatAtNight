@@ -17,7 +17,7 @@ public class BossZone2 : Monster
         CinemachineVirtualCamera cam = FindAnyObjectByType<CinemachineVirtualCamera>();
     }
 
-    void FixedUpdate()
+    protected new void FixedUpdate()
     {
         if (isStarted)
         {
