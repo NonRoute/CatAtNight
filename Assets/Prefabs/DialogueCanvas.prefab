@@ -881,7 +881,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -2, y: 2}
-  m_SizeDelta: {x: 95, y: 10}
+  m_SizeDelta: {x: 180, y: 10}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &8835217541942081015
 CanvasRenderer:
@@ -1491,7 +1491,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[Press E or Click Here to Continue]'
+  m_text: '[Press E (Keyboard) or X (Controller) or Click Here to Continue]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e23ab584c6b9217449f73ef67b3fbc3c, type: 2}
   m_sharedMaterial: {fileID: -8339550280951505627, guid: e23ab584c6b9217449f73ef67b3fbc3c, type: 2}
