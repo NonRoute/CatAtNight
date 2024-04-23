@@ -20,7 +20,7 @@ MonoBehaviour:
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       - sprite: {fileID: 21300000, guid: aef03dd2b559149cebe41e722536dd37, type: 3}
         offset: {x: 170, y: 130}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
       characterName: Orange Cat
       text: "\u0E08\u0E32\u0E19\u0E19\u0E35\u0E49 \u0E43\u0E04\u0E23\u0E40\u0E1B\u0E47\u0E19\u0E04\u0E19\u0E17\u0E33!"
       action:
@@ -29,7 +29,7 @@ MonoBehaviour:
     - sprites:
       - sprite: {fileID: 21300000, guid: 43068cf50e7dd4cadae6e62971f6ef77, type: 3}
         offset: {x: -160, y: 130}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
       - sprite: {fileID: 21300000, guid: aef03dd2b559149cebe41e722536dd37, type: 3}
         offset: {x: 170, y: 130}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -44,7 +44,7 @@ MonoBehaviour:
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       - sprite: {fileID: 21300000, guid: aef03dd2b559149cebe41e722536dd37, type: 3}
         offset: {x: 170, y: 130}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
       characterName: Orange Cat
       text: "\u0E40\u0E0A\u0E1F\u0E2A\u0E31\u0E48\u0E07\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E38\u0E01\u0E2D\u0E30\u0E44\u0E23"
       action:
@@ -53,7 +53,7 @@ MonoBehaviour:
     - sprites:
       - sprite: {fileID: 21300000, guid: 43068cf50e7dd4cadae6e62971f6ef77, type: 3}
         offset: {x: -160, y: 130}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
       - sprite: {fileID: 21300000, guid: aef03dd2b559149cebe41e722536dd37, type: 3}
         offset: {x: 170, y: 130}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -68,7 +68,7 @@ MonoBehaviour:
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       - sprite: {fileID: 21300000, guid: aef03dd2b559149cebe41e722536dd37, type: 3}
         offset: {x: 170, y: 130}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
       characterName: Orange Cat
       text: "\u0E40\u0E2B\u0E47\u0E19\u0E19\u0E35\u0E48\u0E44\u0E2B\u0E21?? \u0E19\u0E35\u0E48\u0E21\u0E31\u0E19
         Rare! \u0E21\u0E31\u0E19\u0E14\u0E34\u0E1A!!!"
@@ -78,7 +78,7 @@ MonoBehaviour:
     - sprites:
       - sprite: {fileID: 21300000, guid: 43068cf50e7dd4cadae6e62971f6ef77, type: 3}
         offset: {x: -160, y: 130}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
       - sprite: {fileID: 21300000, guid: aef03dd2b559149cebe41e722536dd37, type: 3}
         offset: {x: 170, y: 130}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}

@@ -178,7 +178,7 @@ MonoBehaviour:
     isLoop: 0
     source: {fileID: 0}
   - name: GoatTalk
-    clip: {fileID: 8300000, guid: 4dfb1fcd8ba40df45928ecbc652973ae, type: 3}
+    clip: {fileID: 8300000, guid: a65a3afc132f343cca05797eeb78e977, type: 3}
     volume: 1
     pitch: 1
     isLoop: 0
