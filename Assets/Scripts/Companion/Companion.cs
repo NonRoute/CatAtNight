@@ -269,7 +269,7 @@ public class Companion : MonoBehaviour
             CompanionUIManager.Instance.SetStatus(1);
             spriteTransform.gameObject.SetActive(true);
             StartCoroutine(StartTextBox("Hi", 2f));
-            if(isWalkingOut)
+            if (isWalkingOut)
             {
                 isWalkingOut = false;
             }
@@ -356,10 +356,22 @@ public class Companion : MonoBehaviour
         isStayStill = true;
     }
 
+    private string GetFollowAcknowledgeMessage()
+    {
+        if (Random.Range(0f, 1f) < 0.05f)
+        {
+            return "Yes, chef!";
+        }
+        else
+        {
+            return "Yes, sir";
+        }
+    }
+
     public void SetFollow(Vector2 destination)
     {
         if (!isEnabled) return;
-        StartCoroutine(StartTextBox("Yes, sir", 2f));
+        StartCoroutine(StartTextBox(GetFollowAcknowledgeMessage(), 2f));
         isStayStill = false;
         GoTo(destination);
     }

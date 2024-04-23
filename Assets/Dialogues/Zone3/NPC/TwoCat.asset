@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dca545e30f282c479a8b16c65908e4f, type: 3}
+  m_Name: TwoCat
+  m_EditorClassIdentifier: 
+  sections:
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 43068cf50e7dd4cadae6e62971f6ef77, type: 3}
+        offset: {x: -160, y: 130}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      - sprite: {fileID: 21300000, guid: aef03dd2b559149cebe41e722536dd37, type: 3}
+        offset: {x: 170, y: 130}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+      characterName: Orange Cat
+      text: "\u0E08\u0E32\u0E19\u0E19\u0E35\u0E49 \u0E43\u0E04\u0E23\u0E40\u0E1B\u0E47\u0E19\u0E04\u0E19\u0E17\u0E33!"
+      action:
+        type: 8
+        parameter: TwoCatTalk-1-1
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 43068cf50e7dd4cadae6e62971f6ef77, type: 3}
+        offset: {x: -160, y: 130}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+      - sprite: {fileID: 21300000, guid: aef03dd2b559149cebe41e722536dd37, type: 3}
+        offset: {x: 170, y: 130}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Black Cat
+      text: "\u0E2B\u0E19\u0E39\u0E04\u0E48\u0E30"
+      action:
+        type: 8
+        parameter: TwoCatTalk-2-1
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 43068cf50e7dd4cadae6e62971f6ef77, type: 3}
+        offset: {x: -160, y: 130}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      - sprite: {fileID: 21300000, guid: aef03dd2b559149cebe41e722536dd37, type: 3}
+        offset: {x: 170, y: 130}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+      characterName: Orange Cat
+      text: "\u0E40\u0E0A\u0E1F\u0E2A\u0E31\u0E48\u0E07\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E38\u0E01\u0E2D\u0E30\u0E44\u0E23"
+      action:
+        type: 8
+        parameter: TwoCatTalk-1-2
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 43068cf50e7dd4cadae6e62971f6ef77, type: 3}
+        offset: {x: -160, y: 130}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+      - sprite: {fileID: 21300000, guid: aef03dd2b559149cebe41e722536dd37, type: 3}
+        offset: {x: 170, y: 130}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Black Cat
+      text: "Medium Rare \u0E04\u0E48\u0E30"
+      action:
+        type: 8
+        parameter: TwoCatTalk-2-1
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 43068cf50e7dd4cadae6e62971f6ef77, type: 3}
+        offset: {x: -160, y: 130}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      - sprite: {fileID: 21300000, guid: aef03dd2b559149cebe41e722536dd37, type: 3}
+        offset: {x: 170, y: 130}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+      characterName: Orange Cat
+      text: "\u0E40\u0E2B\u0E47\u0E19\u0E19\u0E35\u0E48\u0E44\u0E2B\u0E21?? \u0E19\u0E35\u0E48\u0E21\u0E31\u0E19
+        Rare! \u0E21\u0E31\u0E19\u0E14\u0E34\u0E1A!!!"
+      action:
+        type: 8
+        parameter: TwoCatTalk-1-1
+    - sprites:
+      - sprite: {fileID: 21300000, guid: 43068cf50e7dd4cadae6e62971f6ef77, type: 3}
+        offset: {x: -160, y: 130}
+        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+      - sprite: {fileID: 21300000, guid: aef03dd2b559149cebe41e722536dd37, type: 3}
+        offset: {x: 170, y: 130}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Black Cat
+      text: "\u0E02\u0E2D\u0E42\u0E17\u0E29\u0E04\u0E48\u0E30\u0E40\u0E0A\u0E1F"
+      action:
+        type: 8
+        parameter: TwoCatTalk-2-2
+    endAfterDialogue: 1
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: 
+      answers: []

@@ -135,6 +135,30 @@ MonoBehaviour:
     pitch: 1
     isLoop: 1
     source: {fileID: 0}
+  - name: TwoCatTalk-1-1
+    clip: {fileID: 8300000, guid: 91a392e34ad0c43bfbeadeab33cd5500, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: TwoCatTalk-1-2
+    clip: {fileID: 8300000, guid: 6398e589ea6d04f5bb08d2f89d973b04, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: TwoCatTalk-2-1
+    clip: {fileID: 8300000, guid: bcddf9e0649e54e1d822327dd0116fa1, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: TwoCatTalk-2-2
+    clip: {fileID: 8300000, guid: a44c396e377114f8280454bfb227bac0, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
   - name: SlimeHurt
     clip: {fileID: 8300000, guid: b770acb82c7a0d24887e3303175300e9, type: 3}
     volume: 0.5
@@ -150,6 +174,12 @@ MonoBehaviour:
   - name: DogDead
     clip: {fileID: 8300000, guid: 4dfb1fcd8ba40df45928ecbc652973ae, type: 3}
     volume: 0.7
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: GoatTalk
+    clip: {fileID: 8300000, guid: a65a3afc132f343cca05797eeb78e977, type: 3}
+    volume: 1
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
@@ -174,6 +204,17 @@ MonoBehaviour:
   - name: Boss3Dead
     clip: {fileID: 8300000, guid: cd41c98a64cc75c4cb1dfc03161a90e6, type: 3}
     volume: 0.7
+    pitch: 1
+    isLoop: 0
+  - name: CatHuh
+    clip: {fileID: 8300000, guid: 9ea97435856a14d02ad2aa5c531d9d5f, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: ChipiChipi
+    clip: {fileID: 8300000, guid: 26edab0a36aa04b39bd12d0388fbfd65, type: 3}
+    volume: 1
     pitch: 1
     isLoop: 0
     source: {fileID: 0}

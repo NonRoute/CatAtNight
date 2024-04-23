@@ -19,7 +19,39 @@ MonoBehaviour:
         offset: {x: 160, y: 60}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Pragmatical cat
-      text: '[3]'
+      text: Hey, adventurer! Looking to add a bit of flair to your exploration? I've
+        got just the trick for you - dashing and climbing walls!
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 2104679204, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Pragmatical cat
+      text: To dash, hold down the Shift key while moving in any direction. It's
+        a quick burst of speed that can get you out of tight spots or help you cover
+        ground fast.
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 2104679204, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 160, y: 60}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Pragmatical cat
+      text: Now, to climb walls, all you need to do is dash towards a wall. Your
+        character will grab onto the wall, allowing you to climb up or jump off from
+        there.
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: -1448165594, guid: 5b0e428e03ad64547b44a0e01b07e9c4, type: 3}
+        offset: {x: -160, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Me
+      text: That sounds interesting. I'll make sure to try them out.
       action:
         type: 0
         parameter: 
