@@ -156,6 +156,9 @@ MonoBehaviour:
   - name: TwoCatTalk-2-2
     clip: {fileID: 8300000, guid: a44c396e377114f8280454bfb227bac0, type: 3}
     volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
   - name: SlimeHurt
     clip: {fileID: 8300000, guid: b770acb82c7a0d24887e3303175300e9, type: 3}
     volume: 0.5
@@ -171,6 +174,12 @@ MonoBehaviour:
   - name: DogDead
     clip: {fileID: 8300000, guid: 4dfb1fcd8ba40df45928ecbc652973ae, type: 3}
     volume: 0.7
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: GoatTalk
+    clip: {fileID: 8300000, guid: 4dfb1fcd8ba40df45928ecbc652973ae, type: 3}
+    volume: 1
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
