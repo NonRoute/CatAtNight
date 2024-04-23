@@ -5,12 +5,12 @@ public partial class Player : MonoBehaviour, IDamagable, ISavable
 
     public void NewGame()
     {
-        health = 5;
-        maxHealth = 5;
+        health = 3;
+        maxHealth = 3;
         skillProgression = 0;
         UpdateSkillUI();
         DataManager.Instance.tempData.position = rb.transform.position;
-        StatusUIManager.Instance.UpdateHealthBar(health,maxHealth);
+        StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
         SwitchMode(false);
         PreserveData();
     }
@@ -90,7 +90,7 @@ public partial class Player : MonoBehaviour, IDamagable, ISavable
         mainObjective = gameData.mainObjective;
 
         health = gameData.health;
-        maxHealth= gameData.maxHealth;
+        maxHealth = gameData.maxHealth;
         StatusUIManager.Instance.UpdateHealthBar(health, maxHealth);
         UpdateSkillUI();
 

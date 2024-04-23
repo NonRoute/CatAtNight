@@ -252,7 +252,6 @@ public partial class Player : MonoBehaviour, IDamagable
         GameplayStateManager.Instance.mainCamera.m_Lens.OrthographicSize = currentFOV;
 
         // Noclip for DEBUG only. No need to change anything here
-#if UNITY_EDITOR
         if (IS_DEBUG && Input.GetKeyDown(KeyCode.V))
         {
             noClip = !noClip;
@@ -262,7 +261,6 @@ public partial class Player : MonoBehaviour, IDamagable
             sprite.color = newColor;
             rb.velocity = Vector2.zero;
         }
-#endif
         //if (Input.GetKeyDown(KeyCode.S))
         //{
         //    SaveGame();
