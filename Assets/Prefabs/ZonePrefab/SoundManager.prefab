@@ -225,6 +225,12 @@ MonoBehaviour:
     pitch: 1
     isLoop: 1
     source: {fileID: 0}
+  - name: Boss2Hit
+    clip: {fileID: 8300000, guid: 91a5399bffe3446579415d356f279940, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
   maxDistance: 40
   distanceMultiplier: 2
   blendValue: 0.75
