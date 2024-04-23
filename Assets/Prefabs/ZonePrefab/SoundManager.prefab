@@ -207,6 +207,12 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
+  - name: ChipiChipi
+    clip: {fileID: 8300000, guid: 26edab0a36aa04b39bd12d0388fbfd65, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
   maxDistance: 40
   distanceMultiplier: 2
   blendValue: 0.75
