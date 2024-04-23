@@ -129,6 +129,12 @@ MonoBehaviour:
     pitch: 1
     isLoop: 1
     source: {fileID: 0}
+  - name: Boss3BGM
+    clip: {fileID: 8300000, guid: 5d3d04d51bd0f8b4b81dad6fce0be4f1, type: 3}
+    volume: 0.3
+    pitch: 1
+    isLoop: 1
+    source: {fileID: 0}
   maxDistance: 40
   distanceMultiplier: 2
   blendValue: 0.75
