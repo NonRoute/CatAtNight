@@ -307,6 +307,7 @@ public class QuestManager : MonoBehaviour, ISavable
 
     public void RestoreData()
     {
+        currentSkillProgression = DataManager.Instance.tempData.skillProgression;
         // loads all QuestInfoSO Scriptable Objects under the Assets/Resources/Quests folder
         QuestInfoSO[] allQuests = Resources.LoadAll<QuestInfoSO>("Quests");
         // Create the quest map
@@ -333,6 +334,7 @@ public class QuestManager : MonoBehaviour, ISavable
     public void LoadSave()
     {
         questMap = CreateQuestMap();
+        currentSkillProgression = DataManager.Instance.gameData.skillProgression;
         ReloadState();
         UpdateRequirement();
     }

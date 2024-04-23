@@ -15,50 +15,57 @@ MonoBehaviour:
   sections:
   - dialogue:
     - sprites:
-      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
-        offset: {x: 300, y: 100}
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
-        offset: {x: -300, y: 100}
-        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
-      characterName: Not Joe
-      text: Hey you!
+      characterName: Mafia Cat
+      text: Hello Newcomer! I am the owner of this place
       action:
         type: 0
         parameter: 
     - sprites:
-      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
-        offset: {x: 300, y: 100}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
-        offset: {x: -300, y: 100}
-        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
-      characterName: Not Joe
-      text: I have a request for you.
-      action:
-        type: 0
-        parameter: 
-    - sprites:
-      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
-        offset: {x: 300, y: 100}
-        fadeColor: {r: 0.5018867, g: 0.5018867, b: 0.5018867, a: 1}
-      - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
-        offset: {x: -300, y: 100}
+      - sprite: {fileID: 949113280, guid: 5b0e428e03ad64547b44a0e01b07e9c4, type: 3}
+        offset: {x: 0, y: 100}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: You
-      text: What?
+      text: Wow... Can I get some of your fish
       action:
         type: 0
         parameter: 
     - sprites:
-      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
-        offset: {x: 300, y: 100}
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
-        offset: {x: -300, y: 100}
-        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
-      characterName: Not Joe
-      text: You need to go find Joe
+      characterName: Mafia Cat
+      text: You can take all of them, but you have to do me a favor first
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 949113280, guid: 5b0e428e03ad64547b44a0e01b07e9c4, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: You
+      text: What favor?
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: There was a dog down there. We have a way to deal with it but no one
+        want to do it.
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: If you can help us do it. You can take as many fish as you want!
       action:
         type: 0
         parameter: 
@@ -66,95 +73,52 @@ MonoBehaviour:
     goToNextDialogue: 0
     nextDialogue: 0
     branchPoint:
-      question: Can you?
+      question: Will you accept the quest?
       answers:
-      - answerLabel: Who's Joe?
+      - answerLabel: Yes
         nextElement: 1
         action:
-          type: 0
+          type: 1
           parameter: 
       - answerLabel: No
         nextElement: 2
         action:
-          type: 0
+          type: 2
           parameter: 
   - dialogue:
     - sprites:
-      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
-        offset: {x: 300, y: 100}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
-        offset: {x: -300, y: 100}
-        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
-      characterName: Not Joe
-      text: Joe Mama.
-      action:
-        type: 0
-        parameter: 
-    - sprites:
-      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
-        offset: {x: 300, y: 100}
-        fadeColor: {r: 0.5018867, g: 0.5018867, b: 0.5018867, a: 1}
-      - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
-        offset: {x: -300, y: 100}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: You
-      text: ...
-      action:
-        type: 0
-        parameter: 
-    endAfterDialogue: 1
-    goToNextDialogue: 0
-    nextDialogue: 0
-    branchPoint:
-      question: Can you?
-      answers:
-      - answerLabel: Who's Joe?
-        nextElement: 1
-        action:
-          type: 0
-          parameter: 
-      - answerLabel: No
-        nextElement: 1
-        action:
-          type: 0
-          parameter: 
-  - dialogue:
-    - sprites:
-      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
-        offset: {x: 300, y: 100}
-        fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      - sprite: {fileID: 21300000, guid: 56e657a2a6549a7469aff7d1f4f0711f, type: 3}
-        offset: {x: -300, y: 100}
-        fadeColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
-      characterName: Not Joe
-      text: Bruh
-      action:
-        type: 0
-        parameter: 
-    endAfterDialogue: 1
-    goToNextDialogue: 0
-    nextDialogue: 0
-    branchPoint:
-      question: Can you?
-      answers:
-      - answerLabel: Who's Joe?
-        nextElement: 1
-        action:
-          type: 0
-          parameter: 
-      - answerLabel: No
-        nextElement: 1
-        action:
-          type: 0
-          parameter: 
-  - dialogue:
-    - sprites:
-      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
         offset: {x: 0, y: 100}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
-      characterName: Not Joe
-      text: To be frank, that's not a quest. LOL
+      characterName: Mafia Cat
+      text: That will help a ton!
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: The first thing I want you to do is getting the gem at the far east.
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: Then you come back here to make it a weapon that can deal with dogs
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: See you!
       action:
         type: 0
         parameter: 
@@ -162,15 +126,120 @@ MonoBehaviour:
     goToNextDialogue: 0
     nextDialogue: 0
     branchPoint:
-      question: Can you?
+      question: Will you accept the quest?
       answers:
-      - answerLabel: Who's Joe?
+      - answerLabel: Yes
         nextElement: 1
         action:
-          type: 0
+          type: 1
           parameter: 
       - answerLabel: No
+        nextElement: 2
+        action:
+          type: 2
+          parameter: 
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: That's OK
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: You can come back here anytime if you change your mind.
+      action:
+        type: 0
+        parameter: 
+    endAfterDialogue: 1
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: Will you accept the quest?
+      answers:
+      - answerLabel: Yes
         nextElement: 1
         action:
-          type: 0
+          type: 1
+          parameter: 
+      - answerLabel: No
+        nextElement: 2
+        action:
+          type: 2
+          parameter: 
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: Thanks for helping us!
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: If you want my help you can ask me later!
+      action:
+        type: 0
+        parameter: 
+    endAfterDialogue: 1
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: Will you accept the quest?
+      answers:
+      - answerLabel: Yes
+        nextElement: 1
+        action:
+          type: 1
+          parameter: 
+      - answerLabel: No
+        nextElement: 2
+        action:
+          type: 2
+          parameter: 
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: Now the dogs are gone...
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: What to do next...
+      action:
+        type: 0
+        parameter: 
+    endAfterDialogue: 1
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: Will you accept the quest?
+      answers:
+      - answerLabel: Yes
+        nextElement: 1
+        action:
+          type: 1
+          parameter: 
+      - answerLabel: No
+        nextElement: 2
+        action:
+          type: 2
           parameter: 
