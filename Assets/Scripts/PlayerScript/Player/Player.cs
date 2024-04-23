@@ -17,7 +17,7 @@ public struct PlayerData
 public partial class Player : MonoBehaviour, IDamagable
 {
     // Change to FALSE when build
-    private const bool IS_DEBUG = true;
+    private const bool IS_DEBUG = false;
 
     private void Awake()
     {
