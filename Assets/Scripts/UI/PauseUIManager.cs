@@ -109,6 +109,7 @@ public class PauseUIManager : MonoBehaviour
     public void SelectSaveSlot(int slot)
     {
         GameplayStateManager.Instance.saveSlot = slot;
+        SoundManager.TryPlayNew("TestClick");
     }
 
     public void SaveGame()
