@@ -221,7 +221,7 @@ public partial class Player : MonoBehaviour, IDamagable
             if (companion.IsEnabled)
             {
                 if (Input.GetKeyDown(KeyCode.Alpha1)
-                    || playerInputActions.Player.Companion1.ReadValue<float>() > 0.1f)
+                    || playerInputActions.Player.Companion1.WasPressedThisFrame())
                 {
                     StartTextBox("Follow Me", 2f);
                     SoundManager.TryPlayNew("CommandCom");
@@ -229,7 +229,7 @@ public partial class Player : MonoBehaviour, IDamagable
                     companion.SetFollow(startDelayedPosition);
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha2)
-                    || playerInputActions.Player.Companion2.ReadValue<float>() > 0.1f)
+                    || playerInputActions.Player.Companion2.WasPressedThisFrame())
                 {
                     StartTextBox("Stop Here", 2f);
                     SoundManager.TryPlayNew("CommandCom");
@@ -238,7 +238,7 @@ public partial class Player : MonoBehaviour, IDamagable
                 }
                 if (companion.hasChoice3 && (
                     Input.GetKeyDown(KeyCode.Alpha3)
-                        || playerInputActions.Player.Companion3.ReadValue<float>() > 0.1f
+                        || playerInputActions.Player.Companion3.WasPressedThisFrame()
                 ))
                 {
                     StartTextBox(choice3TalkText, 2f);
