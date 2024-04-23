@@ -1770,6 +1770,7 @@ MonoBehaviour:
   isInDialogue: 0
   mainCamera: {fileID: 0}
   currentCamera: {fileID: 0}
+  isSaving: 0
 --- !u!4 &397846662
 Transform:
   m_ObjectHideFlags: 0

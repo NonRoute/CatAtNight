@@ -231,6 +231,24 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
+  - name: PushButton
+    clip: {fileID: 8300000, guid: 3176370ec7a918f449e94f9b304a95e6, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: UnpushButton
+    clip: {fileID: 8300000, guid: ec945caa4248e904db23743730811e60, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: Unlock
+    clip: {fileID: 8300000, guid: b95027061fb6ae14fbdbc5bd51acc1aa, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
   maxDistance: 40
   distanceMultiplier: 2
   blendValue: 0.75

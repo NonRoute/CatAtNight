@@ -74,7 +74,7 @@ public class Zone3Manager : MonoBehaviour
         SoundManager.TryPlayNew("Victory");
         DataManager.Instance.DestroyObject(doorToZone4);
         doorToZone4.SetActive(false);
-        GameplayStateManager.Instance.Player.SetUnlockedSkill(3);
+        GameplayStateManager.Instance.Player.SetUnlockedSkill(4);
 
         DataManager.Instance.tempData.position = GameplayStateManager.Instance.Player.GetCameraFollow().position;
         GameplayStateManager.Instance.AutoSave();
