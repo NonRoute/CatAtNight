@@ -125,6 +125,33 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Companion1"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd1bdcc6-3f76-4ce2-9dd2-6642691f10e4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Companion2"",
+                    ""type"": ""Button"",
+                    ""id"": ""097ca765-a130-45b4-8e02-d0219f5a7940"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Companion3"",
+                    ""type"": ""Button"",
+                    ""id"": ""1e0d1d75-345d-4c9a-adce-f4684569a364"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -361,39 +388,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""1D Axis"",
-                    ""id"": ""caa77071-909d-43ce-8d2d-54a5662ceef3"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Vertical"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""22ce98dc-4437-4164-a8d0-51ffdeded9ef"",
-                    ""path"": ""<Gamepad>/dpad/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Vertical"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""1fa4df04-56a2-4e72-81e4-1f6404f18d02"",
-                    ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Vertical"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""1D Axis"",
                     ""id"": ""9db23738-d7f3-434d-a14e-393d24fa23e4"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
@@ -418,39 +412,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""positive"",
                     ""id"": ""66c990a9-051d-48e8-8a15-6432bfabae25"",
                     ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Vertical"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""4bc77220-62b7-4007-9325-5752417ea2e1"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Vertical"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""5102e963-dbcf-4c28-a38b-343664e4248c"",
-                    ""path"": ""<XInputController>/dpad/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Vertical"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""939b1619-2258-45b9-969a-66218a529bdf"",
-                    ""path"": ""<XInputController>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -559,39 +520,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""1D Axis"",
-                    ""id"": ""e529032d-e8e2-4686-8664-dff71e88b81e"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Horizontal"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""999bff52-da0b-480e-8997-d78c7d839499"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Horizontal"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""9ff5e3be-dd36-493f-842c-cd783ae68683"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Horizontal"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""1D Axis"",
                     ""id"": ""3f5495de-0ac4-49a5-a6a8-ff616814f5b2"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
@@ -616,39 +544,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""positive"",
                     ""id"": ""fa4ce90d-ae56-45d0-915d-c6836b2bb84e"",
                     ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Horizontal"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""7ed75ecf-a4f4-4a36-9086-e53af494b8e8"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Horizontal"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""01b47265-d4df-49d3-9b71-d8fa1faa6a2a"",
-                    ""path"": ""<XInputController>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Horizontal"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""ac4c63e7-5528-4860-a250-07e168eb86d5"",
-                    ""path"": ""<XInputController>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -864,6 +759,72 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a78890d-d799-4363-90db-7121263dda7d"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Companion1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a8b978b7-2547-475b-81af-16c44ccb086e"",
+                    ""path"": ""<XInputController>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Companion1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""807d4cdd-0d02-4c41-b985-5e52e91c22ff"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Companion2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""edfb76e8-61f0-4ed2-89bc-f403c55bed1c"",
+                    ""path"": ""<XInputController>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Companion2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4defb0e-e0f7-4b70-97eb-99aa79b9ddbc"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Companion3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2b36aed8-543c-4574-9fbb-574235e9d624"",
+                    ""path"": ""<XInputController>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Companion3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -905,6 +866,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_AtackAction = m_Player.FindAction("AtackAction", throwIfNotFound: true);
         m_Player_DropDown = m_Player.FindAction("DropDown", throwIfNotFound: true);
         m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
+        m_Player_Companion1 = m_Player.FindAction("Companion1", throwIfNotFound: true);
+        m_Player_Companion2 = m_Player.FindAction("Companion2", throwIfNotFound: true);
+        m_Player_Companion3 = m_Player.FindAction("Companion3", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -977,6 +941,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_AtackAction;
     private readonly InputAction m_Player_DropDown;
     private readonly InputAction m_Player_Zoom;
+    private readonly InputAction m_Player_Companion1;
+    private readonly InputAction m_Player_Companion2;
+    private readonly InputAction m_Player_Companion3;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -992,6 +959,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @AtackAction => m_Wrapper.m_Player_AtackAction;
         public InputAction @DropDown => m_Wrapper.m_Player_DropDown;
         public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
+        public InputAction @Companion1 => m_Wrapper.m_Player_Companion1;
+        public InputAction @Companion2 => m_Wrapper.m_Player_Companion2;
+        public InputAction @Companion3 => m_Wrapper.m_Player_Companion3;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1034,6 +1004,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Zoom.started += instance.OnZoom;
             @Zoom.performed += instance.OnZoom;
             @Zoom.canceled += instance.OnZoom;
+            @Companion1.started += instance.OnCompanion1;
+            @Companion1.performed += instance.OnCompanion1;
+            @Companion1.canceled += instance.OnCompanion1;
+            @Companion2.started += instance.OnCompanion2;
+            @Companion2.performed += instance.OnCompanion2;
+            @Companion2.canceled += instance.OnCompanion2;
+            @Companion3.started += instance.OnCompanion3;
+            @Companion3.performed += instance.OnCompanion3;
+            @Companion3.canceled += instance.OnCompanion3;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1071,6 +1050,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Zoom.started -= instance.OnZoom;
             @Zoom.performed -= instance.OnZoom;
             @Zoom.canceled -= instance.OnZoom;
+            @Companion1.started -= instance.OnCompanion1;
+            @Companion1.performed -= instance.OnCompanion1;
+            @Companion1.canceled -= instance.OnCompanion1;
+            @Companion2.started -= instance.OnCompanion2;
+            @Companion2.performed -= instance.OnCompanion2;
+            @Companion2.canceled -= instance.OnCompanion2;
+            @Companion3.started -= instance.OnCompanion3;
+            @Companion3.performed -= instance.OnCompanion3;
+            @Companion3.canceled -= instance.OnCompanion3;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1110,5 +1098,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnAtackAction(InputAction.CallbackContext context);
         void OnDropDown(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
+        void OnCompanion1(InputAction.CallbackContext context);
+        void OnCompanion2(InputAction.CallbackContext context);
+        void OnCompanion3(InputAction.CallbackContext context);
     }
 }
