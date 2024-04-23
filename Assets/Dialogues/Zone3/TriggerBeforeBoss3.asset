@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dca545e30f282c479a8b16c65908e4f, type: 3}
+  m_Name: TriggerBeforeBoss3
+  m_EditorClassIdentifier: 
+  sections:
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Boss
+      text: The dog is gone and the hole appear???
+      action:
+        type: 0
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Boss
+      text: This may sound crazy but I need you to go check down there
+      action:
+        type: 0
+        parameter: Check What happened Below
+    - sprites:
+      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Orange
+      text: Don't worry, If you go down, I will be with you too!
+      action:
+        type: 0
+        parameter: Check What happened Below
+    - sprites:
+      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Orange
+      text: If there is an enemy [YOU CAN LET ME ATTACK THEM] because I'm immortal
+      action:
+        type: 0
+        parameter: Check What happened Below
+    endAfterDialogue: 1
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: ...
+      answers:
+      - answerLabel: Hello?
+        nextElement: 1
+        action:
+          type: 0
+          parameter: 
+      - answerLabel: ...
+        nextElement: 2
+        action:
+          type: 0
+          parameter: 

@@ -150,5 +150,6 @@ public class SlimeBoss : MonoBehaviour
     public void ActivateBoss()
     {
         isEnabled = true;
+        lastJumpTime = Time.time + 1.5f;
     }
 }

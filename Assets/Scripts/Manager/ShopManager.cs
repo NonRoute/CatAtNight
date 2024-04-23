@@ -42,7 +42,8 @@ public class ShopManager : MonoBehaviour
         switch (costType)
         {
             case ShopItem.CostType.Fish:
-                scoreManager.fishScore -= value;
+                //scoreManager.fishScore -= value;
+                PlayerInventory.Instance.fishCount -= value;
                 break;
             case ShopItem.CostType.Monster:
                 scoreManager.monsterScore -= value;
@@ -59,7 +60,7 @@ public class ShopManager : MonoBehaviour
     {
         return costType switch
         {
-            ShopItem.CostType.Fish => cost <= scoreManager.fishScore,
+            ShopItem.CostType.Fish => cost <= PlayerInventory.Instance.fishCount,
             ShopItem.CostType.Monster => cost <= scoreManager.monsterScore,
             ShopItem.CostType.Friendship => cost <= scoreManager.friendshipScore,
             _ => false,

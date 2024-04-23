@@ -79,6 +79,7 @@ public class DataManager
     public void DestroyObject(GameObject obj)
     {
         string obj_guid = obj.GetComponent<GUID>().guid;
+        if (tempData.destroyedObjects.Contains(obj_guid)) return;
         gameData.destroyedObjects.Add(obj_guid);
         tempData.destroyedObjects.Add(obj_guid);
     }

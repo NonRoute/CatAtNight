@@ -11,12 +11,21 @@ public class MiscEvents
         }
     }
 
-    public event Action onGemCollected;
-    public void GemCollected() 
+    public event Action onBoss3Dead;
+    public void Boss3Dead() 
     {
-        if (onGemCollected != null) 
+        if (onBoss3Dead != null) 
         {
-            onGemCollected();
+            onBoss3Dead();
+        }
+    }
+
+    public event Action onGemGet;
+    public void GemGet()
+    {
+        if (onGemGet != null)
+        {
+            onGemGet();
         }
     }
 }

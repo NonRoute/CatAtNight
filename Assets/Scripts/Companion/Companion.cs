@@ -124,6 +124,7 @@ public class Companion : MonoBehaviour
             {
                 speed = runSpeed;
                 // Smoothing
+                if (GameplayStateManager.Instance == null || GameplayStateManager.Instance.Player == null) return;
                 float realDistanceX = Mathf.Abs(GameplayStateManager.Instance.Player.GetCameraFollow().position.x - currentPos.x);
                 if (realDistanceX < runThreshold + 6f)
                 {

@@ -21,6 +21,7 @@ public class QuestLogButton : MonoBehaviour, ISelectHandler
 
         this.buttonText.text = displayName;
         this.onSelectAction = selectAction;
+        button.onClick.AddListener(selectAction);
     }
 
     public void OnSelect(BaseEventData eventData)

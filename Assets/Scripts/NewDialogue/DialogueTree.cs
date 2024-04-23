@@ -74,4 +74,5 @@ public enum DialogueActionType
     SetMainObjective,
     PlaySound,
     PlayBGM,
+    OpenBossZone3,
 }

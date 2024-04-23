@@ -82,14 +82,8 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void UpdateSkillUI()
     {
-        if (skillProgression < 2)
-        {
-            CompanionUIManager.Instance.SetShow(false);
-        }
-        if (skillProgression < 1)
-        {
-            StatusUIManager.Instance.ToggleDashIcon(false);
-        }
+        CompanionUIManager.Instance.SetShow(skillProgression >= 2);
+        StatusUIManager.Instance.ToggleDashIcon(skillProgression >= 1);
     }
 
     private void InitInputs()

@@ -13,6 +13,9 @@ public class Zone3Manager : MonoBehaviour
     [SerializeField] private GameObject doorToZone4;
     [SerializeField] private GameObject dog;
     [SerializeField] private SlimeBoss boss;
+    [SerializeField] private GameObject fishStorage;
+    [SerializeField] private GameObject triggerBeforeBoss;
+    [SerializeField] private DialogueTree dialogue;
 
 
     private void Awake()
@@ -57,6 +60,7 @@ public class Zone3Manager : MonoBehaviour
     {
         DataManager.Instance.DestroyObject(bossEntranceBlocker);
         bossEntranceBlocker.SetActive(false);
+        triggerBeforeBoss.SetActive(true);
     }
 
     [ContextMenu("AttackBoss")]
@@ -74,7 +78,11 @@ public class Zone3Manager : MonoBehaviour
         SoundManager.TryPlayNew("Victory");
         DataManager.Instance.DestroyObject(doorToZone4);
         doorToZone4.SetActive(false);
+        DataManager.Instance.DestroyObject(fishStorage);
+        fishStorage.SetActive(false);
         GameplayStateManager.Instance.Player.SetUnlockedSkill(3);
+        GameEventsManager.instance.miscEvents.Boss3Dead();
+        DialogueTreeController.instance.StartDialogue(dialogue, 0);
 
         DataManager.Instance.tempData.position = GameplayStateManager.Instance.Player.GetCameraFollow().position;
         GameplayStateManager.Instance.AutoSave();

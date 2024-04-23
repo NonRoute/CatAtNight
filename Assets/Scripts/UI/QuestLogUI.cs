@@ -93,6 +93,7 @@ public class QuestLogUI : MonoBehaviour
 
     private void SetQuestLogInfo(Quest quest)
     {
+        print("setquestlog");
         // quest name
         questDisplayNameText.text = quest.info.displayName;
 

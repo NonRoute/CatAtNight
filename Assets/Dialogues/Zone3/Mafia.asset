@@ -93,8 +93,8 @@ MonoBehaviour:
       characterName: Mafia Cat
       text: That will help a ton!
       action:
-        type: 0
-        parameter: 
+        type: 7
+        parameter: Hunt the Dog
     - sprites:
       - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
         offset: {x: 0, y: 100}
@@ -214,7 +214,7 @@ MonoBehaviour:
         offset: {x: 0, y: 100}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Mafia Cat
-      text: Now the dogs are gone...
+      text: Oh! you really got it.
       action:
         type: 0
         parameter: 
@@ -223,10 +223,37 @@ MonoBehaviour:
         offset: {x: 0, y: 100}
         fadeColor: {r: 1, g: 1, b: 1, a: 1}
       characterName: Mafia Cat
-      text: What to do next...
+      text: That's really good for us
       action:
         type: 0
         parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: Now we can take down that stupid dog
+      action:
+        type: 10
+        parameter: 
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: What's that sound?
+      action:
+        type: 7
+        parameter: Check What Happened Below
+    - sprites:
+      - sprite: {fileID: 20957735, guid: 43dc3c0b0e6188248b3b0fff017b3ad9, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Mafia Cat
+      text: Can you go check what happened below?
+      action:
+        type: 3
+        parameter: MafiaQuest2
     endAfterDialogue: 1
     goToNextDialogue: 0
     nextDialogue: 0
