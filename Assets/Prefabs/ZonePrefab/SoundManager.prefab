@@ -153,6 +153,24 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
+  - name: ByeCom
+    clip: {fileID: 8300000, guid: 82605554d790c1c44b80093209637c78, type: 3}
+    volume: 0.7
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: CallCom
+    clip: {fileID: 8300000, guid: 5cb5d8cc9d81a6d4f9b7ba4c811afeda, type: 3}
+    volume: 0.7
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: CommandCom
+    clip: {fileID: 8300000, guid: ea1b7fcd33d0b534a9ccb8ee37f60fc8, type: 3}
+    volume: 0.7
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
   maxDistance: 40
   distanceMultiplier: 2
   blendValue: 0.75
