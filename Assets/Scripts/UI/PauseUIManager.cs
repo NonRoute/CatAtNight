@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using UnityEngine.EventSystems;
+using Unity.Burst.Intrinsics;
 
 public class PauseUIManager : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class PauseUIManager : MonoBehaviour
     [SerializeField] private TMP_Text[] saveDateTexts;
     [SerializeField] private TMP_Text mainObjectiveText;
     [SerializeField] private QuestLogUI questLogUI;
+    [SerializeField] private TMP_Text mapTitleText;
+    [SerializeField] private TMP_Text fishCountText;
 
     private void Awake()
     {
@@ -85,6 +88,10 @@ public class PauseUIManager : MonoBehaviour
         {
             questLogUI.OnShowUI();
         }
+        if (index == 1)
+        {
+            InitMapText();
+        }
         if (index < 2) return;
         PlayerData playerData = GameplayStateManager.Instance.Player.GetPlayerData();
         if (index == 2) // Player Status
@@ -95,6 +102,27 @@ public class PauseUIManager : MonoBehaviour
         {
             helpPanel.SetupValue(playerData.skillProgression);
         }
+    }
+
+    private void InitMapText()
+    {
+        string mapTitle = SceneManager.GetActiveScene().name;
+        if(mapTitle == "Zone1")
+        {
+            mapTitle = "Zone 1 - Home";
+        }
+        if (mapTitle == "Zone2")
+        {
+            mapTitle = "Zone 2 - City";
+        }
+        if (mapTitle == "Zone3")
+        {
+            mapTitle = "Zone 3 - Ruins";
+        }
+        mapTitleText.text = "You are currently in:\n" + mapTitle;
+        Fish[] fishList =  FindObjectsOfType<Fish>(false);
+        int fishCount =fishList.Length;
+        fishCountText.text = "- There are " + fishCount + " Fish left in this Zone";
     }
 
     public void ToggleSelectSaveMenu()

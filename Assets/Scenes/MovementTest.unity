@@ -54917,6 +54917,7 @@ MonoBehaviour:
   actionText: Hold Box
   talkText: Hold this Box
   responseText: OK
+  actionType: 0
 --- !u!61 &1296814906
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60487,22 +60488,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 697474128514806288, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 697474128514806288, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 697474128514806288, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 697474128514806288, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2554852095462717817, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -60583,14 +60568,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3879200189656297370, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3879200189656297370, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5251924859494216655, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -60609,19 +60586,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7035877248197097739, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2055
+      value: -2445
+      objectReference: {fileID: 0}
+    - target: {fileID: 7948940658722590354, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
+      propertyPath: m_Size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8795692875869604673, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
       propertyPath: m_Name
       value: PauseCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 9047885685618679108, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9047885685618679108, guid: 6fa7b9296eaf1fe43ac92238360090b2, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
