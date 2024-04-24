@@ -111,6 +111,8 @@ public partial class Player : MonoBehaviour, IDamagable
             staminaDrainRate = baseStaminaDrainRate,
             staminaRegenRate = baseStaminaRegenRate,
             skillProgression = skillProgression,
+            maxStamina = maxStamina,
+            immortalDuration = immortalDuration,
         };
     }
 

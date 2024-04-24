@@ -12,6 +12,8 @@ public struct PlayerData
     public float staminaDrainRate;
     public float staminaRegenRate;
     public int skillProgression;
+    public float maxStamina;
+    public float immortalDuration;
 }
 
 public partial class Player : MonoBehaviour, IDamagable

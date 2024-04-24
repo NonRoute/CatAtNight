@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using static UnityEditor.Progress;
 
 public class ShopManager : MonoBehaviour
 {
@@ -27,6 +28,25 @@ public class ShopManager : MonoBehaviour
         immortal.button.interactable = IsUpgradable(immortal.currentTier, immortal.upgradeValue) && IsScoreSufficient(immortal.upgradeCostType[immortal.currentTier], immortal.upgradeCostAmount[immortal.currentTier]);
     }
 
+    public void refreshCurrentTier()
+    {
+        Player player = GameplayStateManager.Instance.Player;
+        while (health.upgradeValue[health.currentTier] < player.GetPlayerData().maxHealth && health.currentTier <= health.upgradeValue.Count)
+        {
+            health.currentTier++;
+            performUpgrade(health);
+        }
+        while (stamina.upgradeValue[stamina.currentTier] < player.GetPlayerData().maxStamina && stamina.currentTier <= stamina.upgradeValue.Count)
+        {
+            stamina.currentTier++;
+            performUpgrade(stamina);
+        }
+        while (immortal.upgradeValue[immortal.currentTier] < player.GetPlayerData().immortalDuration && immortal.currentTier <= immortal.upgradeValue.Count)
+        {
+            immortal.currentTier++;
+            performUpgrade(immortal);
+        }
+    }
     private Sprite GetIcon(ShopItem.CostType costType)
     {
         return costType switch
@@ -106,6 +126,11 @@ public class ShopManager : MonoBehaviour
                 break;
 
         }
+        performUpgrade(item);
+    }
+
+    public void performUpgrade(ShopItem item)
+    {
         item.currentText.text = item.upgradeValue[item.currentTier].ToString();
         if (IsUpgradable(item.currentTier, item.upgradeValue))
         {
@@ -120,9 +145,7 @@ public class ShopManager : MonoBehaviour
             item.costSprite.gameObject.SetActive(false);
             item.costText.text = "";
         }
-
     }
-
 }
 
 [System.Serializable]
