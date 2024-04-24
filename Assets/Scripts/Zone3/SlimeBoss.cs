@@ -11,14 +11,24 @@ public class SlimeBoss : MonoBehaviour
     [SerializeField] private Transform bottom;
     [SerializeField] private Transform sprite;
 
-    [SerializeField] private int health = 3;
+    [SerializeField] private int health = 5;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 1.5f;
     [SerializeField] private float jumpCooldown = 1f;
     [SerializeField] private float shakeSpeed = 1f;
     [SerializeField] private float shakePower = 1f;
-
     [SerializeField] private float interruptDuration = 5f;
+
+    [SerializeField] private bool isPhase2 = false;
+    [SerializeField] private float moveSpeed_p2 = 10f;
+    [SerializeField] private float jumpForce_p2 = 2f;
+    [SerializeField] private float jumpCooldown_p2 = 2f;
+    [SerializeField] private float shakeSpeed_p2 = 100f;
+    [SerializeField] private float shakePower_p2 = 0.75f;
+    [SerializeField] private float interruptDuration_p2 = 3f;
+    [SerializeField] private float gravityScale_p2 = 1.5f;
+    [SerializeField] private Color phase2Color = Color.white;
+
 
     [SerializeField] private float lastJumpTime;
     [SerializeField] private float interruptEndTime;
@@ -33,10 +43,12 @@ public class SlimeBoss : MonoBehaviour
 
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Update()
@@ -136,7 +148,24 @@ public class SlimeBoss : MonoBehaviour
             SoundManager.TryPlayNew("SlimeHurt");
             isInterrupted = true;
             interruptEndTime = Time.time + interruptDuration;
+            if(health <= 2 && !isPhase2)
+            {
+                StartPhase2();
+            }
         }
+    }
+
+    public void StartPhase2()
+    {
+        isPhase2 = true;
+        moveSpeed = moveSpeed_p2;
+        jumpCooldown = jumpCooldown_p2;
+        jumpForce = jumpForce_p2;
+        rb.gravityScale = gravityScale_p2;
+        shakeSpeed = shakeSpeed_p2;
+        shakePower = shakePower_p2;
+        interruptDuration = interruptDuration_p2;
+        spriteRenderer.color = phase2Color;
     }
 
     public void OnDead()

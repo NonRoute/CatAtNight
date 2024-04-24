@@ -180,6 +180,7 @@ public class Companion : MonoBehaviour
                 RotateSprite(hit.normal);
             }
             isJumping = false;
+            platform.SetActive(true);
         }
     }
 
@@ -335,6 +336,7 @@ public class Companion : MonoBehaviour
 
     private void Jump(Vector2 startPosition, Vector2 destination)
     {
+        platform.SetActive(false);
         transform.position = startPosition;
         RotateSprite(0f);
         this.startPosition = startPosition;
@@ -383,7 +385,7 @@ public class Companion : MonoBehaviour
 
     public void ClearSomeAction()
     {
-        platform.SetActive(false);
+        //platform.SetActive(false);
     }
 
     public void StartChoice3()
