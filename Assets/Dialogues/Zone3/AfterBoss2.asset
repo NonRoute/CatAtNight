@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dca545e30f282c479a8b16c65908e4f, type: 3}
+  m_Name: AfterBoss2
+  m_EditorClassIdentifier: 
+  sections:
+  - dialogue:
+    - sprites:
+      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 0, g: 0, b: 0, a: 1}
+      characterName: ???
+      text: Hey you!
+      action:
+        type: 11
+        parameter: Check What happened Below
+    - sprites:
+      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Orange
+      text: I saw how you defeat that ghost.
+      action:
+        type: 0
+        parameter: Check What happened Below
+    - sprites:
+      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Orange
+      text: You are so good at movement as if you can control the wind!
+      action:
+        type: 0
+        parameter: Check What happened Below
+    - sprites:
+      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Orange
+      text: Please let join you on the journey with you.
+      action:
+        type: 0
+        parameter: Check What happened Below
+    - sprites: []
+      characterName: NEW SKILL GET!
+      text: '[Press (C) or (RT) to Call Companion]'
+      action:
+        type: 0
+        parameter: Check What happened Below
+    - sprites:
+      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Orange
+      text: I may appear weak, but I'm actually immortal and can follow you anywhere!
+      action:
+        type: 0
+        parameter: Check What happened Below
+    - sprites:
+      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Orange
+      text: You can tell me to follow or stop at anymoment
+      action:
+        type: 0
+        parameter: Check What happened Below
+    - sprites:
+      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Orange
+      text: Or if you want me to [DO SOMETHING SPECIFIC], please don't hesitate to
+        do so.
+      action:
+        type: 0
+        parameter: Check What happened Below
+    - sprites:
+      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Orange
+      text: If you continue on this path, you will find a city that many cat live.
+      action:
+        type: 0
+        parameter: Check What happened Below
+    - sprites:
+      - sprite: {fileID: 21300000, guid: b4dcd8a986938d740926d82a925d2986, type: 3}
+        offset: {x: 0, y: 100}
+        fadeColor: {r: 1, g: 1, b: 1, a: 1}
+      characterName: Orange
+      text: I will follow you no matter what you choose though
+      action:
+        type: 0
+        parameter: Check What happened Below
+    endAfterDialogue: 1
+    goToNextDialogue: 0
+    nextDialogue: 0
+    branchPoint:
+      question: ...
+      answers:
+      - answerLabel: Hello?
+        nextElement: 1
+        action:
+          type: 0
+          parameter: 
+      - answerLabel: ...
+        nextElement: 2
+        action:
+          type: 0
+          parameter: 

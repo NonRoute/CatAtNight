@@ -75,4 +75,5 @@ public enum DialogueActionType
     PlaySound,
     PlayBGM,
     OpenBossZone3,
+    ForceCallCompanion,
 }
