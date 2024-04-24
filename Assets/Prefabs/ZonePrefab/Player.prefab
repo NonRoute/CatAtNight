@@ -85,7 +85,7 @@ MonoBehaviour:
   maxFOV: 12
   currentFOV: 8
   targetFOV: 8
-  scrollSpeed: 2
+  scrollSpeed: 0.01
   zoomSpeed: 10
   mainObjective: 
   health: 3
@@ -159,6 +159,8 @@ MonoBehaviour:
   staticLiquidSprite: {fileID: 8555494790186549837}
   spriteObject: {fileID: 7462550174215218793}
   isDead: 0
+  rawHorizontalInput: 0
+  rawVerticalInput: 0
   horizontalInput: 0
   verticalInput: 0
   horizontalSmooth: 0

@@ -245,6 +245,7 @@ public partial class Player : MonoBehaviour, IDamagable
 
 
         float scroll = Mouse.current.scroll.ReadValue().y;
+        //float scroll = Input.mouseScrollDelta.y;
         float controllerScroll = playerInputActions.Player.Zoom.ReadValue<float>();
 
         if (Math.Abs(controllerScroll) > 0.1)
@@ -252,7 +253,7 @@ public partial class Player : MonoBehaviour, IDamagable
             scroll = controllerScroll * 5;
         }
 
-        targetFOV -= scroll * scrollSpeed * Time.deltaTime;
+        targetFOV -= scroll * scrollSpeed; // * Time.deltaTime;
         targetFOV = Mathf.Clamp(targetFOV, minFOV, maxFOV);
         currentFOV = Mathf.Lerp(currentFOV, targetFOV, zoomSpeed * Time.deltaTime);
         GameplayStateManager.Instance.mainCamera.m_Lens.OrthographicSize = currentFOV;
