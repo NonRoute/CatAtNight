@@ -285,15 +285,21 @@ public partial class Player : MonoBehaviour, IDamagable
             float lerpRate = (dashEndTime - Time.time) / dashDuration;
             newVelocity = dashVelocity * lerpRate;
             float sign = Mathf.Sign(newVelocity.x);
-            newVelocity.x = sign * Mathf.Max(sign * newVelocity.x, sign * horizontalSmooth * baseSpeed);
+            newVelocity.x = sign * Mathf.Max(sign * newVelocity.x, sign * horizontalInput * baseSpeed);
             FlipSprite(dashVelocity.x > 0);
         }
         else if (isWallJumping)
         {
             float lerpRate = (wallJumpEndTime - Time.time) / wallJumpDuration;
-            newVelocity = wallJumpVelocity * lerpRate;
-            newVelocity.x += horizontalSmooth * moveSpeed;
-            newVelocity.x += wallJumpVelocity.x * 0.5f;
+            lerpRate = Mathf.Max(lerpRate,0.2f);
+            Vector2 direction = Vector2.Lerp(Mathf.Sign(wallJumpVelocity.x) * Vector2.right, wallJumpVelocity.normalized,lerpRate).normalized;
+            //newVelocity = wallJumpVelocity * lerpRate;
+            newVelocity = lerpRate * wallJumpVelocity.magnitude * direction;
+            float sign = Mathf.Sign(newVelocity.x);
+            float inputSpeed = 2f * horizontalInput * baseSpeed;
+            newVelocity.x = sign * Mathf.Max(sign * newVelocity.x, sign * inputSpeed);
+            //newVelocity.x += horizontalSmooth * moveSpeed;
+            //newVelocity.x += wallJumpVelocity.x * 0.5f;
             FlipSprite(wallJumpVelocity.x > 0);
         }
         else
@@ -423,6 +429,7 @@ public partial class Player : MonoBehaviour, IDamagable
         isFloating = true;
         Vector2 oppositeDirection = Vector2.left * (isFacingRight ? 1 : -1);
         Vector2 jumpDirection = (2f * oppositeDirection + Vector2.up).normalized;
+        //Vector2 jumpDirection = (oppositeDirection + Vector2.up).normalized;
         wallJumpVelocity = wallJumpSpeed * jumpDirection;
         wallJumpEndTime = Time.time + wallJumpDuration;
         animator.SetBool("is_sliding", isWallSliding);

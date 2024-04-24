@@ -109,7 +109,7 @@ MonoBehaviour:
   wallSlideSpeed: 3
   wallClimbSpeed: 8
   wallClimbStaminaDrainMultiplier: 3
-  wallJumpSpeed: 25
+  wallJumpSpeed: 45
   wallJumpDuration: 0.3
   wallJumpStaminaUsageMultiplier: 1
   maxVerticalVelocity: 15
