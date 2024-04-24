@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [System.Serializable]
 internal struct PaneData
@@ -39,10 +40,14 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private float scrollSpeed = 20f;
     [SerializeField] private int saveSlot = 0;
 
+    [SerializeField] private Slider sfxSlider;
+    [SerializeField] private Slider musicSlider;
+
     private void Start()
     {
         SoundManager.TryPlayMusic(bgmName);
         LoadSaveSlotText();
+        InitSlider();
     }
 
     private void Update()
@@ -150,6 +155,14 @@ public class MainMenuManager : MonoBehaviour
         StartGame(false);
     }
 
+    private void InitSlider()
+    {
+        sfxSlider.value = SoundManager.GetSfxVolume();
+        musicSlider.value = SoundManager.GetMusicVolume();
+        sfxSlider.onValueChanged.AddListener(delegate { SfxVolumeChanged(); });
+        musicSlider.onValueChanged.AddListener(delegate { MusicVolumeChanged(); });
+    }
+
     public void SetSaveSlot(int saveSlot)
     {
         this.saveSlot = saveSlot;
@@ -197,5 +210,15 @@ public class MainMenuManager : MonoBehaviour
             unlockedLevelTexts[i].text = $"Level {gameData.skillProgression + 1}";
             saveDateTexts[i].text = $"{((DateTime)gameData.dateTime).ToLocalTime()}";
         }
+    }
+
+    private void SfxVolumeChanged()
+    {
+        SoundManager.SetSfxVolume(sfxSlider.value);
+    }
+
+    private void MusicVolumeChanged()
+    {
+        SoundManager.SetMusicVolume(musicSlider.value);
     }
 }
