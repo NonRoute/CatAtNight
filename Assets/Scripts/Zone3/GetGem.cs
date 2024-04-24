@@ -13,6 +13,7 @@ public class GetGem : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameEventsManager.instance.miscEvents.GemGet();
+            PlayerInventory.Instance.AddItem("Gem");
             DialogueTreeController.instance.StartDialogue(dialogue, 0);
             DataManager.Instance.DestroyObject(gameObject);
             gameObject.SetActive(false);

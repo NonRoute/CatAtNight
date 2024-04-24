@@ -31,6 +31,18 @@ public class PushButton : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (isPushed) return;
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Companion"))
+        {
+            isPushed = true;
+            UpdateSprite();
+            if (isUnlocked) return;
+            puzzle.OnButtonPushed();
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Companion"))
