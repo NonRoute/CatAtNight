@@ -217,6 +217,7 @@ public class DialogueTreeController : MonoBehaviour
             case DialogueActionType.PlaySound: SoundManager.TryPlayNew(action.parameter); break;
             case DialogueActionType.PlayBGM: SoundManager.TryPlayMusic(action.parameter); break;
             case DialogueActionType.OpenBossZone3: Zone3Manager.Instance.RemoveDog(); Zone3Manager.Instance.ClearBossEntrance(); break;
+            case DialogueActionType.ForceCallCompanion: GameplayStateManager.Instance.Player.ForceCallCompanion(true); break;
         }
     }
 }

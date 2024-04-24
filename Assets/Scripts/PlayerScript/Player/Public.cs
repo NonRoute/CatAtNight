@@ -212,7 +212,12 @@ public partial class Player : MonoBehaviour, IDamagable
 
     public void ForceCallCompanion(bool isCall)
     {
-        if (isCall == companion.IsEnabled) return;
+        if (isCall == companion.IsEnabled)
+        {
+            CompanionUIManager.Instance.SetStatus(1);
+            companion.SetFollow(startDelayedPosition);
+            return;
+        }
         CompanionUIManager.Instance.SetOpen(!companion.IsEnabled);
         companion.ToggleCompanion(startDelayedPosition);
     }

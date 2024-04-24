@@ -14,6 +14,7 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
+        fishScore = PlayerInventory.Instance.fishCount;
         fishScoreText.SetText(fishScore.ToString());
         monsterScoreText.SetText(monsterScore.ToString());
         friendshipScoreText.SetText(friendshipScore.ToString());
