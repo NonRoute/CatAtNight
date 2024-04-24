@@ -57,7 +57,7 @@ public partial class Player : MonoBehaviour, IDamagable, ISavable
 
         rb.transform.position = tempData.position;
         skillProgression = tempData.skillProgression;
-        mainObjective = tempData.mainObjective;
+        SetMainObjective(tempData.mainObjective);
 
         health = tempData.health;
         maxHealth = tempData.maxHealth;
@@ -87,7 +87,7 @@ public partial class Player : MonoBehaviour, IDamagable, ISavable
         rb.transform.position = gameData.position;
         UpdateCameraFollowPosition();
         skillProgression = gameData.skillProgression;
-        mainObjective = gameData.mainObjective;
+        SetMainObjective(gameData.mainObjective);
 
         health = gameData.health;
         maxHealth = gameData.maxHealth;
