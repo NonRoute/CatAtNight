@@ -72,4 +72,14 @@ public class BossZone2 : Monster
         }
         SoundManager.TryPlay("Boss2Hit");
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out IDamagable damagable))
+        {
+            if (!damageInfo.targetEntityType.HasFlag(damagable.GetEntityType())) return;
+
+            damagable.RecieveDamage(damageInfo, collision.transform.position);
+        }
+    }
 }
