@@ -9,8 +9,6 @@ public class BossZone2 : Monster
     [SerializeField] private CinemachineVirtualCamera cam;
     [SerializeField] public bool isStarted;
     private Transform player;
-    private Vector2 vel;
-    public float smoothTime;
     protected override void Start()
     {
         base.Start();
@@ -27,7 +25,7 @@ public class BossZone2 : Monster
                 return;
             }
             Vector3 offset = new Vector3(0, 0, 0);
-            transform.position = Vector2.SmoothDamp(transform.position, player.position + offset, ref vel, smoothTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.position + offset, moveSpeed);
         }
     }
     public void OnDead()
