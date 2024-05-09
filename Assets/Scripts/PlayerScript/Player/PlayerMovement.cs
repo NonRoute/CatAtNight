@@ -415,6 +415,18 @@ public partial class Player : MonoBehaviour, IDamagable
     {
         isFloating = true;
         float jumpForce = jumpPower;
+        if(chargePercent < 40f)
+        {
+            SoundManager.TryPlayNew("JumpShort");
+        }
+        else if (chargePercent < 95f)
+        {
+            SoundManager.TryPlayNew("JumpMedium");
+        }
+        else
+        {
+            SoundManager.TryPlayNew("JumpLong");
+        }
         if (isChargeJump)
         {
             jumpForce += chargePercent / 100 * jumpPower;
@@ -439,11 +451,12 @@ public partial class Player : MonoBehaviour, IDamagable
 
     private void Dash()
     {
-        isFloating = true;
         if (dashCount >= maxDashCount)
         {
             return;
         }
+        isFloating = true;
+        SoundManager.TryPlayNew("Dash");
         Vector2 direction = (new Vector2(horizontalInput, verticalInput)).normalized;
         if (direction == Vector2.zero)
             return;

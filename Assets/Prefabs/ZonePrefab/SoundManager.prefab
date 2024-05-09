@@ -279,6 +279,30 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
+  - name: JumpShort
+    clip: {fileID: 8300000, guid: dd2aac7eddb61d043aff26ec3ea58c9f, type: 3}
+    volume: 0.3
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: JumpMedium
+    clip: {fileID: 8300000, guid: 22a7d53f28001564eaebfdd158d8ed8d, type: 3}
+    volume: 0.3
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: JumpLong
+    clip: {fileID: 8300000, guid: 5697f9c45b4a3be42a34c8c06a24a73e, type: 3}
+    volume: 0.3
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
+  - name: Dash
+    clip: {fileID: 8300000, guid: d44dd8a65318694419b1848c49f342cb, type: 3}
+    volume: 0.15
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
   maxDistance: 40
   distanceMultiplier: 2
   blendValue: 0.75
