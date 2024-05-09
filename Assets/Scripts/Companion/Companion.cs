@@ -404,6 +404,11 @@ public class Companion : MonoBehaviour
             SetStayStill(GameplayStateManager.Instance.Player.GetLastGroundPosition());
             platform.SetActive(true);
         }
+        else if (companionAction == CompanionAction.HoldItem)
+        {
+            SetFollow(GameplayStateManager.Instance.Player.GetLastGroundPosition());
+            ItemToHold.Instance.WaitForCompanion();
+        }
     }
 
     // For Debug Only

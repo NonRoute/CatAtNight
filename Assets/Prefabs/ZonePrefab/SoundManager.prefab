@@ -273,6 +273,12 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
+  - name: AttackBox
+    clip: {fileID: 8300000, guid: 625bfea93710f91478dc5ebec81fd2a0, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
   maxDistance: 40
   distanceMultiplier: 2
   blendValue: 0.75
