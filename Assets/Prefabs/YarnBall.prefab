@@ -169,4 +169,4 @@ MonoBehaviour:
     isBounce: 0
     bounceDuration: 0
     bounceSpeed: 0
-  throwForceMultiplier: 5
+  throwForceMultiplier: 6.5

@@ -31,7 +31,7 @@ public class Monster : MonoBehaviour, IDamagable
     [SerializeField] protected Vector2 bounceVelocity;
 
 
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
 
     protected virtual void Start()
     {
@@ -69,7 +69,7 @@ public class Monster : MonoBehaviour, IDamagable
         rb.velocity = new Vector2(moveSpeed * moveDirection, rb.velocity.y);
     }
 
-    private void Jump()
+    protected virtual void Jump()
     {
         if (jumpTimeElapsed >= jumpCooldown)
         {

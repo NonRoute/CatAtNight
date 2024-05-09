@@ -14,6 +14,16 @@ public class BossZone1 : Monster
         CinemachineVirtualCamera cam = FindAnyObjectByType<CinemachineVirtualCamera>();
     }
 
+    protected override void Jump()
+    {
+        Vector3 playerPos = GameplayStateManager.Instance.Player.GetCameraFollow().position;
+        if (jumpTimeElapsed >= jumpCooldown && playerPos.y > transform.position.y)
+        {
+            jumpTimeElapsed = 0f;
+            rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
+        }
+    }
+
     public void OnDead()
     {
         cam.Follow = GameplayStateManager.Instance.Player.GetCameraFollow();
