@@ -28,6 +28,7 @@ public class Zone2Manager : MonoBehaviour
     public void StartBossFight()
     {
         GameplayStateManager.Instance.currentCamera.Follow = targetGroup;
+        SoundManager.TryPlayMusic("Boss2BGM");
     }
 
     [ContextMenu("EndBoss")]

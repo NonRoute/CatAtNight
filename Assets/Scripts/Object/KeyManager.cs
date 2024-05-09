@@ -29,6 +29,7 @@ public class KeyManager : MonoBehaviour, ISavable
         if (other.gameObject.CompareTag("Player") && !isPickedUp)
         {
             player = GameplayStateManager.Instance.Player.transform;
+            SoundManager.TryPlayNew("GetKey");
             isPickedUp = true;
         }
     }

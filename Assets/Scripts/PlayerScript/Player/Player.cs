@@ -336,6 +336,7 @@ public partial class Player : MonoBehaviour, IDamagable
     private void ThrowYarnBall()
     {
         pickedUpYarnBall.GetComponent<YarnBall>().Throw(isFacingRight);
+        SoundManager.TryPlayNew("Throw");
         pickedUpYarnBall = null;
     }
 

@@ -12,6 +12,7 @@ public class DoorUnlock : MonoBehaviour
             other.gameObject.GetComponent<KeyManager>().isPickedUp = false;
             DataManager.Instance.DestroyObject(other.gameObject);
             other.gameObject.SetActive(false);
+            SoundManager.TryPlay("Unlock");
             DataManager.Instance.DestroyObject(gameObject);
             gameObject.SetActive(false);
         }
