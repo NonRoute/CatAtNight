@@ -7,17 +7,23 @@ public class BossZone2 : Monster
 {
     [SerializeField] private GameObject door;
     [SerializeField] private CinemachineVirtualCamera cam;
-    [SerializeField] public bool isStarted;
+    public bool isStarted;
+    [SerializeField] private float baseSpeed;
+    [SerializeField] private float acceleration;
+    [SerializeField] private float maxSpeed;
+    [SerializeField] private float lastStopTime;
+    [SerializeField] private float stopDuration = 2f;
     private Transform player;
     protected override void Start()
     {
         base.Start();
         CinemachineVirtualCamera cam = FindAnyObjectByType<CinemachineVirtualCamera>();
+        baseSpeed = moveSpeed;
     }
 
     protected new void FixedUpdate()
     {
-        if (isStarted)
+        if (isStarted && !GameplayStateManager.Instance.isInDialogue && Time.time - lastStopTime > stopDuration)
         {
             if (player == null)
             {
@@ -25,6 +31,12 @@ public class BossZone2 : Monster
                 return;
             }
             Vector3 offset = new Vector3(0, 0, 0);
+            //transform.position = Vector2.MoveTowards(transform.position, player.position + offset, moveSpeed);
+            moveSpeed += acceleration * Time.fixedDeltaTime;
+            if(moveSpeed > maxSpeed)
+            {
+                moveSpeed = maxSpeed;
+            }
             transform.position = Vector2.MoveTowards(transform.position, player.position + offset, moveSpeed);
         }
     }
@@ -41,6 +53,7 @@ public class BossZone2 : Monster
         //Destroy(door);
         SoundManager.TryPlay("Victory");
         SoundManager.TryPlayMusic("Zone 2 Music");
+        Zone2Manager.Instance.AfterBossDead();
     }
 
     public override EntityType GetEntityType()
@@ -69,6 +82,8 @@ public class BossZone2 : Monster
             bounceVelocity = damageInfo.bounceSpeed * ((Vector2)transform.position - attackerPos).normalized;
         }
         SoundManager.TryPlay("Boss2Hit");
+        moveSpeed = baseSpeed;
+        lastStopTime = Time.time;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -78,6 +93,9 @@ public class BossZone2 : Monster
             if (!damageInfo.targetEntityType.HasFlag(damagable.GetEntityType())) return;
 
             damagable.RecieveDamage(damageInfo, collision.transform.position);
+            moveSpeed = baseSpeed;
+            SoundManager.TryPlayNew("DemonLaugh");
+            lastStopTime = Time.time;
         }
     }
 }

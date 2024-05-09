@@ -11,6 +11,7 @@ public class BossTrigger : MonoBehaviour
         {
             boss.GetComponent<BossZone2>().isStarted = true;
             SoundManager.TryPlayMusic("Boss2BGM");
+            Zone2Manager.Instance?.StartBossFight();
             DataManager.Instance.tempData.position = GameplayStateManager.Instance.Player.GetCameraFollow().position;
             GameplayStateManager.Instance.AutoSave();
         }
