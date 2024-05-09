@@ -243,6 +243,12 @@ MonoBehaviour:
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
+  - name: GetFish
+    clip: {fileID: 8300000, guid: 2d6800e433568ee409d141a3c73f0a8d, type: 3}
+    volume: 1
+    pitch: 1
+    isLoop: 0
+    source: {fileID: 0}
   - name: Unlock
     clip: {fileID: 8300000, guid: b95027061fb6ae14fbdbc5bd51acc1aa, type: 3}
     volume: 1

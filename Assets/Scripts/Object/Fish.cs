@@ -14,6 +14,7 @@ public class Fish : MonoBehaviour
         {
             GameEventsManager.instance.miscEvents.FishCollected();
             scoreManager.fishScore++;
+            SoundManager.TryPlayNew("GetFish");
             other.GetComponentInParent<Player>().Heal(1f);
             gameObject.GetComponent<Animator>().Play("CollectFish");
             isEnable = false;
