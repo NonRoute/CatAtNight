@@ -32,9 +32,11 @@ public class Monster : MonoBehaviour, IDamagable
 
 
     protected Rigidbody2D rb;
+    [SerializeField] protected SpriteRenderer sprite;
 
     protected virtual void Start()
     {
+        sprite = GetComponentInChildren<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         moveTimeElapsed = moveSpeed / 2;
     }
@@ -62,6 +64,7 @@ public class Monster : MonoBehaviour, IDamagable
     private void ChangeDirection()
     {
         moveDirection *= -1;
+        sprite.flipX = moveDirection > 0;
     }
 
     private void Move()

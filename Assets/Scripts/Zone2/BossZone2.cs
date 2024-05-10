@@ -38,6 +38,7 @@ public class BossZone2 : Monster
                 moveSpeed = maxSpeed;
             }
             transform.position = Vector2.MoveTowards(transform.position, player.position + offset, moveSpeed);
+            sprite.flipX = transform.position.x < player.position.x;
         }
     }
     public void OnDead()
