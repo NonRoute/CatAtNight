@@ -137,25 +137,25 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: TwoCatTalk-1-1
     clip: {fileID: 8300000, guid: 91a392e34ad0c43bfbeadeab33cd5500, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
   - name: TwoCatTalk-1-2
     clip: {fileID: 8300000, guid: 6398e589ea6d04f5bb08d2f89d973b04, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
   - name: TwoCatTalk-2-1
     clip: {fileID: 8300000, guid: bcddf9e0649e54e1d822327dd0116fa1, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
   - name: TwoCatTalk-2-2
     clip: {fileID: 8300000, guid: a44c396e377114f8280454bfb227bac0, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
@@ -179,7 +179,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: GoatTalk
     clip: {fileID: 8300000, guid: a65a3afc132f343cca05797eeb78e977, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
@@ -227,7 +227,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Boss2Hit
     clip: {fileID: 8300000, guid: 91a5399bffe3446579415d356f279940, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
@@ -245,7 +245,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Unlock
     clip: {fileID: 8300000, guid: b95027061fb6ae14fbdbc5bd51acc1aa, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
@@ -257,7 +257,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: DemonLaugh
     clip: {fileID: 8300000, guid: c70117f20313efa41a24e65f03822f91, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     source: {fileID: 0}
@@ -275,7 +275,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: AttackBox
     clip: {fileID: 8300000, guid: 625bfea93710f91478dc5ebec81fd2a0, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     isLoop: 0
     source: {fileID: 0}

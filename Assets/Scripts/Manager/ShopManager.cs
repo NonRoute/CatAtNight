@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
-using static UnityEditor.Progress;
 
 public class ShopManager : MonoBehaviour
 {
