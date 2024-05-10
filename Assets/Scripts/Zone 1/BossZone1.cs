@@ -16,7 +16,9 @@ public class BossZone1 : Monster
 
     protected override void Jump()
     {
-        Vector3 playerPos = GameplayStateManager.Instance.Player.GetCameraFollow().position;
+        Player player = GameplayStateManager.Instance.Player;
+        if (player == null) return;
+        Vector3 playerPos = player.GetCameraFollow().position;
         if (jumpTimeElapsed >= jumpCooldown && playerPos.y > transform.position.y)
         {
             jumpTimeElapsed = 0f;

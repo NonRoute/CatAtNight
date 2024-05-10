@@ -16,6 +16,7 @@ public class Zone3Manager : MonoBehaviour
     [SerializeField] private GameObject fishStorage;
     [SerializeField] private GameObject triggerBeforeBoss;
     [SerializeField] private DialogueTree dialogue;
+    [SerializeField] private GameObject tempPlatform;
 
 
     private void Awake()
@@ -67,6 +68,13 @@ public class Zone3Manager : MonoBehaviour
     public void AttackBoss()
     {
         boss.ReceiveDamage();
+    }
+
+    [ContextMenu("StartPhase2")]
+    public void OnStartPhase2()
+    {
+        DataManager.Instance.DestroyObject(tempPlatform);
+        tempPlatform.SetActive(false);
     }
 
     [ContextMenu("EndBoss")]

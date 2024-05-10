@@ -66,7 +66,22 @@ public class SlimeBoss : MonoBehaviour
         Move();
         if(currentTime - lastJumpTime > jumpCooldown)
         {
-            Jump();
+            if(isPhase2)
+            {
+                Player player = GameplayStateManager.Instance.Player;
+                if (player != null)
+                {
+                    Vector3 playerPos = player.GetCameraFollow().position;
+                    if (currentTime - lastJumpTime > 2f*jumpCooldown || playerPos.y > transform.position.y - 2f)
+                    {
+                        Jump();
+                    }
+                }
+            }
+            else
+            {
+                Jump();
+            }
         }
     }
 
@@ -78,7 +93,16 @@ public class SlimeBoss : MonoBehaviour
             sprite.transform.localPosition = Vector2.zero;
         }
 
-        isGrounded = Physics2D.OverlapCircle(bottom.position, 2f, floorLayer);
+        bool touchGround = Physics2D.OverlapCircle(bottom.position, 1.5f, floorLayer);
+
+        if(touchGround)
+        {
+            isGrounded |= rb.velocity.y < 0.5f;
+        }
+        else
+        {
+            isGrounded = false;
+        }
 
         if (isGrounded)
         {
@@ -166,6 +190,8 @@ public class SlimeBoss : MonoBehaviour
         shakePower = shakePower_p2;
         interruptDuration = interruptDuration_p2;
         spriteRenderer.color = phase2Color;
+        SoundManager.TryPlayNew("StartPhase2");
+        Zone3Manager.Instance.OnStartPhase2();
     }
 
     public void OnDead()
