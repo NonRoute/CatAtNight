@@ -690,7 +690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &116745171
 RectTransform:
   m_ObjectHideFlags: 0
@@ -823,7 +823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &160587669
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1580,7 +1580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &309034114
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3167,7 +3167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &775065028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7849,7 +7849,7 @@ MonoBehaviour:
     maxScroll: 600
   - pane: {fileID: 442893666}
     scrollable: 1
-    maxScroll: 800
+    maxScroll: 200
   switchPaneDuration: 1
   switchPaneTime: 0
   switchPaneFinished: 1
